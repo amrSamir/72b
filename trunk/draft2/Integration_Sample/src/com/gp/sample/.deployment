@@ -1,0 +1,5 @@
+#Sun Mar 27 15:16:14 EET 2011
+war.name=Integration_Sample.war
+compiler.style=OBFUSCATED
+server.path=
+compiler.memory.max=512m

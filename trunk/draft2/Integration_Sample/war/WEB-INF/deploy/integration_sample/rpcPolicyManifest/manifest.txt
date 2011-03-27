@@ -1,0 +1,3 @@
+# Module integration_sample
+# RPC service class, partial path of RPC policy file
+com.gp.sample.client.GreetingService, D6F5798B5E9413FD9620B29486AE36D6.gwt.rpc

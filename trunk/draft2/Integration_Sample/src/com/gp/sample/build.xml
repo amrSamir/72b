@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="ImageViewer" default="all" basedir="C:\Users\Amr\Documents\Workspace\Integration_Sample">
+	<description>
+		This is build file for GWT module 'com.gp.sample.Integration_Sample' deployment.
+		GWT Designer generates it each time when you initiate deployment.
+		
+		You can use this file later for manual deployment, but keep in mind, that
+		classpath is hardcoded in it, so after changes in classpath you should
+		regenerate build file.
+	</description>
+
+	<property name="gwt.home" value="D:/eclipseW/plugins/com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811/gwt-2.2.0" />
+	<property name="gwt.module.id" value="com.gp.sample.Integration_Sample" />
+	<property name="war.name" value="Integration_Sample.war" />
+
+	<target name="jars" description="Package up the module project and required projects as jars">
+		<mkdir dir="war/WEB-INF/lib" />
+		<!--=== Integration_Sample ===-->
+		<jar destfile='war/WEB-INF/lib/Integration_Sample.jar'>
+			<fileset dir="C:/Users/Amr/Documents/Workspace/Integration_Sample/src">
+				<include name="**"/>
+			</fileset>
+			<fileset dir="C:/Users/Amr/Documents/Workspace/Integration_Sample/test">
+				<include name="**"/>
+			</fileset>
+			<fileset dir="C:/Users/Amr/Documents/Workspace/Integration_Sample/war/WEB-INF/classes">
+				<include name="**/*.class"/>
+			</fileset>
+			<fileset dir="C:/Users/Amr/Documents/Workspace/Integration_Sample/test-classes">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+		<copy todir='war/WEB-INF/lib'>
+			<fileset file="C:\Users\Amr\Documents\Workspace\Integration_Sample\test-classes"/>
+			<fileset file="C:\Users\Amr\Documents\Workspace\Integration_Sample\war\WEB-INF\classes"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\appengine-local-runtime-shared.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\el-api.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\jsp\repackaged-appengine-ant-1.7.1.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\jsp\repackaged-appengine-ant-launcher-1.7.1.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\jsp\repackaged-appengine-jasper-6.0.29.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\jsp\repackaged-appengine-jasper-el-6.0.29.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\jsp\repackaged-appengine-tomcat-juli-6.0.29.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\jsp-api.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\shared\servlet-api.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\appengine-api-1.0-sdk-1.4.2.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\appengine-api-labs-1.4.2.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\appengine-jsr107cache-1.4.2.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\jsr107cache-1.1.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\orm\datanucleus-appengine-1.0.8.final.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\orm\datanucleus-core-1.1.5.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\orm\datanucleus-jpa-1.1.5.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\orm\geronimo-jpa_3.0_spec-1.1.1.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\orm\geronimo-jta_1.1_spec-1.1.1.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\user\orm\jdo2-api-2.3-eb.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811\appengine-java-sdk-1.4.2\lib\appengine-tools-api.jar"/>
+			<fileset file="D:\eclipseW\plugins\com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811\gwt-2.2.0\gwt-dev.jar"/>
+		</copy>		
+	</target>
+
+	<target name="gwt-compile" description="Compile to JavaScript">
+		<java classname="com.google.gwt.dev.Compiler" fork="yes" failonerror="true" maxmemory="512m">
+			<classpath>
+				<pathelement location="C:/Users/Amr/Documents/Workspace/Integration_Sample/src" />
+				<pathelement location="C:/Users/Amr/Documents/Workspace/Integration_Sample/test" />
+				<pathelement location="C:/Users/Amr/Documents/Workspace/Integration_Sample/test-classes" />
+				<pathelement location="C:/Users/Amr/Documents/Workspace/Integration_Sample/war/WEB-INF/classes" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/appengine-local-runtime-shared.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/el-api.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/jsp/repackaged-appengine-ant-1.7.1.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/jsp/repackaged-appengine-ant-launcher-1.7.1.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/jsp/repackaged-appengine-jasper-6.0.29.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/jsp/repackaged-appengine-jasper-el-6.0.29.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/jsp/repackaged-appengine-tomcat-juli-6.0.29.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/jsp-api.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/shared/servlet-api.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/appengine-api-1.0-sdk-1.4.2.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/appengine-api-labs-1.4.2.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/appengine-jsr107cache-1.4.2.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/jsr107cache-1.1.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/orm/datanucleus-appengine-1.0.8.final.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/orm/datanucleus-core-1.1.5.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/orm/datanucleus-jpa-1.1.5.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/orm/geronimo-jpa_3.0_spec-1.1.1.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/orm/geronimo-jta_1.1_spec-1.1.1.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/user/orm/jdo2-api-2.3-eb.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.appengine.eclipse.sdkbundle.1.4.2_1.4.2.v201102111811/appengine-java-sdk-1.4.2/lib/appengine-tools-api.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811/gwt-2.2.0/gwt-user.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811/gwt-2.2.0/gwt-dev.jar" />
+				<pathelement location="D:/eclipseW/plugins/com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811/gwt-2.2.0/gwt-dev.jar" />
+			</classpath>
+			<arg value="-style"/>
+			<arg value="OBFUSCATED"/>
+			<arg value="${gwt.module.id}" />
+		</java>
+	</target>
+
+	<target name="war" depends="gwt-compile, jars">
+		<delete file="${war.name}" />
+		<jar destfile="${war.name}" basedir="war" duplicate="preserve" />
+	</target>
+	
+	<target name="deploy" depends="war">
+		<move file="${war.name}" todir="" />
+	</target>
+
+	<target name="all" depends="deploy" />
+
+</project>

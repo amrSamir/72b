@@ -12,79 +12,79 @@ import com.google.gwt.user.client.ui.TextBox;
 public class ContentCoderList extends Content {
 	AbsolutePanel absolutePanel;
 	private final coderServiceAsync coderService = GWT
-	.create(coderService.class);
-	 public ContentCoderList() {
-		  absolutePanel = new AbsolutePanel();
+			.create(coderService.class);
 
-			initWidget(absolutePanel);
-			viewCoders();
-			
+	public ContentCoderList() {
+		absolutePanel = new AbsolutePanel();
+
+		initWidget(absolutePanel);
+		viewCoders();
+
 		// TODO Auto-generated constructor stub
 	}
-		
-	 public void viewCoder(CoderData coder) {
 
-			Label lblUserData = new Label("User Data");
-			absolutePanel.add(lblUserData);
+	public void viewCoder(CoderData coder) {
 
-			Label lblNewLabel = new Label("UserID");
-			absolutePanel.add(lblNewLabel);
+		Label lblUserData = new Label("User Data");
+		absolutePanel.add(lblUserData);
 
-			TextBox txtUserID = new TextBox();
-			txtUserID.setText(coder.getUserID().toString());
-			absolutePanel.add(txtUserID);
+		Label lblNewLabel = new Label("UserID");
+		absolutePanel.add(lblNewLabel);
 
-			Label lblUsername = new Label("Username");
-			absolutePanel.add(lblUsername);
+		TextBox txtUserID = new TextBox();
+		txtUserID.setText(coder.getUserID().toString());
+		absolutePanel.add(txtUserID);
 
-			TextBox txtUserName = new TextBox();
-			txtUserName.setText(coder.getUsername());
-			absolutePanel.add(txtUserName);
+		Label lblUsername = new Label("Username");
+		absolutePanel.add(lblUsername);
 
-			Label lblEmail = new Label("Email");
-			absolutePanel.add(lblEmail);
+		TextBox txtUserName = new TextBox();
+		txtUserName.setText(coder.getUsername());
+		absolutePanel.add(txtUserName);
 
-			TextBox txtEmail = new TextBox();
-			txtEmail.setText(coder.getEmail());
-			absolutePanel.add(txtEmail);
+		Label lblEmail = new Label("Email");
+		absolutePanel.add(lblEmail);
 
-			Label lblSpojusername = new Label("SPOJUsername");
-			absolutePanel.add(lblSpojusername);
+		TextBox txtEmail = new TextBox();
+		txtEmail.setText(coder.getEmail());
+		absolutePanel.add(txtEmail);
 
-			TextBox txtSPOJUsername = new TextBox();
-			txtSPOJUsername.setText(coder.getSPOJUsername());
-			absolutePanel.add(txtSPOJUsername);
+		Label lblSpojusername = new Label("SPOJUsername");
+		absolutePanel.add(lblSpojusername);
 
-			Label lblSpojpassword = new Label("SPOJPassword");
-			absolutePanel.add(lblSpojpassword);
+		TextBox txtSPOJUsername = new TextBox();
+		txtSPOJUsername.setText(coder.getSPOJUsername());
+		absolutePanel.add(txtSPOJUsername);
 
-			TextBox txtSpojPassword = new TextBox();
-			txtSpojPassword.setText(coder.getSPOJPassword());
-			absolutePanel.add(txtSpojPassword);
-		}
-	 
-		private void viewCoders() {
-			coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
+		Label lblSpojpassword = new Label("SPOJPassword");
+		absolutePanel.add(lblSpojpassword);
 
-				@Override
-				public void onSuccess(ArrayList<CoderData> result) {
-					Window.alert("Success_CoderData");
-					
+		TextBox txtSpojPassword = new TextBox();
+		txtSpojPassword.setText(coder.getSPOJPassword());
+		absolutePanel.add(txtSpojPassword);
+	}
 
-					for (CoderData coder : result) {
-						viewCoder(coder);
-					}
-					
-					// TODO Auto-generated method stub
+	private void viewCoders() {
+		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
 
+			@Override
+			public void onSuccess(ArrayList<CoderData> result) {
+				// Window.alert("Success_CoderData");
+
+				for (CoderData coder : result) {
+					viewCoder(coder);
 				}
 
-				@Override
-				public void onFailure(Throwable caught) {
-					Window.alert("Failure_CoderData");
-					// TODO Auto-generated method stub
+				// TODO Auto-generated method stub
 
-				}
-			});
-		}	
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Failure_CoderData");
+				// TODO Auto-generated method stub
+
+			}
+		});
+	}
 }

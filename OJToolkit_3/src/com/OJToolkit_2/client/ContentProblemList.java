@@ -17,7 +17,7 @@ public class ContentProblemList extends Content {
 		Grid grid = new Grid(5, 3);
 		grid.setBorderWidth(2);
 		absolutePanel.add(grid, 0, 0);
-		grid.setSize("100%", "100%");
+		grid.setWidth("100%");
 		grid.setTitle("Problem List");
 		grid.setText(0, 0, "Problem ID");
 		grid.setText(0, 1, "Problem Name");
@@ -26,7 +26,7 @@ public class ContentProblemList extends Content {
 		grid.setText(1, 0, "TEST");
 		Anchor problemName = new Anchor("Life, the Universe, and Everything");
 		problemName.addClickHandler(new ClickHandler() {
-			
+
 			@Override
 			public void onClick(ClickEvent event) {
 				CoreContainer.getInstance().setContent(new FrmRegistration());

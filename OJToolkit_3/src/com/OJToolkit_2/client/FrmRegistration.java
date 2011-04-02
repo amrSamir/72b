@@ -63,7 +63,7 @@ public class FrmRegistration  extends Content{
 						public void onSuccess(Void result) {
 							Window.alert("Added to datastore");
 							// TODO Auto-generated method stub
-							
+							CoreContainer.getInstance().setContent(new ContentProblemList());
 						}
 						
 						@Override

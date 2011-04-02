@@ -4,6 +4,21 @@ import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Label;
 
+/*
+ * Steps for Login:
+ * 1 - Call LoginService
+ * 	a - On success
+ * 		i - is he logged in then check registration
+ * 		ii - not logged in then login page
+ * b - On failure - Alert
+ * 
+ * Steps for Check Registration:
+ * 1 - Call CheckRegisteredService
+ * 	a - On Success
+ * 		i - Registered = true, proceed to next page
+ * 		ii - Not Registered , proceed to registration form
+ * 	b - On failure - Login Form
+ */
 public class FrmLogin extends Content {
 
 	public FrmLogin(String loginURL) {

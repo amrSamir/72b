@@ -7,6 +7,7 @@ public class TestWestUi extends Content{
 	public TestWestUi() {
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
+		absolutePanel.setStyleName("LeftPanel");
 		initWidget(absolutePanel);
 		absolutePanel.setSize("197px", "279px");
 		

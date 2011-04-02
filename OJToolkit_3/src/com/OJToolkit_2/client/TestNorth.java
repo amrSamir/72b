@@ -7,6 +7,7 @@ public class TestNorth extends Content{
 	public TestNorth() {
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
+		absolutePanel.setStyleName("TitlePanel");
 		initWidget(absolutePanel);
 		absolutePanel.setSize("387px", "83px");
 		

@@ -24,6 +24,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class CoderServiceImpl extends RemoteServiceServlet implements coderService {
 	
+	@SuppressWarnings("unused")
 	private static final Logger LOG =  Logger.getLogger(CoderServiceImpl.class.getName());
 	private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
 	
@@ -59,6 +60,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 		  }
 
 		@Override
+		@SuppressWarnings("unchecked")
 		public ArrayList<CoderData> viewCoders() throws NotLoggedInException {
 			checkLoggedIn();
 			PersistenceManager pm = getPersistenceManager();
@@ -79,6 +81,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 		}
 
 		@Override
+		@SuppressWarnings("unchecked")
 		public boolean checkRegistered() throws NotLoggedInException {
 			checkLoggedIn();
 			boolean isRegistered = false;

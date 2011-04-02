@@ -1,8 +1,6 @@
 package com.OJToolkit_2.client;
 
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.Widget;
 
 public class CoreContainer {
  

@@ -29,14 +29,7 @@ public class OJToolkit_2 implements EntryPoint {
 	 * Create a remote service proxy to talk to the server-side Greeting
 	 * service.
 	 */
-	private final coderServiceAsync coderService = GWT
-			.create(coderService.class);
 
-	private final LoginServiceAsync loginService = GWT
-			.create(LoginService.class);
-
-	private LoginInfo loginInfo;
-	private AbsolutePanel core;
 
 	/**
 	 * This is the entry point method.
@@ -61,57 +54,9 @@ public class OJToolkit_2 implements EntryPoint {
 		CoreContainer.initialize(core);
 
 		LoginHelper lh = new LoginHelper();
-		//CoreContainer.getInstance().setContent(new LoginHelper());
-
-//		CoreContainer.getInstance().setContent(new FrmRegistration());
+	
 	}
 
-	public void checkRegistered() {
-		coderService.checkRegistered(new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onSuccess(Boolean result) {
-				// Window.alert("Registered " + result );
-				if (result == true) {
-
-					viewCoders();
-
-				} else {
-					// core.clear();
-					core.add(new FrmRegistration());
-
-				}
-
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// core.clear();
-				core.add(new FrmLogin(loginInfo.getLoginUrl()));
-			}
-		});
-	}
-
-	private void viewCoders() {
-		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
-
-			@Override
-			public void onSuccess(ArrayList<CoderData> result) {
-				// Window.alert("Success_CoderData");
-				// core.clear();
-				core.add(new FrmViewUsers(result));
-				// signOutLink.setHref(loginInfo.getLogoutUrl());
-				// rootPanel.add(signOutLink);
-
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert("Failure_CoderData");
-				// TODO Auto-generated method stub
-
-			}
-		});
-	}
 
 }

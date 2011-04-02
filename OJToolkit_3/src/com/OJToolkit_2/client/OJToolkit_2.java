@@ -60,9 +60,10 @@ public class OJToolkit_2 implements EntryPoint {
 		dockLayoutPanel.add(core);
 		CoreContainer.initialize(core);
 
-		CoreContainer.getInstance().setContent(new FrmLogin("Amr Samir"));
+		LoginHelper lh = new LoginHelper();
+		//CoreContainer.getInstance().setContent(new LoginHelper());
 
-		CoreContainer.getInstance().setContent(new FrmRegistration());
+//		CoreContainer.getInstance().setContent(new FrmRegistration());
 	}
 
 	public void checkRegistered() {

@@ -52,11 +52,31 @@ public class OJToolkit_2 implements EntryPoint {
 		AbsolutePanel core = new AbsolutePanel();
 		dockLayoutPanel.add(core);
 		CoreContainer.initialize(core);
+		CoreContainer.getInstance().setContent(new ContentProblemPage("problem id gdeda"));
+
+		addSomeProblems();
 		
-		LoginHelper lh = new LoginHelper();
+		//LoginHelper lh = new LoginHelper();
 	
 	}
-
-
+	private final ProblemServiceAsync probServAsync = GWT.create(ProblemService.class);
+	public void addSomeProblems() {
+		ProblemData pd;
+		pd = new ProblemData("TEST", " Prime Generator", "http://www.spoj.pl/problems/PRIME1/", "Spoj");
+		probServAsync.addProblem(pd, new AsyncCallback<Void>() {
+			
+			@Override
+			public void onSuccess(Void result) {
+				// TODO Auto-generated method stub
+				Window.alert("Added");
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				Window.alert("Not Added");
+			}
+		});
+	}
 
 }

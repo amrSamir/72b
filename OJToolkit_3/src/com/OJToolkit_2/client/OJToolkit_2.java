@@ -52,8 +52,8 @@ public class OJToolkit_2 implements EntryPoint {
 		AbsolutePanel core = new AbsolutePanel();
 		dockLayoutPanel.add(core);
 		CoreContainer.initialize(core);
-		CoreContainer.getInstance().setContent(new ContentProblemPage("problem id gdeda"));
-		//LoginHelper lh = new LoginHelper();
+		
+		LoginHelper lh = new LoginHelper();
 	
 	}
 

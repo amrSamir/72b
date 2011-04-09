@@ -1,23 +1,19 @@
 package com.OJToolkit_2.server;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 
 import com.OJToolkit_2.client.CoderData;
 import com.OJToolkit_2.client.NotLoggedInException;
 import com.OJToolkit_2.client.coderService;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-
-
 import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 
@@ -26,14 +22,14 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 	
 	@SuppressWarnings("unused")
 	private static final Logger LOG =  Logger.getLogger(CoderServiceImpl.class.getName());
-	private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+	public static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
 	
 	public void addCoder(String username, String SPOJUsername, String SPOJPassword) throws NotLoggedInException {
-		checkLoggedIn();
-		PersistenceManager pm = getPersistenceManager();
+		DataStoreHandler.checkLoggedIn();
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try{
-			User user = getUser();	
-			Coder c = new Coder(username,user.getEmail(),SPOJUsername,BCrypt.hashpw(SPOJPassword, BCrypt.gensalt()));
+			User user = DataStoreHandler.getUser();	
+			Coder c = new Coder(username,user.getEmail(),SPOJUsername,SPOJPassword);
 			pm.makePersistent(c);
 			
 		} finally{
@@ -44,26 +40,21 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 
 	}
 	
-	  private void checkLoggedIn() throws NotLoggedInException {
-		    if (getUser() == null) {
-		      throw new NotLoggedInException("Not logged in.");
-		    }
-		  }
+	
 	  
-	  private User getUser() {
-		    UserService userService = UserServiceFactory.getUserService();
-		    return userService.getCurrentUser();
-		  }
 
-		  private PersistenceManager getPersistenceManager() {
-		    return PMF.getPersistenceManager();
-		  }
 
 		@Override
 		@SuppressWarnings("unchecked")
 		public ArrayList<CoderData> viewCoders() throws NotLoggedInException {
-			checkLoggedIn();
-			PersistenceManager pm = getPersistenceManager();
+			DataStoreHandler.checkLoggedIn();
+			LOG.log(Level.SEVERE, "SPOJ_Username2");
+		//	DataStoreHandler dsh = new DataStoreHandler();
+			LOG.log(Level.SEVERE,DataStoreHandler.getAllCoders().get(0).getSPOJUsername());
+			
+			
+		//	List<Coder> coders2 = DataStoreHandler.getAllCoders();
+			PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 			ArrayList<CoderData> coders = new ArrayList<CoderData>();
 			try{
 				Query q = pm.newQuery(Coder.class);
@@ -83,9 +74,9 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 		@Override
 		@SuppressWarnings("unchecked")
 		public boolean checkRegistered() throws NotLoggedInException {
-			checkLoggedIn();
+			DataStoreHandler.checkLoggedIn();
 			boolean isRegistered = false;
-			PersistenceManager pm = getPersistenceManager();
+			PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 			try {
 				//Query q = pm.newQuery(Coder.class, "email == e");
 			//	String query = "select from " + Coder.class.getName() + " where email == '" + getUser().getEmail() + "'";
@@ -95,7 +86,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 				Query query = pm.newQuery(select_query); 
 				query.setFilter("email == userEmail"); 
 				query.declareParameters("java.lang.String userEmail"); 
-				List<Coder> coders = (List<Coder>) query.execute(getUser().getEmail());
+				List<Coder> coders = (List<Coder>) query.execute(DataStoreHandler.getUser().getEmail());
 				//List<Coder> coders = (List<Coder>) q.execute("e == getUser().getEmail()");
 				int size = coders.size();
 				
@@ -110,7 +101,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 			// TODO Auto-generated method stub
 			return isRegistered;
 		}
-		  
+		
 
 
 }

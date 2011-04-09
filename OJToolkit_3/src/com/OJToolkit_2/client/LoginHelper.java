@@ -15,7 +15,6 @@ public class LoginHelper {
 
 	public LoginHelper() {
 		login();
-
 	}
 
 	public void login() {
@@ -47,10 +46,11 @@ public class LoginHelper {
 
 			@Override
 			public void onSuccess(Boolean result) {
-				// Window.alert("Registered " + result);
+				 Window.alert("Registered " + result);
 				if (result == true) {
-					CoreContainer.getInstance().setContent(
-							new ContentProblemList());
+					/*CoreContainer.getInstance().setContent(
+							new ContentProblemList());*/
+					CoreContainer.getInstance().setContent(new ContentProblemPage("problem id gdeda"));
 					// viewCoders();
 
 				} else {

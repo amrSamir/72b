@@ -1,4 +1,8 @@
 package com.OJToolkit_2.client;
+
+import java.util.HashMap;
+
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Frame;
@@ -11,7 +15,11 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class ContentProblemPage extends Content{
 	
 	public ContentProblemPage(String prblmID) {
+	
 		ScrollPanel scrollPanel = new ScrollPanel();
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("dsds", "dd");
+		Window.alert("fdsfxzf    " + hm.get("dsds"));
 		initWidget(scrollPanel);
 		VerticalPanel verticalPanel = new VerticalPanel();
 		verticalPanel.setSize("100%", "100%");

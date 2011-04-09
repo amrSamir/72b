@@ -1,5 +1,6 @@
 package com.OJToolkit_2.client;
 
+import com.google.gwt.dev.util.collect.HashMap;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Label;
@@ -22,6 +23,8 @@ import com.google.gwt.user.client.ui.Label;
 public class FrmLogin extends Content {
 
 	public FrmLogin(String loginURL) {
+	
+		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 
 		initWidget(absolutePanel);

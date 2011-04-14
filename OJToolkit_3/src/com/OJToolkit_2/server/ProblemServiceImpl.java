@@ -7,9 +7,9 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 
-import com.OJToolkit_2.client.NotLoggedInException;
-import com.OJToolkit_2.client.ProblemData;
-import com.OJToolkit_2.client.ProblemService;
+import com.OJToolkit_2.client.Exceptions.NotLoggedInException;
+import com.OJToolkit_2.client.Services.ProblemService;
+import com.OJToolkit_2.client.ValueObjects.ProblemData;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import javax.jdo.Query;
 

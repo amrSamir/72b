@@ -1,5 +1,6 @@
 package com.OJToolkit_2.client;
 
+import com.OJToolkit_2.client.Contents.Content;
 import com.google.gwt.user.client.ui.Panel;
 
 public class CoreContainer {

@@ -2,6 +2,11 @@ package com.OJToolkit_2.client;
 
 import java.util.ArrayList;
 
+import com.OJToolkit_2.client.Contents.TestNorth;
+import com.OJToolkit_2.client.Contents.TestWestUi;
+import com.OJToolkit_2.client.Services.ProblemService;
+import com.OJToolkit_2.client.Services.ProblemServiceAsync;
+import com.OJToolkit_2.client.ValueObjects.ProblemData;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -52,11 +57,11 @@ public class OJToolkit_2 implements EntryPoint {
 		AbsolutePanel core = new AbsolutePanel();
 		dockLayoutPanel.add(core);
 		CoreContainer.initialize(core);
-		CoreContainer.getInstance().setContent(new ContentProblemPage("problem id gdeda"));
+		//CoreContainer.getInstance().setContent(new ContentProblemPage("problem id gdeda"));
 
-		addSomeProblems();
+		//addSomeProblems();
 		
-		//LoginHelper lh = new LoginHelper();
+		LoginHelper lh = new LoginHelper();
 	
 	}
 	private final ProblemServiceAsync probServAsync = GWT.create(ProblemService.class);

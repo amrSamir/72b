@@ -1,4 +1,4 @@
-package com.OJToolkit_2.client;
+package com.OJToolkit_2.client.Exceptions;
 
 import java.io.Serializable;
 

@@ -7,14 +7,14 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
-import com.OJToolkit_2.client.NotLoggedInException;
+import com.OJToolkit_2.client.Exceptions.NotLoggedInException;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public  class DataStoreHandler {
 	
-		private static final PersistenceManagerFactory PMF = CoderServiceImpl.PMF;
+		public static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
 
 		static PersistenceManager pm;
 	public DataStoreHandler() {

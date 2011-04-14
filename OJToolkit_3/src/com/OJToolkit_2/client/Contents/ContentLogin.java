@@ -1,4 +1,4 @@
-package com.OJToolkit_2.client;
+package com.OJToolkit_2.client.Contents;
 
 import com.google.gwt.dev.util.collect.HashMap;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -20,9 +20,9 @@ import com.google.gwt.user.client.ui.Label;
  * 		ii - Not Registered , proceed to registration form
  * 	b - On failure - Login Form
  */
-public class FrmLogin extends Content {
+public class ContentLogin extends Content {
 
-	public FrmLogin(String loginURL) {
+	public ContentLogin(String loginURL) {
 	
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();

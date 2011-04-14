@@ -2,10 +2,12 @@ package com.OJToolkit_2.server;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -37,7 +39,7 @@ public class Engine {
 	 */
 	public static void spojSubmit(HashMap<String, String> data)
 			throws Exception {
-		URL siteUrl = new URL("https://www.spoj.pl/submit/complete/");
+		URL siteUrl = new URL("http://www.spoj.pl/submit/complete/");
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 		conn.setRequestMethod("POST");
 		conn.setDoOutput(true);
@@ -84,7 +86,7 @@ public class Engine {
 	 */
 	public static HashMap<String , String> getSpojUserInfo(HashMap<String , String> data)
 	throws Exception{
-		URL site = new URL("https://www.spoj.pl/myaccount/");
+		URL site = new URL("http://www.spoj.pl/myaccount/");
 		HashMap<String, String> ret = new HashMap<String, String>();
 		HttpURLConnection conn = (HttpURLConnection) site.openConnection();
 		conn.setRequestMethod("POST");
@@ -183,7 +185,7 @@ public class Engine {
 	public static HashMap<String , String> getLastProblemStatus_Spoj(HashMap<String , String>data) 
 	throws Exception{
 			HashMap<String, String>ret = new HashMap<String, String>();
-			URL siteUrl = new URL("https://www.spoj.pl/status/"+data.get("login_user")+"/");
+			URL siteUrl = new URL("http://www.spoj.pl/status/"+data.get("login_user")+"/");
 			HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 			conn.setRequestMethod("POST");
 			conn.setDoOutput(true);
@@ -260,4 +262,89 @@ public class Engine {
 			return ret;
 	}
 
+	 public static ArrayList<ProblemSpoj> getAllProblemsSpoj() throws IOException{
+         ArrayList<ProblemSpoj> ret = new ArrayList<ProblemSpoj>();
+         String[] arr = {"classical" , "challenge" , "partial" , "tutorial"};
+         for(int i = 0 ; i < arr.length ; i ++){
+
+                 for(int st = 0 ; ; st +=50){
+                         URL siteUrl = new URL("https://www.spoj.pl/problems/" + arr[i] + "sort=0,start="+st);
+                         HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
+                         conn.setRequestMethod("POST");
+                         conn.setDoOutput(true);
+                         conn.setDoInput(true);
+                         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                     String line = "";
+                     int nop = 0;
+                     while((line = in.readLine()) != null){
+                         int ind ;
+                         if((ind = line.indexOf("problemrow")) != -1)
+                         {
+                                 int ii = 0;
+                                 ProblemSpoj p = new ProblemSpoj();
+                                 for(int k = 1 ; ii < 3 ; k ++)
+                                 {
+                                         line = in.readLine();
+                                         String tem = "";
+                                         if(k == 3){
+                                                 int in2 = line.indexOf("\"");
+                         //                      System.out.println("ind = " + in2);
+                         //                      System.out.println(line);
+                                                 for(int j = in2+1 ; line.charAt(j) != '\"' ; j ++){
+                                                         tem += line.charAt(j);
+                                                 //      System.out.println("ASDF");
+                                                 //      System.out.println(tem);
+                                                 }
+                                                 p.setUrl("https://spoj.pl" + tem);
+                                                 ii++;
+                                         }
+                                         else if(k == 6){
+                                                 int t = 0;
+                                                 for(int j = 0 ; j < line.length() ; j ++){
+                                                         if(line.charAt(j) == '\"')
+                                                                 t ++;
+                                                         if(t == 4){
+                                                                 for(int jj = j+2 ; ; jj++){
+                                                                         if(line.charAt(jj) >= '0' && line.charAt(jj) <= '9' )
+                                                                                 tem +=line.charAt(jj);
+                                                                         else
+                                                                                 break;
+                                                                 }
+                                                                 break;
+                                                         }
+                                                 }
+                                                 ii++;
+                                                 p.setNoUser(Integer.parseInt(tem));
+                                         }
+                                         else if(k == 7){
+                                                 int t = 0;
+                                                 for(int j = 0 ; j < line.length() ; j ++){
+                                                         if(line.charAt(j) == '\"')
+                                                                 t ++;
+                                                         if(t == 4){
+                                                                 for(int jj = j+2 ; ; jj++){
+                                                                         if(line.charAt(jj) == '.' || (line.charAt(jj) >= '0' && line.charAt(jj) <= '9' ))
+                                                                                 tem +=line.charAt(jj);
+                                                                         else
+                                                                                 break;
+                                                                 }
+                                                                 break;
+                                                         }
+                                                 }
+                                                 ii++;
+                                                 p.setAccP(Double.parseDouble(tem));
+                                         }
+                                 }
+                                 nop++;
+                                 p.setType(arr[i]);
+                                 ret.add(p);
+                         }
+                     }
+                 if(nop != 50)   
+                         break;
+                 }
+         }
+         return ret;
+
+	 }
 }

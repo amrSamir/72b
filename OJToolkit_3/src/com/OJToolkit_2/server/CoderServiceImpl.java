@@ -10,9 +10,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
-import com.OJToolkit_2.client.CoderData;
-import com.OJToolkit_2.client.NotLoggedInException;
-import com.OJToolkit_2.client.coderService;
+import com.OJToolkit_2.client.Exceptions.NotLoggedInException;
+import com.OJToolkit_2.client.Services.coderService;
+import com.OJToolkit_2.client.ValueObjects.CoderData;
 import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -22,7 +22,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 	
 	@SuppressWarnings("unused")
 	private static final Logger LOG =  Logger.getLogger(CoderServiceImpl.class.getName());
-	public static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 	
 	public void addCoder(String username, String SPOJUsername, String SPOJPassword) throws NotLoggedInException {
 		DataStoreHandler.checkLoggedIn();

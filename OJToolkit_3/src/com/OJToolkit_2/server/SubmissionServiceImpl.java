@@ -2,10 +2,11 @@ package com.OJToolkit_2.server;
 
 import java.util.HashMap;
 
-import com.OJToolkit_2.client.DataProblemStatus;
-import com.OJToolkit_2.client.SubmissionService;
+import com.OJToolkit_2.client.Services.SubmissionService;
+import com.OJToolkit_2.client.ValueObjects.ProblemStatusData;
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-public class SubmissionServiceImpl implements SubmissionService {
+public class SubmissionServiceImpl  extends RemoteServiceServlet implements SubmissionService {
 
 	@Override
 	
@@ -39,11 +40,11 @@ public class SubmissionServiceImpl implements SubmissionService {
 //	 * 
 //	 
 	@Override
-	public DataProblemStatus getLastProblemStatus() throws Exception {
+	public ProblemStatusData getLastProblemStatus() throws Exception {
 		HashMap<String,String> input = new HashMap<String, String>();
 		input.put("login_user", DataStoreHandler.getAllCoders().get(0).getSPOJUsername());
 		HashMap<String, String> output = Engine.getLastProblemStatus_Spoj(input);
-		DataProblemStatus dpStatus = new DataProblemStatus(output.get("DATE"), output.get("PROBLEM"), output.get("RESULT"), output.get("TIME"), output.get("MEM"));
+		ProblemStatusData dpStatus = new ProblemStatusData(output.get("DATE"), output.get("PROBLEM"), output.get("RESULT"), output.get("TIME"), output.get("MEM"));
 		return dpStatus;
 		// TODO Auto-generated method stub
 		

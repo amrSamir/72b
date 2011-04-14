@@ -5,6 +5,8 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.OJToolkit_2.client.*;
+import com.OJToolkit_2.client.Services.LoginService;
+import com.OJToolkit_2.client.ValueObjects.LoginInfo;
 
 @SuppressWarnings("serial")
 public class LoginServiceImpl extends RemoteServiceServlet 

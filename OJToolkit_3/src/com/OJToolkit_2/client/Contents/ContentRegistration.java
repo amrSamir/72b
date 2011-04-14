@@ -1,8 +1,14 @@
-package com.OJToolkit_2.client;
+package com.OJToolkit_2.client.Contents;
 
+import java.util.Date;
+
+import com.OJToolkit_2.client.CoreContainer;
+import com.OJToolkit_2.client.Services.coderService;
+import com.OJToolkit_2.client.Services.coderServiceAsync;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -12,7 +18,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 
 
-public class FrmRegistration  extends Content{
+public class ContentRegistration  extends Content{
 
 	private final coderServiceAsync coderService = GWT
 	.create(coderService.class);
@@ -20,7 +26,7 @@ public class FrmRegistration  extends Content{
 	 TextBox txtSPOJUsername;
 	 PasswordTextBox pwdSPOJ;
 	 
-	 public FrmRegistration() {
+	 public ContentRegistration() {
 		 AbsolutePanel absolutePanel = new AbsolutePanel();
 			initWidget(absolutePanel);
 			
@@ -62,6 +68,10 @@ public class FrmRegistration  extends Content{
 						@Override
 						public void onSuccess(Void result) {
 							Window.alert("Added to datastore");
+							   String sessionID = "Registered";
+							    final long DURATION = 1000 * 60 * 60 * 24 * 14; //duration remembering login. 2 weeks in this example.
+							    Date expires = new Date(System.currentTimeMillis() + DURATION);
+							    Cookies.setCookie("reg", sessionID, expires, null, "/", false);
 							// TODO Auto-generated method stub
 							CoreContainer.getInstance().setContent(new ContentProblemList());
 						}

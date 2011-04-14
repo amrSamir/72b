@@ -1,4 +1,4 @@
-package com.OJToolkit_2.client;
+package com.OJToolkit_2.client.ValueObjects;
 
 import java.io.Serializable;
 

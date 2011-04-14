@@ -1,23 +1,31 @@
-package com.OJToolkit_2.client;
+package com.OJToolkit_2.client.Contents;
 
 import java.util.ArrayList;
 
+import com.OJToolkit_2.client.Services.coderService;
+import com.OJToolkit_2.client.Services.coderServiceAsync;
+import com.OJToolkit_2.client.ValueObjects.CoderData;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 
-public class FrmViewUsers extends Content{
+public class ContentCoderList extends Content {
 	AbsolutePanel absolutePanel;
-	public FrmViewUsers(ArrayList<CoderData> result) {
-		 absolutePanel = new AbsolutePanel();
+	private final coderServiceAsync coderService = GWT
+			.create(coderService.class);
+
+	public ContentCoderList() {
+		absolutePanel = new AbsolutePanel();
 
 		initWidget(absolutePanel);
-		for (CoderData coder : result) {
-			viewCoder(coder);
-		}
-		
+		viewCoders();
+
 		// TODO Auto-generated constructor stub
 	}
+
 	public void viewCoder(CoderData coder) {
 
 		Label lblUserData = new Label("User Data");
@@ -57,9 +65,29 @@ public class FrmViewUsers extends Content{
 		TextBox txtSpojPassword = new TextBox();
 		txtSpojPassword.setText(coder.getSPOJPassword());
 		absolutePanel.add(txtSpojPassword);
-
-	
 	}
-	
 
+	private void viewCoders() {
+		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
+
+			@Override
+			public void onSuccess(ArrayList<CoderData> result) {
+				// Window.alert("Success_CoderData");
+
+				for (CoderData coder : result) {
+					viewCoder(coder);
+				}
+
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Failure_CoderData");
+				// TODO Auto-generated method stub
+
+			}
+		});
+	}
 }

@@ -1,8 +1,9 @@
-package com.OJToolkit_2.client;
+package com.OJToolkit_2.client.ValueObjects;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DataProblemStatus {
+public class ProblemStatusData implements Serializable{
 
 	/* 				KEY			VALUE
 	 * --------	DATE		-->	Date and time for the submitted problem.
@@ -17,7 +18,12 @@ public class DataProblemStatus {
 	 String time;
 	 String mem;
 	 
-	public DataProblemStatus(String date, String problemLink, String judgeResult,
+	public ProblemStatusData() {
+	
+		// TODO Auto-generated constructor stub
+	}
+
+	public ProblemStatusData(String date, String problemLink, String judgeResult,
 			String time, String mem) {
 		this.date = date;
 		this.problemLink = problemLink;
@@ -25,6 +31,28 @@ public class DataProblemStatus {
 		this.time = time;
 		this.mem = mem;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public String getProblemLink() {
+		return problemLink;
+	}
+
+	public String getJudgeResult() {
+		return judgeResult;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public String getMem() {
+		return mem;
+	}
+	
+	
 	 
 	
 	

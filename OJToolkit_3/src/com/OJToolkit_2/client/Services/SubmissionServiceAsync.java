@@ -1,5 +1,6 @@
-package com.OJToolkit_2.client;
+package com.OJToolkit_2.client.Services;
 
+import com.OJToolkit_2.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface SubmissionServiceAsync {
@@ -9,6 +10,6 @@ public interface SubmissionServiceAsync {
 	void submitCode(String prblmID, String code, String language,
 			AsyncCallback<Void> callback);
 
-	void getLastProblemStatus(AsyncCallback<DataProblemStatus> callback);
+	void getLastProblemStatus(AsyncCallback<ProblemStatusData> callback);
 
 }

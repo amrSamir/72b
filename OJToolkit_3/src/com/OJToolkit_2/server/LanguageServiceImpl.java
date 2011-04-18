@@ -1,22 +1,17 @@
 package com.OJToolkit_2.server;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
-import com.google.appengine.api.users.User;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.OJToolkit_2.client.Exceptions.NotLoggedInException;
-import com.OJToolkit_2.client.Services.*;
+import com.OJToolkit_2.client.Services.LanguageService;
 import com.OJToolkit_2.client.ValueObjects.LanguageData;
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class LanguageServiceImpl extends RemoteServiceServlet implements
 		LanguageService {
@@ -28,16 +23,16 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public ArrayList<LanguageData> getLanguages() throws NotLoggedInException {
 		// TODO Auto-generated method stub
-		DataStoreHandler.checkLoggedIn();
+		//DataStoreHandler.checkLoggedIn();
 
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		// Query qq = pm.newQuery(Problem.class);
-		// List<Problem> ae = (List<Problem>)qq.execute();
-		// pm.deletePersistentAll(ae);
+		/* Query qq = pm.newQuery(Problem.class);
+		 List<Problem> ae = (List<Problem>)qq.execute();
+		 pm.deletePersistentAll(ae);*/
 		// addLanguages();
 		// LOG.log(Level.SEVERE, "Languages added");
 
-		SubmissionServiceImpl.saveSpojProblemstoDB();
+		//SubmissionServiceImpl.saveSpojProblemstoDB();
 
 		/*
 		 * Query qq = pm.newQuery(Problem.class); List<Problem> ae =

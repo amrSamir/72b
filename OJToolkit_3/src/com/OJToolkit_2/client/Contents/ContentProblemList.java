@@ -25,7 +25,7 @@ public class ContentProblemList extends Content {
 		grid.setText(0, 0, "Problem ID");
 		grid.setText(0, 1, "Problem Name");
 		grid.setText(0, 2, "Source Judge");
-
+		//grid.setText(0, 2, MyResource.INSTANCE.defaultText().getText());
 		grid.setText(1, 0, "TEST");
 		Anchor problemName = new Anchor("Life, the Universe, and Everything");
 		/*languageService.addLanguages(new AsyncCallback<Void>() {

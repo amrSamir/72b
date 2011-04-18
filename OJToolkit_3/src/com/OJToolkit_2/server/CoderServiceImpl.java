@@ -25,7 +25,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 	
 	public void addCoder(String username, String SPOJUsername, String SPOJPassword) throws NotLoggedInException {
-		DataStoreHandler.checkLoggedIn();
+		//DataStoreHandler.checkLoggedIn();
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try{
 			User user = DataStoreHandler.getUser();	
@@ -47,7 +47,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements coderServi
 		@Override
 		@SuppressWarnings("unchecked")
 		public ArrayList<CoderData> viewCoders() throws NotLoggedInException {
-			DataStoreHandler.checkLoggedIn();
+			//DataStoreHandler.checkLoggedIn();
 			LOG.log(Level.SEVERE, "SPOJ_Username2");
 		//	DataStoreHandler dsh = new DataStoreHandler();
 			LOG.log(Level.SEVERE,DataStoreHandler.getAllCoders().get(0).getSPOJUsername());

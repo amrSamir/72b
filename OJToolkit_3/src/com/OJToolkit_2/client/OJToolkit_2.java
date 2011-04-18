@@ -2,6 +2,7 @@ package com.OJToolkit_2.client;
 
 import java.util.ArrayList;
 
+import com.OJToolkit_2.client.Contents.ContentLogin;
 import com.OJToolkit_2.client.Contents.TestNorth;
 import com.OJToolkit_2.client.Contents.TestWestUi;
 import com.OJToolkit_2.client.Services.ProblemService;
@@ -60,7 +61,9 @@ public class OJToolkit_2 implements EntryPoint {
 		//CoreContainer.getInstance().setContent(new ContentProblemPage("problem id gdeda"));
 
 		//addSomeProblems();
-		
+		//CoreContainer.getInstance().setContent(
+			//	new SpojProblemsToDBAdder());
+		//SpojProblemsToDBAdder spa = new SpojProblemsToDBAdder();
 		LoginHelper lh = new LoginHelper();
 	
 	}

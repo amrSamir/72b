@@ -20,6 +20,7 @@ import com.OJToolkit_2.client.Services.SubmissionService;
 import com.OJToolkit_2.client.ValueObjects.LanguageData;
 import com.OJToolkit_2.client.ValueObjects.ProblemData;
 import com.OJToolkit_2.client.ValueObjects.ProblemStatusData;
+import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
@@ -76,7 +77,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	}
 
-	public static void saveSpojProblemstoDB() {
+/*	public static void saveSpojProblemstoDB() {
 		Scanner cin;
 		LOG.log(Level.WARNING, "Entered function");
 		try {
@@ -92,10 +93,10 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			// query.execute();
 			// Query q = pm.newQuery(Problem.class);
 			// List<Problem> languagesDB = (List<Problem>) q.execute();
-			/*
+			
 			 * for (Problem language : languagesDB) {
 			 * pm.deletePersistent(language); }
-			 */
+			 
 
 			int i = 0;
 			while (cin.hasNextLine()) {
@@ -112,11 +113,11 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 					problemSpoj.setType(splitted[2].replaceAll("\"", ""));
 					problemSpoj.setUrl(splitted[3].replaceAll("\"", "")
 							.replaceAll("https", "http"));
-					/*
+					
 					 * pm.makePersistent(new Problem(problemSpoj.getUrl(),
 					 * problemSpoj .getType(), problemSpoj.getProblemCode(),
 					 * problemSpoj .getProblemName()));
-					 */
+					 
 					// pm.deletePersistent(problemSpoj);
 
 					LOG.log(Level.WARNING,
@@ -144,6 +145,24 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			// TODO Auto-generated catch block
 			//e1.printStackTrace();
 		}
+	}*/
+	
+	public  void saveSpojProblemtoDB(ProblemData problemData) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			/*Query qq = pm.newQuery(Problem.class);
+			 List<Problem> ae = (List<Problem>)qq.execute();
+			 pm.deletePersistentAll(ae);*/
+			Problem problem = new Problem(problemData.getUrl(), problemData.getType(), problemData.getProblemCode(), problemData.getProblemName());
+			
+			pm.makePersistent(problem);
+			
+		} finally{
+			pm.close();
+		}
+		
+		// TODO Auto-generated method stub
+		
 	}
 
 }

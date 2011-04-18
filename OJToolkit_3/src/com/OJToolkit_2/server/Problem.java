@@ -13,63 +13,63 @@ public class Problem {
 	private Long probID;
 	
 	@Persistent
-	private String probName;
+	private String url;
 	
 	@Persistent
-	private String URL;
+	private String type;
 	
 	@Persistent
-	private String OJ;
+	private String problemCode;
 	
 	@Persistent
-	private String probCode;
+	private String problemName;
 
-	public Problem(String probCode, String probName, String uRL, String oJ) {
+	public Problem(String url, String type, String problemCode,
+			String problemName) {
 		super();
-		this.probName = probName;
-		URL = uRL;
-		OJ = oJ;
-		this.probCode = probCode;
+		this.url = url;
+		this.type = type;
+		this.problemCode = problemCode;
+		this.problemName = problemName;
 	}
 
-	public Long getProbID() {
-		return probID;
+	public String getProblemCode() {
+		return problemCode;
 	}
 
-	public String getProbCode() {
-		return probCode;
+	public void setProblemCode(String problemCode) {
+		this.problemCode = problemCode;
 	}
 
-	public void setProbCode(String probCode) {
-		this.probCode = probCode;
+	public String getProblemName() {
+		return problemName;
 	}
 
-	public void setProbID(Long probID) {
-		this.probID = probID;
+	public void setProblemName(String problemName) {
+		this.problemName = problemName;
 	}
 
-	public String getProbName() {
-		return probName;
+	public Problem(String u) {
+		url = u;
 	}
 
-	public void setProbName(String probName) {
-		this.probName = probName;
+	public Problem() {
 	}
 
-	public String getURL() {
-		return URL;
+	public void setType(String t) {
+		type = t;
 	}
 
-	public void setURL(String uRL) {
-		URL = uRL;
+	public String getType() {
+		return type;
 	}
 
-	public String getOJ() {
-		return OJ;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setOJ(String oJ) {
-		OJ = oJ;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

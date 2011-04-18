@@ -15,8 +15,26 @@ import javax.jdo.Query;
 
 
 public class ProblemServiceImpl extends RemoteServiceServlet implements ProblemService{
+
+	@Override
+	public ArrayList<ProblemData> getAllProblems() throws NotLoggedInException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProblemData getPorblem(String probID) throws NotLoggedInException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addProblem(ProblemData probData) throws NotLoggedInException {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+	/*private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
 
 	@Override
 	public ArrayList<ProblemData> getAllProblems() throws NotLoggedInException {
@@ -58,6 +76,6 @@ public class ProblemServiceImpl extends RemoteServiceServlet implements ProblemS
 			// TODO: handle exception
 		}
 		
-	}
+	}*/
 
 }

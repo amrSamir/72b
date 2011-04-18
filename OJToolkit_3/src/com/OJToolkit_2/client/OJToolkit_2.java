@@ -64,7 +64,7 @@ public class OJToolkit_2 implements EntryPoint {
 		LoginHelper lh = new LoginHelper();
 	
 	}
-	private final ProblemServiceAsync probServAsync = GWT.create(ProblemService.class);
+	/*private final ProblemServiceAsync probServAsync = GWT.create(ProblemService.class);
 	public void addSomeProblems() {
 		ProblemData pd;
 		pd = new ProblemData("TEST", " Prime Generator", "http://www.spoj.pl/problems/PRIME1/", "Spoj");
@@ -83,5 +83,5 @@ public class OJToolkit_2 implements EntryPoint {
 			}
 		});
 	}
-
+*/
 }

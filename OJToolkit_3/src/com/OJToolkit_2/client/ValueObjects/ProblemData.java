@@ -3,51 +3,48 @@ package com.OJToolkit_2.client.ValueObjects;
 import java.io.Serializable;
 
 public class ProblemData implements Serializable {
-	private String probCode, probName, URL, OJ;
+
+	private String url;
+	private String type;
+	private String problemCode;
+	private String problemName;
+
+	public String getProblemCode() {
+		return problemCode;
+	}
+
+	public void setProblemCode(String problemCode) {
+		this.problemCode = problemCode;
+	}
+
+	public String getProblemName() {
+		return problemName;
+	}
+
+	public void setProblemName(String problemName) {
+		this.problemName = problemName;
+	}
+
+	public ProblemData(String u) {
+		url = u;
+	}
 
 	public ProblemData() {
-
-		// TODO Auto-generated constructor stub
 	}
 
-	public ProblemData(String probID, String probName, String uRL, String oJ) {
-		super();
-		this.probCode = probID;
-		this.probName = probName;
-		URL = uRL;
-		OJ = oJ;
+	public void setType(String t) {
+		type = t;
 	}
 
-	public String getProbCode() {
-		return probCode;
+	public String getType() {
+		return type;
 	}
 
-	public void setProbID(String probID) {
-		this.probCode = probID;
+	public String getUrl() {
+		return url;
 	}
 
-	public String getProbName() {
-		return probName;
+	public void setUrl(String url) {
+		this.url = url;
 	}
-
-	public void setProbName(String probName) {
-		this.probName = probName;
-	}
-
-	public String getURL() {
-		return URL;
-	}
-
-	public void setURL(String uRL) {
-		URL = uRL;
-	}
-
-	public String getOJ() {
-		return OJ;
-	}
-
-	public void setOJ(String oJ) {
-		OJ = oJ;
-	}
-	
 }

@@ -1,5 +1,7 @@
 package com.OJToolkit_2.server;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,6 +22,8 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 		LanguageService {
 
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
+	private static final Logger LOG = Logger
+			.getLogger(LanguageServiceImpl.class.getName());
 
 	@Override
 	public ArrayList<LanguageData> getLanguages() throws NotLoggedInException {
@@ -27,6 +31,19 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 		DataStoreHandler.checkLoggedIn();
 
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		// Query qq = pm.newQuery(Problem.class);
+		// List<Problem> ae = (List<Problem>)qq.execute();
+		// pm.deletePersistentAll(ae);
+		// addLanguages();
+		// LOG.log(Level.SEVERE, "Languages added");
+
+		SubmissionServiceImpl.saveSpojProblemstoDB();
+
+		/*
+		 * Query qq = pm.newQuery(Problem.class); List<Problem> ae =
+		 * (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
+		 * System.out.println("here");
+		 */
 		ArrayList<LanguageData> languages = new ArrayList<LanguageData>();
 		try {
 			Query q = pm.newQuery(Language.class);
@@ -78,12 +95,14 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 			for (int i = 0; i < 36; i++) {
 				l.setLanguageName(languages[i]);
 				l.setLanguageValue(String.valueOf(i + 1));
-				pm.makePersistent(new Language(l.getLanguageName(),l.getLanguageValue(), l.getOJType()));
+				pm.makePersistent(new Language(l.getLanguageName(), l
+						.getLanguageValue(), l.getOJType()));
 			}
 			for (int i = 36; i < languages.length; i++) {
 				l.setLanguageName(languages[i]);
 				l.setLanguageValue(values[i - 36]);
-				pm.makePersistent(new Language(l.getLanguageName(),l.getLanguageValue(), l.getOJType()));
+				pm.makePersistent(new Language(l.getLanguageName(), l
+						.getLanguageValue(), l.getOJType()));
 			}
 
 		} finally {

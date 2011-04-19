@@ -32,12 +32,6 @@ public class OJToolkit_2 implements EntryPoint {
 			+ "connection and try again.";
 
 	/**
-	 * Create a remote service proxy to talk to the server-side Greeting
-	 * service.
-	 */
-
-
-	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
@@ -47,44 +41,28 @@ public class OJToolkit_2 implements EntryPoint {
 		dockLayoutPanel.setSize("100%", "100%");
 		rootPanel.add(dockLayoutPanel, 0, 0);
 
+      /**
+       * North panel
+       */
 		TestNorth tn = new TestNorth();
 		dockLayoutPanel.addNorth(tn, 10);
 		tn.setSize("100%", "100%");
 
+      /**
+       * West panel
+       */
 		TestWestUi tw = new TestWestUi();
 		dockLayoutPanel.addWest(tw, 15);
 		tw.setSize("100%", "100%");
 
+      /**
+       * Center panel
+       */
 		AbsolutePanel core = new AbsolutePanel();
 		dockLayoutPanel.add(core);
 		CoreContainer.initialize(core);
-		//CoreContainer.getInstance().setContent(new ContentProblemPage("problem id gdeda"));
-
-		//addSomeProblems();
-		//CoreContainer.getInstance().setContent(
-			//	new SpojProblemsToDBAdder());
-		//SpojProblemsToDBAdder spa = new SpojProblemsToDBAdder();
-		LoginHelper lh = new LoginHelper();
-	
+      
+      // Call the login module at beginning
+      LoginHelper lh = new LoginHelper();
 	}
-	/*private final ProblemServiceAsync probServAsync = GWT.create(ProblemService.class);
-	public void addSomeProblems() {
-		ProblemData pd;
-		pd = new ProblemData("TEST", " Prime Generator", "http://www.spoj.pl/problems/PRIME1/", "Spoj");
-		probServAsync.addProblem(pd, new AsyncCallback<Void>() {
-			
-			@Override
-			public void onSuccess(Void result) {
-				// TODO Auto-generated method stub
-				Window.alert("Added");
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				Window.alert("Not Added");
-			}
-		});
-	}
-*/
 }

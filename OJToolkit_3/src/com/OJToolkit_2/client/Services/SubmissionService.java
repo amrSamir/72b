@@ -9,6 +9,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface SubmissionService extends RemoteService {
 	public void submitCode(String prblmID, String code, String language);
 	public ProblemStatusData getLastProblemStatus() throws Exception;
-	public  void saveSpojProblemtoDB(ProblemData problemData); 
-
+	public  void saveSpojProblemtoDB(ProblemData problemData);
 }

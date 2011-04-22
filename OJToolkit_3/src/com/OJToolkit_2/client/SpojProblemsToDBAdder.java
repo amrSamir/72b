@@ -15,8 +15,7 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TextArea;
 
 public class SpojProblemsToDBAdder extends Content {
-	private static final Logger LOG = Logger
-			.getLogger(SpojProblemsToDBAdder.class.getName());
+
 	private final SubmissionServiceAsync submissionService = GWT
 			.create(SubmissionService.class);
 	int failures = 0;

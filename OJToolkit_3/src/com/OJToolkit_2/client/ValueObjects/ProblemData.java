@@ -9,6 +9,15 @@ public class ProblemData implements Serializable {
 	private String problemCode;
 	private String problemName;
 
+	public ProblemData(String url, String type, String problemCode,
+			String problemName) {
+		super();
+		this.url = url;
+		this.type = type;
+		this.problemCode = problemCode;
+		this.problemName = problemName;
+	}
+
 	public String getProblemCode() {
 		return problemCode;
 	}

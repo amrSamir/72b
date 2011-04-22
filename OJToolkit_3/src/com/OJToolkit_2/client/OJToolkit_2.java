@@ -3,10 +3,14 @@ package com.OJToolkit_2.client;
 import java.util.ArrayList;
 
 import com.OJToolkit_2.client.Contents.ContentLogin;
+import com.OJToolkit_2.client.Contents.ContentProblemList;
+import com.OJToolkit_2.client.Contents.ContentProblemPagingList;
 import com.OJToolkit_2.client.Contents.TestNorth;
 import com.OJToolkit_2.client.Contents.TestWestUi;
 import com.OJToolkit_2.client.Services.ProblemService;
 import com.OJToolkit_2.client.Services.ProblemServiceAsync;
+import com.OJToolkit_2.client.Services.SubmissionService;
+import com.OJToolkit_2.client.Services.SubmissionServiceAsync;
 import com.OJToolkit_2.client.ValueObjects.ProblemData;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -31,6 +35,8 @@ public class OJToolkit_2 implements EntryPoint {
 			+ "attempting to contact the server. Please check your network "
 			+ "connection and try again.";
 
+	private final SubmissionServiceAsync submissionService = GWT
+	.create(SubmissionService.class);
 	/**
 	 * This is the entry point method.
 	 */
@@ -61,8 +67,8 @@ public class OJToolkit_2 implements EntryPoint {
 		AbsolutePanel core = new AbsolutePanel();
 		dockLayoutPanel.add(core);
 		CoreContainer.initialize(core);
-      
-      // Call the login module at beginning
-      LoginHelper lh = new LoginHelper();
+
+		LoginHelper lh = new LoginHelper();
+
 	}
 }

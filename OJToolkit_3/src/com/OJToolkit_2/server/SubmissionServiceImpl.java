@@ -1,26 +1,17 @@
 package com.OJToolkit_2.server;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
-import org.apache.tools.ant.taskdefs.Sleep;
-
 import com.OJToolkit_2.client.Services.SubmissionService;
-import com.OJToolkit_2.client.ValueObjects.LanguageData;
 import com.OJToolkit_2.client.ValueObjects.ProblemData;
 import com.OJToolkit_2.client.ValueObjects.ProblemStatusData;
-import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
@@ -61,9 +52,6 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	//
 	@Override
 	public ProblemStatusData getLastProblemStatus() throws Exception {
-		// ArrayList<ProblemSpoj> vd = Engine.getAllProblemsSpoj();
-		// getSpoJProblems();
-		//saveSpojProblemstoDB();
 		HashMap<String, String> input = new HashMap<String, String>();
 		input.put("login_user", DataStoreHandler.getAllCoders().get(0)
 				.getSPOJUsername());
@@ -77,92 +65,61 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	}
 
-/*	public static void saveSpojProblemstoDB() {
-		Scanner cin;
-		LOG.log(Level.WARNING, "Entered function");
-		try {
-			cin = new Scanner(new File(System.getProperty("user.dir")
-					+ "/Resources/problems_SPOJ.txt"));
-			// PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-			Problem problemSpoj = new Problem();
-			String curLine;
-			String[] splitted;
-			// String select_query = "delete from " +
-			// Problem2.class.getName();
-			// Query query = pm.newQuery(select_query);
-			// query.execute();
-			// Query q = pm.newQuery(Problem.class);
-			// List<Problem> languagesDB = (List<Problem>) q.execute();
-			
-			 * for (Problem language : languagesDB) {
-			 * pm.deletePersistent(language); }
-			 
-
-			int i = 0;
-			while (cin.hasNextLine()) {
-				i++;
-				curLine = cin.nextLine();
-
-				LOG.log(Level.WARNING, String.valueOf(i));
-				try {
-					splitted = curLine.split("\" ");
-					problemSpoj
-							.setProblemCode(splitted[0].replaceAll("\"", ""));
-					problemSpoj
-							.setProblemName(splitted[1].replaceAll("\"", ""));
-					problemSpoj.setType(splitted[2].replaceAll("\"", ""));
-					problemSpoj.setUrl(splitted[3].replaceAll("\"", "")
-							.replaceAll("https", "http"));
-					
-					 * pm.makePersistent(new Problem(problemSpoj.getUrl(),
-					 * problemSpoj .getType(), problemSpoj.getProblemCode(),
-					 * problemSpoj .getProblemName()));
-					 
-					// pm.deletePersistent(problemSpoj);
-
-					LOG.log(Level.WARNING,
-							" Problem Code " + problemSpoj.getProblemCode()
-									+ " Problem Name "
-									+ problemSpoj.getProblemName()
-									+ " Problem Type " + problemSpoj.getType()
-									+ "Problem URL " + problemSpoj.getUrl());
-
-					// System.out.println(problemSpoj.getProblemCode() +
-					// " f  "
-					// +
-					// problemSpoj.getProblemName() + " f  " +
-					// problemSpoj.getType()
-					// + " f " + problemSpoj.getUrl());
-				} catch (Exception e) {
-					LOG.log(Level.SEVERE, i
-							+ "The following line has an error " + curLine);
-				}
-			}
-			cin.close();
-
-		} catch (FileNotFoundException e1) {
-			LOG.log(Level.SEVERE, "FILE NOT FOUND");
-			// TODO Auto-generated catch block
-			//e1.printStackTrace();
-		}
-	}*/
-	
-	public  void saveSpojProblemtoDB(ProblemData problemData) {
+	public void saveSpojProblemtoDB(ProblemData problemData) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		try{
-			/*Query qq = pm.newQuery(Problem.class);
-			 List<Problem> ae = (List<Problem>)qq.execute();
-			 pm.deletePersistentAll(ae);*/
-			Problem problem = new Problem(problemData.getUrl(), problemData.getType(), problemData.getProblemCode(), problemData.getProblemName());
-			
+		try {
+			/*
+			 * Query qq = pm.newQuery(Problem.class); List<Problem> ae =
+			 * (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
+			 */
+			Problem problem = new Problem(problemData.getUrl(),
+					problemData.getType(), problemData.getProblemCode(),
+					problemData.getProblemName());
+
 			pm.makePersistent(problem);
-			
-		} finally{
+
+		} finally {
 			pm.close();
 		}
-		
+
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public ArrayList<ProblemData> getProblems(long start) {
+		start = start + 73670;
+		ArrayList<ProblemData> ret = new ArrayList<ProblemData>();
+		ProblemData problemData = new ProblemData();
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try {
+			String select_query = "select from " + Problem.class.getName();
+			Query query = pm.newQuery(select_query);
+			// query.setFilter("probID == problemID");
+			query.setFilter("probID >= problemID");
+			query.setRange(0, 50);
+			query.declareParameters("java.lang.String problemID");
+
+			List<Problem> problems = (List<Problem>) query.execute(start);
+
+			for (Problem problem : problems) {
+				problemData.setProblemCode(problem.getProblemCode());
+				problemData.setProblemName(problem.getProblemName());
+				problemData.setType(problem.getType());
+				problemData.setUrl(problem.getUrl());
+				ret.add(new ProblemData(problemData.getUrl(), problemData
+						.getType(), problemData.getProblemCode(), problemData
+						.getProblemName()));
+			}
+
+		} finally {
+			// TODO: handle exception
+			pm.close();
+		}
+		// TODO Auto-generated method stub
+
+		// TODO Auto-generated method stub
+		return ret;
 	}
 
 }

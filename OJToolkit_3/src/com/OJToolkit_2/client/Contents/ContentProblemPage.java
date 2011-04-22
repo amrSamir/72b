@@ -23,13 +23,14 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.OJToolkit_2.client.Services.LanguageService;
 import com.OJToolkit_2.client.Services.LanguageServiceAsync;
 import com.OJToolkit_2.client.ValueObjects.LanguageData;
+import com.OJToolkit_2.client.ValueObjects.ProblemData;
 
 
 public class ContentProblemPage extends Content{
 	
 	private final SubmissionServiceAsync submissionService = GWT.create(SubmissionService.class);
 	private final LanguageServiceAsync languageService = GWT.create(LanguageService.class);
-	public ContentProblemPage(final String prblmID) {
+	public ContentProblemPage(final ProblemData problem) {
 		ScrollPanel scrollPanel = new ScrollPanel();
 		initWidget(scrollPanel);
 		VerticalPanel verticalPanel = new VerticalPanel();
@@ -39,10 +40,10 @@ public class ContentProblemPage extends Content{
 		Label lblNewLabel = new Label("Problem Title: ");
 		verticalPanel.add(lblNewLabel);
 		
-		Label lblPrblmTitle = new Label(prblmID);
+		Label lblPrblmTitle = new Label(problem.getProblemName());
 		verticalPanel.add(lblPrblmTitle);
 		
-		Frame frame = new Frame("http://www.spoj.pl/problems/"+prblmID +"/");
+		Frame frame = new Frame(problem.getUrl());
 		verticalPanel.add(frame);
 		frame.setSize("90%", "300px");
 		
@@ -87,7 +88,7 @@ public class ContentProblemPage extends Content{
 			@Override
 			public void onClick(ClickEvent event) {
 				//Window.alert(comboBox.getValue(comboBox.getSelectedIndex()));
-				submissionService.submitCode(prblmID, textArea.getText(), comboBox.getValue(comboBox.getSelectedIndex()), new AsyncCallback<Void>() {
+				submissionService.submitCode(problem.getProblemCode(), textArea.getText(), comboBox.getValue(comboBox.getSelectedIndex()), new AsyncCallback<Void>() {
 					
 					@Override
 					public void onSuccess(Void result) {

@@ -93,7 +93,7 @@ public class ContentProblemPagingList extends Content {
 	    table.setRowCount(CONTACTS.size(), true);
 
 	    // Push the data into the widget.
-	    table.setRowData(0, CONTACTS);
+	 //  table.setRowData(0, CONTACTS);
 
 
 	    // Create a SimplePager.

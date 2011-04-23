@@ -20,7 +20,8 @@ import com.google.gwt.view.client.SelectionChangeEvent.Handler;
 import com.google.gwt.view.client.SingleSelectionModel;
 
 /**
- * @author Ahmed Emad Azraq Apr 22, 2011 This is a view class which is
+ * @author 72B Apr 22, 2011 
+ * This is a view class which is
  *         responsible for displaying the problems from the datastore in pages.
  *         Fifty problems are displayed on each page
  */
@@ -140,7 +141,7 @@ public class ContentProblemList extends Content {
 	 * Listens to onclick event. If a problem is clicked, it opens the
 	 * corresponding problem page for submission
 	 */
-	public void onClickHandler() {
+	private void onClickHandler() {
 		final SingleSelectionModel mySelectionModel = new SingleSelectionModel<ProblemData>();
 		table.setSelectionModel(mySelectionModel);
 		mySelectionModel.addSelectionChangeHandler(new Handler() {
@@ -160,7 +161,7 @@ public class ContentProblemList extends Content {
 	 * Listens to OnPageChange Event When the current page changes, it fetches
 	 * the 50 problems of the corresponding index from the databse
 	 */
-	public void onPageChangeHandler() {
+	private void onPageChangeHandler() {
 		table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
 			@Override
 			public void onRangeChange(RangeChangeEvent event) {

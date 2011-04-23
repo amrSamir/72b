@@ -45,7 +45,7 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 			List<Language> languagesDB = (List<Language>) q.execute();
 			for (Language language : languagesDB) {
 				languages.add(new LanguageData(language.getLanguageName(),
-						language.getLanguageValue()));
+						language.getLanguageValue(),language.getOJType()));
 			}
 
 		} finally {

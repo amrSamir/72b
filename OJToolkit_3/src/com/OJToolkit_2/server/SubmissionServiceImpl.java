@@ -14,8 +14,12 @@ import com.OJToolkit_2.client.ValueObjects.ProblemData;
 import com.OJToolkit_2.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+
+
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		SubmissionService {
+	//long DBStartIndex = 14680;
+	long DBStartIndex =73670;
 	private static final Logger LOG = Logger
 			.getLogger(SubmissionServiceImpl.class.getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
@@ -86,9 +90,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	}
 
-	@Override
+
 	public ArrayList<ProblemData> getProblems(long start) {
-		start = start + 73670;
+		start = start + DBStartIndex;
 		ArrayList<ProblemData> ret = new ArrayList<ProblemData>();
 		ProblemData problemData = new ProblemData();
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();

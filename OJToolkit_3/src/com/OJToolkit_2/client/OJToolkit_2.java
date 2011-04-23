@@ -6,8 +6,6 @@ import com.OJToolkit_2.client.Contents.ContentLogin;
 import com.OJToolkit_2.client.Contents.ContentProblemList;
 import com.OJToolkit_2.client.Contents.TestNorth;
 import com.OJToolkit_2.client.Contents.TestWestUi;
-import com.OJToolkit_2.client.Services.ProblemService;
-import com.OJToolkit_2.client.Services.ProblemServiceAsync;
 import com.OJToolkit_2.client.Services.SubmissionService;
 import com.OJToolkit_2.client.Services.SubmissionServiceAsync;
 import com.OJToolkit_2.client.ValueObjects.ProblemData;

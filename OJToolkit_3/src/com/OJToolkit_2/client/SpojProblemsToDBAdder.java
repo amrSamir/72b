@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
+import com.OJToolkit_2.Resources.MyResource;
 import com.OJToolkit_2.client.Contents.Content;
 import com.OJToolkit_2.client.Services.SubmissionService;
 import com.OJToolkit_2.client.Services.SubmissionServiceAsync;

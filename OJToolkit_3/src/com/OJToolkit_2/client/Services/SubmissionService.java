@@ -7,11 +7,41 @@ import com.OJToolkit_2.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
+/**
+ * @author 72B
+ * Contains all the submission and problems services 
+ */
 @RemoteServiceRelativePath("submission")
 public interface SubmissionService extends RemoteService {
+	
+	/**
+	 * Submit Problem to SPOJ
+	 * @param prblmID Problem ID
+	 * @param code The submitted code
+	 * @param language The language of the code
+	 */
 	public void submitCode(String prblmID, String code, String language);
+	
+	
+	/**
+	 * Gets the result of judging the problem
+	 * @return the result of judging the problem
+	 * @throws Exception
+	 */
 	public ProblemStatusData getLastProblemStatus() throws Exception;
+	
+	/**
+	 * Save a problem to the datastore
+	 * @param problemData the problem to be saved to the datastore
+	 */
 	public  void saveSpojProblemtoDB(ProblemData problemData); 
+	
+	
+	/**
+	 * Get 50 Problems from the datastore
+	 * @param start the start index of the problems
+	 * @return 50 Problems from the datastore 
+	 */
 	public ArrayList<ProblemData> getProblems(long start);
 
 

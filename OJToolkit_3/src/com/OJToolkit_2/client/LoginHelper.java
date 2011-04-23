@@ -51,7 +51,7 @@ public class LoginHelper {
 			public void onSuccess(Boolean result) {
             if (result == true) {
                String sessionID = "Registered";
-               //duration remembering login. 2 weeks in this example.
+               //duration remembering login for 2 weeks.
 					final long DURATION = 1000 * 60 * 60 * 24 * 14;
 					Date expires = new Date(System.currentTimeMillis() + DURATION);
 					Cookies.setCookie("reg", sessionID, expires, null, "/", false);

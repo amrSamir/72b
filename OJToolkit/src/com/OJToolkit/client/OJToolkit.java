@@ -6,16 +6,20 @@ import com.OJToolkit.client.Contents.ContentLogin;
 import com.OJToolkit.client.Contents.ContentProblemList;
 import com.OJToolkit.client.Contents.TestNorth;
 import com.OJToolkit.client.Contents.TestWestUi;
+import com.OJToolkit.client.Services.LanguageService;
+import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
@@ -32,8 +36,7 @@ public class OJToolkit implements EntryPoint {
 			+ "attempting to contact the server. Please check your network "
 			+ "connection and try again.";
 
-	private final SubmissionServiceAsync submissionService = GWT
-	.create(SubmissionService.class);
+	
 	/**
 	 * This is the entry point method.
 	 */
@@ -47,25 +50,36 @@ public class OJToolkit implements EntryPoint {
       /**
        * North panel
        */
-		TestNorth tn = new TestNorth();
-		dockLayoutPanel.addNorth(tn, 10);
-		tn.setSize("100%", "100%");
+		AbsolutePanel topPanel = new AbsolutePanel();
+		dockLayoutPanel.addNorth(topPanel, 10);
+		topPanel.setSize("100%", "100%");
 
       /**
        * West panel
        */
-		TestWestUi tw = new TestWestUi();
-		dockLayoutPanel.addWest(tw, 15);
-		tw.setSize("100%", "100%");
+		AbsolutePanel leftPanel = new AbsolutePanel();
+		dockLayoutPanel.addWest(leftPanel, 15);
+		leftPanel.setSize("100%", "100%");
 
       /**
        * Center panel
        */
 		AbsolutePanel core = new AbsolutePanel();
 		dockLayoutPanel.add(core);
-		CoreContainer.initialize(core);
-
-		LoginHelper lh = new LoginHelper();
+		
+		
+		SubmissionServiceAsync submissionService = GWT
+		.create(SubmissionService.class);
+		
+		LanguageServiceAsync languageService = GWT
+		.create(LanguageService.class);
+		
+		HandlerManager eventBus = new HandlerManager(null);
+		AppController appViewer = new AppController(eventBus,submissionService,languageService);
+		appViewer.go(core,topPanel,leftPanel);
+		
+		
+	
 
 	}
 }

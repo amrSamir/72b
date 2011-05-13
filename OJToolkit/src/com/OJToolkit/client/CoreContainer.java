@@ -1,6 +1,10 @@
+
+///////////////////////maloooooooooooosh lazma
+
 package com.OJToolkit.client;
 
 import com.OJToolkit.client.Contents.Content;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
 
 /**
@@ -31,4 +35,14 @@ public class CoreContainer {
     content.setSize("100%", "100%");
     core.add(content);
   }
+
+/**
+ * @param container
+ */
+public void setContent(HasWidgets container) {
+	 core.clear();
+	  //
+	// TODO Auto-generated method stub
+	
+}
 }

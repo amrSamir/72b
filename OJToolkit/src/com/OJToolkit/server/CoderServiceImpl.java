@@ -11,14 +11,14 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import com.OJToolkit.client.Exceptions.NotLoggedInException;
-import com.OJToolkit.client.Services.coderService;
+import com.OJToolkit.client.Services.CoderService;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 
 @SuppressWarnings("serial")
-public class CoderServiceImpl extends RemoteServiceServlet implements coderService {
+public class CoderServiceImpl extends RemoteServiceServlet implements CoderService {
 	
 	@SuppressWarnings("unused")
 	private static final Logger LOG =  Logger.getLogger(CoderServiceImpl.class.getName());

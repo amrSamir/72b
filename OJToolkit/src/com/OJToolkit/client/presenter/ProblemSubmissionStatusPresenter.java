@@ -3,11 +3,8 @@
  */
 package com.OJToolkit.client.presenter;
 
-import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
-import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
-import com.OJToolkit.client.presenter.ProblemPresenter.Display;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -52,6 +49,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter{
 			@Override
 			public void onSuccess(ProblemStatusData result) {
 				problemStatus = result;
+				display.setSubmissionResult(result);
 				// TODO Auto-generated method stub
 				
 			}

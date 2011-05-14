@@ -6,8 +6,12 @@ import com.OJToolkit.client.Contents.ContentLogin;
 import com.OJToolkit.client.Contents.ContentProblemList;
 import com.OJToolkit.client.Contents.TestNorth;
 import com.OJToolkit.client.Contents.TestWestUi;
+import com.OJToolkit.client.Services.CoderService;
+import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.Services.LanguageService;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
+import com.OJToolkit.client.Services.LoginService;
+import com.OJToolkit.client.Services.LoginServiceAsync;
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
@@ -74,8 +78,16 @@ public class OJToolkit implements EntryPoint {
 		LanguageServiceAsync languageService = GWT
 		.create(LanguageService.class);
 		
+		CoderServiceAsync coderService = GWT
+		.create(CoderService.class);
+		
+		LoginServiceAsync loginService = GWT
+		.create(LoginService.class);
+		
+
+		
 		HandlerManager eventBus = new HandlerManager(null);
-		AppController appViewer = new AppController(eventBus,submissionService,languageService);
+		AppController appViewer = new AppController(eventBus, submissionService, languageService, loginService, coderService);
 		appViewer.go(core,topPanel,leftPanel);
 		
 		

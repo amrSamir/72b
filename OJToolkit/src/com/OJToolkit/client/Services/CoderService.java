@@ -12,7 +12,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  * All the services related to the coder
  */
 @RemoteServiceRelativePath("coder")
-public interface coderService extends RemoteService {
+public interface CoderService extends RemoteService {
 	
 	/**
 	 * Add Coder to the datastore

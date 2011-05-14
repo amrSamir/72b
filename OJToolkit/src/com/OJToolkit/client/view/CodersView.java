@@ -1,24 +1,60 @@
-package com.OJToolkit.client.Contents;
+/**
+ * 
+ */
+package com.OJToolkit.client.view;
 
 import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.CoderData;
+import com.OJToolkit.client.presenter.CodersPresenter;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Widget;
 
-public class ContentViewUsers extends Content{
+/**
+ * @author 72B
+ *         Apr 26, 2011
+ */
+public class CodersView extends Composite implements CodersPresenter.Display {
+
 	AbsolutePanel absolutePanel;
-	public ContentViewUsers(ArrayList<CoderData> result) {
-		 absolutePanel = new AbsolutePanel();
+
+	public CodersView() {
+		absolutePanel = new AbsolutePanel();
 
 		initWidget(absolutePanel);
-		for (CoderData coder : result) {
+	
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#asWidget()
+	 */
+	@Override
+	public Widget asWidget() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.CodersPresenter.Display#setCodersList(java.util.ArrayList)
+     */
+    @Override
+    public void setCodersList(ArrayList<CoderData> coders) {
+    	for (CoderData coder : coders) {
 			viewCoder(coder);
 		}
-		
-		// TODO Auto-generated constructor stub
-	}
+	    // TODO Auto-generated method stub
+	    
+    }
+    
 	public void viewCoder(CoderData coder) {
 
 		Label lblUserData = new Label("User Data");
@@ -58,9 +94,7 @@ public class ContentViewUsers extends Content{
 		TextBox txtSpojPassword = new TextBox();
 		txtSpojPassword.setText(coder.getSPOJPassword());
 		absolutePanel.add(txtSpojPassword);
-
-	
 	}
-	
+
 
 }

@@ -5,23 +5,17 @@ package com.OJToolkit.client.presenter;
 
 import java.util.ArrayList;
 
-import com.OJToolkit.client.CoreContainer;
-import com.OJToolkit.client.Contents.ContentProblemStatus;
-import com.OJToolkit.client.Services.LanguageService;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
-import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -57,12 +51,12 @@ public class ProblemPresenter implements Presenter {
 	private final LanguageServiceAsync languageService;
 
 
-	public ProblemPresenter(SubmissionServiceAsync submssionService, LanguageServiceAsync languageService,
+	public ProblemPresenter(ProblemData problem, SubmissionServiceAsync submssionService, LanguageServiceAsync languageService,
 	        HandlerManager eventBus, final Display display) {
 		this.languageService = languageService;
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
-		this.problem = new ProblemData();
+		this.problem = problem;
 		this.display = display;
 		this.display.setProblem(problem);
 		bind();
@@ -103,14 +97,14 @@ public class ProblemPresenter implements Presenter {
 
 					        @Override
 					        public void onSuccess(Void result) {
-					        	eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(problem));
+					        	eventBus.fireEvent(new ViewProblemSubmissionStatusEvent());
 						        // TODO Auto-generated method stub
 
 					        }
 
 					        @Override
 					        public void onFailure(Throwable caught) {
-					        	eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(problem));
+					        	Window.alert("Failure");
 						        // TODO Auto-generated method stub
 
 					        }

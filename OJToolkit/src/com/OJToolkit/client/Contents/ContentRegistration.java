@@ -3,8 +3,7 @@ package com.OJToolkit.client.Contents;
 import java.util.Date;
 
 import com.OJToolkit.client.CoreContainer;
-import com.OJToolkit.client.Services.coderService;
-import com.OJToolkit.client.Services.coderServiceAsync;
+import com.OJToolkit.client.Services.*;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -20,8 +19,8 @@ import com.google.gwt.user.client.ui.TextBox;
 
 public class ContentRegistration  extends Content{
 
-	private final coderServiceAsync coderService = GWT
-	.create(coderService.class);
+	private final CoderServiceAsync coderService = GWT
+	.create(CoderService.class);
 	 TextBox txtUsername;
 	 TextBox txtSPOJUsername;
 	 PasswordTextBox pwdSPOJ;

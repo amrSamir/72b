@@ -10,21 +10,26 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author 72B
  * Apr 26, 2011
  */
-public class ViewProblemSubmissionStatusEvent extends GwtEvent<ViewProblemSubmissionStatusEventHandler>{
+public class ViewProblemEvent extends GwtEvent<ViewProblemEventHandler>{
 
 	
-	public static Type<ViewProblemSubmissionStatusEventHandler> TYPE  = new Type<ViewProblemSubmissionStatusEventHandler>();
+	public static Type<ViewProblemEventHandler> TYPE  = new Type<ViewProblemEventHandler>();
 	
+	public ProblemData problem;
 
 	
 	
 
+	public ViewProblemEvent(ProblemData problem) {
+	    super();
+	    this.problem = problem;
+    }
 
 	/* (non-Javadoc)
      * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
      */
     @Override
-    public Type<ViewProblemSubmissionStatusEventHandler> getAssociatedType() {
+    public Type<ViewProblemEventHandler> getAssociatedType() {
 	    
 	    return TYPE;
     }
@@ -33,8 +38,8 @@ public class ViewProblemSubmissionStatusEvent extends GwtEvent<ViewProblemSubmis
      * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
      */
     @Override
-    protected void dispatch(ViewProblemSubmissionStatusEventHandler handler) {
-	    handler.onSubmitProblem(this);
+    protected void dispatch(ViewProblemEventHandler handler) {
+	    handler.onViewProblem(this);
 	    
     }
 

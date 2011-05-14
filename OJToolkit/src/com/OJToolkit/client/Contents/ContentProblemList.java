@@ -109,6 +109,16 @@ public class ContentProblemList extends Content {
 
 		// We need to fetch the first 50 problems from the database as they are
 		// the first problems loaded
+		fitchFiftyProblems();
+		
+		onClickHandler();
+		onPageChangeHandler();
+		dataProvider.addDataDisplay(table);
+		vPanel.add(table);
+		vPanel.add(pager);
+	}
+	
+	public void fitchFiftyProblems(){
 		submissionService.getProblems(pageStart,
 				new AsyncCallback<ArrayList<ProblemData>>() {
 
@@ -130,11 +140,6 @@ public class ContentProblemList extends Content {
 					}
 				});
 
-		onClickHandler();
-		onPageChangeHandler();
-		dataProvider.addDataDisplay(table);
-		vPanel.add(table);
-		vPanel.add(pager);
 	}
 
 	/**
@@ -167,28 +172,7 @@ public class ContentProblemList extends Content {
 			public void onRangeChange(RangeChangeEvent event) {
 				pageStart = table.getPageStart();
 				if (problemsList.get(pageStart) == null) {
-					submissionService.getProblems(pageStart,
-							new AsyncCallback<ArrayList<ProblemData>>() {
-
-								@Override
-								public void onSuccess(
-										ArrayList<ProblemData> result) {
-
-									for (int i = 0; i < result.size(); i++) {
-										problemsList.set(pageStart + i,
-												result.get(i));
-
-									}
-									table.setRowData(0, problemsList);
-								}
-
-								@Override
-								public void onFailure(Throwable caught) {
-									System.out.println("Failure");
-									// TODO Auto-generated method stub
-
-								}
-							});
+					fitchFiftyProblems();
 				}
 			}
 		});

@@ -2,8 +2,8 @@ package com.OJToolkit.client.Contents;
 
 import java.util.ArrayList;
 
-import com.OJToolkit.client.Services.coderService;
-import com.OJToolkit.client.Services.coderServiceAsync;
+import com.OJToolkit.client.Services.CoderService;
+import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
@@ -14,8 +14,8 @@ import com.google.gwt.user.client.ui.TextBox;
 
 public class ContentCoderList extends Content {
 	AbsolutePanel absolutePanel;
-	private final coderServiceAsync coderService = GWT
-			.create(coderService.class);
+	private final CoderServiceAsync coderService = GWT
+			.create(CoderService.class);
 
 	public ContentCoderList() {
 		absolutePanel = new AbsolutePanel();

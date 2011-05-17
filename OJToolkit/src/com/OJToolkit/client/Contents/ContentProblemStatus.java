@@ -56,6 +56,7 @@ public class ContentProblemStatus extends Content{
 		Button btnRefresh = new Button("New button");
 		btnRefresh.setText("Refresh");
 		
+		
 		btnRefresh.addClickHandler(new ClickHandler() {
 			
 			@Override

@@ -3,6 +3,8 @@
  */
 package com.OJToolkit.client;
 
+import com.OJToolkit.client.Contents.TestNorth;
+import com.OJToolkit.client.Contents.TestWestUi;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.LoginServiceAsync;
@@ -18,14 +20,12 @@ import com.OJToolkit.client.event.ViewProblemEvent;
 import com.OJToolkit.client.event.ViewProblemEventHandler;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEventHandler;
-import com.OJToolkit.client.presenter.CodersPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
 import com.OJToolkit.client.presenter.Presenter;
 import com.OJToolkit.client.presenter.ProblemListPresenter;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
-import com.OJToolkit.client.view.CodersView;
 import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemListView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
@@ -49,6 +49,7 @@ public class AppController implements ValueChangeHandler<String> {
 	private final LanguageServiceAsync languageService;
 	private final LoginServiceAsync loginService;
 	private final CoderServiceAsync coderService;
+	
 	private HasWidgets container;
 	private HasWidgets topPanel;
 	private HasWidgets leftPanel;
@@ -166,6 +167,10 @@ public class AppController implements ValueChangeHandler<String> {
 		this.container = core;
 		this.topPanel = topPanel;
 		this.leftPanel = leftPanel;
+		
+		this.topPanel.add(new TestNorth());
+		
+		this.leftPanel.add(new TestWestUi());
 		if ("".equals(History.getToken())) {
 			History.newItem("login");
 		} else {
@@ -204,7 +209,7 @@ public class AppController implements ValueChangeHandler<String> {
 			}  else if (token.equals("viewCoders")) {
 				presenter = new ProblemListPresenter(submissionService,
 				        eventBus, new ProblemListView());
-			}
+			} 
 			
 			
 

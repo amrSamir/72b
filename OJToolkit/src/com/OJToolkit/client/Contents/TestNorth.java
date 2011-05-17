@@ -11,7 +11,7 @@ public class TestNorth extends Content{
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		absolutePanel.setStyleName("TitlePanel");
 		initWidget(absolutePanel);
-		absolutePanel.setSize("387px", "83px");
+		absolutePanel.setSize("100%", "100%");
 		
 		ImageResource img =  MyResource.INSTANCE.imgBanner();
 		Image widget = new Image(img);

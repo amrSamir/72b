@@ -16,7 +16,7 @@ public class TestWestUi extends Content {
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		absolutePanel.setStyleName("LeftPanel");
 		initWidget(absolutePanel);
-		absolutePanel.setSize("197px", "279px");
+		absolutePanel.setSize("100%", "100%");
 
 		ImageResource img =  MyResource.INSTANCE.imgVertical();
 		Image widget = new Image(img);

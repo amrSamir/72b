@@ -57,7 +57,8 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 
 		
 		//error here with frame
-		problemStatementFrame = new Frame("ht://www.hotmail.com");
+		problemStatementFrame = new Frame("htp://www.google.com");
+
 		verticalPanel.add(problemStatementFrame);
 		
 		Label lblNewLabel_1 = new Label("Code");

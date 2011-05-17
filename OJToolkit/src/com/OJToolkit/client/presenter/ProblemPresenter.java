@@ -98,6 +98,7 @@ public class ProblemPresenter implements Presenter {
 					        @Override
 					        public void onSuccess(Void result) {
 					        	eventBus.fireEvent(new ViewProblemSubmissionStatusEvent());
+					        	//add code to db
 						        // TODO Auto-generated method stub
 
 					        }

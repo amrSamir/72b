@@ -12,6 +12,7 @@ import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -51,9 +52,12 @@ public class ProblemListView extends Composite implements ProblemListPresenter.D
 	
 	public ProblemListView() {
 		 scrollPanel = new ScrollPanel();
+		 scrollPanel.setSize("100%", "100%");
 		VerticalPanel vPanel = new VerticalPanel();
-	
+
 		initWidget(scrollPanel);
+		
+	
 		scrollPanel.add(vPanel);
 		table = new CellTable<ProblemData>();
 		

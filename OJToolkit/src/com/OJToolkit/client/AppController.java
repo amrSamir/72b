@@ -172,6 +172,7 @@ public class AppController implements ValueChangeHandler<String> {
 		
 		this.leftPanel.add(new TestWestUi());
 		if ("".equals(History.getToken())) {
+			//use cookies...
 			History.newItem("login");
 		} else {
 			History.fireCurrentHistoryState();

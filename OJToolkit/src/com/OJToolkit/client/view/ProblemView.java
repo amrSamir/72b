@@ -5,21 +5,13 @@ package com.OJToolkit.client.view;
 
 import java.util.ArrayList;
 
-import com.OJToolkit.client.CoreContainer;
-import com.OJToolkit.client.Contents.ContentProblemStatus;
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.presenter.ProblemPresenter;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.Frame;
-import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -57,7 +49,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 
 		
 		//error here with frame
-		problemStatementFrame = new Frame("htp://www.google.com");
+		problemStatementFrame = new Frame();
 
 		verticalPanel.add(problemStatementFrame);
 		
@@ -99,10 +91,10 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	 */
 	@Override
 	public void setProblem(ProblemData problem) {
-		//problemStatementFrame.setUrl(problem.getUrl()); 
+		problemStatementFrame.setUrl(problem.getUrl()); 
 	
 
-//		problemStatementFrame.setSize("90%", "300px");
+		problemStatementFrame.setSize("90%", "300px");
 		
 		lblPrblmTitle.setText(problem.getProblemName());
 

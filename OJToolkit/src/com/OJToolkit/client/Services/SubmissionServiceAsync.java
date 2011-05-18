@@ -14,6 +14,7 @@ public interface SubmissionServiceAsync {
 			AsyncCallback<Void> callback);
 
 	void getProblems(long start, AsyncCallback<ArrayList<ProblemData>> callback);
+	void getProblem(String problemCode, AsyncCallback<ProblemData> callback);
 	
 
 }

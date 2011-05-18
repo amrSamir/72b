@@ -38,6 +38,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		initWidget(scrollPanel);
 		verticalPanel = new VerticalPanel();
 		verticalPanel.setSize("100%", "100%");
+		scrollPanel.setSize("100%", "100%");
 		scrollPanel.add(verticalPanel);
 
 		Label lblNewLabel = new Label("Problem Title: ");

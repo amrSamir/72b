@@ -14,14 +14,12 @@ import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-
-
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
-		SubmissionService {
-	//long DBStartIndex = 14680;
-	//long DBStartIndex =73670;
+        SubmissionService {
+	// long DBStartIndex = 14680;
+	// long DBStartIndex =73670;
 	private static final Logger LOG = Logger
-			.getLogger(SubmissionServiceImpl.class.getName());
+	        .getLogger(SubmissionServiceImpl.class.getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
 	@Override
@@ -32,9 +30,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		hashMap.put("lang", language);
 		hashMap.put("problemcode", prblmID);
 		String spojUsername = DataStoreHandler.getAllCoders().get(0)
-				.getSPOJUsername();
+		        .getSPOJUsername();
 		String spojPassword = DataStoreHandler.getAllCoders().get(0)
-				.getSPOJPassword();
+		        .getSPOJPassword();
 		hashMap.put("login_user", spojUsername);
 		hashMap.put("password", spojPassword);
 		try {
@@ -58,12 +56,12 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	public ProblemStatusData getLastProblemStatus() throws Exception {
 		HashMap<String, String> input = new HashMap<String, String>();
 		input.put("login_user", DataStoreHandler.getAllCoders().get(0)
-				.getSPOJUsername());
+		        .getSPOJUsername());
 		HashMap<String, String> output = Engine
-				.getLastProblemStatus_Spoj(input);
+		        .getLastProblemStatus_Spoj(input);
 		ProblemStatusData dpStatus = new ProblemStatusData(output.get("DATE"),
-				output.get("PROBLEM"), output.get("RESULT"),
-				output.get("TIME"), output.get("MEM"));
+		        output.get("PROBLEM"), output.get("RESULT"),
+		        output.get("TIME"), output.get("MEM"));
 		return dpStatus;
 		// TODO Auto-generated method stub
 
@@ -77,8 +75,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			 * (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
 			 */
 			Problem problem = new Problem(problemData.getUrl(),
-					problemData.getType(), problemData.getProblemCode(),
-					problemData.getProblemName());
+			        problemData.getType(), problemData.getProblemCode(),
+			        problemData.getProblemName());
 
 			pm.makePersistent(problem);
 
@@ -90,10 +88,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	}
 
-
 	public ArrayList<ProblemData> getProblems(long start) {
-		
-	//	start = start + DBStartIndex;
+
+		// start = start + DBStartIndex;
 		ArrayList<ProblemData> ret = new ArrayList<ProblemData>();
 		ProblemData problemData = new ProblemData();
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
@@ -101,7 +98,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			String select_query = "select from " + Problem.class.getName();
 			Query queryToGetStartIndex = pm.newQuery(select_query);
 			queryToGetStartIndex.setRange(0, 1);
-			List<Problem> tempProblems = (List<Problem>) queryToGetStartIndex.execute();
+			List<Problem> tempProblems = (List<Problem>) queryToGetStartIndex
+			        .execute();
 			long startIndex = tempProblems.get(0).getProbID();
 			start += startIndex;
 			Query query = pm.newQuery(select_query);
@@ -118,8 +116,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				problemData.setType(problem.getType());
 				problemData.setUrl(problem.getUrl());
 				ret.add(new ProblemData(problemData.getUrl(), problemData
-						.getType(), problemData.getProblemCode(), problemData
-						.getProblemName()));
+				        .getType(), problemData.getProblemCode(), problemData
+				        .getProblemName()));
 			}
 
 		} finally {
@@ -130,6 +128,37 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 		// TODO Auto-generated method stub
 		return ret;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.Services.SubmissionService#getProblem(java.lang.
+	 * String)
+	 */
+	@Override
+	public ProblemData getProblem(String problemCode) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		ProblemData problemData = new ProblemData();
+		try {
+			String select_query = "select from " + Problem.class.getName();
+			Query query = pm.newQuery(select_query);
+			// query.setFilter("probID == problemID");
+			query.setFilter("problemCode == probCode");
+			query.declareParameters("java.lang.String probCode");
+			List<Problem> problems = (List<Problem>) query.execute(problemCode);
+			problemData.setProblemCode(problems.get(0).getProblemCode());
+			problemData.setProblemName(problems.get(0).getProblemName());
+			problemData.setType(problems.get(0).getType());
+			problemData.setUrl(problems.get(0).getUrl());
+
+		} finally {
+			// TODO: handle exception
+			pm.close();
+		}
+
+		// TODO Auto-generated method stub
+		return problemData;
 	}
 
 }

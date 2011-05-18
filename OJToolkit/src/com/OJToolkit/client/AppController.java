@@ -20,12 +20,14 @@ import com.OJToolkit.client.event.ViewProblemEvent;
 import com.OJToolkit.client.event.ViewProblemEventHandler;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEventHandler;
+import com.OJToolkit.client.presenter.CodersPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
 import com.OJToolkit.client.presenter.Presenter;
 import com.OJToolkit.client.presenter.ProblemListPresenter;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
+import com.OJToolkit.client.view.CodersView;
 import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemListView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
@@ -34,6 +36,7 @@ import com.OJToolkit.client.view.RegistrationView;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
@@ -49,7 +52,8 @@ public class AppController implements ValueChangeHandler<String> {
 	private final LanguageServiceAsync languageService;
 	private final LoginServiceAsync loginService;
 	private final CoderServiceAsync coderService;
-	
+	private String problemStr = "problem";
+
 	private HasWidgets container;
 	private HasWidgets topPanel;
 	private HasWidgets leftPanel;
@@ -114,36 +118,35 @@ public class AppController implements ValueChangeHandler<String> {
 
 			        }
 		        });
-		
-		eventBus.addHandler(ViewCodersEvent.TYPE,
-		        new ViewCodersEventHandler() {
 
-					@Override
-                    public void onViewCoders(ViewCodersEvent event) {
-	                    doOnViewCoders();
-	                    
-                    }
+		eventBus.addHandler(ViewCodersEvent.TYPE, new ViewCodersEventHandler() {
 
-			   
-		        });
+			@Override
+			public void onViewCoders(ViewCodersEvent event) {
+				doOnViewCoders();
+
+			}
+
+		});
 		// TODO Auto-generated method stub
 	}
 
 	/**
      * 
      */
-    protected void doOnViewCoders() {
-    	History.newItem("viewCoders");
-	    // TODO Auto-generated method stub
-	    
-    }
+	protected void doOnViewCoders() {
+		History.newItem("viewCoders");
+		// TODO Auto-generated method stub
+
+	}
 
 	/**
 	 * @param problem
 	 */
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
-		History.newItem("problem");
+		problemStr = "problem" + problem.getProblemCode();
+		History.newItem(problemStr);
 
 	}
 
@@ -167,13 +170,19 @@ public class AppController implements ValueChangeHandler<String> {
 		this.container = core;
 		this.topPanel = topPanel;
 		this.leftPanel = leftPanel;
-		
+
 		this.topPanel.add(new TestNorth());
-		
-		this.leftPanel.add(new TestWestUi());
+
+		this.leftPanel.add(new TestWestUi(eventBus));
 		if ("".equals(History.getToken())) {
-			//use cookies...
+			
+			String sessionID = Cookies.getCookie("reg");
+
+			if (sessionID != null) {
+				History.newItem("alreadyRegistered");
+			}else{
 			History.newItem("login");
+			}
 		} else {
 			History.fireCurrentHistoryState();
 		}
@@ -194,9 +203,16 @@ public class AppController implements ValueChangeHandler<String> {
 			if (token.equals("login")) {
 				presenter = new LoginPresenter(loginService, coderService,
 				        eventBus, new LoginView());
-			} else if (token.equals("problem")) {
-				presenter = new ProblemPresenter(problem, submissionService,
-				        languageService, eventBus, new ProblemView());
+			} else if (token.startsWith("problem")) {
+				if (problem == null) {
+					presenter = new ProblemPresenter(token.substring(7),
+					        submissionService, languageService, eventBus,
+					        new ProblemView());
+				} else {
+					presenter = new ProblemPresenter(problem.getProblemCode(),
+					        submissionService, languageService, eventBus,
+					        new ProblemView());
+				}
 			} else if (token.equals("problemSubmissionStatus")) {
 				presenter = new ProblemSubmissionStatusPresenter(
 				        submissionService, eventBus,
@@ -207,12 +223,10 @@ public class AppController implements ValueChangeHandler<String> {
 			} else if (token.equals("alreadyRegistered")) {
 				presenter = new ProblemListPresenter(submissionService,
 				        eventBus, new ProblemListView());
-			}  else if (token.equals("viewCoders")) {
-				presenter = new ProblemListPresenter(submissionService,
-				        eventBus, new ProblemListView());
-			} 
-			
-			
+			} else if (token.equals("viewCoders")) {
+				presenter = new CodersPresenter(coderService,
+				        eventBus, new CodersView());
+			}
 
 			if (presenter != null) {
 				presenter.go(container);

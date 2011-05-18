@@ -44,5 +44,13 @@ public interface SubmissionService extends RemoteService {
 	 */
 	public ArrayList<ProblemData> getProblems(long start);
 
+	
+	/**
+	 * Fetch Problem from database
+	 * @param problemCode the problem code of the problem to be fetched
+	 * @return Problem
+	 */
+	public ProblemData getProblem(String problemCode);
+
 
 }

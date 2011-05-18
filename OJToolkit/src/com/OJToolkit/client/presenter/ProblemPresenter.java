@@ -47,20 +47,37 @@ public class ProblemPresenter implements Presenter {
 	private final Display display;
 	private final SubmissionServiceAsync submssionService;
 	private final HandlerManager eventBus;
-	private final ProblemData problem;
+	private ProblemData problem;
+	private final String problemCode;
 	private final LanguageServiceAsync languageService;
 
 
-	public ProblemPresenter(ProblemData problem, SubmissionServiceAsync submssionService, LanguageServiceAsync languageService,
+	public ProblemPresenter(String problemCode, SubmissionServiceAsync submssionService, LanguageServiceAsync languageService,
 	        HandlerManager eventBus, final Display display) {
 		this.languageService = languageService;
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
-		this.problem = problem;
+		this.problemCode = problemCode;	
 		this.display = display;
-		this.display.setProblem(problem);
+	//	this.display.setProblem(problemCode);
 		bind();
 
+		this.submssionService.getProblem(problemCode, new AsyncCallback<ProblemData>() {
+			
+			@Override
+			public void onSuccess(ProblemData result) {
+				problem = result;
+				display.setProblem(problem);
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				System.out.println("ProblemPresenterFailure");
+				
+			}
+		});
 		this.languageService
 		        .getLanguages(new AsyncCallback<ArrayList<LanguageData>>() {
 

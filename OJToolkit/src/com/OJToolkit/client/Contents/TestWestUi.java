@@ -1,8 +1,12 @@
 package com.OJToolkit.client.Contents;
 
 import com.OJToolkit.client.CoreContainer;
+import com.OJToolkit.client.event.AlreadyRegisteredEvent;
+import com.OJToolkit.client.event.RegistrationEvent;
+import com.OJToolkit.client.event.ViewCodersEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -10,8 +14,10 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
 public class TestWestUi extends Content {
-
-	public TestWestUi() {
+	
+	
+	
+	public TestWestUi(final HandlerManager eventBus) {
 
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		absolutePanel.setStyleName("LeftPanel");
@@ -32,8 +38,9 @@ public class TestWestUi extends Content {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					CoreContainer.getInstance().setContent(
-							new ContentCoderList());
+					eventBus.fireEvent(new ViewCodersEvent());
+//					CoreContainer.getInstance().setContent(
+//							new ContentCoderList());
 				}
 			});
 			absolutePanel.add(lblLabel, 39, 57);
@@ -45,8 +52,9 @@ public class TestWestUi extends Content {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					CoreContainer.getInstance().setContent(
-							new ContentProblemList());
+					/*CoreContainer.getInstance().setContent(
+							new ContentProblemList());*/
+					eventBus.fireEvent(new AlreadyRegisteredEvent());
 				}
 			});
 			absolutePanel.add(lblLabel_1, 39, 136);
@@ -57,8 +65,9 @@ public class TestWestUi extends Content {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					CoreContainer.getInstance().setContent(
-							new ContentRegistration());
+					/*CoreContainer.getInstance().setContent(
+							new ContentRegistration());*/
+					eventBus.fireEvent(new RegistrationEvent());
 				}
 			});
 			absolutePanel.add(lblLabel_2, 39, 222);

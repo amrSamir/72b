@@ -30,6 +30,8 @@ public class RegistrationView extends Composite implements RegistrationPresenter
 	public RegistrationView() {
 		 VerticalPanel absolutePanel = new VerticalPanel();
 			initWidget(absolutePanel);
+			Label msg = new Label("You should register before using the site");
+			absolutePanel.add(msg);
 			
 			Label lblUsername = new Label("Registration Form");
 			absolutePanel.add(lblUsername);

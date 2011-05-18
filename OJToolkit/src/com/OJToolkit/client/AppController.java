@@ -175,13 +175,13 @@ public class AppController implements ValueChangeHandler<String> {
 
 		this.leftPanel.add(new TestWestUi(eventBus));
 		if ("".equals(History.getToken())) {
-			
+
 			String sessionID = Cookies.getCookie("reg");
 
 			if (sessionID != null) {
 				History.newItem("alreadyRegistered");
-			}else{
-			History.newItem("login");
+			} else {
+				History.newItem("login");
 			}
 		} else {
 			History.fireCurrentHistoryState();
@@ -197,37 +197,49 @@ public class AppController implements ValueChangeHandler<String> {
 	@Override
 	public void onValueChange(ValueChangeEvent<String> event) {
 		String token = event.getValue();
+		String sessionID = Cookies.getCookie("reg");
 
 		if (token != null) {
 			Presenter presenter = null;
-			if (token.equals("login")) {
-				presenter = new LoginPresenter(loginService, coderService,
-				        eventBus, new LoginView());
-			} else if (token.startsWith("problem")) {
-				if (problem == null) {
-					presenter = new ProblemPresenter(token.substring(7),
-					        submissionService, languageService, eventBus,
-					        new ProblemView());
-				} else {
-					presenter = new ProblemPresenter(problem.getProblemCode(),
-					        submissionService, languageService, eventBus,
-					        new ProblemView());
+			if (sessionID != null) {
+				if (token.equals("login")) {
+					presenter = new LoginPresenter(loginService, coderService,
+					        eventBus, new LoginView());
+				} else if (token.equals("Registration")) {
+					History.newItem("alreadyRegistered");
+				} else if (token.equals("problemSubmissionStatus")) {
+					presenter = new ProblemSubmissionStatusPresenter(
+					        submissionService, eventBus,
+					        new ProblemSubmissionStatusView());
+				} else if (token.startsWith("problem")) {
+					if (problem == null) {
+						presenter = new ProblemPresenter(token.substring(7),
+						        submissionService, languageService, eventBus,
+						        new ProblemView());
+					} else {
+						presenter = new ProblemPresenter(
+						        problem.getProblemCode(), submissionService,
+						        languageService, eventBus, new ProblemView());
+					}
+				} else if (token.equals("alreadyRegistered")) {
+					presenter = new ProblemListPresenter(submissionService,
+					        eventBus, new ProblemListView());
+				} else if (token.equals("viewCoders")) {
+					presenter = new CodersPresenter(coderService, eventBus,
+					        new CodersView());
 				}
-			} else if (token.equals("problemSubmissionStatus")) {
-				presenter = new ProblemSubmissionStatusPresenter(
-				        submissionService, eventBus,
-				        new ProblemSubmissionStatusView());
-			} else if (token.equals("Registration")) {
-				presenter = new RegistrationPresenter(coderService, eventBus,
-				        new RegistrationView());
-			} else if (token.equals("alreadyRegistered")) {
-				presenter = new ProblemListPresenter(submissionService,
-				        eventBus, new ProblemListView());
-			} else if (token.equals("viewCoders")) {
-				presenter = new CodersPresenter(coderService,
-				        eventBus, new CodersView());
-			}
+			} else {
+				System.out.println(Cookies.getCookie("loggedIn"));
+				if (Cookies.getCookie("loggedIn") != null) {
 
+					presenter = new RegistrationPresenter(coderService,
+					        eventBus, new RegistrationView());
+				} else {
+					presenter = new LoginPresenter(loginService, coderService,
+					        eventBus, new LoginView());
+				}
+
+			}
 			if (presenter != null) {
 				presenter.go(container);
 			}

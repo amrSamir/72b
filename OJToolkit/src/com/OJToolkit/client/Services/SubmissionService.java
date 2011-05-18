@@ -20,7 +20,7 @@ public interface SubmissionService extends RemoteService {
 	 * @param code The submitted code
 	 * @param language The language of the code
 	 */
-	public void submitCode(String prblmID, String code, String language);
+	public void submitCode(String problemCode, String code, String language);
 	
 	
 	/**

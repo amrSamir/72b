@@ -1,5 +1,6 @@
 package com.OJToolkit.server;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,9 @@ import javax.jdo.Query;
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
+import com.OJToolkit.server.engine.Judge;
+import com.OJToolkit.server.engine.SPOJ;
+import com.OJToolkit.server.engine.Submission;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
@@ -23,23 +27,29 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
 	@Override
-	public void submitCode(String prblmID, String code, String language) {
+	public void submitCode(String problemCode, String code, String language) {
 		// TODO Auto-generated method stub
-		HashMap<String, String> hashMap = new HashMap<String, String>();
-		hashMap.put("file", code);
-		hashMap.put("lang", language);
-		hashMap.put("problemcode", prblmID);
-		String spojUsername = DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJUsername();
-		String spojPassword = DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJPassword();
-		hashMap.put("login_user", spojUsername);
-		hashMap.put("password", spojPassword);
-		try {
-			Engine.spojSubmit(hashMap);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Judge judge = null;
+		ProblemData problem = getProblem(problemCode);
+		String judgeUsername = "";
+		String judgePassword = "";
+		//if (problem.getType() == "SPOJ") {
+			String spojUsername = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJUsername();
+			String spojPassword = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJPassword();
+			judgeUsername = spojUsername;
+			judgePassword = spojPassword;
+			judge = new SPOJ();
+		//}
+		if (judge != null) {
+			try {
+				judge.submitProblem(judgeUsername, judgePassword, problemCode,
+				        language, code);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -54,14 +64,28 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	//
 	@Override
 	public ProblemStatusData getLastProblemStatus() throws Exception {
-		HashMap<String, String> input = new HashMap<String, String>();
-		input.put("login_user", DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJUsername());
-		HashMap<String, String> output = Engine
-		        .getLastProblemStatus_Spoj(input);
-		ProblemStatusData dpStatus = new ProblemStatusData(output.get("DATE"),
-		        output.get("PROBLEM"), output.get("RESULT"),
-		        output.get("TIME"), output.get("MEM"));
+		//HashMap<String, String> input = new HashMap<String, String>();
+		//input.put("login_user", DataStoreHandler.getAllCoders().get(0)
+		  //      .getSPOJUsername());
+		Judge judge = null;
+		//ProblemData problem = getProblem(problemCode);
+		String judgeUsername = "";
+		String judgePassword = "";
+		//if (problem.getType() == "SPOJ") {
+			String spojUsername = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJUsername();
+			String spojPassword = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJPassword();
+			judgeUsername = spojUsername;
+			judgePassword = spojPassword;
+			judge = new SPOJ();
+		//}
+			Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
+			
+	/*	HashMap<String, String> output = Engine
+		        .getLastProblemStatus_Spoj(input);*/
+		//	System.out.println("fdsgfdsgs " + s.getStatus());
+		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(), s.getProblemId(), s.getStatus(), s.getRuntime(), s.getMemoryUsed());
 		return dpStatus;
 		// TODO Auto-generated method stub
 

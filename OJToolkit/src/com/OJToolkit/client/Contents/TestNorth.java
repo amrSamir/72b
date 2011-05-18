@@ -17,9 +17,6 @@ public class TestNorth extends Content{
 		Image widget = new Image(img);
 		
 		absolutePanel.add(widget);
-		Label lblWelcomeToOjtoolkit = new Label("Welcome To OJToolKit");
-		absolutePanel.add(lblWelcomeToOjtoolkit, 99, 30);
-		lblWelcomeToOjtoolkit.setSize("252px", "43px");
 		// TODO Auto-generated constructor stub
 		
 	}

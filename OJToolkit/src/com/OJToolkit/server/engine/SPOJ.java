@@ -49,7 +49,7 @@ public class SPOJ implements Judge{
                                                     for(int j = in2+1 ; line.charAt(j) != '\"' ; j ++){
                                                             tem += line.charAt(j);
                                                     }
-                                                    p.setUrl("https://spoj.pl" + tem);
+                                                    p.setUrl("http://spoj.pl" + tem);
                                                     int in3 = line.indexOf("<b>");
                                                     tem = "";
                                                     for(int j = in3+3 ; j < line.length() &&line.charAt(j) != '<' ; j++){
@@ -88,7 +88,7 @@ public class SPOJ implements Judge{
     @Override
     public Submission getLastSubmission(String coderId , String pass) throws Exception {
             HashMap<String, String>ret = new HashMap<String, String>();
-            URL siteUrl = new URL("https://www.spoj.pl/status/"+coderId+"/");
+            URL siteUrl = new URL("http://www.spoj.pl/status/"+coderId+"/");
             HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
@@ -178,7 +178,7 @@ public class SPOJ implements Judge{
             HashMap<String, Integer> temp = new HashMap<String, Integer>();
             String arr[] = {"Users accepted" , "Submissions", "Accepted" , "Wrong Answer" , "Compile Error" , "Runtime Error" ,
                             "Time Limit Exceeded"};
-            URL siteUrl = new URL("https://www.spoj.pl/ranks/" + problemId + "/");
+            URL siteUrl = new URL("http://www.spoj.pl/ranks/" + problemId + "/");
             HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
@@ -215,7 +215,7 @@ public class SPOJ implements Judge{
 
     @Override
     public ArrayList<String> getProblemsSolved(String coderId) throws Exception      {
-            URL site = new URL("https://www.spoj.pl/users/" + coderId);
+            URL site = new URL("http://www.spoj.pl/users/" + coderId);
             ArrayList<String> ret = new ArrayList<String>();
             HttpURLConnection conn = (HttpURLConnection) site.openConnection();
             conn.setRequestMethod("POST");
@@ -264,7 +264,7 @@ public class SPOJ implements Judge{
             }
             if(prob.equals(""))
                     continue;
-            ret.add("https://spoj.pl" + temp);
+            ret.add("http://spoj.pl" + temp);
     }
     return ret;
     }
@@ -272,7 +272,7 @@ public class SPOJ implements Judge{
     @Override
     public void submitProblem(String coderId, String password,
                     String problemId, String languageId, String code) throws IOException {
-            URL siteUrl = new URL("https://www.spoj.pl/submit/complete/");
+            URL siteUrl = new URL("http://www.spoj.pl/submit/complete/");
             HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);

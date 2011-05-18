@@ -9,11 +9,13 @@ import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
+import com.OJToolkit.client.event.RegistrationEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -54,6 +56,7 @@ public class ProblemPresenter implements Presenter {
 
 	public ProblemPresenter(String problemCode, SubmissionServiceAsync submssionService, LanguageServiceAsync languageService,
 	        HandlerManager eventBus, final Display display) {
+
 		this.languageService = languageService;
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;

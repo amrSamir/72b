@@ -57,10 +57,12 @@ public class LoginPresenter implements Presenter{
 
 					public void onSuccess(LoginInfo result) {
 						display.setLoginURL(result.getLoginUrl());
+					
 						if (!result.isLoggedIn()) {
 							
 							
 						} else {
+						
 							checkRegistered();
 						}
 					}
@@ -70,6 +72,7 @@ public class LoginPresenter implements Presenter{
 	}
 	
 	public void checkRegistered() {
+		System.out.println("Checking if registered");
 		coderService.checkRegistered(new AsyncCallback<Boolean>() {
 
 			@Override
@@ -82,6 +85,10 @@ public class LoginPresenter implements Presenter{
 					Cookies.setCookie("reg", sessionID, expires, null, "/", false);
 					eventBus.fireEvent(new AlreadyRegisteredEvent());
 				} else {
+					final long DURATION = 1000 * 60 * 60;
+					Date expires = new Date(System.currentTimeMillis() + DURATION);
+					Cookies.setCookie("loggedIn", "loggedIn", expires, null, "/", false);
+                    System.out.println("Login Presenter Cookie created");
 					eventBus.fireEvent(new RegistrationEvent());
 				}
 			}

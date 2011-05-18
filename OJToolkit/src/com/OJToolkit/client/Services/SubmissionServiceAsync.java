@@ -7,7 +7,7 @@ import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface SubmissionServiceAsync {
-	void submitCode(String prblmID, String code, String language,
+	void submitCode(String problemCode, String code, String language,
 			AsyncCallback<Void> callback);
 	void getLastProblemStatus(AsyncCallback<ProblemStatusData> callback);
 	void saveSpojProblemtoDB(ProblemData problemData,

@@ -1,6 +1,5 @@
 package com.OJToolkit.client.Contents;
 
-import com.OJToolkit.client.CoreContainer;
 import com.OJToolkit.client.event.AlreadyRegisteredEvent;
 import com.OJToolkit.client.event.RegistrationEvent;
 import com.OJToolkit.client.event.ViewCodersEvent;

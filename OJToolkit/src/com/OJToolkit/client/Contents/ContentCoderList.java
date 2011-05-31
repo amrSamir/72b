@@ -14,16 +14,12 @@ import com.google.gwt.user.client.ui.TextBox;
 
 public class ContentCoderList extends Content {
 	AbsolutePanel absolutePanel;
-	private final CoderServiceAsync coderService = GWT
-			.create(CoderService.class);
+	private final CoderServiceAsync coderService = GWT.create(CoderService.class);
 
 	public ContentCoderList() {
 		absolutePanel = new AbsolutePanel();
-
 		initWidget(absolutePanel);
 		viewCoders();
-
-		// TODO Auto-generated constructor stub
 	}
 
 	public void viewCoder(CoderData coder) {
@@ -72,21 +68,14 @@ public class ContentCoderList extends Content {
 
 			@Override
 			public void onSuccess(ArrayList<CoderData> result) {
-				// Window.alert("Success_CoderData");
-
 				for (CoderData coder : result) {
 					viewCoder(coder);
 				}
-
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("Failure_CoderData");
-				// TODO Auto-generated method stub
-
+				Window.alert("Failure in List coderes.");
 			}
 		});
 	}

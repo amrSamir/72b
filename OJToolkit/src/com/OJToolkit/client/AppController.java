@@ -3,15 +3,23 @@
  */
 package com.OJToolkit.client;
 
-import com.OJToolkit.client.Contents.TestNorth;
-import com.OJToolkit.client.Contents.TestWestUi;
+import java.util.Date;
+
+import com.OJToolkit.client.Contents.LeftPanel;
+import com.OJToolkit.client.Contents.TopPanel;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.LoginServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
+import com.OJToolkit.client.event.AddAccountEvent;
+import com.OJToolkit.client.event.AddAccountEventHandler;
 import com.OJToolkit.client.event.AlreadyRegisteredEvent;
 import com.OJToolkit.client.event.AlreadyRegisteredEventHandler;
+import com.OJToolkit.client.event.CheckCookiesEvent;
+import com.OJToolkit.client.event.CheckCookiesEventHandler;
+import com.OJToolkit.client.event.LoginEvent;
+import com.OJToolkit.client.event.LoginEventHandler;
 import com.OJToolkit.client.event.RegisterationEventHandler;
 import com.OJToolkit.client.event.RegistrationEvent;
 import com.OJToolkit.client.event.ViewCodersEvent;
@@ -20,6 +28,8 @@ import com.OJToolkit.client.event.ViewProblemEvent;
 import com.OJToolkit.client.event.ViewProblemEventHandler;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEventHandler;
+import com.OJToolkit.client.presenter.AddAccountPresenter;
+import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CodersPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
 import com.OJToolkit.client.presenter.Presenter;
@@ -27,6 +37,7 @@ import com.OJToolkit.client.presenter.ProblemListPresenter;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
+import com.OJToolkit.client.view.AddAccountView;
 import com.OJToolkit.client.view.CodersView;
 import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemListView;
@@ -36,7 +47,6 @@ import com.OJToolkit.client.view.RegistrationView;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
@@ -53,11 +63,19 @@ public class AppController implements ValueChangeHandler<String> {
 	private final LoginServiceAsync loginService;
 	private final CoderServiceAsync coderService;
 	private String problemStr = "problem";
+	public static boolean isEnabled;
+
+	/**
+	 * remembers cookie for 2 weeks.
+	 */
+	public static final Date COOKIES_EXPIRYDATE = new Date(
+	        System.currentTimeMillis() + 1000 * 60 * 60);
 
 	private HasWidgets container;
 	private HasWidgets topPanel;
 	private HasWidgets leftPanel;
 	private ProblemData problem;
+	private String OJType;
 
 	public AppController(HandlerManager eventBus,
 	        SubmissionServiceAsync submissionService,
@@ -68,8 +86,11 @@ public class AppController implements ValueChangeHandler<String> {
 		this.submissionService = submissionService;
 		this.loginService = loginService;
 		this.coderService = coderService;
+		//checkCookies();
 		bind();
 	}
+
+
 
 	/**
      * 
@@ -118,6 +139,31 @@ public class AppController implements ValueChangeHandler<String> {
 
 			        }
 		        });
+		
+		eventBus.addHandler(LoginEvent.TYPE,
+		        new LoginEventHandler() {
+
+					@Override
+                    public void onLogin(LoginEvent event) {
+						doOnLogin();
+	                    // TODO Auto-generated method stub
+	                    
+                    }
+
+			
+		        });
+		
+		eventBus.addHandler(CheckCookiesEvent.TYPE,
+		        new CheckCookiesEventHandler() {
+
+					@Override
+                    public void onCheckCookies(CheckCookiesEvent event) {
+	                    doOnCheckCookies();
+	                    
+                    }
+
+			
+		        });
 
 		eventBus.addHandler(ViewCodersEvent.TYPE, new ViewCodersEventHandler() {
 
@@ -128,7 +174,57 @@ public class AppController implements ValueChangeHandler<String> {
 			}
 
 		});
+
+		eventBus.addHandler(AddAccountEvent.TYPE, new AddAccountEventHandler() {
+
+			@Override
+			public void onAddAccount(AddAccountEvent event) {
+				doOnAddAccount();
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+
 		// TODO Auto-generated method stub
+	}
+
+	/**
+     * 
+     */
+    protected void doOnCheckCookies() {
+	    History.newItem("checkCookies");
+	    
+    }
+
+
+
+	/**
+     * 
+     */
+    protected void doOnLogin() {
+    	History.newItem("login");
+	    
+    }
+
+
+
+	/**
+	 * @param oJType
+	 */
+	protected void doOnAddAccountDetails(String oJType) {
+		this.OJType = oJType;
+		History.newItem("addAccountDetails");
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+     * 
+     */
+	protected void doOnAddAccount() {
+		History.newItem("addAccount");
+
 	}
 
 	/**
@@ -171,18 +267,18 @@ public class AppController implements ValueChangeHandler<String> {
 		this.topPanel = topPanel;
 		this.leftPanel = leftPanel;
 
-		this.topPanel.add(new TestNorth());
+		this.topPanel.add(new TopPanel());
 
-		this.leftPanel.add(new TestWestUi(eventBus));
+		this.leftPanel.add(new LeftPanel(eventBus));
 		if ("".equals(History.getToken())) {
 
-			String sessionID = Cookies.getCookie("reg");
+			// String sessionID = Cookies.getCookie("reg");
 
-			if (sessionID != null) {
-				History.newItem("alreadyRegistered");
-			} else {
-				History.newItem("login");
-			}
+			// if (sessionID != null) {
+			// History.newItem("alreadyRegistered");
+			// } else {
+			History.newItem("checkCookies");
+			// }
 		} else {
 			History.fireCurrentHistoryState();
 		}
@@ -197,16 +293,17 @@ public class AppController implements ValueChangeHandler<String> {
 	@Override
 	public void onValueChange(ValueChangeEvent<String> event) {
 		String token = event.getValue();
-		String sessionID = Cookies.getCookie("reg");
+		// String sessionID = Cookies.getCookie("reg");
 
 		if (token != null) {
 			Presenter presenter = null;
-			if (sessionID != null) {
+			//if (isEnabled) {
 				if (token.equals("login")) {
 					presenter = new LoginPresenter(loginService, coderService,
 					        eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
-					History.newItem("alreadyRegistered");
+					presenter = new RegistrationPresenter(coderService,
+					        eventBus, new RegistrationView());
 				} else if (token.equals("problemSubmissionStatus")) {
 					presenter = new ProblemSubmissionStatusPresenter(
 					        submissionService, eventBus,
@@ -227,23 +324,41 @@ public class AppController implements ValueChangeHandler<String> {
 				} else if (token.equals("viewCoders")) {
 					presenter = new CodersPresenter(coderService, eventBus,
 					        new CodersView());
-				}
-			} else {
-				System.out.println(Cookies.getCookie("loggedIn"));
-				if (Cookies.getCookie("loggedIn") != null) {
-
+				} else if (token.equals("addAccount")) {
+					presenter = new AddAccountPresenter(coderService, eventBus,
+					        new AddAccountView());
+				//}
+			//}
+			//else{
+				//if (token.equals("login")) {
+					//presenter = new LoginPresenter(loginService, coderService,
+					  //      eventBus, new LoginView());
+				} else if (token.equals("checkCookies")) {
+					presenter = new CheckCookiesPresenter(eventBus);
+				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
 					        eventBus, new RegistrationView());
-				} else {
-					presenter = new LoginPresenter(loginService, coderService,
-					        eventBus, new LoginView());
+				} else{
+					presenter = new CheckCookiesPresenter(eventBus);
 				}
-
-			}
+				
+			//}
 			if (presenter != null) {
 				presenter.go(container);
 			}
+			/*
+			 * } else {
+			 * System.out.println(Cookies.getCookie("loggedIn"));
+			 * if (Cookies.getCookie("loggedIn") != null) {
+			 * presenter = new RegistrationPresenter(coderService,
+			 * eventBus, new RegistrationView());
+			 * } else {
+			 * presenter = new LoginPresenter(loginService, coderService,
+			 * eventBus, new LoginView());
+			 * }
+			 */
+			// }
+		
 		}
 	}
-
 }

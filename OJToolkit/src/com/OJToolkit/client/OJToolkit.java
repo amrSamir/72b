@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.Contents.ContentLogin;
 import com.OJToolkit.client.Contents.ContentProblemList;
-import com.OJToolkit.client.Contents.TestNorth;
-import com.OJToolkit.client.Contents.TestWestUi;
+import com.OJToolkit.client.Contents.TopPanel;
+import com.OJToolkit.client.Contents.LeftPanel;
 import com.OJToolkit.client.Services.CoderService;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.Services.LanguageService;
@@ -46,7 +46,7 @@ public class OJToolkit implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		RootPanel rootPanel = RootPanel.get();
-
+		System.out.println("start");
 		DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);
 		dockLayoutPanel.setSize("100%", "100%");
 		rootPanel.add(dockLayoutPanel, 0, 0);

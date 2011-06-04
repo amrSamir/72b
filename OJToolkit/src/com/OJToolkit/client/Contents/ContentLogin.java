@@ -23,13 +23,23 @@ import com.google.gwt.user.client.ui.Label;
 public class ContentLogin extends Content {
 
 	public ContentLogin(String loginURL) {
-   
+	
+		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
+
 		initWidget(absolutePanel);
-		Label loginLabel = new Label("Please sign in to your Google Account to access the OJToolkit application.");
+		Label loginLabel = new Label(
+				"Please sign in to your Google Account to access the OJToolkit application.");
 		Anchor signInLink = new Anchor("Sign In");
 		signInLink.setHref(loginURL);
 		absolutePanel.add(loginLabel);
 		absolutePanel.add(signInLink);
+		
+		
+		
+		
+
+		// TODO Auto-generated constructor stub
 	}
+
 }

@@ -33,17 +33,30 @@ public class ContentProblemList extends Content {
 	private final SubmissionServiceAsync submissionService = GWT
 			.create(SubmissionService.class);
 
-
+	/**
+	 * Number of problems in database. It's constant as it costs much time to
+	 * query all problems in the database so
+	 */
 	int numberOfProblems = 6684;
 
+	/**
+	 * The starting index of the page
+	 */
 	int pageStart = 0;
 
+	/**
+	 * ArrayList that contains the fetched problems from database
+	 */
 	ArrayList<ProblemData> problemsList;
-  
-	//The widget which displays the problems
+
+	/**
+	 * The widget which displays the problems
+	 */
 	CellTable<ProblemData> table;
-   
-  // Display the problems in pages
+
+	/**
+	 * Display the problems in pages
+	 */
 	public ContentProblemList() {
 		super();
 		VerticalPanel vPanel = new VerticalPanel();
@@ -121,7 +134,9 @@ public class ContentProblemList extends Content {
 
 					@Override
 					public void onFailure(Throwable caught) {
-						System.out.println("Failure");					  
+						System.out.println("Failure");
+						// TODO Auto-generated method stub
+
 					}
 				});
 

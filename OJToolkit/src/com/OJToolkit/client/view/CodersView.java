@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.presenter.CodersPresenter;
 import com.google.gwt.user.client.ui.AbsolutePanel;
-import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
@@ -26,7 +25,6 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 		absolutePanel = new AbsolutePanel();
 
 		initWidget(absolutePanel);
-	
 
 	}
 
@@ -40,21 +38,21 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 		return this;
 	}
 
-
-	
-
-	/* (non-Javadoc)
-     * @see com.OJToolkit.client.presenter.CodersPresenter.Display#setCodersList(java.util.ArrayList)
-     */
-    @Override
-    public void setCodersList(ArrayList<CoderData> coders) {
-    	for (CoderData coder : coders) {
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.presenter.CodersPresenter.Display#setCodersList(
+	 * java.util.ArrayList)
+	 */
+	@Override
+	public void setCodersList(ArrayList<CoderData> coders) {
+		for (CoderData coder : coders) {
 			viewCoder(coder);
 		}
-	    // TODO Auto-generated method stub
-	    
-    }
-    
+		// TODO Auto-generated method stub
+
+	}
+
 	public void viewCoder(CoderData coder) {
 
 		Label lblUserData = new Label("User Data");
@@ -95,6 +93,5 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 		txtSpojPassword.setText(coder.getSPOJPassword());
 		absolutePanel.add(txtSpojPassword);
 	}
-
 
 }

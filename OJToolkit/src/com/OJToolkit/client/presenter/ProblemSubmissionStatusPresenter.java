@@ -15,78 +15,86 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author 72B
- * May 10, 2011
+ *         May 10, 2011
  */
-public class ProblemSubmissionStatusPresenter implements Presenter{
-	
-	public interface Display{
+public class ProblemSubmissionStatusPresenter implements Presenter {
+
+	public interface Display {
 		HasClickHandlers getRefreshButton();
+
 		void setSubmissionResult(ProblemStatusData problemStatus);
+
 		Widget asWidget();
 	}
+
 	private final Display display;
 	private final SubmissionServiceAsync submssionService;
 	private final HandlerManager eventBus;
 	private ProblemStatusData problemStatus;
-	
-	
-	public ProblemSubmissionStatusPresenter(SubmissionServiceAsync submssionService, 
-	        HandlerManager eventBus, final Display display) {
+
+	public ProblemSubmissionStatusPresenter(
+	        SubmissionServiceAsync submssionService, HandlerManager eventBus,
+	        final Display display) {
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
 		this.problemStatus = new ProblemStatusData();
 		this.display = display;
-		
+
 		bind();
 		callGetLastProblemStatusService();
-		
 
 	}
-	
-	void callGetLastProblemStatusService(){
-		submssionService.getLastProblemStatus(new AsyncCallback<ProblemStatusData>() {
-			
-			@Override
-			public void onSuccess(ProblemStatusData result) {
-				problemStatus = result;
-				display.setSubmissionResult(result);
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+
+	void callGetLastProblemStatusService() {
+		submssionService
+		        .getLastProblemStatus(new AsyncCallback<ProblemStatusData>() {
+
+			        @Override
+			        public void onSuccess(ProblemStatusData result) {
+				        problemStatus = result;
+				        display.setSubmissionResult(result);
+				        // TODO Auto-generated method stub
+
+			        }
+
+			        @Override
+			        public void onFailure(Throwable caught) {
+				        // TODO Auto-generated method stub
+
+			        }
+		        });
 	}
+
 	/**
      * 
      */
-    private void bind() {
-    	display.getRefreshButton().addClickHandler(new ClickHandler() {
-			
+	private void bind() {
+		display.getRefreshButton().addClickHandler(new ClickHandler() {
+
 			@Override
 			public void onClick(ClickEvent event) {
 				callGetLastProblemStatusService();
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 
-	    // TODO Auto-generated method stub
-	    
-    }
-	/* (non-Javadoc)
-     * @see com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client.ui.HasWidgets)
-     */
-    @Override
-    public void go(HasWidgets container) {
-    	container.clear();
+		// TODO Auto-generated method stub
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
+	 * .ui.HasWidgets)
+	 */
+	@Override
+	public void go(HasWidgets container) {
+		container.clear();
 		container.add(display.asWidget());
-	    // TODO Auto-generated method stub
-	    
-    }
+		// TODO Auto-generated method stub
+
+	}
 
 }

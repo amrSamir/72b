@@ -20,8 +20,8 @@ import com.google.gwt.view.client.SelectionChangeEvent.Handler;
 import com.google.gwt.view.client.SingleSelectionModel;
 
 /**
- * @author 72B Apr 22, 2011 
- * This is a view class which is
+ * @author 72B Apr 22, 2011
+ *         This is a view class which is
  *         responsible for displaying the problems from the datastore in pages.
  *         Fifty problems are displayed on each page
  */
@@ -31,7 +31,7 @@ public class ContentProblemList extends Content {
 	 * The Service for getting the problems from the server
 	 */
 	private final SubmissionServiceAsync submissionService = GWT
-			.create(SubmissionService.class);
+	        .create(SubmissionService.class);
 
 	/**
 	 * Number of problems in database. It's constant as it costs much time to
@@ -110,35 +110,35 @@ public class ContentProblemList extends Content {
 		// We need to fetch the first 50 problems from the database as they are
 		// the first problems loaded
 		fitchFiftyProblems();
-		
+
 		onClickHandler();
 		onPageChangeHandler();
 		dataProvider.addDataDisplay(table);
 		vPanel.add(table);
 		vPanel.add(pager);
 	}
-	
-	public void fitchFiftyProblems(){
+
+	public void fitchFiftyProblems() {
 		submissionService.getProblems(pageStart,
-				new AsyncCallback<ArrayList<ProblemData>>() {
+		        new AsyncCallback<ArrayList<ProblemData>>() {
 
-					@Override
-					public void onSuccess(ArrayList<ProblemData> result) {
+			        @Override
+			        public void onSuccess(ArrayList<ProblemData> result) {
 
-						for (int i = 0; i < result.size(); i++) {
-							problemsList.set(pageStart + i, result.get(i));
+				        for (int i = 0; i < result.size(); i++) {
+					        problemsList.set(pageStart + i, result.get(i));
 
-						}
-						table.setRowData(0, problemsList);
-					}
+				        }
+				        table.setRowData(0, problemsList);
+			        }
 
-					@Override
-					public void onFailure(Throwable caught) {
-						System.out.println("Failure");
-						// TODO Auto-generated method stub
+			        @Override
+			        public void onFailure(Throwable caught) {
+				        System.out.println("Failure");
+				        // TODO Auto-generated method stub
 
-					}
-				});
+			        }
+		        });
 
 	}
 
@@ -154,9 +154,9 @@ public class ContentProblemList extends Content {
 			@Override
 			public void onSelectionChange(SelectionChangeEvent event) {
 				ProblemData problemData = (ProblemData) mySelectionModel
-						.getSelectedObject();
+				        .getSelectedObject();
 				CoreContainer.getInstance().setContent(
-						new ContentProblemPage(problemData));
+				        new ContentProblemPage(problemData));
 
 			}
 		});

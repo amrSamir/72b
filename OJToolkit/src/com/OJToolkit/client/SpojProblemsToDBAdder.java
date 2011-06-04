@@ -1,16 +1,11 @@
 package com.OJToolkit.client;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Window;
 import com.OJToolkit.client.Contents.Content;
 import com.OJToolkit.client.Contents.MyResource;
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
-import com.OJToolkit.server.SubmissionServiceImpl;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TextArea;
@@ -18,7 +13,7 @@ import com.google.gwt.user.client.ui.TextArea;
 public class SpojProblemsToDBAdder extends Content {
 
 	private final SubmissionServiceAsync submissionService = GWT
-			.create(SubmissionService.class);
+	        .create(SubmissionService.class);
 	int failures = 0;
 	int success = 0;
 
@@ -39,15 +34,11 @@ public class SpojProblemsToDBAdder extends Content {
 		/*
 		 * submissionService.saveSpojProblemtoDB(problemSpoj, new
 		 * AsyncCallback<Void>() {
-		 * 
 		 * @Override public void onSuccess(Void result) { // TODO Auto-generated
 		 * method stub
-		 * 
 		 * }
-		 * 
 		 * @Override public void onFailure(Throwable caught) { failures =
 		 * failures + 1; // TODO Auto-generated method stub
-		 * 
 		 * } });
 		 */
 
@@ -57,7 +48,7 @@ public class SpojProblemsToDBAdder extends Content {
 			problemSpoj.setProblemName(splitted[1].replaceAll("\"", ""));
 			problemSpoj.setType(splitted[2].replaceAll("\"", ""));
 			problemSpoj.setUrl(splitted[3].replaceAll("\"", "").replaceAll(
-					"https", "http"));
+			        "https", "http"));
 
 			/*
 			 * txt += " Problem Code " + problemSpoj.getProblemCode() +
@@ -67,26 +58,26 @@ public class SpojProblemsToDBAdder extends Content {
 			 */
 
 			submissionService.saveSpojProblemtoDB(problemSpoj,
-					new AsyncCallback<Void>() {
+			        new AsyncCallback<Void>() {
 
-						@Override
-						public void onSuccess(Void result) {
-							// TODO Auto-generated method stub
-							success += 1;
+				        @Override
+				        public void onSuccess(Void result) {
+					        // TODO Auto-generated method stub
+					        success += 1;
 
-						}
+				        }
 
-						@Override
-						public void onFailure(Throwable caught) {
-							failures = failures + 1;
-							// TODO Auto-generated method stub
+				        @Override
+				        public void onFailure(Throwable caught) {
+					        failures = failures + 1;
+					        // TODO Auto-generated method stub
 
-						}
-					});
+				        }
+			        });
 
 		}
 		textArea.setText(" Failures " + String.valueOf(failures) + " Success "
-				+ String.valueOf(success));
+		        + String.valueOf(success));
 
 		// TODO Auto-generated constructor stub
 	}

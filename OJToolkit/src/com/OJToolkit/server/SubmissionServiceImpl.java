@@ -32,15 +32,15 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
-		//if (problem.getType() == "SPOJ") {
-			String spojUsername = DataStoreHandler.getAllCoders().get(0)
-			        .getSPOJUsername();
-			String spojPassword = DataStoreHandler.getAllCoders().get(0)
-			        .getSPOJPassword();
-			judgeUsername = spojUsername;
-			judgePassword = spojPassword;
-			judge = new SPOJ();
-		//}
+		// if (problem.getType() == "SPOJ") {
+		String spojUsername = DataStoreHandler.getAllCoders().get(0)
+		        .getSPOJUsername();
+		String spojPassword = DataStoreHandler.getAllCoders().get(0)
+		        .getSPOJPassword();
+		judgeUsername = spojUsername;
+		judgePassword = spojPassword;
+		judge = new SPOJ();
+		// }
 		if (judge != null) {
 			try {
 				judge.submitProblem(judgeUsername, judgePassword, problemCode,
@@ -63,33 +63,33 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	//
 	@Override
 	public ProblemStatusData getLastProblemStatus() throws Exception {
-		//HashMap<String, String> input = new HashMap<String, String>();
-		//input.put("login_user", DataStoreHandler.getAllCoders().get(0)
-		  //      .getSPOJUsername());
+		// HashMap<String, String> input = new HashMap<String, String>();
+		// input.put("login_user", DataStoreHandler.getAllCoders().get(0)
+		// .getSPOJUsername());
 		Judge judge = null;
-		//ProblemData problem = getProblem(problemCode);
+		// ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
-		//if (problem.getType() == "SPOJ") {
-			String spojUsername = DataStoreHandler.getAllCoders().get(0)
-			        .getSPOJUsername();
-			String spojPassword = DataStoreHandler.getAllCoders().get(0)
-			        .getSPOJPassword();
-			judgeUsername = spojUsername;
-			judgePassword = spojPassword;
-			judge = new SPOJ();
-		//}
-			Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
-			
-	/*	HashMap<String, String> output = Engine
-		        .getLastProblemStatus_Spoj(input);*/
-		//	System.out.println("fdsgfdsgs " + s.getStatus());
-		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(), s.getProblemId(), s.getStatus(), s.getRuntime(), s.getMemoryUsed());
+		// if (problem.getType() == "SPOJ") {
+		String spojUsername = DataStoreHandler.getAllCoders().get(0)
+		        .getSPOJUsername();
+		String spojPassword = DataStoreHandler.getAllCoders().get(0)
+		        .getSPOJPassword();
+		judgeUsername = spojUsername;
+		judgePassword = spojPassword;
+		judge = new SPOJ();
+		// }
+		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
+
+		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(),
+		        s.getProblemId(), s.getStatus(), s.getRuntime(),
+		        s.getMemoryUsed());
 		return dpStatus;
 		// TODO Auto-generated method stub
 
 	}
 
+	@Override
 	public void saveSpojProblemtoDB(ProblemData problemData) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
@@ -111,8 +111,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	}
 
+	@Override
 	public ArrayList<ProblemData> getProblems(long start) {
-
+		// System.out.println("startttttttt getproblems " + start);
 		// start = start + DBStartIndex;
 		ArrayList<ProblemData> ret = new ArrayList<ProblemData>();
 		ProblemData problemData = new ProblemData();
@@ -125,6 +126,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			        .execute();
 			long startIndex = tempProblems.get(0).getProbID();
 			start += startIndex;
+			// System.out.println("new index " + start);
 			Query query = pm.newQuery(select_query);
 			// query.setFilter("probID == problemID");
 			query.setFilter("probID >= problemID");

@@ -15,7 +15,7 @@ import com.google.gwt.user.client.ui.TextBox;
 public class ContentCoderList extends Content {
 	AbsolutePanel absolutePanel;
 	private final CoderServiceAsync coderService = GWT
-			.create(CoderService.class);
+	        .create(CoderService.class);
 
 	public ContentCoderList() {
 		absolutePanel = new AbsolutePanel();

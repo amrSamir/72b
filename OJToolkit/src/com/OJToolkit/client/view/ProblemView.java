@@ -48,12 +48,11 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		lblPrblmTitle.setReadOnly(true);
 		verticalPanel.add(lblPrblmTitle);
 
-		
-		//error here with frame
+		// error here with frame
 		problemStatementFrame = new Frame();
 
 		verticalPanel.add(problemStatementFrame);
-		
+
 		Label lblNewLabel_1 = new Label("Code");
 		verticalPanel.add(lblNewLabel_1);
 
@@ -92,11 +91,10 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	 */
 	@Override
 	public void setProblem(ProblemData problem) {
-		problemStatementFrame.setUrl(problem.getUrl()); 
-	
+		problemStatementFrame.setUrl(problem.getUrl());
 
 		problemStatementFrame.setSize("90%", "300px");
-		
+
 		lblPrblmTitle.setText(problem.getProblemName());
 
 	}

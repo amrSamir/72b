@@ -9,13 +9,11 @@ import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
-import com.OJToolkit.client.event.RegistrationEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -36,13 +34,13 @@ public class ProblemPresenter implements Presenter {
 
 		String getCode();
 
-	//	String getProblemCode();
+		// String getProblemCode();
 
 		String getSelectedLanguageValue();
 
 		Widget asWidget();
 
-		//HasValue<String> getProblemTitle();
+		// HasValue<String> getProblemTitle();
 
 	}
 
@@ -53,34 +51,36 @@ public class ProblemPresenter implements Presenter {
 	private final String problemCode;
 	private final LanguageServiceAsync languageService;
 
-
-	public ProblemPresenter(String problemCode, SubmissionServiceAsync submssionService, LanguageServiceAsync languageService,
-	        HandlerManager eventBus, final Display display) {
+	public ProblemPresenter(String problemCode,
+	        SubmissionServiceAsync submssionService,
+	        LanguageServiceAsync languageService, HandlerManager eventBus,
+	        final Display display) {
 
 		this.languageService = languageService;
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
-		this.problemCode = problemCode;	
+		this.problemCode = problemCode;
 		this.display = display;
-	//	this.display.setProblem(problemCode);
+		// this.display.setProblem(problemCode);
 		bind();
 
-		this.submssionService.getProblem(problemCode, new AsyncCallback<ProblemData>() {
-			
-			@Override
-			public void onSuccess(ProblemData result) {
-				problem = result;
-				display.setProblem(problem);
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				System.out.println("ProblemPresenterFailure");
-				
-			}
-		});
+		this.submssionService.getProblem(problemCode,
+		        new AsyncCallback<ProblemData>() {
+
+			        @Override
+			        public void onSuccess(ProblemData result) {
+				        problem = result;
+				        display.setProblem(problem);
+				        // TODO Auto-generated method stub
+
+			        }
+
+			        @Override
+			        public void onFailure(Throwable caught) {
+				        System.out.println("ProblemPresenterFailure");
+
+			        }
+		        });
 		this.languageService
 		        .getLanguages(new AsyncCallback<ArrayList<LanguageData>>() {
 
@@ -117,20 +117,20 @@ public class ProblemPresenter implements Presenter {
 
 					        @Override
 					        public void onSuccess(Void result) {
-					        	eventBus.fireEvent(new ViewProblemSubmissionStatusEvent());
-					        	//add code to db
+						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent());
+						        // add code to db
 						        // TODO Auto-generated method stub
 
 					        }
 
 					        @Override
 					        public void onFailure(Throwable caught) {
-					        	Window.alert("Failure");
+						        Window.alert("Failure");
 						        // TODO Auto-generated method stub
 
 					        }
 				        });
-				
+
 				// TODO Auto-generated method stub
 
 			}

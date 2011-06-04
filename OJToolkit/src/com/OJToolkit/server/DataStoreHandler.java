@@ -12,41 +12,41 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-public  class DataStoreHandler {
-	
-		public static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+public class DataStoreHandler {
 
-		static PersistenceManager pm;
+	public static final PersistenceManagerFactory PMF = JDOHelper
+	        .getPersistenceManagerFactory("transactions-optional");
+
+	static PersistenceManager pm;
+
 	public DataStoreHandler() {
-			
-			// TODO Auto-generated constructor stub
-		}
 
-	public  static List<Coder> getAllCoders() {
-		 pm = getPersistenceManager();
-		String select_query = "select from " + Coder.class.getName(); 
-		Query query = pm.newQuery(select_query); 
-		query.setFilter("email == userEmail"); 
-		query.declareParameters("java.lang.String userEmail"); 
-		List<Coder> coders = (List<Coder>) query.execute(getUser().getEmail());
-		return coders;	
+		// TODO Auto-generated constructor stub
 	}
-	
-	  static void checkLoggedIn() throws NotLoggedInException {
-		    if (getUser() == null) {
-		      throw new NotLoggedInException("Not logged in.");
-		    }
-		  }
-	  
-	  
-	   static User getUser() {
-		    UserService userService = UserServiceFactory.getUserService();
-		    return userService.getCurrentUser();
-		  }
 
-	  
-		    static PersistenceManager getPersistenceManager() {
-		    return PMF.getPersistenceManager();
-		  }
+	public static List<Coder> getAllCoders() {
+		pm = getPersistenceManager();
+		String select_query = "select from " + Coder.class.getName();
+		Query query = pm.newQuery(select_query);
+		query.setFilter("email == userEmail");
+		query.declareParameters("java.lang.String userEmail");
+		List<Coder> coders = (List<Coder>) query.execute(getUser().getEmail());
+		return coders;
+	}
+
+	static void checkLoggedIn() throws NotLoggedInException {
+		if (getUser() == null) {
+			throw new NotLoggedInException("Not logged in.");
+		}
+	}
+
+	static User getUser() {
+		UserService userService = UserServiceFactory.getUserService();
+		return userService.getCurrentUser();
+	}
+
+	static PersistenceManager getPersistenceManager() {
+		return PMF.getPersistenceManager();
+	}
 
 }

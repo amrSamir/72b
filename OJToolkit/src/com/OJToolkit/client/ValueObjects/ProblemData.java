@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 /**
  * @author 72B
- * Holds the Problem Data
+ *         Holds the Problem Data
  */
 /**
  * @author 72B
- * Apr 23, 2011
+ *         Apr 23, 2011
  */
-public class ProblemData implements Serializable { 
+public class ProblemData implements Serializable {
 	private String url;
 	private String type;
 	private String problemCode;
@@ -18,26 +18,30 @@ public class ProblemData implements Serializable {
 
 	/**
 	 * Creates an a problem object for viewing purpose
-	 * @param url The URL of the problem
-	 * @param type The category of the problem
-	 * @param problemCode The code of the problem
-	 * @param problemName The Title of the problem
+	 * 
+	 * @param url
+	 *            The URL of the problem
+	 * @param type
+	 *            The category of the problem
+	 * @param problemCode
+	 *            The code of the problem
+	 * @param problemName
+	 *            The Title of the problem
 	 */
 	public ProblemData(String url, String type, String problemCode,
-			String problemName) {
+	        String problemName) {
 		super();
 		this.url = url;
 		this.type = type;
 		this.problemCode = problemCode;
 		this.problemName = problemName;
 	}
-	
+
 	/**
 	 * Create a problem object for viewing purpose
 	 */
 	public ProblemData() {
 	}
-
 
 	/**
 	 * @return The code of the problem
@@ -47,7 +51,8 @@ public class ProblemData implements Serializable {
 	}
 
 	/**
-	 * @param problemCode The code of the problem
+	 * @param problemCode
+	 *            The code of the problem
 	 */
 	public void setProblemCode(String problemCode) {
 		this.problemCode = problemCode;
@@ -61,17 +66,16 @@ public class ProblemData implements Serializable {
 	}
 
 	/**
-	 * @param problemName The Title of the problem
+	 * @param problemName
+	 *            The Title of the problem
 	 */
 	public void setProblemName(String problemName) {
 		this.problemName = problemName;
 	}
 
-
-
-	
 	/**
-	 * @param t The category of the problem
+	 * @param t
+	 *            The category of the problem
 	 */
 	public void setType(String t) {
 		type = t;
@@ -92,7 +96,8 @@ public class ProblemData implements Serializable {
 	}
 
 	/**
-	 * @param url The URL of the problem
+	 * @param url
+	 *            The URL of the problem
 	 */
 	public void setUrl(String url) {
 		this.url = url;

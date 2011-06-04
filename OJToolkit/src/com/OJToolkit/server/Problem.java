@@ -11,21 +11,21 @@ public class Problem {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long probID;
-	
+
 	@Persistent
 	private String url;
-	
+
 	@Persistent
 	private String type;
-	
+
 	@Persistent
 	private String problemCode;
-	
+
 	@Persistent
 	private String problemName;
 
 	public Problem(String url, String type, String problemCode,
-			String problemName) {
+	        String problemName) {
 		super();
 		this.url = url;
 		this.type = type;
@@ -38,12 +38,12 @@ public class Problem {
 	}
 
 	public Long getProbID() {
-    	return probID;
-    }
+		return probID;
+	}
 
 	public void setProbID(Long probID) {
-    	this.probID = probID;
-    }
+		this.probID = probID;
+	}
 
 	public void setProblemCode(String problemCode) {
 		this.problemCode = problemCode;

@@ -7,8 +7,8 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * @author 72B
- *         Apr 26, 2011
+ *         June 4, 2011
  */
-public interface ViewCodersEventHandler extends EventHandler {
-	void onViewCoders(ViewCodersEvent event);
+public interface LoginEventHandler extends EventHandler {
+	void onLogin(LoginEvent event);
 }

@@ -9,12 +9,11 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author 72B
  *         Apr 26, 2011
  */
-public class RegistrationEvent extends GwtEvent<RegisterationEventHandler> {
+public class AddAccountEvent extends GwtEvent<AddAccountEventHandler> {
 
-	public static Type<RegisterationEventHandler> TYPE = new Type<RegisterationEventHandler>();
+	public static Type<AddAccountEventHandler> TYPE = new Type<AddAccountEventHandler>();
 
-	// 3lshan tenady beeha service l submission
-	public RegistrationEvent() {
+	public AddAccountEvent() {
 		super();
 	}
 
@@ -23,7 +22,7 @@ public class RegistrationEvent extends GwtEvent<RegisterationEventHandler> {
 	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
 	 */
 	@Override
-	public Type<RegisterationEventHandler> getAssociatedType() {
+	public Type<AddAccountEventHandler> getAssociatedType() {
 
 		return TYPE;
 	}
@@ -35,9 +34,9 @@ public class RegistrationEvent extends GwtEvent<RegisterationEventHandler> {
 	 * .EventHandler)
 	 */
 	@Override
-	protected void dispatch(RegisterationEventHandler handler) {
+	protected void dispatch(AddAccountEventHandler handler) {
 
-		handler.onRegistration(this);
+		handler.onAddAccount(this);
 
 	}
 

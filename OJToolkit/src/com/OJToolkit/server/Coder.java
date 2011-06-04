@@ -11,44 +11,38 @@ public class Coder {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long userID;
-	
+
 	@Persistent
 	private String username;
-	
+
 	@Persistent
 	private String email;
-	
+
 	@Persistent
 	private String SPOJUsername;
-	
+
 	@Persistent
 	private String SPOJPassword;
-
 
 	public Long getUserID() {
 		return userID;
 	}
-	
 
 	public String getSPOJUsername() {
 		return SPOJUsername;
 	}
 
-
 	public void setSPOJUsername(String sPOJUsername) {
 		SPOJUsername = sPOJUsername;
 	}
-
 
 	public String getSPOJPassword() {
 		return SPOJPassword;
 	}
 
-
 	public void setSPOJPassword(String sPOJPassword) {
 		SPOJPassword = sPOJPassword;
 	}
-
 
 	public void setUserID(Long userID) {
 		this.userID = userID;
@@ -70,17 +64,16 @@ public class Coder {
 		this.email = email;
 	}
 
-
-
-
-
-
-	public Coder(String username, String email, String SPOJUsername,String SPOJPassword) {
+	public Coder(String username, String email, String SPOJUsername,
+	        String SPOJPassword) {
 		this.username = username;
 		this.email = email;
 		this.SPOJUsername = SPOJUsername;
 		this.SPOJPassword = SPOJPassword;
 	}
-	
-	
+
+	public Coder() {
+
+	}
+
 }

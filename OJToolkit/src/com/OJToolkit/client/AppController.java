@@ -86,11 +86,9 @@ public class AppController implements ValueChangeHandler<String> {
 		this.submissionService = submissionService;
 		this.loginService = loginService;
 		this.coderService = coderService;
-		//checkCookies();
+		// checkCookies();
 		bind();
 	}
-
-
 
 	/**
      * 
@@ -139,30 +137,27 @@ public class AppController implements ValueChangeHandler<String> {
 
 			        }
 		        });
-		
-		eventBus.addHandler(LoginEvent.TYPE,
-		        new LoginEventHandler() {
 
-					@Override
-                    public void onLogin(LoginEvent event) {
-						doOnLogin();
-	                    // TODO Auto-generated method stub
-	                    
-                    }
+		eventBus.addHandler(LoginEvent.TYPE, new LoginEventHandler() {
 
-			
-		        });
-		
+			@Override
+			public void onLogin(LoginEvent event) {
+				doOnLogin();
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+
 		eventBus.addHandler(CheckCookiesEvent.TYPE,
 		        new CheckCookiesEventHandler() {
 
-					@Override
-                    public void onCheckCookies(CheckCookiesEvent event) {
-	                    doOnCheckCookies();
-	                    
-                    }
+			        @Override
+			        public void onCheckCookies(CheckCookiesEvent event) {
+				        doOnCheckCookies();
 
-			
+			        }
+
 		        });
 
 		eventBus.addHandler(ViewCodersEvent.TYPE, new ViewCodersEventHandler() {
@@ -192,22 +187,18 @@ public class AppController implements ValueChangeHandler<String> {
 	/**
      * 
      */
-    protected void doOnCheckCookies() {
-	    History.newItem("checkCookies");
-	    
-    }
+	protected void doOnCheckCookies() {
+		History.newItem("checkCookies");
 
-
+	}
 
 	/**
      * 
      */
-    protected void doOnLogin() {
-    	History.newItem("login");
-	    
-    }
+	protected void doOnLogin() {
+		History.newItem("login");
 
-
+	}
 
 	/**
 	 * @param oJType
@@ -297,52 +288,52 @@ public class AppController implements ValueChangeHandler<String> {
 
 		if (token != null) {
 			Presenter presenter = null;
-			//if (isEnabled) {
-				if (token.equals("login")) {
-					presenter = new LoginPresenter(loginService, coderService,
-					        eventBus, new LoginView());
-				} else if (token.equals("Registration")) {
-					presenter = new RegistrationPresenter(coderService,
-					        eventBus, new RegistrationView());
-				} else if (token.equals("problemSubmissionStatus")) {
-					presenter = new ProblemSubmissionStatusPresenter(
-					        submissionService, eventBus,
-					        new ProblemSubmissionStatusView());
-				} else if (token.startsWith("problem")) {
-					if (problem == null) {
-						presenter = new ProblemPresenter(token.substring(7),
-						        submissionService, languageService, eventBus,
-						        new ProblemView());
-					} else {
-						presenter = new ProblemPresenter(
-						        problem.getProblemCode(), submissionService,
-						        languageService, eventBus, new ProblemView());
-					}
-				} else if (token.equals("alreadyRegistered")) {
-					presenter = new ProblemListPresenter(submissionService,
-					        eventBus, new ProblemListView());
-				} else if (token.equals("viewCoders")) {
-					presenter = new CodersPresenter(coderService, eventBus,
-					        new CodersView());
-				} else if (token.equals("addAccount")) {
-					presenter = new AddAccountPresenter(coderService, eventBus,
-					        new AddAccountView());
-				//}
-			//}
-			//else{
-				//if (token.equals("login")) {
-					//presenter = new LoginPresenter(loginService, coderService,
-					  //      eventBus, new LoginView());
-				} else if (token.equals("checkCookies")) {
-					presenter = new CheckCookiesPresenter(eventBus);
-				} else if (token.equals("Registration")) {
-					presenter = new RegistrationPresenter(coderService,
-					        eventBus, new RegistrationView());
-				} else{
-					presenter = new CheckCookiesPresenter(eventBus);
+			// if (isEnabled) {
+			if (token.equals("login")) {
+				presenter = new LoginPresenter(loginService, coderService,
+				        eventBus, new LoginView());
+			} else if (token.equals("Registration")) {
+				presenter = new RegistrationPresenter(coderService, eventBus,
+				        new RegistrationView());
+			} else if (token.equals("problemSubmissionStatus")) {
+				presenter = new ProblemSubmissionStatusPresenter(
+				        submissionService, eventBus,
+				        new ProblemSubmissionStatusView());
+			} else if (token.startsWith("problem")) {
+				if (problem == null) {
+					presenter = new ProblemPresenter(token.substring(7),
+					        submissionService, languageService, eventBus,
+					        new ProblemView());
+				} else {
+					presenter = new ProblemPresenter(problem.getProblemCode(),
+					        submissionService, languageService, eventBus,
+					        new ProblemView());
 				}
-				
-			//}
+			} else if (token.equals("alreadyRegistered")) {
+				presenter = new ProblemListPresenter(submissionService,
+				        eventBus, new ProblemListView());
+			} else if (token.equals("viewCoders")) {
+				presenter = new CodersPresenter(coderService, eventBus,
+				        new CodersView());
+			} else if (token.equals("addAccount")) {
+				presenter = new AddAccountPresenter(coderService, eventBus,
+				        new AddAccountView());
+				// }
+				// }
+				// else{
+				// if (token.equals("login")) {
+				// presenter = new LoginPresenter(loginService, coderService,
+				// eventBus, new LoginView());
+			} else if (token.equals("checkCookies")) {
+				presenter = new CheckCookiesPresenter(eventBus);
+			} else if (token.equals("Registration")) {
+				presenter = new RegistrationPresenter(coderService, eventBus,
+				        new RegistrationView());
+			} else {
+				presenter = new CheckCookiesPresenter(eventBus);
+			}
+
+			// }
 			if (presenter != null) {
 				presenter.go(container);
 			}
@@ -358,7 +349,7 @@ public class AppController implements ValueChangeHandler<String> {
 			 * }
 			 */
 			// }
-		
+
 		}
 	}
 }

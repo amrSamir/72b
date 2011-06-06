@@ -29,12 +29,12 @@ public class OJToolkit implements EntryPoint {
 	        + "attempting to contact the server. Please check your network "
 	        + "connection and try again.";
 
-	/**
-	 * This is the entry point method.
-	 */
+	
+	// This is the entry point method.	 
 	@Override
 	public void onModuleLoad() {
 //		SpojProblemsToDBAdder s = new SpojProblemsToDBAdder();
+		
 		RootPanel rootPanel = RootPanel.get();
 		System.out.println("start");
 		DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);
@@ -61,20 +61,13 @@ public class OJToolkit implements EntryPoint {
 		AbsolutePanel core = new AbsolutePanel();
 		dockLayoutPanel.add(core);
 
-		SubmissionServiceAsync submissionService = GWT
-		        .create(SubmissionService.class);
-
-		LanguageServiceAsync languageService = GWT
-		        .create(LanguageService.class);
-
+		SubmissionServiceAsync submissionService = GWT.create(SubmissionService.class);
+		LanguageServiceAsync languageService = GWT.create(LanguageService.class);
 		CoderServiceAsync coderService = GWT.create(CoderService.class);
-
 		LoginServiceAsync loginService = GWT.create(LoginService.class);
 
 		HandlerManager eventBus = new HandlerManager(null);
-		AppController appViewer = new AppController(eventBus,
-		        submissionService, languageService, loginService, coderService);
+		AppController appViewer = new AppController(eventBus,submissionService, languageService, loginService, coderService);
 		appViewer.go(core, topPanel, leftPanel);
-
 	}
 }

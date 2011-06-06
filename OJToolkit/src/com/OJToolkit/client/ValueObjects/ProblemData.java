@@ -7,8 +7,7 @@ import java.io.Serializable;
  *         Holds the Problem Data
  */
 /**
- * @author 72B
- *         Apr 23, 2011
+ * @author 72B Apr 23, 2011
  */
 public class ProblemData implements Serializable {
 	private String url;
@@ -29,7 +28,7 @@ public class ProblemData implements Serializable {
 	 *            The Title of the problem
 	 */
 	public ProblemData(String url, String type, String problemCode,
-	        String problemName) {
+			String problemName) {
 		super();
 		this.url = url;
 		this.type = type;

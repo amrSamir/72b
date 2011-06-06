@@ -3,21 +3,14 @@ package com.OJToolkit.client.ValueObjects;
 import java.io.Serializable;
 
 /**
- * @author 72B
- *         Holds the data of the
- *         coder for viewing it
+ * @author 72B Holds the data of the coder for viewing it
  */
 @SuppressWarnings("serial")
 public class CoderData implements Serializable {
-
 	private Long userID;
-
 	private String username;
-
 	private String email;
-
 	private String SPOJUsername;
-
 	private String SPOJPassword;
 
 	public CoderData() {
@@ -39,7 +32,7 @@ public class CoderData implements Serializable {
 	 *            The password of the user's SPOJ account
 	 */
 	public CoderData(Long userID, String username, String email,
-	        String sPOJUsername, String sPOJPassword) {
+			String sPOJUsername, String sPOJPassword) {
 		this.userID = userID;
 		this.username = username;
 		this.email = email;
@@ -125,5 +118,4 @@ public class CoderData implements Serializable {
 	public void setSPOJPassword(String sPOJPassword) {
 		SPOJPassword = sPOJPassword;
 	}
-
 }

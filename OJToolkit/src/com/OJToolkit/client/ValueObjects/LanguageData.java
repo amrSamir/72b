@@ -3,8 +3,7 @@ package com.OJToolkit.client.ValueObjects;
 import java.io.Serializable;
 
 /**
- * @author 72B Team
- *         Holds the data of the languages
+ * @author 72B Team Holds the data of the languages
  */
 @SuppressWarnings("serial")
 public class LanguageData implements Serializable {
@@ -76,8 +75,7 @@ public class LanguageData implements Serializable {
 	 * Creates an object of the language data
 	 */
 	public LanguageData() {
-
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

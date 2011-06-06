@@ -3,8 +3,7 @@ package com.OJToolkit.client.ValueObjects;
 import java.io.Serializable;
 
 /**
- * @author 72B
- *         Holds the data of the logged in user
+ * @author 72B Holds the data of the logged in user
  */
 @SuppressWarnings("serial")
 public class LoginInfo implements Serializable {

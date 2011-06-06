@@ -9,11 +9,14 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * @author 72B
+ *         May 10, 2011
+ */
 public class ProblemSubmissionStatusPresenter implements Presenter {
 
 	public interface Display {
@@ -23,6 +26,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 
 		Widget asWidget();
 	}
+
 	private final Display display;
 	private final SubmissionServiceAsync submssionService;
 	private final HandlerManager eventBus;
@@ -38,6 +42,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 
 		bind();
 		callGetLastProblemStatusService();
+
 	}
 
 	void callGetLastProblemStatusService() {
@@ -48,26 +53,48 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 			        public void onSuccess(ProblemStatusData result) {
 				        problemStatus = result;
 				        display.setSubmissionResult(result);
+				        // TODO Auto-generated method stub
+
 			        }
 
 			        @Override
 			        public void onFailure(Throwable caught) {
-			        	Window.alert("Failed to get last problem status") ;
+				        // TODO Auto-generated method stub
+
 			        }
 		        });
 	}
+
+	/**
+     * 
+     */
 	private void bind() {
 		display.getRefreshButton().addClickHandler(new ClickHandler() {
+
 			@Override
 			public void onClick(ClickEvent event) {
 				callGetLastProblemStatusService();
+				// TODO Auto-generated method stub
+
 			}
 		});
+
+		// TODO Auto-generated method stub
+
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
+	 * .ui.HasWidgets)
+	 */
 	@Override
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
+		// TODO Auto-generated method stub
+
 	}
+
 }

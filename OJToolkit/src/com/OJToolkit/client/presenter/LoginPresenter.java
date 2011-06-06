@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.OJToolkit.client.presenter;
 
 import com.OJToolkit.client.AppController;
@@ -13,11 +16,18 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * @author 72B
+ *         May 13, 2011
+ */
 public class LoginPresenter implements Presenter {
 
 	public interface Display {
+
 		void setLoginURL(String loginURL);
+
 		Widget asWidget();
+
 	}
 
 	private final Display display;
@@ -36,13 +46,15 @@ public class LoginPresenter implements Presenter {
 		        new AsyncCallback<LoginInfo>() {
 			        @Override
 			        public void onFailure(Throwable error) {
-				     //   Window.alert("login_failed");
+				        Window.alert("login_failed");
 			        }
+
 			        @Override
 			        public void onSuccess(LoginInfo result) {
 				        display.setLoginURL(result.getLoginUrl());
+
 				        if (!result.isLoggedIn()) {
-				        	Window.alert("please Log in!");
+
 				        } else {
 					        Window.alert("Logged In");
 					        // create logged in cookie

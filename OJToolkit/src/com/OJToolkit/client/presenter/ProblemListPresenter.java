@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.OJToolkit.client.presenter;
 
 import java.util.ArrayList;
@@ -15,6 +18,10 @@ import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SelectionChangeEvent.Handler;
 import com.google.gwt.view.client.SingleSelectionModel;
 
+/**
+ * @author 72B
+ *         Apr 26, 2011
+ */
 public class ProblemListPresenter implements Presenter {
 
 	public interface Display {
@@ -24,13 +31,20 @@ public class ProblemListPresenter implements Presenter {
 		 * void setLanguages(ArrayList<LanguageData> languages);
 		 * String getCode();
 		 * String getSelectedLanguageValue();
-		 * HasValue<String> getProblemTitle();
 		 */
+
 		AbstractHasData<ProblemData> getTable();
+
 		void setProblemList(ArrayList<ProblemData> problemsList);
+
 		void setNumberOfProblems(int numberOfProblems);
+
 		void setPageStart(int pageStart);
+
 		Widget asWidget();
+
+		// HasValue<String> getProblemTitle();
+
 	}
 
 	private final Display display;
@@ -48,6 +62,7 @@ public class ProblemListPresenter implements Presenter {
 		this.display = display;
 		table = display.getTable();
 		this.display.setNumberOfProblems(numberOfProblems);
+
 		this.problemsList = new ArrayList<ProblemData>();
 		for (int i = 0; i <= numberOfProblems; i++) {
 			problemsList.add(null);
@@ -56,39 +71,58 @@ public class ProblemListPresenter implements Presenter {
 		this.display.setPageStart(pageStart);
 		bind();
 		fitchFiftyProblems();
+
 	}
 
 	public void fitchFiftyProblems() {
 		submissionService.getProblems(pageStart,
 		        new AsyncCallback<ArrayList<ProblemData>>() {
+
 			        @Override
 			        public void onSuccess(ArrayList<ProblemData> result) {
+
 				        for (int i = 0; i < result.size(); i++) {
 					        problemsList.set(pageStart + i, result.get(i));
+
 				        }
 				        table.setRowData(0, problemsList);
 				        // display.setProblemList(problemsList);
+
 			        }
+
 			        @Override
 			        public void onFailure(Throwable caught) {
-				        System.out.println("Failed to load problems set!!");
+				        System.out.println("Failure");
+				        // TODO Auto-generated method stub
+
 			        }
 		        });
+
 	}
 
+	/**
+	 * Listens to onclick event. If a problem is clicked, it opens the
+	 * corresponding problem page for submission
+	 */
 	private void onClickHandler() {
 		final SingleSelectionModel mySelectionModel = new SingleSelectionModel<ProblemData>();
 		table.setSelectionModel(mySelectionModel);
 		mySelectionModel.addSelectionChangeHandler(new Handler() {
+
 			@Override
 			public void onSelectionChange(SelectionChangeEvent event) {
 				ProblemData problemData = (ProblemData) mySelectionModel
 				        .getSelectedObject();
 				eventBus.fireEvent(new ViewProblemEvent(problemData));
+
 			}
 		});
 	}
 
+	/**
+	 * Listens to OnPageChange Event When the current page changes, it fetches
+	 * the 50 problems of the corresponding index from the databse
+	 */
 	private void onPageChangeHandler() {
 		table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
 			@Override
@@ -101,16 +135,28 @@ public class ProblemListPresenter implements Presenter {
 		});
 	}
 
-
+	/**
+     * 
+     */
 	private void bind() {
 		onClickHandler();
 		onPageChangeHandler();
+		// TODO Auto-generated method stub
+
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
+	 * .ui.HasWidgets)
+	 */
 	@Override
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
+		// TODO Auto-generated method stub
+
 	}
 
 }

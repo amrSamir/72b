@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.OJToolkit.client.presenter;
 
 import java.util.ArrayList;
@@ -19,29 +16,15 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-/**
- * @author 72B
- *         Apr 26, 2011
- */
 public class ProblemPresenter implements Presenter {
 
 	public interface Display {
 		HasClickHandlers getSubmitButton();
-
 		void setProblem(ProblemData problem);
-
 		void setLanguages(ArrayList<LanguageData> languages);
-
 		String getCode();
-
-		// String getProblemCode();
-
 		String getSelectedLanguageValue();
-
 		Widget asWidget();
-
-		// HasValue<String> getProblemTitle();
-
 	}
 
 	private final Display display;
@@ -66,19 +49,14 @@ public class ProblemPresenter implements Presenter {
 
 		this.submssionService.getProblem(problemCode,
 		        new AsyncCallback<ProblemData>() {
-
 			        @Override
 			        public void onSuccess(ProblemData result) {
 				        problem = result;
-				        display.setProblem(problem);
-				        // TODO Auto-generated method stub
-
+				        display.setProblem(problem);				        
 			        }
-
 			        @Override
 			        public void onFailure(Throwable caught) {
-				        System.out.println("ProblemPresenterFailure");
-
+				        System.out.println("Failed to load problem");
 			        }
 		        });
 		this.languageService
@@ -96,16 +74,11 @@ public class ProblemPresenter implements Presenter {
 
 			        @Override
 			        public void onFailure(Throwable caught) {
-				        Window.alert("Failed to get list of languages");
-				        // TODO Auto-generated method stub
-
+				        Window.alert("Failed to get list of languages!!");
 			        }
 		        });
 	}
 
-	/**
-     * 
-     */
 	private void bind() {
 		display.getSubmitButton().addClickHandler(new ClickHandler() {
 
@@ -114,43 +87,23 @@ public class ProblemPresenter implements Presenter {
 				submssionService.submitCode(problem.getProblemCode(),
 				        display.getCode(), display.getSelectedLanguageValue(),
 				        new AsyncCallback<Void>() {
-
 					        @Override
 					        public void onSuccess(Void result) {
 						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent());
-						        // add code to db
-						        // TODO Auto-generated method stub
-
 					        }
 
 					        @Override
 					        public void onFailure(Throwable caught) {
-						        Window.alert("Failure");
-						        // TODO Auto-generated method stub
-
+						        Window.alert("Failed to submit!!");
 					        }
 				        });
-
-				// TODO Auto-generated method stub
-
 			}
 		});
-		// TODO Auto-generated method stub
-
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
-	 * .ui.HasWidgets)
-	 */
 	@Override
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
-		// TODO Auto-generated method stub
-
 	}
-
 }

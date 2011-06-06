@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.OJToolkit.client.presenter;
 
 import java.util.ArrayList;
@@ -13,18 +10,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-/**
- * @author 72B
- *         May 13, 2011
- */
+
 public class CodersPresenter implements Presenter {
 
 	public interface Display {
-
 		void setCodersList(ArrayList<CoderData> coders);
-
 		Widget asWidget();
-
 	}
 
 	private final Display display;
@@ -40,35 +31,22 @@ public class CodersPresenter implements Presenter {
 		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
 
 			@Override
-			public void onSuccess(ArrayList<CoderData> result) {
-				// Window.alert("Success_CoderData");
+			public void onSuccess(ArrayList<CoderData> result) {				
 				display.setCodersList(result);
-
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("Failure_CoderData");
-				// TODO Auto-generated method stub
-
+				Window.alert("Failed to load coder Data!");				
 			}
 		});
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
-	 * .ui.HasWidgets)
-	 */
 	@Override
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
-		// TODO Auto-generated method stub
 	}
 
 }

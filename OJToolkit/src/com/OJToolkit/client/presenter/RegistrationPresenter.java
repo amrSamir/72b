@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.OJToolkit.client.presenter;
 
 import com.OJToolkit.client.AppController;
@@ -17,20 +14,14 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-/**
- * @author 72B
- *         May 13, 2011
- */
 public class RegistrationPresenter implements Presenter {
 
 	public interface Display {
-
 		HasClickHandlers getSubmitButton();
 
 		HasValue<String> getUsername();
 
 		Widget asWidget();
-
 	}
 
 	private final Display display;
@@ -38,7 +29,7 @@ public class RegistrationPresenter implements Presenter {
 	private final HandlerManager eventBus;
 
 	public RegistrationPresenter(CoderServiceAsync coderService,
-	        HandlerManager eventBus, final Display display) {
+			HandlerManager eventBus, final Display display) {
 
 		this.coderService = coderService;
 		this.eventBus = eventBus;
@@ -46,7 +37,6 @@ public class RegistrationPresenter implements Presenter {
 		this.display = display;
 
 		bind();
-
 	}
 
 	public void checkRegistered() {
@@ -57,68 +47,49 @@ public class RegistrationPresenter implements Presenter {
 			public void onSuccess(Boolean result) {
 				if (result == true) {
 					Cookies.setCookie("isRegisteredCookie", "YES",
-					        AppController.COOKIES_EXPIRYDATE, null, "/", false);
+							AppController.COOKIES_EXPIRYDATE, null, "/", false);
 					eventBus.fireEvent(new CheckCookiesEvent());
 				} else {
-					// do nothing as you are already in RegistrationPresenter
-
+					Window.alert("Registeration Failed!!");
 				}
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// show error and remain on the same page
+				Window.alert("Registeration Failed!!");
 			}
 		});
 	}
 
-	/**
-     * 
-     */
 	private void bind() {
 		display.getSubmitButton().addClickHandler(new ClickHandler() {
-
 			@Override
 			public void onClick(ClickEvent event) {
 				coderService.addCoder(display.getUsername().getValue(),
-				        new AsyncCallback<Void>() {
+						new AsyncCallback<Void>() {
 
-					        @Override
-					        public void onSuccess(Void result) {
-						        Window.alert("Added to datastore");
-						        Cookies.setCookie("isRegisteredCookie", "YES",
-						                AppController.COOKIES_EXPIRYDATE, null,
-						                "/", false);
-						        eventBus.fireEvent(new CheckCookiesEvent());
-					        }
+							@Override
+							public void onSuccess(Void result) {
+								Window.alert("Registraion succeded");
+								Cookies.setCookie("isRegisteredCookie", "YES",
+										AppController.COOKIES_EXPIRYDATE, null,
+										"/", false);
+								eventBus.fireEvent(new CheckCookiesEvent());
+							}
 
-					        @Override
-					        public void onFailure(Throwable caught) {
-						        Window.alert("Username already taken");
-						        // TODO Auto-generated method stub
-
-					        }
-				        });
-				// TODO Auto-generated method stub
-
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("Username already taken");
+							}
+						});
 			}
 		});
-
-		// TODO Auto-generated method stub
-
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
-	 * .ui.HasWidgets)
-	 */
 	@Override
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
-		// TODO Auto-generated method stub
 	}
 
 }

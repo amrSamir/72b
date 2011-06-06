@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.OJToolkit.client.presenter;
 
 import com.OJToolkit.client.AppController;
@@ -12,19 +9,13 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-/**
- * @author 72B
- *         June 4, 2011
- */
 public class CheckCookiesPresenter implements Presenter {
 
 	private final HandlerManager eventBus;
 
 	public CheckCookiesPresenter(HandlerManager eventBus) {
-
 		this.eventBus = eventBus;
 		checkCookies();
-
 	}
 
 	public void checkCookies() {
@@ -49,16 +40,9 @@ public class CheckCookiesPresenter implements Presenter {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
-	 * .ui.HasWidgets)
-	 */
 	@Override
 	public void go(HasWidgets container) {
 		// container.clear();
-		// TODO Auto-generated method stub
 	}
 
 }

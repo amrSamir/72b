@@ -76,14 +76,14 @@ public class ProblemListView extends Composite implements
 		TextColumn<ProblemData> problemTypeColumn = new TextColumn<ProblemData>() {
 			@Override
 			public String getValue(ProblemData problem) {
-				return problem.getType();
+				return problem.getOjType();
 			}
 		};
 
 		// Add the columns to the table
 		table.addColumn(problemCodeColumn, "Problem Code");
 		table.addColumn(problemTitleColumn, "Problem Title");
-		table.addColumn(problemTypeColumn, "Problem Type");
+		table.addColumn(problemTypeColumn, "Online Judge");
 
 		// Set the total row count. This isn't strictly necessary, but it
 		// affects paging calculations, so its good habit to keep the row count

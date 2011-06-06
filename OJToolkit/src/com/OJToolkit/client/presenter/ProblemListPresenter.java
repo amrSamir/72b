@@ -10,6 +10,7 @@ import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.event.ViewProblemEvent;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.cellview.client.AbstractHasData;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -34,10 +35,15 @@ public class ProblemListPresenter implements Presenter {
 		 */
 
 		AbstractHasData<ProblemData> getTable();
+
 		void setProblemList(ArrayList<ProblemData> problemsList);
+
 		void setNumberOfProblems(int numberOfProblems);
+
 		void setPageStart(int pageStart);
+
 		Widget asWidget();
+
 		// HasValue<String> getProblemTitle();
 
 	}
@@ -47,9 +53,11 @@ public class ProblemListPresenter implements Presenter {
 	private final HandlerManager eventBus;
 	private final AbstractHasData<ProblemData> table;
 	private final ArrayList<ProblemData> problemsList;
-	private final int numberOfProblems = 6684;
+	private int numberOfProblems = 0;
 	private int pageStart = 0;
+	String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
 
+	
 	/**
 	 * Genrate the Problem list presenter
 	 * @param submissionService
@@ -58,8 +66,15 @@ public class ProblemListPresenter implements Presenter {
 	 */
 	public ProblemListPresenter(SubmissionServiceAsync submissionService,
 	        HandlerManager eventBus, final Display display) {
+
 		this.submissionService = submissionService;
 		this.eventBus = eventBus;
+		if (addedAccountsCookie.contains("SPOJ")) {
+			numberOfProblems += 2141;
+		}
+		if (addedAccountsCookie.contains("Timus")) {
+			numberOfProblems += 595;
+		}
 		this.display = display;
 		table = display.getTable();
 		this.display.setNumberOfProblems(numberOfProblems);

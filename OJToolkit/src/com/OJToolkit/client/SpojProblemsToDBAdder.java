@@ -1,63 +1,51 @@
 package com.OJToolkit.client;
 
+import java.util.StringTokenizer;
+
 import com.OJToolkit.client.Contents.Content;
 import com.OJToolkit.client.Contents.MyResource;
+import com.OJToolkit.client.Services.LanguageService;
+import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.TextArea;
 
 public class SpojProblemsToDBAdder extends Content {
 
 	private final SubmissionServiceAsync submissionService = GWT
 	        .create(SubmissionService.class);
+	private final LanguageServiceAsync languageService = GWT
+    .create(LanguageService.class);
 	int failures = 0;
 	int success = 0;
 
 	public SpojProblemsToDBAdder() {
+		System.out.println("Initializer");
+		addSPOJProblems();
+		//addLanguages();
 
-		ScrollPanel scrollPanel = new ScrollPanel();
-		initWidget(scrollPanel);
 
-		TextArea textArea = new TextArea();
-		scrollPanel.setWidget(textArea);
-		textArea.setSize("100%", "100%");
+	}
+	
+	private void addSPOJProblems(){
 		String problems = MyResource.INSTANCE.defaultText().getText();
 		String[] linesArr = problems.split("\n");
-		// Window.alert(linesArr[0]);
-		ProblemData problemSpoj = new ProblemData();
+		ProblemData problem = new ProblemData();
+		StringTokenizer st;
 		String[] splitted;
-		String txt = "";
-		/*
-		 * submissionService.saveSpojProblemtoDB(problemSpoj, new
-		 * AsyncCallback<Void>() {
-		 * @Override public void onSuccess(Void result) { // TODO Auto-generated
-		 * method stub
-		 * }
-		 * @Override public void onFailure(Throwable caught) { failures =
-		 * failures + 1; // TODO Auto-generated method stub
-		 * } });
-		 */
 
 		for (int i = 0; i < linesArr.length; i++) {
 			splitted = linesArr[i].split(" \\| ");
-			problemSpoj.setProblemCode(splitted[0]);
-			problemSpoj.setProblemName(splitted[1]);
-			problemSpoj.setType("classical");
-			problemSpoj.setUrl(splitted[2].replaceAll(
+			problem.setProblemCode(splitted[0]);
+			problem.setProblemName(splitted[1]);
+		
+			problem.setUrl(splitted[2].replaceAll(
 			        "https", "http"));
-
+			problem.setOjType("SPOJ");
 			/*
-			 * txt += " Problem Code " + problemSpoj.getProblemCode() +
-			 * " Problem Name " + problemSpoj.getProblemName() +
-			 * " Problem Type " + problemSpoj.getType() + "Problem URL " +
-			 * problemSpoj.getUrl() + "\n";
-			 */
-
-			submissionService.saveSpojProblemtoDB(problemSpoj,
+			submissionService.saveSpojProblemtoDB(problem,
 			        new AsyncCallback<Void>() {
 
 				        @Override
@@ -74,12 +62,26 @@ public class SpojProblemsToDBAdder extends Content {
 
 				        }
 			        });
-
+*/
 		}
-		textArea.setText(" Failures " + String.valueOf(failures) + " Success "
+	System.out.println(" Failures " + String.valueOf(failures) + " Success "
 		        + String.valueOf(success));
-
-		// TODO Auto-generated constructor stub
 	}
-
+	
+	private void addLanguages(){
+		languageService.addLanguages(new AsyncCallback<Void>() {
+			
+			@Override
+			public void onSuccess(Void result) {
+				System.out.println("Languages added to DB");
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
 }

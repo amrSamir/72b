@@ -58,7 +58,6 @@ public class CheckCookiesPresenter implements Presenter {
 	@Override
 	public void go(HasWidgets container) {
 		// container.clear();
-		// TODO Auto-generated method stub
 	}
 
 }

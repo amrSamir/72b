@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.Image;
 
 public class TestNorth extends Content {
 
+	
 	public TestNorth() {
 
 		AbsolutePanel absolutePanel = new AbsolutePanel();
@@ -17,7 +18,5 @@ public class TestNorth extends Content {
 		Image widget = new Image(img);
 
 		absolutePanel.add(widget);
-		// TODO Auto-generated constructor stub
-
 	}
 }

@@ -9,6 +9,12 @@ public class HintData {
  
 	
 	
+	/**
+	 * @param hintCode 
+	 * @param problemCode
+	 * @param hintString
+	 * @param userID
+	 */
 	public HintData(Long hintCode, String problemCode, String hintString,
 			Long userID) {
 		super();
@@ -20,53 +26,80 @@ public class HintData {
 
 
 
+	/**
+	 * @return
+	 */
 	public Long getHintCode() {
 		return hintCode;
 	}
 
 
 
+	/**
+	 * @param hintCode
+	 */
 	public void setHintCode(Long hintCode) {
 		this.hintCode = hintCode;
 	}
 
 
 
+	/**
+	 * @return
+	 */
 	public String getProblemCode() {
 		return problemCode;
 	}
 
 
 
+	/**
+	 * @param problemCode
+	 */
 	public void setProblemCode(String problemCode) {
 		this.problemCode = problemCode;
 	}
 
 
 
+	/**
+	 * @return
+	 */
 	public String getHintString() {
 		return hintString;
 	}
 
 
 
+	/**
+	 * @param hintString
+	 */
 	public void setHintString(String hintString) {
 		this.hintString = hintString;
 	}
 
 
 
+	/**
+	 * @return
+	 */
 	public Long getUserID() {
 		return userID;
 	}
 
 
 
+	/**
+	 * @param userID
+	 */
 	public void setUserID(Long userID) {
 		this.userID = userID;
 	}
 
 
 
+	/**
+	 * 
+	 */
 	public HintData(){}
 }

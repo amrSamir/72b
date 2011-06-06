@@ -30,6 +30,9 @@ public class AddAccountView extends Composite implements
 	VerticalPanel absolutePanel;
 	Button btnAddAccount;
 
+	/**
+	 * add account view page  
+	 */
 	public AddAccountView() {
 		absolutePanel = new VerticalPanel();
 		initWidget(absolutePanel);

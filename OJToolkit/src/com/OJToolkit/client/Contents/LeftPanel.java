@@ -11,9 +11,20 @@ import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
+/**
+ * @author 72B
+ *
+ */
 public class LeftPanel extends Content {
+	
+	
 	enum Labels {ViewCoders,AddAccounts,ViewProblems};
 	
+	
+	/**
+	 * genrate the left panel 
+	 * @param eventBus
+	 */
 	public LeftPanel(final HandlerManager eventBus) {
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		absolutePanel.setStyleName("LeftPanel");
@@ -35,18 +46,19 @@ public class LeftPanel extends Content {
 		absolutePanel.add(lableViewProblem, 39, 120);
 		
 	}
-	Label addLeftPanel_lable(String LableName, final HandlerManager eventBus,final Labels L){
+		
+	private Label addLeftPanel_lable(String LableName, final HandlerManager eventBus,final Labels LinkType){
 		
 		Label lblLabel = new Label(LableName);
 		lblLabel.setStyleName("LeftPanel-Label");
 		lblLabel.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				if(L.equals(Labels.ViewCoders))
+				if(LinkType.equals(Labels.ViewCoders))
 					eventBus.fireEvent(new ViewCodersEvent());
-				else if(L.equals(Labels.AddAccounts))
+				else if(LinkType.equals(Labels.AddAccounts))
 					eventBus.fireEvent(new AddAccountEvent());
-				else if(L.equals(Labels.ViewProblems))
+				else if(LinkType.equals(Labels.ViewProblems))
 					eventBus.fireEvent(new AlreadyRegisteredEvent());
 			}
 		});

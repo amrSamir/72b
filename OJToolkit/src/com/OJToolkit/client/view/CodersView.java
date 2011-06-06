@@ -35,6 +35,9 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 	CellTable<CoderData> codersTable;
 	final ListDataProvider<CoderData> coderDataProvider;
 
+	/**
+	 * view coder page 
+	 */
 	public CodersView() {
 		ScrollPanel ScrollCoders = new ScrollPanel() ;
 		ScrollCoders.setSize("100%", "100%") ;

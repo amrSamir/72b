@@ -24,19 +24,21 @@ import com.google.gwt.user.client.ui.Widget;
 public class RegistrationPresenter implements Presenter {
 
 	public interface Display {
-
 		HasClickHandlers getSubmitButton();
-
 		HasValue<String> getUsername();
-
 		Widget asWidget();
-
 	}
 
 	private final Display display;
 	private final CoderServiceAsync coderService;
 	private final HandlerManager eventBus;
 
+	/**
+	 * Call registration  page 
+	 * @param coderService
+	 * @param eventBus
+	 * @param display
+	 */
 	public RegistrationPresenter(CoderServiceAsync coderService,
 	        HandlerManager eventBus, final Display display) {
 
@@ -49,6 +51,9 @@ public class RegistrationPresenter implements Presenter {
 
 	}
 
+	/**
+	 * check if already registered
+	 */
 	public void checkRegistered() {
 		System.out.println("Checking if registered");
 		coderService.checkRegistered(new AsyncCallback<Boolean>() {
@@ -61,7 +66,6 @@ public class RegistrationPresenter implements Presenter {
 					eventBus.fireEvent(new CheckCookiesEvent());
 				} else {
 					// do nothing as you are already in RegistrationPresenter
-
 				}
 			}
 
@@ -95,17 +99,11 @@ public class RegistrationPresenter implements Presenter {
 					        @Override
 					        public void onFailure(Throwable caught) {
 						        Window.alert("Username already taken");
-						        // TODO Auto-generated method stub
-
 					        }
 				        });
-				// TODO Auto-generated method stub
 
 			}
 		});
-
-		// TODO Auto-generated method stub
-
 	}
 
 	/*
@@ -118,7 +116,6 @@ public class RegistrationPresenter implements Presenter {
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
-		// TODO Auto-generated method stub
 	}
 
 }

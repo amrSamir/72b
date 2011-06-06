@@ -6,6 +6,9 @@ import com.google.gwt.user.client.ui.Image;
 
 public class TopPanel extends Content {
 
+	/**
+	 * Generate the top panel 
+	 */
 	public TopPanel() {
 
 		AbsolutePanel absolutePanel = new AbsolutePanel();

@@ -28,9 +28,15 @@ public class CodersPresenter implements Presenter {
 	private final HandlerManager eventBus;
 	private final AbstractHasData<CoderData> codersTable;
 	private final ArrayList<CoderData> codersList;
-	private final int numOfCoders = 1;
+	private final int numOfCoders = 0;
 	private int pageStart = 0;
 
+	/**
+	 * Generate coder list page
+	 * @param coderService
+	 * @param eventBus
+	 * @param display
+	 */
 	public CodersPresenter(CoderServiceAsync coderService,
 			HandlerManager eventBus, final Display display) {
 		
@@ -38,21 +44,26 @@ public class CodersPresenter implements Presenter {
 		this.eventBus = eventBus;
 		this.display = display;
 		codersTable = this.display.getTable();
-		this.display.setNumberOfCoders(numOfCoders);
+		
 		this.codersList = new ArrayList<CoderData>();
 		for (int i = 0; i <= numOfCoders; i++) {
 			codersList.add(null);
 		}
-		this.display.setCodersList(codersList);
 		fitchCoders() ;
+//		this.display.setCodersList(codersList);
+//		this.display.setNumberOfCoders(numOfCoders);
 		this.display.setPageStart(pageStart);
 
 	}
 
-	public void fitchCoders() {
+	/**
+	 * Fetch all coder data
+	 */
+	private void fitchCoders() {
 		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
 			@Override
 			public void onSuccess(ArrayList<CoderData> result) {
+				display.setNumberOfCoders(result.size());
 				display.setCodersList(result);
 			}
 
@@ -65,6 +76,9 @@ public class CodersPresenter implements Presenter {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client.ui.HasWidgets)
+	 */
 	@Override
 	public void go(HasWidgets container) {
 		container.clear();

@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -21,9 +22,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 
 	public interface Display {
 		HasClickHandlers getRefreshButton();
-
 		void setSubmissionResult(ProblemStatusData problemStatus);
-
 		Widget asWidget();
 	}
 
@@ -32,6 +31,12 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	private final HandlerManager eventBus;
 	private ProblemStatusData problemStatus;
 
+	/**
+	 * Generate Problem statue page
+	 * @param submssionService
+	 * @param eventBus
+	 * @param display
+	 */
 	public ProblemSubmissionStatusPresenter(
 	        SubmissionServiceAsync submssionService, HandlerManager eventBus,
 	        final Display display) {
@@ -44,7 +49,10 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 		callGetLastProblemStatusService();
 
 	}
-
+	
+	/**
+	 * get last problem statue 
+	 */
 	void callGetLastProblemStatusService() {
 		submssionService
 		        .getLastProblemStatus(new AsyncCallback<ProblemStatusData>() {
@@ -53,14 +61,11 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 			        public void onSuccess(ProblemStatusData result) {
 				        problemStatus = result;
 				        display.setSubmissionResult(result);
-				        // TODO Auto-generated method stub
-
 			        }
 
 			        @Override
 			        public void onFailure(Throwable caught) {
-				        // TODO Auto-generated method stub
-
+			        	Window.alert("Failed to get last problem results!!");
 			        }
 		        });
 	}
@@ -74,13 +79,8 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				callGetLastProblemStatusService();
-				// TODO Auto-generated method stub
-
 			}
 		});
-
-		// TODO Auto-generated method stub
-
 	}
 
 	/*
@@ -93,8 +93,6 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
-		// TODO Auto-generated method stub
-
 	}
 
 }

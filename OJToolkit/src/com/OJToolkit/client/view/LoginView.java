@@ -20,6 +20,10 @@ public class LoginView extends Composite implements LoginPresenter.Display {
 
 	Anchor signInLink;
 
+	/**
+	 * 
+	 * Login page
+	 */
 	public LoginView() {
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		absolutePanel.setSize("100%", "100%");

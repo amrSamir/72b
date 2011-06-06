@@ -34,15 +34,10 @@ public class ProblemListPresenter implements Presenter {
 		 */
 
 		AbstractHasData<ProblemData> getTable();
-
 		void setProblemList(ArrayList<ProblemData> problemsList);
-
 		void setNumberOfProblems(int numberOfProblems);
-
 		void setPageStart(int pageStart);
-
 		Widget asWidget();
-
 		// HasValue<String> getProblemTitle();
 
 	}
@@ -55,6 +50,12 @@ public class ProblemListPresenter implements Presenter {
 	private final int numberOfProblems = 6684;
 	private int pageStart = 0;
 
+	/**
+	 * Genrate the Problem list presenter
+	 * @param submissionService
+	 * @param eventBus
+	 * @param display
+	 */
 	public ProblemListPresenter(SubmissionServiceAsync submissionService,
 	        HandlerManager eventBus, final Display display) {
 		this.submissionService = submissionService;
@@ -74,6 +75,9 @@ public class ProblemListPresenter implements Presenter {
 
 	}
 
+	/**
+	 * fetch fifty problem in the problem table 
+	 */
 	public void fitchFiftyProblems() {
 		submissionService.getProblems(pageStart,
 		        new AsyncCallback<ArrayList<ProblemData>>() {

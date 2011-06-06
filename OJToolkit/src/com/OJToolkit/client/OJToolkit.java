@@ -70,20 +70,6 @@ public class OJToolkit implements EntryPoint {
 
 		LanguageServiceAsync languageService = GWT
 		        .create(LanguageService.class);
-//		languageService.addLanguages(new AsyncCallback<Void>() {
-//			
-//			@Override
-//			public void onSuccess(Void result) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void onFailure(Throwable caught) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
 
 		CoderServiceAsync coderService = GWT.create(CoderService.class);
 

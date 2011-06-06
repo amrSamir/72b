@@ -23,11 +23,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class LoginPresenter implements Presenter {
 
 	public interface Display {
-
 		void setLoginURL(String loginURL);
-
 		Widget asWidget();
-
 	}
 
 	private final Display display;
@@ -35,6 +32,13 @@ public class LoginPresenter implements Presenter {
 	private final CoderServiceAsync coderService;
 	private final HandlerManager eventBus;
 
+	/**
+	 * 
+	 * @param loginService
+	 * @param coderService
+	 * @param eventBus
+	 * @param display
+	 */
 	public LoginPresenter(LoginServiceAsync loginService,
 	        CoderServiceAsync coderService, final HandlerManager eventBus,
 	        final Display display) {
@@ -79,7 +83,6 @@ public class LoginPresenter implements Presenter {
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
-		// TODO Auto-generated method stub
 	}
 
 }

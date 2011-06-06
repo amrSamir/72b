@@ -319,12 +319,12 @@ public class AppController implements ValueChangeHandler<String> {
 			} else if (token.startsWith("problem")) {
 				if (problem == null) {
 					presenter = new ProblemPresenter(token.substring(7),
-					        submissionService, languageService, eventBus,
-					        new ProblemView());
+					        submissionService, languageService, eventBus,sourceCodeService,
+					        new ProblemView(),hintService);
 				} else {
 					presenter = new ProblemPresenter(problem.getProblemCode(),
-							 submissionService, languageService, eventBus,
-						        new ProblemView());
+							  submissionService, languageService, eventBus,sourceCodeService,
+						        new ProblemView(),hintService);
 				}
 			} else if (token.equals("alreadyRegistered")) {
 				presenter = new ProblemListPresenter(submissionService,

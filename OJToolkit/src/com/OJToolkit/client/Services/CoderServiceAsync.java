@@ -9,8 +9,7 @@ import com.OJToolkit.client.ValueObjects.CoderData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * @author 72B
- *         May 13, 2011
+ * @author 72B May 13, 2011
  */
 public interface CoderServiceAsync {
 
@@ -27,8 +26,7 @@ public interface CoderServiceAsync {
 	void viewCoders(AsyncCallback<ArrayList<CoderData>> callback);
 
 	void addAccount(String accountType, String username, String password,
-	        AsyncCallback<Void> callback);
-
+			AsyncCallback<Void> callback);
 	void getAddedAccounts(AsyncCallback<String> callback);
 
 }

@@ -8,8 +8,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 /**
- * @author 72B
- *         Contains all the submission and problems services
+ * @author 72B Contains all the submission and problems services
  */
 @RemoteServiceRelativePath("submission")
 public interface SubmissionService extends RemoteService {

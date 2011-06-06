@@ -8,12 +8,10 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 /**
- * @author 72B
- *         All the services related to the coder
+ * @author 72B All the services related to the coder
  */
 @RemoteServiceRelativePath("coder")
 public interface CoderService extends RemoteService {
-
 	/**
 	 * Add Coder to the datastore
 	 * 
@@ -35,7 +33,7 @@ public interface CoderService extends RemoteService {
 	 *             Thrown if the user is not logged in
 	 */
 	public void addAccount(String accountType, String username, String password)
-	        throws NotLoggedInException;
+			throws NotLoggedInException;
 
 	/**
 	 * Get All the coders from database

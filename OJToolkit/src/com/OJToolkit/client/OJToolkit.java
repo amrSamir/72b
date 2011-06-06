@@ -78,9 +78,9 @@ public class OJToolkit implements EntryPoint {
 		HintServiceAsync hintService = GWT.create(HintService.class);
 		HandlerManager eventBus = new HandlerManager(null);
 		
-		new SpojProblemsToDBAdder();
+	//	new SpojProblemsToDBAdder();
 		
-		/*
+		///*
 		AppController appViewer = new AppController(eventBus,
 		        submissionService, languageService, loginService, coderService, sourceCodeService,hintService);
 		appViewer.go(core, topPanel, leftPanel);

@@ -37,7 +37,7 @@ public class AddAccountView extends Composite implements
 		Label lblTitle = new Label("Add Account");
 		absolutePanel.add(lblTitle);
 
-		btnAddSpojAccount = new Button("Add SPOJJ Account");
+		btnAddSpojAccount = new Button("Add SPOJ Account");
 		btnAddSpojAccount.setSize("200", "200");
 		absolutePanel.add(btnAddSpojAccount);
 
@@ -184,9 +184,6 @@ public class AddAccountView extends Composite implements
 	    return btnAddUVAAccount;
     }
 
-	@Override
-	public HasClickHandlers getAddXAccountButton() {
-		return null;
-	}
+
 
 }

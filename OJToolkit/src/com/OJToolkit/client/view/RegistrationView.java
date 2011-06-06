@@ -14,11 +14,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * @author 72B
- *         Apr 26, 2011
+ * @author 72B Apr 26, 2011
  */
 public class RegistrationView extends Composite implements
-        RegistrationPresenter.Display {
+		RegistrationPresenter.Display {
 
 	TextBox txtUsername;
 	Button btnRegister;
@@ -41,15 +40,11 @@ public class RegistrationView extends Composite implements
 
 		/*
 		 * Label lblSpojUsername = new Label("SPOJ Username");
-		 * absolutePanel.add(lblSpojUsername);
-		 * txtSPOJUsername = new TextBox();
-		 * absolutePanel.add(txtSPOJUsername);
-		 * txtSPOJUsername.setSize("141px", "16px");
-		 * Label lblSpojPassword = new Label("SPOJ Password");
-		 * absolutePanel.add(lblSpojPassword);
-		 * pwdSPOJ = new PasswordTextBox();
-		 * absolutePanel.add(pwdSPOJ);
-		 * pwdSPOJ.setSize("141px", "16px");
+		 * absolutePanel.add(lblSpojUsername); txtSPOJUsername = new TextBox();
+		 * absolutePanel.add(txtSPOJUsername); txtSPOJUsername.setSize("141px",
+		 * "16px"); Label lblSpojPassword = new Label("SPOJ Password");
+		 * absolutePanel.add(lblSpojPassword); pwdSPOJ = new PasswordTextBox();
+		 * absolutePanel.add(pwdSPOJ); pwdSPOJ.setSize("141px", "16px");
 		 */
 
 		btnRegister = new Button("Register");
@@ -60,35 +55,35 @@ public class RegistrationView extends Composite implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#asWidget()
 	 */
 	@Override
 	public Widget asWidget() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.RegistrationPresenter.Display#getSubmitButton
 	 * ()
 	 */
 	@Override
 	public HasClickHandlers getSubmitButton() {
-		// TODO Auto-generated method stub
 		return btnRegister;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.RegistrationPresenter.Display#getUsername
 	 * ()
 	 */
 	@Override
 	public HasValue<String> getUsername() {
-		// TODO Auto-generated method stub
 		return txtUsername;
 	}
 

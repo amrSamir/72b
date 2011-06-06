@@ -14,8 +14,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * @author 72B
- *         Apr 26, 2011
+ * @author 72B Apr 26, 2011
  */
 public class CodersView extends Composite implements CodersPresenter.Display {
 
@@ -23,23 +22,22 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 
 	public CodersView() {
 		absolutePanel = new AbsolutePanel();
-
 		initWidget(absolutePanel);
-
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#asWidget()
 	 */
 	@Override
 	public Widget asWidget() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.CodersPresenter.Display#setCodersList(
 	 * java.util.ArrayList)
@@ -49,8 +47,6 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 		for (CoderData coder : coders) {
 			viewCoder(coder);
 		}
-		// TODO Auto-generated method stub
-
 	}
 
 	public void viewCoder(CoderData coder) {

@@ -13,11 +13,10 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
- * @author 72B
- *         May 10, 2011
+ * @author 72B May 10, 2011
  */
 public class ProblemSubmissionStatusView extends Composite implements
-        ProblemSubmissionStatusPresenter.Display {
+		ProblemSubmissionStatusPresenter.Display {
 
 	private Button btnRefresh;
 	VerticalPanel verticalPanel;
@@ -68,18 +67,19 @@ public class ProblemSubmissionStatusView extends Composite implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter.Display
 	 * #getRefreshButton()
 	 */
 	@Override
 	public HasClickHandlers getRefreshButton() {
-		// TODO Auto-generated method stub
 		return btnRefresh;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter.Display
 	 * #setSubmissionResult(com.OJToolkit.client.ValueObjects.ProblemStatusData)
@@ -91,8 +91,6 @@ public class ProblemSubmissionStatusView extends Composite implements
 		txtMemory.setText(result.getMem());
 		txtProblemLink.setText(result.getProblemLink());
 		txtTime.setText(result.getTime());
-		// TODO Auto-generated method stub
-
 	}
 
 }

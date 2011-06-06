@@ -18,11 +18,10 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 
 /**
- * @author 72B
- *         Apr 26, 2011
+ * @author 72B Apr 26, 2011
  */
 public class ProblemListView extends Composite implements
-        ProblemListPresenter.Display {
+		ProblemListPresenter.Display {
 
 	/**
 	 * Number of problems in database. It's constant as it costs much time to
@@ -103,17 +102,18 @@ public class ProblemListView extends Composite implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemListPresenter.Display#getTable()
 	 */
 	@Override
 	public AbstractHasData<ProblemData> getTable() {
-		// TODO Auto-generated method stub
 		return table;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemListPresenter.Display#setProblemList
 	 * (java.util.ArrayList)
@@ -122,24 +122,22 @@ public class ProblemListView extends Composite implements
 	public void setProblemList(ArrayList<ProblemData> problemsList) {
 		this.problemsList = problemsList;
 		dataProvider.setList(problemsList);
-		// TODO Auto-generated method stub
-
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.presenter.ProblemListPresenter.Display#
 	 * setNumberOfProblems(int)
 	 */
 	@Override
 	public void setNumberOfProblems(int numberOfProblems) {
 		this.numberOfProblems = numberOfProblems;
-		// TODO Auto-generated method stub
-
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemListPresenter.Display#setPageStart
 	 * (int)
@@ -147,12 +145,11 @@ public class ProblemListView extends Composite implements
 	@Override
 	public void setPageStart(int pageStart) {
 		this.pageStart = pageStart;
-		// TODO Auto-generated method stub
-
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemListPresenter.Display#setPageStart
 	 * (int)
@@ -160,8 +157,6 @@ public class ProblemListView extends Composite implements
 	@Override
 	public Widget asWidget() {
 		return this;
-		// TODO Auto-generated method stub
-
 	}
 
 }

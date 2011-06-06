@@ -21,8 +21,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * @author 72B
- *         Apr 26, 2011
+ * @author 72B Apr 26, 2011
  */
 public class ProblemView extends Composite implements ProblemPresenter.Display {
 
@@ -75,6 +74,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemPresenter.Display#getSubmitButton()
 	 */
@@ -85,6 +85,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemPresenter.Display#setProblem(com
 	 * .OJToolkit.client.ValueObjects.ProblemData)
@@ -101,54 +102,54 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemPresenter.Display#setLanguages(
 	 * java.util.ArrayList)
 	 */
 	@Override
 	public void setLanguages(ArrayList<LanguageData> languages) {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < languages.size(); i++)
 			comboBox.addItem(languages.get(i).getLanguageName(),
-			        languages.get(i).getLanguageValue());
+					languages.get(i).getLanguageValue());
 
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#getCode()
 	 */
 	@Override
 	public String getCode() {
-		// TODO Auto-generated method stub
 		return CodeText.getText();
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemPresenter.Display#getProblemCode()
 	 */
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#
 	 * getSelectedLanguageValue()
 	 */
 	@Override
 	public String getSelectedLanguageValue() {
-
-		// TODO Auto-generated method stub
 		return comboBox.getValue(comboBox.getSelectedIndex());
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#asWidget()
 	 */
 	@Override
 	public Widget asWidget() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 

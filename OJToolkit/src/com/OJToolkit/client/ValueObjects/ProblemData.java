@@ -7,13 +7,15 @@ import java.io.Serializable;
  *         Holds the Problem Data
  */
 /**
- * @author 72B Apr 23, 2011
+ * @author 72B
+ *         Apr 23, 2011
  */
 public class ProblemData implements Serializable {
 	private String url;
-	private String type;
+
 	private String problemCode;
 	private String problemName;
+	private String ojType;
 
 	/**
 	 * Creates an a problem object for viewing purpose
@@ -27,13 +29,13 @@ public class ProblemData implements Serializable {
 	 * @param problemName
 	 *            The Title of the problem
 	 */
-	public ProblemData(String url, String type, String problemCode,
-			String problemName) {
+	public ProblemData(String problemCode,
+	        String problemName, String url, String ojType) {
 		super();
 		this.url = url;
-		this.type = type;
 		this.problemCode = problemCode;
 		this.problemName = problemName;
+		this.ojType = ojType;
 	}
 
 	/**
@@ -72,20 +74,7 @@ public class ProblemData implements Serializable {
 		this.problemName = problemName;
 	}
 
-	/**
-	 * @param t
-	 *            The category of the problem
-	 */
-	public void setType(String t) {
-		type = t;
-	}
 
-	/**
-	 * @return The category of the problem
-	 */
-	public String getType() {
-		return type;
-	}
 
 	/**
 	 * @return The URL of the problem
@@ -101,4 +90,18 @@ public class ProblemData implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	/**
+     * @param ojType the ojType to set
+     */
+    public void setOjType(String ojType) {
+	    this.ojType = ojType;
+    }
+
+	/**
+     * @return the ojType
+     */
+    public String getOjType() {
+	    return ojType;
+    }
 }

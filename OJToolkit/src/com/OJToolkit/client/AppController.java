@@ -53,6 +53,10 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
 
+/**
+ * @author 72B
+ *         Apr 26, 2011
+ */
 public class AppController implements ValueChangeHandler<String> {
 
 	private final HandlerManager eventBus;
@@ -62,10 +66,13 @@ public class AppController implements ValueChangeHandler<String> {
 	private final CoderServiceAsync coderService;
 	private final SourceCodeServiceAsync sourceCodeService;
 	private final HintServiceAsync hintService;
+	
 	private String problemStr = "problem";
 	//public static boolean isEnabled;
 
-//	remembers cookie for 2 weeks.
+	/**
+	 * remembers cookie for 2 weeks.
+	 */
 	public static final Date COOKIES_EXPIRYDATE = new Date(
 	        System.currentTimeMillis() + 1000 * 60 * 60);
 
@@ -87,100 +94,153 @@ public class AppController implements ValueChangeHandler<String> {
 		this.coderService = coderService;
 		this.sourceCodeService = sourceCodeService;
 		this.hintService = hintService;
+		
 		// checkCookies();
 		bind();
 	}
 
-//  bind all button with actions 
+	/**
+     * bind all button with actions 
+     */
 	private void bind() {
 		History.addValueChangeHandler(this);
 		eventBus.addHandler(ViewProblemSubmissionStatusEvent.TYPE,
 		        new ViewProblemSubmissionStatusEventHandler() {
+
 			        @Override
 			        public void onSubmitProblem(
 			                ViewProblemSubmissionStatusEvent event) {
 				        doViewProblemSubmissionStatus();
+				        // TODO Auto-generated method stub
+
 			        }
 		        });
+
 		eventBus.addHandler(ViewProblemEvent.TYPE,
 		        new ViewProblemEventHandler() {
+
 			        @Override
 			        public void onViewProblem(ViewProblemEvent event) {
 				        doViewProblem(event.problem);
+
 			        }
 		        });
 
 		eventBus.addHandler(AlreadyRegisteredEvent.TYPE,
 		        new AlreadyRegisteredEventHandler() {
+
 			        @Override
 			        public void ifRegistered(AlreadyRegisteredEvent event) {
 				        doIfRegistered();
+
 			        }
+
 		        });
+
 		eventBus.addHandler(RegistrationEvent.TYPE,
 		        new RegisterationEventHandler() {
+
 			        @Override
 			        public void onRegistration(RegistrationEvent event) {
 				        doOnRegistration();
+
 			        }
 		        });
+
 		eventBus.addHandler(LoginEvent.TYPE, new LoginEventHandler() {
+
 			@Override
 			public void onLogin(LoginEvent event) {
 				doOnLogin();
+				// TODO Auto-generated method stub
+
 			}
+
 		});
 
 		eventBus.addHandler(CheckCookiesEvent.TYPE,
 		        new CheckCookiesEventHandler() {
+
 			        @Override
 			        public void onCheckCookies(CheckCookiesEvent event) {
 				        doOnCheckCookies();
+
 			        }
+
 		        });
 
 		eventBus.addHandler(ViewCodersEvent.TYPE, new ViewCodersEventHandler() {
+
 			@Override
 			public void onViewCoders(ViewCodersEvent event) {
 				doOnViewCoders();
+
 			}
+
 		});
 
 		eventBus.addHandler(AddAccountEvent.TYPE, new AddAccountEventHandler() {
+
 			@Override
 			public void onAddAccount(AddAccountEvent event) {
 				doOnAddAccount();
+				// TODO Auto-generated method stub
+
 			}
+
 		});
+
+		// TODO Auto-generated method stub
 	}
 
-	// add cookies to history 
+	/**
+     *  add cookies to history 
+     */
 	protected void doOnCheckCookies() {
 		History.newItem("checkCookies");
+
 	}
 
-	// add login in history 
+	/**
+     * add login in history 
+     */
 	protected void doOnLogin() {
 		History.newItem("login");
+
 	}
 
-	// add an account details event  
+	/**
+	 * add an account details event  
+	 * @param oJType
+	 */
 	protected void doOnAddAccountDetails(String oJType) {
 		this.OJType = oJType;
 		History.newItem("addAccountDetails");
+		// TODO Auto-generated method stub
+
 	}
 
-	// add an account 
+	/**
+     * add an account 
+     */
 	protected void doOnAddAccount() {
 		History.newItem("addAccount");
+
 	}
 
-	// view coders even
+	/**
+     * view coders even
+     */
 	protected void doOnViewCoders() {
 		History.newItem("viewCoders");
+		// TODO Auto-generated method stub
+
 	}
 
-	// view problem 
+	/**
+	 * view problem 
+	 * @param problem to be shown
+	 */
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
 		problemStr = "problem" + problem.getProblemCode();
@@ -188,22 +248,28 @@ public class AppController implements ValueChangeHandler<String> {
 
 	}
 
-	// do register 
+	/**
+     *  do register 
+     */
 	protected void doOnRegistration() {
 		History.newItem("Registration");
+
 	}
 
-	// aleady regesterd 
+	/**
+	 * already registered
+	 */
 	private void doIfRegistered() {
 		History.newItem("alreadyRegistered");
 	}
 
-	//view problem submition 
+	/**
+	 * view problem submission 
+	 */
 	private void doViewProblemSubmissionStatus() {
 		History.newItem("problemSubmissionStatus");
 	}
 
-	// start the web site 
 	public void go(Panel core, HasWidgets topPanel, HasWidgets leftPanel) {
 		this.container = core;
 		this.topPanel = topPanel;
@@ -213,16 +279,30 @@ public class AppController implements ValueChangeHandler<String> {
 
 		this.leftPanel.add(new LeftPanel(eventBus));
 		if ("".equals(History.getToken())) {
+
+			// String sessionID = Cookies.getCookie("reg");
+
+			// if (sessionID != null) {
+			// History.newItem("alreadyRegistered");
+			// } else {
 			History.newItem("checkCookies");
+			// }
 		} else {
 			History.fireCurrentHistoryState();
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.google.gwt.event.logical.shared.ValueChangeHandler#onValueChange(
+	 * com.google.gwt.event.logical.shared.ValueChangeEvent)
+	 */
 	@Override
 	public void onValueChange(ValueChangeEvent<String> event) {
 		String token = event.getValue();
-		
+		// String sessionID = Cookies.getCookie("reg");
+
 		if (token != null) {
 			Presenter presenter = null;
 			// if (isEnabled) {
@@ -240,11 +320,11 @@ public class AppController implements ValueChangeHandler<String> {
 				if (problem == null) {
 					presenter = new ProblemPresenter(token.substring(7),
 					        submissionService, languageService, eventBus,
-					        sourceCodeService, new ProblemView(), hintService);
+					        new ProblemView());
 				} else {
 					presenter = new ProblemPresenter(problem.getProblemCode(),
-					        submissionService, languageService, eventBus,
-					        sourceCodeService, new ProblemView(), hintService);
+							 submissionService, languageService, eventBus,
+						        new ProblemView());
 				}
 			} else if (token.equals("alreadyRegistered")) {
 				presenter = new ProblemListPresenter(submissionService,
@@ -255,6 +335,12 @@ public class AppController implements ValueChangeHandler<String> {
 			} else if (token.equals("addAccount")) {
 				presenter = new AddAccountPresenter(coderService, eventBus,
 				        new AddAccountView());
+				// }
+				// }
+				// else{
+				// if (token.equals("login")) {
+				// presenter = new LoginPresenter(loginService, coderService,
+				// eventBus, new LoginView());
 			} else if (token.equals("checkCookies")) {
 				presenter = new CheckCookiesPresenter(eventBus);
 			} else if (token.equals("Registration")) {
@@ -263,9 +349,23 @@ public class AppController implements ValueChangeHandler<String> {
 			} else {
 				presenter = new CheckCookiesPresenter(eventBus);
 			}
+
+			// }
 			if (presenter != null) {
 				presenter.go(container);
 			}
+			/*
+			 * } else {
+			 * System.out.println(Cookies.getCookie("loggedIn"));
+			 * if (Cookies.getCookie("loggedIn") != null) {
+			 * presenter = new RegistrationPresenter(coderService,
+			 * eventBus, new RegistrationView());
+			 * } else {
+			 * presenter = new LoginPresenter(loginService, coderService,
+			 * eventBus, new LoginView());
+			 * }
+			 */
+			// }
 
 		}
 	}

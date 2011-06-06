@@ -32,28 +32,29 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
-		// if (problem.getType() == "SPOJ") {
-		String spojUsername = DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJUsername();
-		
-		String spojPassword = DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJPassword();
-		
-		judgeUsername = spojUsername;
-		judgePassword = spojPassword;
-		judge = new SPOJ();
-		// }
+		if (problem.getOjType() == "SPOJ") {
+			judgeUsername = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJUsername();
+			judgePassword = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJPassword();
+			judge = new SPOJ();
+		} else if(problem.getOjType() == "Timus"){
+			judgeUsername = DataStoreHandler.getAllCoders().get(0)
+	        .getTimusUsername();
+	judgePassword = DataStoreHandler.getAllCoders().get(0)
+	        .getTimusPassword();
+	judge = new SPOJ();
+		}
 		if (judge != null) {
 			try {
-				System.out.println("Spoj password: " + spojPassword);
 				System.out.println("language value: " + language);
-				System.out.println("Spoj Username: " + spojUsername);
+				System.out.println("Username: " + judgeUsername);
+				System.out.println("Password" + judgePassword);
 				System.out.println("Problem Code: " + problemCode);
 				System.out.println("Code: " + code);
-				judge.submitProblem(judgeUsername, judgePassword, problemCode.replaceAll(" ", ""),
-				        language, code);
+				judge.submitProblem(judgeUsername, judgePassword,
+				        problemCode.replaceAll(" ", ""), language, code);
 				System.out.println("Submitted");
-				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -97,16 +98,20 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		// TODO Auto-generated method stub
 
 	}
-	int counter=0;
+
+	int counter = 0;
+
 	@Override
 	public void saveSpojProblemtoDB(ProblemData problemData) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
-			
+
 			// Query qq = pm.newQuery(Problem.class); List<Problem> ae =
-			 //(List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
-			
-			Problem problem = new Problem(problemData.getProblemCode(), problemData.getProblemName(), problemData.getUrl(), problemData.getOjType());
+			// (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
+
+			Problem problem = new Problem(problemData.getProblemCode(),
+			        problemData.getProblemName(), problemData.getUrl(),
+			        problemData.getOjType());
 
 			pm.makePersistent(problem);
 			counter++;
@@ -149,7 +154,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				problemData.setProblemName(problem.getProblemName());
 				problemData.setOjType(problem.getOjType());
 				problemData.setUrl(problem.getUrl());
-				ret.add(new ProblemData(problemData.getProblemCode(), problemData.getProblemName(), problemData.getUrl(), problemData.getOjType()));
+				ret.add(new ProblemData(problemData.getProblemCode(),
+				        problemData.getProblemName(), problemData.getUrl(),
+				        problemData.getOjType()));
 			}
 
 		} finally {

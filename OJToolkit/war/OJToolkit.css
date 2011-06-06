@@ -41,3 +41,12 @@ h1 {
 .LeftPanel-Label {
 	color: white;
 }
+.center
+{
+	
+	margin: auto;
+	top:100px;
+	width:80%;
+	border-style:groove;
+	
+}

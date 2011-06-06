@@ -35,16 +35,25 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		// if (problem.getType() == "SPOJ") {
 		String spojUsername = DataStoreHandler.getAllCoders().get(0)
 		        .getSPOJUsername();
+		
 		String spojPassword = DataStoreHandler.getAllCoders().get(0)
 		        .getSPOJPassword();
+		
 		judgeUsername = spojUsername;
 		judgePassword = spojPassword;
 		judge = new SPOJ();
 		// }
 		if (judge != null) {
 			try {
-				judge.submitProblem(judgeUsername, judgePassword, problemCode,
+				System.out.println("Spoj password: " + spojPassword);
+				System.out.println("language value: " + language);
+				System.out.println("Spoj Username: " + spojUsername);
+				System.out.println("Problem Code: " + problemCode);
+				System.out.println("Code: " + code);
+				judge.submitProblem(judgeUsername, judgePassword, problemCode.replaceAll(" ", ""),
 				        language, code);
+				System.out.println("Submitted");
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -88,20 +97,20 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		// TODO Auto-generated method stub
 
 	}
-
+	int counter=0;
 	@Override
 	public void saveSpojProblemtoDB(ProblemData problemData) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
-			/*
-			 * Query qq = pm.newQuery(Problem.class); List<Problem> ae =
-			 * (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
-			 */
-			Problem problem = new Problem(problemData.getUrl(),
-			        problemData.getType(), problemData.getProblemCode(),
-			        problemData.getProblemName());
+			
+			// Query qq = pm.newQuery(Problem.class); List<Problem> ae =
+			 //(List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
+			
+			Problem problem = new Problem(problemData.getProblemCode(), problemData.getProblemName(), problemData.getUrl(), problemData.getOjType());
 
 			pm.makePersistent(problem);
+			counter++;
+			System.out.println(counter);
 
 		} finally {
 			pm.close();
@@ -138,11 +147,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			for (Problem problem : problems) {
 				problemData.setProblemCode(problem.getProblemCode());
 				problemData.setProblemName(problem.getProblemName());
-				problemData.setType(problem.getType());
+				problemData.setOjType(problem.getOjType());
 				problemData.setUrl(problem.getUrl());
-				ret.add(new ProblemData(problemData.getUrl(), problemData
-				        .getType(), problemData.getProblemCode(), problemData
-				        .getProblemName()));
+				ret.add(new ProblemData(problemData.getProblemCode(), problemData.getProblemName(), problemData.getUrl(), problemData.getOjType()));
 			}
 
 		} finally {
@@ -174,7 +181,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			List<Problem> problems = (List<Problem>) query.execute(problemCode);
 			problemData.setProblemCode(problems.get(0).getProblemCode());
 			problemData.setProblemName(problems.get(0).getProblemName());
-			problemData.setType(problems.get(0).getType());
+			problemData.setOjType(problems.get(0).getOjType());
 			problemData.setUrl(problems.get(0).getUrl());
 
 		} finally {

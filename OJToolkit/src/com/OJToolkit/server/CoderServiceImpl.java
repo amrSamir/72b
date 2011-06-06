@@ -167,6 +167,14 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				coders.get(0).setSPOJUsername(username);
 				coders.get(0).setSPOJPassword(password);
 				pm.makePersistent(coders.get(0));
+			} else if (accountType.equals("Timus")) {
+				coders.get(0).setTimusUsername(username);
+				coders.get(0).setTimusPassword(password);
+				pm.makePersistent(coders.get(0));
+			} else if (accountType.equals("UVA")) {
+				coders.get(0).setUVAUsername(username);
+				coders.get(0).setUVAPassword(password);
+				pm.makePersistent(coders.get(0));
 			}
 			System.out.println("5alstoo");
 		} finally {

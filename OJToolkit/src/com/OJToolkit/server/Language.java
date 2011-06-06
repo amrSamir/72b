@@ -15,14 +15,20 @@ public class Language {
 	@Persistent
 	private String languageName;
 
+
+	@Persistent
+	private String languageValue;
+
+	@Persistent
+	private String OJType;
+	
 	public Language() {
-		OJType = "SPOJ";
 	}
 
 	public Language(String languageName, String languageValue, String oJType) {
 		this.languageName = languageName;
 		this.languageValue = languageValue;
-		OJType = oJType;
+		this.OJType = oJType;
 	}
 
 	public Long getLanguageID() {
@@ -57,10 +63,5 @@ public class Language {
 		OJType = oJType;
 	}
 
-	@Persistent
-	private String languageValue;
-
-	@Persistent
-	private String OJType;
 
 }

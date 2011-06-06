@@ -23,6 +23,18 @@ public class Coder {
 
 	@Persistent
 	private String SPOJPassword;
+	
+	@Persistent
+	private String TimusUsername;
+
+	@Persistent
+	private String TimusPassword;
+	
+	@Persistent
+	private String UVAUsername;
+
+	@Persistent
+	private String UVAPassword;
 
 	public Long getUserID() {
 		return userID;
@@ -63,6 +75,64 @@ public class Coder {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+
+	/**
+     * @return the timusUsername
+     */
+    public String getTimusUsername() {
+    	return TimusUsername;
+    }
+
+	/**
+     * @param timusUsername the timusUsername to set
+     */
+    public void setTimusUsername(String timusUsername) {
+    	TimusUsername = timusUsername;
+    }
+
+	/**
+     * @return the timusPassword
+     */
+    public String getTimusPassword() {
+    	return TimusPassword;
+    }
+
+	/**
+     * @param timusPassword the timusPassword to set
+     */
+    public void setTimusPassword(String timusPassword) {
+    	TimusPassword = timusPassword;
+    }
+
+	/**
+     * @return the uVAUsername
+     */
+    public String getUVAUsername() {
+    	return UVAUsername;
+    }
+
+	/**
+     * @param uVAUsername the uVAUsername to set
+     */
+    public void setUVAUsername(String uVAUsername) {
+    	UVAUsername = uVAUsername;
+    }
+
+	/**
+     * @return the uVAPassword
+     */
+    public String getUVAPassword() {
+    	return UVAPassword;
+    }
+
+	/**
+     * @param uVAPassword the uVAPassword to set
+     */
+    public void setUVAPassword(String uVAPassword) {
+    	UVAPassword = uVAPassword;
+    }
 
 	public Coder(String username, String email, String SPOJUsername,
 	        String SPOJPassword) {

@@ -16,23 +16,25 @@ public class Problem {
 	private String url;
 
 	@Persistent
-	private String type;
-
-	@Persistent
 	private String problemCode;
 
 	@Persistent
 	private String problemName;
+	
+	@Persistent
+	private String ojType;
 
-	public Problem(String url, String type, String problemCode,
-	        String problemName) {
+
+
+	public Problem(String problemCode,
+	        String problemName,String url, String ojType) {
 		super();
 		this.url = url;
-		this.type = type;
 		this.problemCode = problemCode;
 		this.problemName = problemName;
+		this.ojType = ojType;
 	}
-
+	
 	public String getProblemCode() {
 		return problemCode;
 	}
@@ -64,20 +66,35 @@ public class Problem {
 	public Problem() {
 	}
 
-	public void setType(String t) {
-		type = t;
-	}
 
-	public String getType() {
-		return type;
-	}
 
-	public String getUrl() {
-		return url;
-	}
+	/**
+     * @param ojType the ojType to set
+     */
+    public void setOjType(String ojType) {
+	    this.ojType = ojType;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	/**
+     * @return the ojType
+     */
+    public String getOjType() {
+	    return ojType;
+    }
+
+	/**
+     * @return the url
+     */
+    public String getUrl() {
+    	return url;
+    }
+
+	/**
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+    	this.url = url;
+    }
+
 
 }

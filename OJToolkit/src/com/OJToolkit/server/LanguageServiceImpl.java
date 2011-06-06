@@ -21,30 +21,15 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 	        .getLogger(LanguageServiceImpl.class.getName());
 
 	@Override
-	public ArrayList<LanguageData> getLanguages() throws NotLoggedInException {
-		// TODO Auto-generated method stub
-		// DataStoreHandler.checkLoggedIn();
-
+	public ArrayList<LanguageData> getLanguages(String OJType) throws NotLoggedInException {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		/*
-		 * Query qq = pm.newQuery(Problem.class);
-		 * List<Problem> ae = (List<Problem>)qq.execute();
-		 * pm.deletePersistentAll(ae);
-		 */
-		// addLanguages();
-		// LOG.log(Level.SEVERE, "Languages added");
-
-		// SubmissionServiceImpl.saveSpojProblemstoDB();
-
-		/*
-		 * Query qq = pm.newQuery(Problem.class); List<Problem> ae =
-		 * (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
-		 * System.out.println("here");
-		 */
 		ArrayList<LanguageData> languages = new ArrayList<LanguageData>();
 		try {
-			Query q = pm.newQuery(Language.class);
-			List<Language> languagesDB = (List<Language>) q.execute();
+			String select_query = "select from " + Language.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("OJType == ojType");
+			query.declareParameters("java.lang.String ojType");
+			List<Language> languagesDB = (List<Language>) query.execute(OJType);
 			for (Language language : languagesDB) {
 				languages.add(new LanguageData(language.getLanguageName(),
 				        language.getLanguageValue(), language.getOJType()));
@@ -92,20 +77,34 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 			for (int i = 0; i < 36; i++) {
 				l.setLanguageName(languages[i]);
 				l.setLanguageValue(String.valueOf(i + 1));
+				l.setOJType("SPOJ");
 				pm.makePersistent(new Language(l.getLanguageName(), l
 				        .getLanguageValue(), l.getOJType()));
 			}
 			for (int i = 36; i < languages.length; i++) {
 				l.setLanguageName(languages[i]);
 				l.setLanguageValue(values[i - 36]);
+				l.setOJType("SPOJ");
 				pm.makePersistent(new Language(l.getLanguageName(), l
 				        .getLanguageValue(), l.getOJType()));
 			}
+			String[] languages_Timus = new String[] { "Pascal" , "Java" , "C", "C++", "C#" };
+			String[] values_Timus = new String[] { "3" , "7" , "9", "10", "11" };
+			for(int i=0;i<languages_Timus.length;i++){
+				l.setLanguageName(languages_Timus[i]);
+				l.setLanguageValue(values_Timus[i]);
+				l.setOJType("Timus");
+				pm.makePersistent(new Language(l.getLanguageName(), l
+				      .getLanguageValue(), l.getOJType()));
+			}
+			
 
 		} finally {
 			pm.close();
 		}
 
 	}
+
+
 
 }

@@ -78,7 +78,6 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public Widget asWidget() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
@@ -89,7 +88,6 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasClickHandlers getAddSpojAccountButton() {
-		// TODO Auto-generated method stub
 		return btnAddSpojAccount;
 	}
 
@@ -100,7 +98,6 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasClickHandlers getAddTimusAccountButton() {
-		// TODO Auto-generated method stub
 		return btnAddTimusAccount;
 	}
 
@@ -112,7 +109,6 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasValue<String> getAccountUserName() {
-		// TODO Auto-generated method stub
 		return txtAccountUsername;
 	}
 
@@ -124,7 +120,6 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasValue<String> getAccountPassword() {
-		// TODO Auto-generated method stub
 		return txtAccountPassword;
 	}
 
@@ -143,7 +138,6 @@ public class AddAccountView extends Composite implements
 		 */
 		txtAccountUsername.setVisible(true);
 		txtAccountPassword.setVisible(true);
-		// TODO Auto-generated method stub
 		lblUsername.setText(accountType + " Username : ");
 		lblPassword.setText(accountType + " Password : ");
 		btnAddAccount.setVisible(true);
@@ -159,7 +153,6 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasClickHandlers getAddAccountButton() {
-		// TODO Auto-generated method stub
 		return btnAddAccount;
 	}
 
@@ -188,8 +181,12 @@ public class AddAccountView extends Composite implements
      */
     @Override
     public HasClickHandlers getAddUVAAccountButton() {
-	    // TODO Auto-generated method stub
 	    return btnAddUVAAccount;
     }
+
+	@Override
+	public HasClickHandlers getAddXAccountButton() {
+		return null;
+	}
 
 }

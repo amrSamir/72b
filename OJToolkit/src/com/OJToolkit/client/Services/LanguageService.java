@@ -20,7 +20,7 @@ public interface LanguageService extends RemoteService {
 	 * @throws NotLoggedInException
 	 *             Thrown if the user is not logged in
 	 */
-	public ArrayList<LanguageData> getLanguages() throws NotLoggedInException;
+	public ArrayList<LanguageData> getLanguages(String OJType) throws NotLoggedInException;
 
 	/**
 	 * Reads all languages from an array and add them to the datastore

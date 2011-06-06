@@ -7,7 +7,8 @@ import java.io.Serializable;
  *         Hold the status of the submitted problem
  */
 /**
- * @author 72B Apr 23, 2011
+ * @author 72B
+ *         Apr 23, 2011
  */
 public class ProblemStatusData implements Serializable {
 
@@ -21,6 +22,7 @@ public class ProblemStatusData implements Serializable {
 	 * Create an object of the problem status
 	 */
 	public ProblemStatusData() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -38,7 +40,7 @@ public class ProblemStatusData implements Serializable {
 	 *            The memory used by the solution
 	 */
 	public ProblemStatusData(String date, String problemLink,
-			String judgeResult, String time, String mem) {
+	        String judgeResult, String time, String mem) {
 		this.date = date;
 		this.problemLink = problemLink;
 		this.judgeResult = judgeResult;

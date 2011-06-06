@@ -1,7 +1,5 @@
 package com.OJToolkit.client;
 
-import java.util.StringTokenizer;
-
 import com.OJToolkit.client.Contents.Content;
 import com.OJToolkit.client.Contents.MyResource;
 import com.OJToolkit.client.Services.LanguageService;
@@ -10,6 +8,7 @@ import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class SpojProblemsToDBAdder extends Content {
@@ -20,6 +19,7 @@ public class SpojProblemsToDBAdder extends Content {
     .create(LanguageService.class);
 	int failures = 0;
 	int success = 0;
+
 
 	public SpojProblemsToDBAdder() {
 		System.out.println("Initializer");
@@ -33,7 +33,6 @@ public class SpojProblemsToDBAdder extends Content {
 		String problems = MyResource.INSTANCE.defaultText().getText();
 		String[] linesArr = problems.split("\n");
 		ProblemData problem = new ProblemData();
-		StringTokenizer st;
 		String[] splitted;
 
 		for (int i = 0; i < linesArr.length; i++) {
@@ -43,8 +42,8 @@ public class SpojProblemsToDBAdder extends Content {
 		
 			problem.setUrl(splitted[2].replaceAll(
 			        "https", "http"));
-			problem.setOjType("SPOJ");
-			/*
+			problem.setOjType("Timus");
+			
 			submissionService.saveSpojProblemtoDB(problem,
 			        new AsyncCallback<Void>() {
 
@@ -62,7 +61,7 @@ public class SpojProblemsToDBAdder extends Content {
 
 				        }
 			        });
-*/
+
 		}
 	System.out.println(" Failures " + String.valueOf(failures) + " Success "
 		        + String.valueOf(success));

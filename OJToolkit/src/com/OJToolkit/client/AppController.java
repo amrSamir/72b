@@ -8,8 +8,10 @@ import java.util.Date;
 import com.OJToolkit.client.Contents.LeftPanel;
 import com.OJToolkit.client.Contents.TopPanel;
 import com.OJToolkit.client.Services.CoderServiceAsync;
+import com.OJToolkit.client.Services.HintServiceAsync;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.LoginServiceAsync;
+import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.event.AddAccountEvent;
@@ -51,10 +53,6 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
 
-/**
- * @author 72B
- *         Apr 26, 2011
- */
 public class AppController implements ValueChangeHandler<String> {
 
 	private final HandlerManager eventBus;
@@ -62,12 +60,12 @@ public class AppController implements ValueChangeHandler<String> {
 	private final LanguageServiceAsync languageService;
 	private final LoginServiceAsync loginService;
 	private final CoderServiceAsync coderService;
+	private final SourceCodeServiceAsync sourceCodeService;
+	private final HintServiceAsync hintService;
 	private String problemStr = "problem";
 	//public static boolean isEnabled;
 
-	/**
-	 * remembers cookie for 2 weeks.
-	 */
+//	remembers cookie for 2 weeks.
 	public static final Date COOKIES_EXPIRYDATE = new Date(
 	        System.currentTimeMillis() + 1000 * 60 * 60);
 
@@ -80,158 +78,109 @@ public class AppController implements ValueChangeHandler<String> {
 	public AppController(HandlerManager eventBus,
 	        SubmissionServiceAsync submissionService,
 	        LanguageServiceAsync languageService,
-	        LoginServiceAsync loginService, CoderServiceAsync coderService) {
+	        LoginServiceAsync loginService, CoderServiceAsync coderService, SourceCodeServiceAsync sourceCodeService, 
+	        HintServiceAsync hintService) {
 		this.languageService = languageService;
 		this.eventBus = eventBus;
 		this.submissionService = submissionService;
 		this.loginService = loginService;
 		this.coderService = coderService;
+		this.sourceCodeService = sourceCodeService;
+		this.hintService = hintService;
 		// checkCookies();
 		bind();
 	}
 
-	/**
-     * bind all button with actions 
-     */
+//  bind all button with actions 
 	private void bind() {
 		History.addValueChangeHandler(this);
 		eventBus.addHandler(ViewProblemSubmissionStatusEvent.TYPE,
 		        new ViewProblemSubmissionStatusEventHandler() {
-
 			        @Override
 			        public void onSubmitProblem(
 			                ViewProblemSubmissionStatusEvent event) {
 				        doViewProblemSubmissionStatus();
-				        // TODO Auto-generated method stub
-
 			        }
 		        });
-
 		eventBus.addHandler(ViewProblemEvent.TYPE,
 		        new ViewProblemEventHandler() {
-
 			        @Override
 			        public void onViewProblem(ViewProblemEvent event) {
 				        doViewProblem(event.problem);
-
 			        }
 		        });
 
 		eventBus.addHandler(AlreadyRegisteredEvent.TYPE,
 		        new AlreadyRegisteredEventHandler() {
-
 			        @Override
 			        public void ifRegistered(AlreadyRegisteredEvent event) {
 				        doIfRegistered();
-
 			        }
-
 		        });
-
 		eventBus.addHandler(RegistrationEvent.TYPE,
 		        new RegisterationEventHandler() {
-
 			        @Override
 			        public void onRegistration(RegistrationEvent event) {
 				        doOnRegistration();
-
 			        }
 		        });
-
 		eventBus.addHandler(LoginEvent.TYPE, new LoginEventHandler() {
-
 			@Override
 			public void onLogin(LoginEvent event) {
 				doOnLogin();
-				// TODO Auto-generated method stub
-
 			}
-
 		});
 
 		eventBus.addHandler(CheckCookiesEvent.TYPE,
 		        new CheckCookiesEventHandler() {
-
 			        @Override
 			        public void onCheckCookies(CheckCookiesEvent event) {
 				        doOnCheckCookies();
-
 			        }
-
 		        });
 
 		eventBus.addHandler(ViewCodersEvent.TYPE, new ViewCodersEventHandler() {
-
 			@Override
 			public void onViewCoders(ViewCodersEvent event) {
 				doOnViewCoders();
-
 			}
-
 		});
 
 		eventBus.addHandler(AddAccountEvent.TYPE, new AddAccountEventHandler() {
-
 			@Override
 			public void onAddAccount(AddAccountEvent event) {
 				doOnAddAccount();
-				// TODO Auto-generated method stub
-
 			}
-
 		});
-
-		// TODO Auto-generated method stub
 	}
 
-	/**
-     *  add cookies to history 
-     */
+	// add cookies to history 
 	protected void doOnCheckCookies() {
 		History.newItem("checkCookies");
-
 	}
 
-	/**
-     * add login in history 
-     */
+	// add login in history 
 	protected void doOnLogin() {
 		History.newItem("login");
-
 	}
 
-	/**
-	 * add an account details event  
-	 * @param oJType
-	 */
+	// add an account details event  
 	protected void doOnAddAccountDetails(String oJType) {
 		this.OJType = oJType;
 		History.newItem("addAccountDetails");
-		// TODO Auto-generated method stub
-
 	}
 
-	/**
-     * add an account 
-     */
+	// add an account 
 	protected void doOnAddAccount() {
 		History.newItem("addAccount");
-
 	}
 
-	/**
-     * view coders even
-     */
+	// view coders even
 	protected void doOnViewCoders() {
 		History.newItem("viewCoders");
-		// TODO Auto-generated method stub
-
 	}
 
-	/**
-	 * view problem 
-	 * @param problem to be shown
-	 */
+	// view problem 
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
 		problemStr = "problem" + problem.getProblemCode();
@@ -239,28 +188,22 @@ public class AppController implements ValueChangeHandler<String> {
 
 	}
 
-	/**
-     *  do register 
-     */
+	// do register 
 	protected void doOnRegistration() {
 		History.newItem("Registration");
-
 	}
 
-	/**
-	 * already registered
-	 */
+	// aleady regesterd 
 	private void doIfRegistered() {
 		History.newItem("alreadyRegistered");
 	}
 
-	/**
-	 * view problem submission 
-	 */
+	//view problem submition 
 	private void doViewProblemSubmissionStatus() {
 		History.newItem("problemSubmissionStatus");
 	}
 
+	// start the web site 
 	public void go(Panel core, HasWidgets topPanel, HasWidgets leftPanel) {
 		this.container = core;
 		this.topPanel = topPanel;
@@ -270,30 +213,16 @@ public class AppController implements ValueChangeHandler<String> {
 
 		this.leftPanel.add(new LeftPanel(eventBus));
 		if ("".equals(History.getToken())) {
-
-			// String sessionID = Cookies.getCookie("reg");
-
-			// if (sessionID != null) {
-			// History.newItem("alreadyRegistered");
-			// } else {
 			History.newItem("checkCookies");
-			// }
 		} else {
 			History.fireCurrentHistoryState();
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.google.gwt.event.logical.shared.ValueChangeHandler#onValueChange(
-	 * com.google.gwt.event.logical.shared.ValueChangeEvent)
-	 */
 	@Override
 	public void onValueChange(ValueChangeEvent<String> event) {
 		String token = event.getValue();
-		// String sessionID = Cookies.getCookie("reg");
-
+		
 		if (token != null) {
 			Presenter presenter = null;
 			// if (isEnabled) {
@@ -309,17 +238,13 @@ public class AppController implements ValueChangeHandler<String> {
 				        new ProblemSubmissionStatusView());
 			} else if (token.startsWith("problem")) {
 				if (problem == null) {
-					System.out.println("PROBLEEEEEEEEEEEEM EVENT FIRED ");
-					System.out.print(token.substring(7));
 					presenter = new ProblemPresenter(token.substring(7),
 					        submissionService, languageService, eventBus,
-					        new ProblemView());
+					        sourceCodeService, new ProblemView(), hintService);
 				} else {
-					System.out.println("PROBLEEEEEEEEEEEEM EVENT FIRED2 ");
-					System.out.print(problem.getProblemCode() +"f");
 					presenter = new ProblemPresenter(problem.getProblemCode(),
 					        submissionService, languageService, eventBus,
-					        new ProblemView());
+					        sourceCodeService, new ProblemView(), hintService);
 				}
 			} else if (token.equals("alreadyRegistered")) {
 				presenter = new ProblemListPresenter(submissionService,
@@ -330,12 +255,6 @@ public class AppController implements ValueChangeHandler<String> {
 			} else if (token.equals("addAccount")) {
 				presenter = new AddAccountPresenter(coderService, eventBus,
 				        new AddAccountView());
-				// }
-				// }
-				// else{
-				// if (token.equals("login")) {
-				// presenter = new LoginPresenter(loginService, coderService,
-				// eventBus, new LoginView());
 			} else if (token.equals("checkCookies")) {
 				presenter = new CheckCookiesPresenter(eventBus);
 			} else if (token.equals("Registration")) {
@@ -344,23 +263,9 @@ public class AppController implements ValueChangeHandler<String> {
 			} else {
 				presenter = new CheckCookiesPresenter(eventBus);
 			}
-
-			// }
 			if (presenter != null) {
 				presenter.go(container);
 			}
-			/*
-			 * } else {
-			 * System.out.println(Cookies.getCookie("loggedIn"));
-			 * if (Cookies.getCookie("loggedIn") != null) {
-			 * presenter = new RegistrationPresenter(coderService,
-			 * eventBus, new RegistrationView());
-			 * } else {
-			 * presenter = new LoginPresenter(loginService, coderService,
-			 * eventBus, new LoginView());
-			 * }
-			 */
-			// }
 
 		}
 	}

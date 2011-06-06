@@ -17,6 +17,27 @@
     <url-pattern>/ojtoolkit/login</url-pattern>
   </servlet-mapping>
   
+     <servlet>
+    <servlet-name>HintService</servlet-name>
+    <servlet-class>com.OJToolkit.server.HintServiceImp</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>HintService</servlet-name>
+    <url-pattern>/ojtoolkit/Hint</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>sourceCodeService</servlet-name>
+    <servlet-class>com.OJToolkit.server.SourceCodeServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>sourceCodeService</servlet-name>
+    <url-pattern>/ojtoolkit/sourceCodeService</url-pattern>
+  </servlet-mapping>
+  
+  
       <servlet>
     <servlet-name>CoderService</servlet-name>
     <servlet-class>com.OJToolkit.server.CoderServiceImpl</servlet-class>

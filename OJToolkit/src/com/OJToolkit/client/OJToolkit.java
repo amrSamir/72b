@@ -2,16 +2,21 @@ package com.OJToolkit.client;
 
 import com.OJToolkit.client.Services.CoderService;
 import com.OJToolkit.client.Services.CoderServiceAsync;
+import com.OJToolkit.client.Services.HintService;
+import com.OJToolkit.client.Services.HintServiceAsync;
 import com.OJToolkit.client.Services.LanguageService;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.LoginService;
 import com.OJToolkit.client.Services.LoginServiceAsync;
+import com.OJToolkit.client.Services.SourceCodeService;
+import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -65,18 +70,30 @@ public class OJToolkit implements EntryPoint {
 
 		LanguageServiceAsync languageService = GWT
 		        .create(LanguageService.class);
+//		languageService.addLanguages(new AsyncCallback<Void>() {
+//			
+//			@Override
+//			public void onSuccess(Void result) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		});
 
 		CoderServiceAsync coderService = GWT.create(CoderService.class);
 
 		LoginServiceAsync loginService = GWT.create(LoginService.class);
-
+		SourceCodeServiceAsync sourceCodeService = GWT.create(SourceCodeService.class);
+		HintServiceAsync hintService = GWT.create(HintService.class);
 		HandlerManager eventBus = new HandlerManager(null);
-		//new SpojProblemsToDBAdder();
-		///*
 		AppController appViewer = new AppController(eventBus,
-		        submissionService, languageService, loginService, coderService);
+		        submissionService, languageService, loginService, coderService, sourceCodeService,hintService);
 		appViewer.go(core, topPanel, leftPanel);
-		//*/
 
 	}
 }

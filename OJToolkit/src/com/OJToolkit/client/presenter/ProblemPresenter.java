@@ -2,7 +2,9 @@ package com.OJToolkit.client.presenter;
 
 import java.util.ArrayList;
 
+import com.OJToolkit.client.Services.HintServiceAsync;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
+import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
@@ -33,17 +35,25 @@ public class ProblemPresenter implements Presenter {
 	private ProblemData problem;
 	private final String problemCode;
 	private final LanguageServiceAsync languageService;
+	private SourceCodeServiceAsync sourceCodeService ;
+	private HintServiceAsync hintService;
 
 	public ProblemPresenter(String problemCode,
 	        SubmissionServiceAsync submssionService,
 	        LanguageServiceAsync languageService, HandlerManager eventBus,
-	        final Display display) {
-
+	        SourceCodeServiceAsync sourceCodeService,
+	        final Display display,
+	        HintServiceAsync hintService) {
+		
+	
 		this.languageService = languageService;
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
 		this.problemCode = problemCode;
 		this.display = display;
+		this.sourceCodeService = sourceCodeService ;
+		this.hintService = hintService;
+		
 		// this.display.setProblem(problemCode);
 		bind();
 
@@ -84,6 +94,49 @@ public class ProblemPresenter implements Presenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				System.out.println("aah");
+			//	String sourceCodeString = ;
+				java.util.Date date = new java.util.Date();
+				
+				/// Delete this >>>>> Just for testing
+				hintService.addHint("X", "eshtaaaaaaa3aaaal", new AsyncCallback<Void>() {
+					
+					@Override
+					public void onSuccess(Void result) {
+						// TODO Auto-generated method stub
+						 Window.alert("Good!");
+						
+					}
+					
+					@Override
+					public void onFailure(Throwable caught) {
+						 Window.alert("NO");
+					}
+				});
+				
+				
+				// Review your code data paramters again 
+				sourceCodeService.addCode(display.getCode(), problem.getProblemCode()
+						, problem.getProblemName(), problem.getUrl()
+						, new AsyncCallback<Void>()   
+						{
+
+							@Override
+							public void onFailure(Throwable caught) {
+								 Window.alert("Oh! Failed to save code!");
+								
+							}
+
+							@Override
+							public void onSuccess(Void result) {
+								 Window.alert("your code has been saved!");
+									
+							}
+					
+				});
+				
+			 
+				
 				submssionService.submitCode(problem.getProblemCode(),
 				        display.getCode(), display.getSelectedLanguageValue(),
 				        new AsyncCallback<Void>() {

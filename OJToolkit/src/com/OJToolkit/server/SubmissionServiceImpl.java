@@ -38,12 +38,12 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getSPOJPassword();
 			judge = new SPOJ();
-		} else if(problem.getOjType() == "Timus"){
+		} else if (problem.getOjType() == "Timus") {
 			judgeUsername = DataStoreHandler.getAllCoders().get(0)
-	        .getTimusUsername();
-	judgePassword = DataStoreHandler.getAllCoders().get(0)
-	        .getTimusPassword();
-	judge = new SPOJ();
+			        .getTimusUsername();
+			judgePassword = DataStoreHandler.getAllCoders().get(0)
+			        .getTimusPassword();
+			judge = new SPOJ();
 		}
 		if (judge != null) {
 			try {
@@ -73,20 +73,16 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	//
 	@Override
 	public ProblemStatusData getLastProblemStatus() throws Exception {
-		// HashMap<String, String> input = new HashMap<String, String>();
-		// input.put("login_user", DataStoreHandler.getAllCoders().get(0)
-		// .getSPOJUsername());
 		Judge judge = null;
 		// ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
 		// if (problem.getType() == "SPOJ") {
-		String spojUsername = DataStoreHandler.getAllCoders().get(0)
+		judgeUsername = DataStoreHandler.getAllCoders().get(0)
 		        .getSPOJUsername();
-		String spojPassword = DataStoreHandler.getAllCoders().get(0)
+		judgePassword = DataStoreHandler.getAllCoders().get(0)
 		        .getSPOJPassword();
-		judgeUsername = spojUsername;
-		judgePassword = spojPassword;
+
 		judge = new SPOJ();
 		// }
 		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
@@ -114,6 +110,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			        problemData.getOjType());
 
 			pm.makePersistent(problem);
+
 			counter++;
 			System.out.println(counter);
 

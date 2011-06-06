@@ -1,0 +1,2142 @@
+TEST | Life, the Universe, and Everything | https://spoj.pl/problems/TEST/
+PRIME1 | Prime Generator | https://spoj.pl/problems/PRIME1/
+SBSTR1 | Substring Check (Bug Funny) | https://spoj.pl/problems/SBSTR1/
+ONP | Transform the Expression | https://spoj.pl/problems/ONP/
+PALIN | The Next Palindrome | https://spoj.pl/problems/PALIN/
+ARITH | Simple Arithmetics | https://spoj.pl/problems/ARITH/
+BULK | The Bulk! | https://spoj.pl/problems/BULK/
+CMPLS | Complete the Sequence! | https://spoj.pl/problems/CMPLS/
+DIRVS | Direct Visibility | https://spoj.pl/problems/DIRVS/
+CMEXPR | Complicated Expressions | https://spoj.pl/problems/CMEXPR/
+FCTRL | Factorial | https://spoj.pl/problems/FCTRL/
+MMIND | The Game of Master-Mind | https://spoj.pl/problems/MMIND/
+HOTLINE | Hotline | https://spoj.pl/problems/HOTLINE/
+IKEYB | I-Keyboard | https://spoj.pl/problems/IKEYB/
+SHPATH | The Shortest Path | https://spoj.pl/problems/SHPATH/
+TETRA | Sphere in a tetrahedron | https://spoj.pl/problems/TETRA/
+CRYPTO1 | The Bytelandian Cryptographer (Act I) | https://spoj.pl/problems/CRYPTO1/
+CRYPTO2 | The Bytelandian Cryptographer (Act II) | https://spoj.pl/problems/CRYPTO2/
+CRYPTO3 | The Bytelandian Cryptographer (Act III) | https://spoj.pl/problems/CRYPTO3/
+CRYPTO4 | The Bytelandian Cryptographer (Act IV) | https://spoj.pl/problems/CRYPTO4/
+TRICENTR | Triangle From Centroid | https://spoj.pl/problems/TRICENTR/
+PIR | Pyramids | https://spoj.pl/problems/PIR/
+FCTRL2 | Small factorials | https://spoj.pl/problems/FCTRL2/
+POUR1 | Pouring water | https://spoj.pl/problems/POUR1/
+BSHEEP | Build the Fence | https://spoj.pl/problems/BSHEEP/
+SBANK | Sorting Bank Accounts | https://spoj.pl/problems/SBANK/
+HMRO | Help the Military Recruitment Office! | https://spoj.pl/problems/HMRO/
+HASHIT | Hash it! | https://spoj.pl/problems/HASHIT/
+BLINNET | Bytelandian Blingors Network | https://spoj.pl/problems/BLINNET/
+MUL | Fast Multiplication | https://spoj.pl/problems/MUL/
+NHAY | A Needle in the Haystack | https://spoj.pl/problems/NHAY/
+TRIP | Trip | https://spoj.pl/problems/TRIP/
+RUNAWAY | Run Away | https://spoj.pl/problems/RUNAWAY/
+EQBOX | Equipment Box | https://spoj.pl/problems/EQBOX/
+CODE1 | Secret Code | https://spoj.pl/problems/CODE1/
+PROPKEY | The Proper Key | https://spoj.pl/problems/PROPKEY/
+LABYR1 | Labyrinth | https://spoj.pl/problems/LABYR1/
+PIGBANK | Piggy-Bank | https://spoj.pl/problems/PIGBANK/
+STONE | Lifting the Stone | https://spoj.pl/problems/STONE/
+WORDS1 | Play on Words | https://spoj.pl/problems/WORDS1/
+ADDREV | Adding Reversed Numbers | https://spoj.pl/problems/ADDREV/
+BOOKS1 | Copying Books | https://spoj.pl/problems/BOOKS1/
+SCYPHER | Substitution Cipher | https://spoj.pl/problems/SCYPHER/
+COMMEDIA | Commedia dell Arte | https://spoj.pl/problems/COMMEDIA/
+SCRAPER | Skyscraper Floors | https://spoj.pl/problems/SCRAPER/
+BEADS | Glass Beads | https://spoj.pl/problems/BEADS/
+HAREFOX | Hares and Foxes | https://spoj.pl/problems/HAREFOX/
+INCARDS | Invitation Cards | https://spoj.pl/problems/INCARDS/
+TOUR | Fake tournament | https://spoj.pl/problems/TOUR/
+JULKA | Julka | https://spoj.pl/problems/JULKA/
+JASIEK | Jasiek | https://spoj.pl/problems/JASIEK/
+DYZIO | Dyzio | https://spoj.pl/problems/DYZIO/
+SUPPER | Supernumbers in a permutation | https://spoj.pl/problems/SUPPER/
+PICAD | Crime at Piccadily Circus | https://spoj.pl/problems/PICAD/
+BIA | Bytelandian Information Agency | https://spoj.pl/problems/BIA/
+DANCE | The Gordian Dance | https://spoj.pl/problems/DANCE/
+BRCKTS | Brackets | https://spoj.pl/problems/BRCKTS/
+IMP | The Imp | https://spoj.pl/problems/IMP/
+SQRBR | Square Brackets | https://spoj.pl/problems/SQRBR/
+PERMUT1 | Permutations | https://spoj.pl/problems/PERMUT1/
+BALL1 | Ball | https://spoj.pl/problems/BALL1/
+CRSCNTRY | Cross-country | https://spoj.pl/problems/CRSCNTRY/
+CUTOUT | Cutting out | https://spoj.pl/problems/CUTOUT/
+EXPR1 | Expression | https://spoj.pl/problems/EXPR1/
+MOULDS | Moulds | https://spoj.pl/problems/MOULDS/
+RELATS1 | Relations | https://spoj.pl/problems/RELATS1/
+TREE1 | Tree | https://spoj.pl/problems/TREE1/
+BAC | Bacterial | https://spoj.pl/problems/BAC/
+DIVSUM | Divisor Summation | https://spoj.pl/problems/DIVSUM/
+EDIT1 | Editor | https://spoj.pl/problems/EDIT1/
+EDIT2 | Editor Inverse | https://spoj.pl/problems/EDIT2/
+BRICKS | New bricks disorder | https://spoj.pl/problems/BRICKS/
+MARBLES | Marbles | https://spoj.pl/problems/MARBLES/
+EASYPIE | Easy Problem | https://spoj.pl/problems/EASYPIE/
+BUNDLE | Bundling | https://spoj.pl/problems/BUNDLE/
+SHORTCUT | Shortcut | https://spoj.pl/problems/SHORTCUT/
+DICE1 | Dice Contest | https://spoj.pl/problems/DICE1/
+RAIN1 | November Rain | https://spoj.pl/problems/RAIN1/
+FOOTBALL | Football | https://spoj.pl/problems/FOOTBALL/
+TREE2 | Which is Next | https://spoj.pl/problems/TREE2/
+HANGLET | Hang or not to hang | https://spoj.pl/problems/HANGLET/
+MINIMAX | Minimizing maximizer | https://spoj.pl/problems/MINIMAX/
+TWOSQRS | Two squares or not two squares | https://spoj.pl/problems/TWOSQRS/
+CUTSQRS | Cutting off Squares | https://spoj.pl/problems/CUTSQRS/
+MAYA | Numeral System of the Maya | https://spoj.pl/problems/MAYA/
+STPAR | Street Parade | https://spoj.pl/problems/STPAR/
+SHOP | Shopping | https://spoj.pl/problems/SHOP/
+PARTY | Party Schedule | https://spoj.pl/problems/PARTY/
+DFLOOR | Dance Floor | https://spoj.pl/problems/DFLOOR/
+BUS | Bus | https://spoj.pl/problems/BUS/
+BABTWR | Tower of Babylon | https://spoj.pl/problems/BABTWR/
+FISHER | Fishmonger | https://spoj.pl/problems/FISHER/
+LITEPIPE | GX Light Pipeline Inc | https://spoj.pl/problems/LITEPIPE/
+HIGH | Highways | https://spoj.pl/problems/HIGH/
+ALICEBOB | Alice and Bob | https://spoj.pl/problems/ALICEBOB/
+BINSTIRL | Binary Stirling Numbers | https://spoj.pl/problems/BINSTIRL/
+MAYACAL | Calendar of the Maya | https://spoj.pl/problems/MAYACAL/
+MORSE | Decoding Morse Sequences | https://spoj.pl/problems/MORSE/
+EXCHNG | Exchanges | https://spoj.pl/problems/EXCHNG/
+CISTFILL | Fill the Cisterns | https://spoj.pl/problems/CISTFILL/
+SEGVIS | Horizontally Visible Segments | https://spoj.pl/problems/SEGVIS/
+FAMILY | Family | https://spoj.pl/problems/FAMILY/
+INTERVAL | Intervals | https://spoj.pl/problems/INTERVAL/
+RHOMBS | Rhombs | https://spoj.pl/problems/RHOMBS/
+SERVERS | Servers | https://spoj.pl/problems/SERVERS/
+SOLIT | Solitaire | https://spoj.pl/problems/SOLIT/
+TTABLE | Timetable | https://spoj.pl/problems/TTABLE/
+STEVE | Voracious Steve | https://spoj.pl/problems/STEVE/
+PAYING | Paying in Byteland | https://spoj.pl/problems/PAYING/
+RENT | Rent your airplane and make money | https://spoj.pl/problems/RENT/
+SQDANCE | Square dance | https://spoj.pl/problems/SQDANCE/
+HELPR2D2 | Help R2-D2! | https://spoj.pl/problems/HELPR2D2/
+PHONY | Phony Primes | https://spoj.pl/problems/PHONY/
+MAWORK | Men at work | https://spoj.pl/problems/MAWORK/
+TRANS | Transformation | https://spoj.pl/problems/TRANS/
+PARTIT | Partition | https://spoj.pl/problems/PARTIT/
+POSTERS | Election Posters | https://spoj.pl/problems/POSTERS/
+MAZE | The Long and Narrow Maze | https://spoj.pl/problems/MAZE/
+LONER | The Loner | https://spoj.pl/problems/LONER/
+GLUE | Johnny and the Glue | https://spoj.pl/problems/GLUE/
+ALIENS | Aliens | https://spoj.pl/problems/ALIENS/
+MULTIPLY | Fast Multiplication Again | https://spoj.pl/problems/MULTIPLY/
+TAUT | Tautology | https://spoj.pl/problems/TAUT/
+MLAND | Land for Motorways | https://spoj.pl/problems/MLAND/
+FSHEEP | Fencing in the Sheep | https://spoj.pl/problems/FSHEEP/
+PLONK | Where to Drink the Plonk? | https://spoj.pl/problems/PLONK/
+COURIER | The Courier | https://spoj.pl/problems/COURIER/
+SCALES | Balancing the Stone | https://spoj.pl/problems/SCALES/
+ROCK | Sweet and Sour Rock | https://spoj.pl/problems/ROCK/
+PALSEC | Choosing a Palindromic Sequence | https://spoj.pl/problems/PALSEC/
+PAINTTMP | Paint templates | https://spoj.pl/problems/PAINTTMP/
+POLY1 | Polygon | https://spoj.pl/problems/POLY1/
+SUM1SEQ | Sum of one-sequence | https://spoj.pl/problems/SUM1SEQ/
+ABWORDS | AB-words | https://spoj.pl/problems/ABWORDS/
+ROADNET | Road net | https://spoj.pl/problems/ROADNET/
+WORDEQ | Word equations | https://spoj.pl/problems/WORDEQ/
+CONTPACK | How to pack containers | https://spoj.pl/problems/CONTPACK/
+SCUBADIV | Scuba diver | https://spoj.pl/problems/SCUBADIV/
+WINDOW1 | Window | https://spoj.pl/problems/WINDOW1/
+ASCIRC | Assembler circuits | https://spoj.pl/problems/ASCIRC/
+ATMS | Automatic Teller Machines | https://spoj.pl/problems/ATMS/
+CHASE1 | Chase | https://spoj.pl/problems/CHASE1/
+LITELANG | The lightest language | https://spoj.pl/problems/LITELANG/
+FLBRKLIN | Flat broken lines | https://spoj.pl/problems/FLBRKLIN/
+RECTNG1 | Rectangles | https://spoj.pl/problems/RECTNG1/
+MUSKET | Musketeers | https://spoj.pl/problems/MUSKET/
+EMPTY | Empty Cuboids | https://spoj.pl/problems/EMPTY/
+MONODIG | Monodigital Representations | https://spoj.pl/problems/MONODIG/
+POLYGAME | The Game of Polygons | https://spoj.pl/problems/POLYGAME/
+ROCKETS | Rockets | https://spoj.pl/problems/ROCKETS/
+POTHOLE | Potholers | https://spoj.pl/problems/POTHOLE/
+SLEEP | Sleepwalker | https://spoj.pl/problems/SLEEP/
+ICERINK | Icerink | https://spoj.pl/problems/ICERINK/
+BITMAP | Bitmap | https://spoj.pl/problems/BITMAP/
+THREECOL | Three-coloring of binary trees | https://spoj.pl/problems/THREECOL/
+STORE | Store-keeper | https://spoj.pl/problems/STORE/
+MAP | The Map | https://spoj.pl/problems/MAP/
+ALTARS | The Altars | https://spoj.pl/problems/ALTARS/
+PRIMIT | Primitivus recurencis | https://spoj.pl/problems/PRIMIT/
+WATER | Water among Cubes | https://spoj.pl/problems/WATER/
+PANIC | Panic in the Plazas | https://spoj.pl/problems/PANIC/
+SOPARADE | Soldiers on Parade | https://spoj.pl/problems/SOPARADE/
+PHRASES | Relevant Phrases of Annihilation | https://spoj.pl/problems/PHRASES/
+VONNY | Vonny and her dominos | https://spoj.pl/problems/VONNY/
+JEWELS | Jewelry and Fashion | https://spoj.pl/problems/JEWELS/
+ORDERS | Ordering the Soldiers | https://spoj.pl/problems/ORDERS/
+SHAMAN | Shamans | https://spoj.pl/problems/SHAMAN/
+SORTING | Sorting is easy | https://spoj.pl/problems/SORTING/
+ZEBRA | The Zebra Crossing | https://spoj.pl/problems/ZEBRA/
+HOLIDAY1 | Getting Rid of the Holidays (Act I) | https://spoj.pl/problems/HOLIDAY1/
+VFMUL | Very Fast Multiplication | https://spoj.pl/problems/VFMUL/
+ROMAN | Converting number formats | https://spoj.pl/problems/ROMAN/
+SUMITR | Sums in a Triangle | https://spoj.pl/problems/SUMITR/
+HOLIDAY2 | Getting Rid of the Holidays (Act II) | https://spoj.pl/problems/HOLIDAY2/
+BTOUR | Tour de Byteland | https://spoj.pl/problems/BTOUR/
+BLOCKS | Arranging the Blocks | https://spoj.pl/problems/BLOCKS/
+STABLEMP | Stable Marriage Problem | https://spoj.pl/problems/STABLEMP/
+SQRROOT | Square Root | https://spoj.pl/problems/SQRROOT/
+CHOCOLA | Chocolate | https://spoj.pl/problems/CHOCOLA/
+CTAIN | Containers | https://spoj.pl/problems/CTAIN/
+TRIPART | Triangle Partitioning | https://spoj.pl/problems/TRIPART/
+CONNECT | Connections | https://spoj.pl/problems/CONNECT/
+PERIOD | Period | https://spoj.pl/problems/PERIOD/
+CORNET | Corporative Network | https://spoj.pl/problems/CORNET/
+CAVE | Cave Exploration | https://spoj.pl/problems/CAVE/
+WMELON | Johnny and the Watermelon Plantation | https://spoj.pl/problems/WMELON/
+WATERWAY | The Water Ringroad | https://spoj.pl/problems/WATERWAY/
+CTGAME | City Game | https://spoj.pl/problems/CTGAME/
+BICYCLE | Bicycle | https://spoj.pl/problems/BICYCLE/
+INUMBER | Interesting number | https://spoj.pl/problems/INUMBER/
+LIFTS | Lifts | https://spoj.pl/problems/LIFTS/
+MUDDY | Muddy Fields | https://spoj.pl/problems/MUDDY/
+NAPTIME | Naptime | https://spoj.pl/problems/NAPTIME/
+SCITIES | Selfish Cities | https://spoj.pl/problems/SCITIES/
+NETADMIN | Smart Network Administrator | https://spoj.pl/problems/NETADMIN/
+PON | Prime or Not | https://spoj.pl/problems/PON/
+POLYEQ | Polynomial Equations | https://spoj.pl/problems/POLYEQ/
+CUBERT | Cube Root | https://spoj.pl/problems/CUBERT/
+ALIBB | Alibaba | https://spoj.pl/problems/ALIBB/
+OFBEAT | Officers on the Beat | https://spoj.pl/problems/OFBEAT/
+TWORK | Teamwork is Crucial | https://spoj.pl/problems/TWORK/
+AGGRCOW | Aggressive cows | https://spoj.pl/problems/AGGRCOW/
+CABLETV | Cable TV Network | https://spoj.pl/problems/CABLETV/
+BOOK | Booklets | https://spoj.pl/problems/BOOK/
+CANTON | Count on Cantor | https://spoj.pl/problems/CANTON/
+UCUBE | The Unstable Cube | https://spoj.pl/problems/UCUBE/
+RATTERN | The Room Pattern | https://spoj.pl/problems/RATTERN/
+PITPAIR | Pythagorean Legacy | https://spoj.pl/problems/PITPAIR/
+WINDMILL | The Tall Windmills | https://spoj.pl/problems/WINDMILL/
+PLATON | Platon and Socrates | https://spoj.pl/problems/PLATON/
+BISHOPS | Bishops | https://spoj.pl/problems/BISHOPS/
+CALLS | Calls | https://spoj.pl/problems/CALLS/
+HARDQ | Hard Question | https://spoj.pl/problems/HARDQ/
+PHDISP | The Philosophical Dispute | https://spoj.pl/problems/PHDISP/
+EOPERA | Exchange Operations | https://spoj.pl/problems/EOPERA/
+ROADS | Roads | https://spoj.pl/problems/ROADS/
+SEQ | Recursive Sequence | https://spoj.pl/problems/SEQ/
+POKER | Poker | https://spoj.pl/problems/POKER/
+MIXTURES | Mixtures | https://spoj.pl/problems/MIXTURES/
+COINS | Bytelandian gold coins | https://spoj.pl/problems/COINS/
+LAZYCOWS | Lazy Cows | https://spoj.pl/problems/LAZYCOWS/
+EXPEDI | Expedition | https://spoj.pl/problems/EXPEDI/
+AROUND | Around the world | https://spoj.pl/problems/AROUND/
+LANDSCAP | Landscaping | https://spoj.pl/problems/LANDSCAP/
+HAN01 | Ha-noi! | https://spoj.pl/problems/HAN01/
+ACT | Alpha Centauri Tennis | https://spoj.pl/problems/ACT/
+IGARB | Ignore the Garbage | https://spoj.pl/problems/IGARB/
+LISA | Pocket Money | https://spoj.pl/problems/LISA/
+PHIDIAS | Phidias | https://spoj.pl/problems/PHIDIAS/
+FARMER | Farmer | https://spoj.pl/problems/FARMER/
+EMPODIA | Empodia | https://spoj.pl/problems/EMPODIA/
+CSTREET | Cobbled streets | https://spoj.pl/problems/CSTREET/
+MATH1 | Math I | https://spoj.pl/problems/MATH1/
+ONEZERO | Ones and zeros | https://spoj.pl/problems/ONEZERO/
+BOXES | Boxes | https://spoj.pl/problems/BOXES/
+BENEFACT | The Benefactor | https://spoj.pl/problems/BENEFACT/
+GREED | Greedy island | https://spoj.pl/problems/GREED/
+MATRIX | Count maximum matrices | https://spoj.pl/problems/MATRIX/
+QTREE | Query on a tree | https://spoj.pl/problems/QTREE/
+ACS | A concrete simulation | https://spoj.pl/problems/ACS/
+TAXI | Taxi | https://spoj.pl/problems/TAXI/
+PERMUT2 | Ambiguous Permutations | https://spoj.pl/problems/PERMUT2/
+BINGO | Bullshit Bingo | https://spoj.pl/problems/BINGO/
+CHICAGO | 106 miles to Chicago | https://spoj.pl/problems/CHICAGO/
+DECORATE | Decorate the wall | https://spoj.pl/problems/DECORATE/
+EUROPEAN | European railroad tracks | https://spoj.pl/problems/EUROPEAN/
+FOOL | Any fool can do it | https://spoj.pl/problems/FOOL/
+GAME | Game schedule required | https://spoj.pl/problems/GAME/
+HELP | Help the problem setter | https://spoj.pl/problems/HELP/
+TOURS | Travelling tours | https://spoj.pl/problems/TOURS/
+MENU | Menu | https://spoj.pl/problems/MENU/
+HOSPITAL | Use of Hospital Facilities | https://spoj.pl/problems/HOSPITAL/
+BILLIARD | Billiard | https://spoj.pl/problems/BILLIARD/
+RAILROAD | Railroads | https://spoj.pl/problems/RAILROAD/
+SPIN | Spin | https://spoj.pl/problems/SPIN/
+HEXAGON | Hexagon | https://spoj.pl/problems/HEXAGON/
+ACODE | Alphacode | https://spoj.pl/problems/ACODE/
+APRIME | Anti-prime Sequences | https://spoj.pl/problems/APRIME/
+HITOMISS | Hit or Miss | https://spoj.pl/problems/HITOMISS/
+CONDUIT | I Conduit | https://spoj.pl/problems/CONDUIT/
+RPGAMES | Roll Playing Games | https://spoj.pl/problems/RPGAMES/
+TRANK | Team Rankings | https://spoj.pl/problems/TRANK/
+TOANDFRO | To and Fro | https://spoj.pl/problems/TOANDFRO/
+TRANSL | Translations | https://spoj.pl/problems/TRANSL/
+HIKE | Hike on a Graph | https://spoj.pl/problems/HIKE/
+FRACTION | Sort fractions | https://spoj.pl/problems/FRACTION/
+SCANNER | Scanner | https://spoj.pl/problems/SCANNER/
+TCUTTER | Tin Cutter | https://spoj.pl/problems/TCUTTER/
+LOGIC | Logic | https://spoj.pl/problems/LOGIC/
+RNUMBER | Random Number | https://spoj.pl/problems/RNUMBER/
+JRIDE | Jill Rides Again | https://spoj.pl/problems/JRIDE/
+DELCOMM | DEL Command | https://spoj.pl/problems/DELCOMM/
+VHUFFM | Variable Radix Huffman Encoding | https://spoj.pl/problems/VHUFFM/
+NUMQDW | Number of quite different words | https://spoj.pl/problems/NUMQDW/
+COVER | K-path cover | https://spoj.pl/problems/COVER/
+WPUZZLES | Word Puzzles | https://spoj.pl/problems/WPUZZLES/
+BONFIRE | Equatorial Bonfire | https://spoj.pl/problems/BONFIRE/
+DIV15 | Divisibility by 15 | https://spoj.pl/problems/DIV15/
+LAZYPROG | The lazy programmer | https://spoj.pl/problems/LAZYPROG/
+NECKLACE | Necklace | https://spoj.pl/problems/NECKLACE/
+TRANSP | Transposing is Fun | https://spoj.pl/problems/TRANSP/
+AROAD | Another Road Problem | https://spoj.pl/problems/AROAD/
+TRANSP2 | Transposing is Even More Fun | https://spoj.pl/problems/TRANSP2/
+ASSIGN | Assignments | https://spoj.pl/problems/ASSIGN/
+HAJIME | Kill evil instantly | https://spoj.pl/problems/HAJIME/
+PARTPALI | Particular Palindromes | https://spoj.pl/problems/PARTPALI/
+TCNUMFL | Simple Numbers with Fractions Conversion | https://spoj.pl/problems/TCNUMFL/
+TPERML | Permutation generator | https://spoj.pl/problems/TPERML/
+KMSL4B | Roots of polynomial | https://spoj.pl/problems/KMSL4B/
+CLTZ | Collatz | https://spoj.pl/problems/CLTZ/
+ZZPERM | Zig-Zag Permutation | https://spoj.pl/problems/ZZPERM/
+DIV | Divisors | https://spoj.pl/problems/DIV/
+DIV2 | Divisors 2 | https://spoj.pl/problems/DIV2/
+INCR | Increasing Subsequences | https://spoj.pl/problems/INCR/
+QUEST4 | Dungeon of Death | https://spoj.pl/problems/QUEST4/
+QUEST5 | Nail Them | https://spoj.pl/problems/QUEST5/
+SUBS | String it out | https://spoj.pl/problems/SUBS/
+VOCV | Con-Junctions | https://spoj.pl/problems/VOCV/
+LSORT | Sorting is not easy | https://spoj.pl/problems/LSORT/
+BROW | A place for the brewery | https://spoj.pl/problems/BROW/
+HANOI07 | Building the Tower | https://spoj.pl/problems/HANOI07/
+PAIRINT | Pairs of Integers | https://spoj.pl/problems/PAIRINT/
+ASSIGN4 | Another Assignment Problem | https://spoj.pl/problems/ASSIGN4/
+SEQPAR | Partition the sequence | https://spoj.pl/problems/SEQPAR/
+REPEATS | Repeats | https://spoj.pl/problems/REPEATS/
+SAM | Toy Cars | https://spoj.pl/problems/SAM/
+LWAR | Lethal Warfare | https://spoj.pl/problems/LWAR/
+DISUBSTR | Distinct Substrings | https://spoj.pl/problems/DISUBSTR/
+UFAST | Unite Fast | https://spoj.pl/problems/UFAST/
+LIAR | Liar Liar | https://spoj.pl/problems/LIAR/
+MWORDS | Matrix Words | https://spoj.pl/problems/MWORDS/
+PLHOP | Plane Hopping | https://spoj.pl/problems/PLHOP/
+HKNAP | Huge Knap Sack | https://spoj.pl/problems/HKNAP/
+BPRED | Branch Prediction | https://spoj.pl/problems/BPRED/
+EXPAND | Barn Expansion | https://spoj.pl/problems/EXPAND/
+SERVICE | Mobile Service | https://spoj.pl/problems/SERVICE/
+PSTRING | Remove The String | https://spoj.pl/problems/PSTRING/
+SUBST1 | New Distinct Substrings | https://spoj.pl/problems/SUBST1/
+TFSETS | Triple-Free Sets | https://spoj.pl/problems/TFSETS/
+NICEDAY | The day of the competitors | https://spoj.pl/problems/NICEDAY/
+PRO | Promotion | https://spoj.pl/problems/PRO/
+MAXIMUS | Move your armies | https://spoj.pl/problems/MAXIMUS/
+MTWALK | Mountain Walking | https://spoj.pl/problems/MTWALK/
+IVAN | Ivan and his interesting game | https://spoj.pl/problems/IVAN/
+MDST | Minimum Diameter Spanning Tree | https://spoj.pl/problems/MDST/
+TREE | Another Counting Problem | https://spoj.pl/problems/TREE/
+NEG2 | The Moronic Cowmpouter | https://spoj.pl/problems/NEG2/
+TRT | Treats for the Cows | https://spoj.pl/problems/TRT/
+STEAD | Steady Cow Assignment | https://spoj.pl/problems/STEAD/
+LPERMUT | Longest Permutation | https://spoj.pl/problems/LPERMUT/
+TEM | Thermal Luminescence | https://spoj.pl/problems/TEM/
+CH3D | Convex Hull 3D | https://spoj.pl/problems/CH3D/
+MIS | Delay-noise Analysis | https://spoj.pl/problems/MIS/
+ARCHPLG | The Archipelago | https://spoj.pl/problems/ARCHPLG/
+TRIOPT | Trigonometric optimization | https://spoj.pl/problems/TRIOPT/
+OPTM | Optimal Marks | https://spoj.pl/problems/OPTM/
+WM06 | Soccer Choreography | https://spoj.pl/problems/WM06/
+SWAPS | Counting inversions | https://spoj.pl/problems/SWAPS/
+DNA | DNA Translation | https://spoj.pl/problems/DNA/
+CUBES | Perfect Cubes | https://spoj.pl/problems/CUBES/
+IMPORT | Galactic Import | https://spoj.pl/problems/IMPORT/
+BASE | Basically Speaking | https://spoj.pl/problems/BASE/
+SEQUENCE | Letter Sequence Analysis | https://spoj.pl/problems/SEQUENCE/
+MARKUP | Mark-up | https://spoj.pl/problems/MARKUP/
+TRANSMIT | Transmitters | https://spoj.pl/problems/TRANSMIT/
+WSCIPHER | Ws Cipher | https://spoj.pl/problems/WSCIPHER/
+SPLIT | Split Windows | https://spoj.pl/problems/SPLIT/
+INDEXGEN | Index Generation | https://spoj.pl/problems/INDEXGEN/
+HANGOVER | Hangover | https://spoj.pl/problems/HANGOVER/
+DOUBLEVI | Double Vision | https://spoj.pl/problems/DOUBLEVI/
+IMAGE | Image Perimeters | https://spoj.pl/problems/IMAGE/
+MATRIX2 | Submatrix of submatrix | https://spoj.pl/problems/MATRIX2/
+QTREE2 | Query on a tree II | https://spoj.pl/problems/QTREE2/
+FTOUR | Free Tour | https://spoj.pl/problems/FTOUR/
+IM | Intergalactic Map | https://spoj.pl/problems/IM/
+EN | Entrapment | https://spoj.pl/problems/EN/
+PB | Parking Bay | https://spoj.pl/problems/PB/
+BIRTHDAY | Birthday | https://spoj.pl/problems/BIRTHDAY/
+MOBILE | Mobile | https://spoj.pl/problems/MOBILE/
+CFRAC | Continuous Fractions | https://spoj.pl/problems/CFRAC/
+MATRIOSH | Generalized Matrioshkas | https://spoj.pl/problems/MATRIOSH/
+EQDIV | Equidivisions | https://spoj.pl/problems/EQDIV/
+BROUL | Babylonian Roulette | https://spoj.pl/problems/BROUL/
+UJ | Uncle Jack | https://spoj.pl/problems/UJ/
+QUILT | Little Quilt | https://spoj.pl/problems/QUILT/
+POLYCODE | Polygon Encoder | https://spoj.pl/problems/POLYCODE/
+AIBOHP | Aibohphobia | https://spoj.pl/problems/AIBOHP/
+ANGELS | Angels and Devils | https://spoj.pl/problems/ANGELS/
+COMCB | Complete Chess Boards | https://spoj.pl/problems/COMCB/
+FASHION | Fashion Shows | https://spoj.pl/problems/FASHION/
+FAVDICE | Favorite Dice | https://spoj.pl/problems/FAVDICE/
+FPOLICE | Fool the Police | https://spoj.pl/problems/FPOLICE/
+HUBULLU | Hubulullu | https://spoj.pl/problems/HUBULLU/
+MATSUM | Matrix Summation | https://spoj.pl/problems/MATSUM/
+EIGHTS | Triple Fat Ladies | https://spoj.pl/problems/EIGHTS/
+UPSUB | Up Subsequence | https://spoj.pl/problems/UPSUB/
+GSS1 | Can you answer these queries I | https://spoj.pl/problems/GSS1/
+CTRICK | Card Trick | https://spoj.pl/problems/CTRICK/
+SUDOKU | Sudoku | https://spoj.pl/problems/SUDOKU/
+NSTEPS | Number Steps | https://spoj.pl/problems/NSTEPS/
+TOE1 | Tic-Tac-Toe ( I ) | https://spoj.pl/problems/TOE1/
+TOE2 | Tic-Tac-Toe ( II ) | https://spoj.pl/problems/TOE2/
+JAVAC | Java vs C &#43&#43 | https://spoj.pl/problems/JAVAC/
+DEADFR | Dead Fraction | https://spoj.pl/problems/DEADFR/
+MINCOUNT | Move To Invert | https://spoj.pl/problems/MINCOUNT/
+SORTBIT | Sorted bit squence | https://spoj.pl/problems/SORTBIT/
+PALACE | Accomodate the palace | https://spoj.pl/problems/PALACE/
+ORIGLIFE | Origin of Life | https://spoj.pl/problems/ORIGLIFE/
+CNEASY | CN Tower (Easy) | https://spoj.pl/problems/CNEASY/
+CNHARD | CN Tower (Hard) | https://spoj.pl/problems/CNHARD/
+PNTBYNUM | Paint By Numbers | https://spoj.pl/problems/PNTBYNUM/
+CFRAC2 | Continuous Fractions Again | https://spoj.pl/problems/CFRAC2/
+SUMFOUR | 4 values whose sum is 0 | https://spoj.pl/problems/SUMFOUR/
+PARTSUM | Partial Sums | https://spoj.pl/problems/PARTSUM/
+CHASE | A Chase In WonderLand | https://spoj.pl/problems/CHASE/
+KPMATRIX | Matrix | https://spoj.pl/problems/KPMATRIX/
+KPMAZE | Maze | https://spoj.pl/problems/KPMAZE/
+CZ_PROB1 | Summing to a Square Prime | https://spoj.pl/problems/CZ_PROB1/
+EMP | University Employees | https://spoj.pl/problems/EMP/
+CATM | The Cats and the Mouse | https://spoj.pl/problems/CATM/
+NGM | A Game with Numbers | https://spoj.pl/problems/NGM/
+GEOM | Geometry and a Square | https://spoj.pl/problems/GEOM/
+FIRM | Goods | https://spoj.pl/problems/FIRM/
+KPPOLY | Projections Of A Polygon | https://spoj.pl/problems/KPPOLY/
+KPSUM | The Sum | https://spoj.pl/problems/KPSUM/
+KPEQU | Equation | https://spoj.pl/problems/KPEQU/
+PT07X | Vertex Cover | https://spoj.pl/problems/PT07X/
+PT07Y | Is it a tree | https://spoj.pl/problems/PT07Y/
+PT07Z | Longest path in a tree | https://spoj.pl/problems/PT07Z/
+ARCTAN | Use of Function Arctan | https://spoj.pl/problems/ARCTAN/
+CLEVER | The Clever Typist | https://spoj.pl/problems/CLEVER/
+CHAIN | Strange Food Chain | https://spoj.pl/problems/CHAIN/
+DELCOMM2 | DEL Command II | https://spoj.pl/problems/DELCOMM2/
+BRCKGAME | A Game of Toy Bricks | https://spoj.pl/problems/BRCKGAME/
+COVER2 | 3D Cover | https://spoj.pl/problems/COVER2/
+SEQ1 | 01 Sequence | https://spoj.pl/problems/SEQ1/
+CAKE | Birthday Cake | https://spoj.pl/problems/CAKE/
+OPTSUB | Optimal Connected Subset | https://spoj.pl/problems/OPTSUB/
+MEMDIS | Memory Distribution | https://spoj.pl/problems/MEMDIS/
+ANALYSER | Program Analyser | https://spoj.pl/problems/ANALYSER/
+LOSTCT | The Secret of a Lost City | https://spoj.pl/problems/LOSTCT/
+BLUEEQ | Help Blue Mary Please! (Act I) | https://spoj.pl/problems/BLUEEQ/
+BLUEEQ2 | Help Blue Mary Please! (Act II) | https://spoj.pl/problems/BLUEEQ2/
+AEROLITE | The Secret of an Aerolite | https://spoj.pl/problems/AEROLITE/
+GALAXY | A Simple Calculator in the Galaxy | https://spoj.pl/problems/GALAXY/
+DRAGON | Greedy Hydra | https://spoj.pl/problems/DRAGON/
+BARB | Barbarians | https://spoj.pl/problems/BARB/
+ROBOT | Robot Number M | https://spoj.pl/problems/ROBOT/
+EDIT3 | Editor II | https://spoj.pl/problems/EDIT3/
+CHRIS | On the Way to Find Chris | https://spoj.pl/problems/CHRIS/
+CASHIER | Blue Mary Needs Help Again | https://spoj.pl/problems/CASHIER/
+RAIN2 | Outside it is now raining | https://spoj.pl/problems/RAIN2/
+SEQ2 | Another Sequence Problem | https://spoj.pl/problems/SEQ2/
+PRLGAME | A Game of Pearls | https://spoj.pl/problems/PRLGAME/
+TOMJERRY | Tom and Jerry | https://spoj.pl/problems/TOMJERRY/
+LEMON | Lemon Tree in the Moonlight | https://spoj.pl/problems/LEMON/
+WORMS | VII - Act IV | https://spoj.pl/problems/WORMS/
+PROFIT | Maximum Profit | https://spoj.pl/problems/PROFIT/
+PT07A | Play with a Tree | https://spoj.pl/problems/PT07A/
+PT07B | The Easiest Problem | https://spoj.pl/problems/PT07B/
+PT07C | The GbAaY Kingdom | https://spoj.pl/problems/PT07C/
+PT07D | Let us count 1 2 3 | https://spoj.pl/problems/PT07D/
+PT07F | A short vacation in Disneyland | https://spoj.pl/problems/PT07F/
+PT07G | Colorful Lights Party | https://spoj.pl/problems/PT07G/
+PT07H | Search in XML | https://spoj.pl/problems/PT07H/
+PT07J | Query on a tree III | https://spoj.pl/problems/PT07J/
+PT07K | Balloons of JiaJia | https://spoj.pl/problems/PT07K/
+MOLE | Whac-a-Mole | https://spoj.pl/problems/MOLE/
+RSORTING | Ranklist Sorting | https://spoj.pl/problems/RSORTING/
+BLUEEQ3 | Help Blue Mary Please! (Act III) | https://spoj.pl/problems/BLUEEQ3/
+MKJUMPS | Making Jumps | https://spoj.pl/problems/MKJUMPS/
+MOBILE2 | Mobiles | https://spoj.pl/problems/MOBILE2/
+BACKUP | Backup Files | https://spoj.pl/problems/BACKUP/
+ZOO | Zoo | https://spoj.pl/problems/ZOO/
+GSS2 | Can you answer these queries II | https://spoj.pl/problems/GSS2/
+TREEOI14 | Trees | https://spoj.pl/problems/TREEOI14/
+AMATH | Another Mathematical Problem | https://spoj.pl/problems/AMATH/
+GIWED | The Great Indian Wedding | https://spoj.pl/problems/GIWED/
+AMBM | Ambitious Manager | https://spoj.pl/problems/AMBM/
+EXPLOSN | The Explosion | https://spoj.pl/problems/EXPLOSN/
+FUSION | Fusion Cube | https://spoj.pl/problems/FUSION/
+GEN | Text Generator | https://spoj.pl/problems/GEN/
+HALLOW | Halloween treats | https://spoj.pl/problems/HALLOW/
+TREASURY | Royal Treasury | https://spoj.pl/problems/TREASURY/
+CYLINDER | Cylinder | https://spoj.pl/problems/CYLINDER/
+EXPRESS | Expressions | https://spoj.pl/problems/EXPRESS/
+FREQUENT | Frequent values | https://spoj.pl/problems/FREQUENT/
+GROCERY | Grocery store | https://spoj.pl/problems/GROCERY/
+LOGIC2 | Logic II | https://spoj.pl/problems/LOGIC2/
+EASYPROB | A Very Easy Problem! | https://spoj.pl/problems/EASYPROB/
+HARDP | Hard Problem | https://spoj.pl/problems/HARDP/
+COCONUTS | Coconuts | https://spoj.pl/problems/COCONUTS/
+GRC | Grandpa&#8217;s Rubik Cube | https://spoj.pl/problems/GRC/
+WIJGT | Will Indiana Jones Get There | https://spoj.pl/problems/WIJGT/
+OFORTUNE | Ohgas&#39 Fortune | https://spoj.pl/problems/OFORTUNE/
+PLSEARCH | Polygonal Line Search | https://spoj.pl/problems/PLSEARCH/
+NSYSTEM | Numeral System | https://spoj.pl/problems/NSYSTEM/
+TRSTAGE | Traveling by Stagecoach | https://spoj.pl/problems/TRSTAGE/
+EOWAMRT | Earth Observation with a Mobile Robot Team | https://spoj.pl/problems/EOWAMRT/
+CLEANRBT | Cleaning Robot | https://spoj.pl/problems/CLEANRBT/
+ACMAKER | ACM (ACronymMaker) | https://spoj.pl/problems/ACMAKER/
+CDOWN | Countdown | https://spoj.pl/problems/CDOWN/
+GAMEFIL | The Game of Efil | https://spoj.pl/problems/GAMEFIL/
+QKP | Queens, Knights and Pawns | https://spoj.pl/problems/QKP/
+RELINETS | Reliable Nets | https://spoj.pl/problems/RELINETS/
+SQCOUNT | Square Count | https://spoj.pl/problems/SQCOUNT/
+SWTHIN | Swamp Things | https://spoj.pl/problems/SWTHIN/
+TWENDS | Two Ends | https://spoj.pl/problems/TWENDS/
+PRMLX | Permalex | https://spoj.pl/problems/PRMLX/
+SCALE | Funny scales | https://spoj.pl/problems/SCALE/
+NCKLCE | Another Necklace Problem | https://spoj.pl/problems/NCKLCE/
+GSS3 | Can you answer these queries III | https://spoj.pl/problems/GSS3/
+RP | Life, the Universe, and Everything II | https://spoj.pl/problems/RP/
+BMJ | Bee Maja | https://spoj.pl/problems/BMJ/
+TRICOUNT | Counting Triangles | https://spoj.pl/problems/TRICOUNT/
+IMPORT1 | The Importance | https://spoj.pl/problems/IMPORT1/
+EXCHANGE | Exchange | https://spoj.pl/problems/EXCHANGE/
+CPRMT | Common Permutation | https://spoj.pl/problems/CPRMT/
+NUMGUESS | Guess the Number | https://spoj.pl/problems/NUMGUESS/
+TCOUNT2 | Counting Triangles II | https://spoj.pl/problems/TCOUNT2/
+TCOUNT3 | Counting Triangles III | https://spoj.pl/problems/TCOUNT3/
+EQU2 | Yet Another Equation | https://spoj.pl/problems/EQU2/
+TETRIS3D | Tetris 3D | https://spoj.pl/problems/TETRIS3D/
+POLEVAL | Evaluate the polynomial | https://spoj.pl/problems/POLEVAL/
+SEQPAR2 | Sequence Partitioning II | https://spoj.pl/problems/SEQPAR2/
+DIVSUM2 | Divisor Summation (Hard) | https://spoj.pl/problems/DIVSUM2/
+NQUEEN | Yet Another N-Queen Problem | https://spoj.pl/problems/NQUEEN/
+DETER2 | Find The Determinant II | https://spoj.pl/problems/DETER2/
+ALL | All Discs Considered | https://spoj.pl/problems/ALL/
+BOOLE | Boolean Logic | https://spoj.pl/problems/BOOLE/
+DNALAB | DNA Laboratory | https://spoj.pl/problems/DNALAB/
+ICAMPSEQ | IOICamp Sequence | https://spoj.pl/problems/ICAMPSEQ/
+CODE | Code | https://spoj.pl/problems/CODE/
+DANGER | In Danger | https://spoj.pl/problems/DANGER/
+ENCONDIN | Run Length Encoding | https://spoj.pl/problems/ENCONDIN/
+FRACTAN | Fractan | https://spoj.pl/problems/FRACTAN/
+GREEDULM | Huffmanï¿½s Greed | https://spoj.pl/problems/GREEDULM/
+HEAPULM | Binary Search Heap Construction | https://spoj.pl/problems/HEAPULM/
+GEN2 | Text Generater II | https://spoj.pl/problems/GEN2/
+DRAGON2 | Greedy Hydra II | https://spoj.pl/problems/DRAGON2/
+CARD | Cardsharper | https://spoj.pl/problems/CARD/
+ASSIST | Assistance Required | https://spoj.pl/problems/ASSIST/
+BOTTOM | The Bottom of a Graph | https://spoj.pl/problems/BOTTOM/
+CONTEST | Fixed Partition Contest Management | https://spoj.pl/problems/CONTEST/
+DRINK | Drink, on Ice | https://spoj.pl/problems/DRINK/
+EDGE | Edge | https://spoj.pl/problems/EDGE/
+FOLD | Fold | https://spoj.pl/problems/FOLD/
+GENETIC | Genetic Code | https://spoj.pl/problems/GENETIC/
+HISTOGRA | Largest Rectangle in a Histogram | https://spoj.pl/problems/HISTOGRA/
+ORZ | Nuclear Plants | https://spoj.pl/problems/ORZ/
+LCS | Longest Common Substring | https://spoj.pl/problems/LCS/
+LCS2 | Longest Common Substring II  | https://spoj.pl/problems/LCS2/
+WA | Problems Collection (Volume X) | https://spoj.pl/problems/WA/
+FTOUR2 | Free tour II | https://spoj.pl/problems/FTOUR2/
+SUDOKU2 | Sudoku | https://spoj.pl/problems/SUDOKU2/
+SETSTACK | The SetStack Computer | https://spoj.pl/problems/SETSTACK/
+PIE | Pie | https://spoj.pl/problems/PIE/
+TICKET | Ticket to Ride | https://spoj.pl/problems/TICKET/
+BOOKCASE | The Bookcase | https://spoj.pl/problems/BOOKCASE/
+PQUEUE | Printer Queue | https://spoj.pl/problems/PQUEUE/
+PPATH | Prime Path | https://spoj.pl/problems/PPATH/
+LINELAND | Lineland Airport | https://spoj.pl/problems/LINELAND/
+LEONARDO | Leonardo Notebook | https://spoj.pl/problems/LEONARDO/
+MICEMAZE | Mice and Maze | https://spoj.pl/problems/MICEMAZE/
+PFDEP | Project File Dependencies | https://spoj.pl/problems/PFDEP/
+NOCHANGE | No Change | https://spoj.pl/problems/NOCHANGE/
+MKWAVES | Making Waves | https://spoj.pl/problems/MKWAVES/
+MKPALS | Making Pals | https://spoj.pl/problems/MKPALS/
+MKMONEY | Making Money | https://spoj.pl/problems/MKMONEY/
+MKMOOM | Making Mountains Out Of Molehills | https://spoj.pl/problems/MKMOOM/
+MKLABELS | Making Labels | https://spoj.pl/problems/MKLABELS/
+MKBUDGET | Making A Budget | https://spoj.pl/problems/MKBUDGET/
+ACARGO | Accumulate Cargo | https://spoj.pl/problems/ACARGO/
+BWHEELER | Burrows Wheeler Precompression | https://spoj.pl/problems/BWHEELER/
+COOLNUMS | Cool Numbers | https://spoj.pl/problems/COOLNUMS/
+DRAGONCU | Dragon Curves | https://spoj.pl/problems/DRAGONCU/
+EPURSE | Enrich my purse | https://spoj.pl/problems/EPURSE/
+FCATTLE | Farmers Cattle | https://spoj.pl/problems/FCATTLE/
+GAMETIME | Game Time | https://spoj.pl/problems/GAMETIME/
+HANOICAL | Hanoi Calls | https://spoj.pl/problems/HANOICAL/
+ICODER | Instruction Decoder | https://spoj.pl/problems/ICODER/
+RECTANGL | Rectangles | https://spoj.pl/problems/RECTANGL/
+ROMANRDS | Roman Roads | https://spoj.pl/problems/ROMANRDS/
+CIRCLES | Circles | https://spoj.pl/problems/CIRCLES/
+IMGPROJ | Image Projections | https://spoj.pl/problems/IMGPROJ/
+MMCUT | Tree cut | https://spoj.pl/problems/MMCUT/
+SETCOV | Set Cover | https://spoj.pl/problems/SETCOV/
+SKIVALL | Ski Valley | https://spoj.pl/problems/SKIVALL/
+ACFRAC | Another Continuous Fractions Problem | https://spoj.pl/problems/ACFRAC/
+BOX | Boxes (Hard) | https://spoj.pl/problems/BOX/
+RNG | Random Number Generator | https://spoj.pl/problems/RNG/
+MINUS | Minus Operation | https://spoj.pl/problems/MINUS/
+BALIFE | Load Balancing | https://spoj.pl/problems/BALIFE/
+COUNT | Another Very Easy Problem! WOW!!! | https://spoj.pl/problems/COUNT/
+BACKPACK | Dab of Backpack | https://spoj.pl/problems/BACKPACK/
+CRYPTO | Cryptography | https://spoj.pl/problems/CRYPTO/
+ROLLBALL | The Rolling Ball | https://spoj.pl/problems/ROLLBALL/
+PEBBMOV | Moving Pebbles | https://spoj.pl/problems/PEBBMOV/
+TRUTHORL | Truth Or Lie | https://spoj.pl/problems/TRUTHORL/
+ONEINSTR | One Instruction Computer Simulator | https://spoj.pl/problems/ONEINSTR/
+YKH | Please help You-Know-Who | https://spoj.pl/problems/YKH/
+TILING | Rectangle Tiling | https://spoj.pl/problems/TILING/
+REMGAME | Stone Removing Game | https://spoj.pl/problems/REMGAME/
+CERC07B | Strange Billboard | https://spoj.pl/problems/CERC07B/
+CERC07C | Cell Phone | https://spoj.pl/problems/CERC07C/
+CERC07H | Hexagonal Parcels | https://spoj.pl/problems/CERC07H/
+CERC07K | Key Task | https://spoj.pl/problems/CERC07K/
+CERC07L | Gates of Logic | https://spoj.pl/problems/CERC07L/
+CERC07N | Weird Numbers | https://spoj.pl/problems/CERC07N/
+CERC07P | Rectangular Polygon | https://spoj.pl/problems/CERC07P/
+CERC07R | Reaux! Sham! Beaux! | https://spoj.pl/problems/CERC07R/
+CERC07S | Robotic Sort | https://spoj.pl/problems/CERC07S/
+CERC07W | Tough Water Level | https://spoj.pl/problems/CERC07W/
+MINDIST | Minimum Distance | https://spoj.pl/problems/MINDIST/
+CANDY | Candy I | https://spoj.pl/problems/CANDY/
+FCTRL4 | Last Non-Zero Digit of Factorials | https://spoj.pl/problems/FCTRL4/
+LABYR2 | Number Labyrinth | https://spoj.pl/problems/LABYR2/
+RAIN3 | Rain | https://spoj.pl/problems/RAIN3/
+KROW | K-In-A-Row | https://spoj.pl/problems/KROW/
+CAKE2 | Cake | https://spoj.pl/problems/CAKE2/
+TROLLS | Trolls | https://spoj.pl/problems/TROLLS/
+GETBACK | Get Back! | https://spoj.pl/problems/GETBACK/
+PUZZLE2 | Puzzle | https://spoj.pl/problems/PUZZLE2/
+CANDY2 | Candy II | https://spoj.pl/problems/CANDY2/
+PIB | Pibonacci | https://spoj.pl/problems/PIB/
+GOSSIPER | Gossipers | https://spoj.pl/problems/GOSSIPER/
+FAIRONOT | (un)Fair Play | https://spoj.pl/problems/FAIRONOT/
+GARDEN | Golden Garden | https://spoj.pl/problems/GARDEN/
+FLOWERS | Arranging Flowers | https://spoj.pl/problems/FLOWERS/
+DEPEND | Dependency Problems | https://spoj.pl/problems/DEPEND/
+FOREST | K Edge-disjoint Branchings | https://spoj.pl/problems/FOREST/
+ROOT | Root of a Linear Equation | https://spoj.pl/problems/ROOT/
+CANDY3 | Candy III | https://spoj.pl/problems/CANDY3/
+BAISED | Biased Standings | https://spoj.pl/problems/BAISED/
+SUBSEQ | Counting Subsequences | https://spoj.pl/problems/SUBSEQ/
+CALCULAT | Digital Calculator | https://spoj.pl/problems/CALCULAT/
+FRACTAL | Hilbert Curve | https://spoj.pl/problems/FRACTAL/
+IMATCH | Internet is Faulty | https://spoj.pl/problems/IMATCH/
+KRUSKAL | Kruskal | https://spoj.pl/problems/KRUSKAL/
+ABSYS | Anti-Blot System | https://spoj.pl/problems/ABSYS/
+CAKE3 | Delicious Cake | https://spoj.pl/problems/CAKE3/
+HERE | Here-There | https://spoj.pl/problems/HERE/
+JPIX | Pixel Shuffle | https://spoj.pl/problems/JPIX/
+TOWER | Towers of Powers | https://spoj.pl/problems/TOWER/
+AMCODES | Ambiguous Codes | https://spoj.pl/problems/AMCODES/
+BALLIGHT | Ballroom Lights | https://spoj.pl/problems/BALLIGHT/
+CPC | Car Plates Competition | https://spoj.pl/problems/CPC/
+DTT | Drop the Triples | https://spoj.pl/problems/DTT/
+EMOTICON | Emoticons | https://spoj.pl/problems/EMOTICON/
+FSEATS | Finding Seats | https://spoj.pl/problems/FSEATS/
+GALOU | Galou is back! | https://spoj.pl/problems/GALOU/
+OFFSIDE | He is offside! | https://spoj.pl/problems/OFFSIDE/
+ICPCS | ICPC Scoreboard | https://spoj.pl/problems/ICPCS/
+JLEAGUE | Justice League | https://spoj.pl/problems/JLEAGUE/
+MUSIC | Musical Optimization | https://spoj.pl/problems/MUSIC/
+MKPAIRS | Making Pairs | https://spoj.pl/problems/MKPAIRS/
+TAN1 | Tan and His Interesting Game | https://spoj.pl/problems/TAN1/
+PPP07D | Labyrinth | https://spoj.pl/problems/PPP07D/
+BALLOON | Balloons in a Box | https://spoj.pl/problems/BALLOON/
+UCODES | Undecodable Codes | https://spoj.pl/problems/UCODES/
+DESERT | Crossing the Desert | https://spoj.pl/problems/DESERT/
+FERRY | Ferries | https://spoj.pl/problems/FERRY/
+ISLHOP | Island Hopping | https://spoj.pl/problems/ISLHOP/
+OIL | Toil for Oil | https://spoj.pl/problems/OIL/
+RECTNG2 | Partitions | https://spoj.pl/problems/RECTNG2/
+SSORT | Silly Sort | https://spoj.pl/problems/SSORT/
+LEXBRAC | Bracket Sequence | https://spoj.pl/problems/LEXBRAC/
+WORDS | Overlapping Words | https://spoj.pl/problems/WORDS/
+BIGSEQ | Sequence | https://spoj.pl/problems/BIGSEQ/
+DISTANCE | Manhattan | https://spoj.pl/problems/DISTANCE/
+SEGMENTS | Segments | https://spoj.pl/problems/SEGMENTS/
+TREEGAME | Tree Game | https://spoj.pl/problems/TREEGAME/
+COMPASS | Broken Compass | https://spoj.pl/problems/COMPASS/
+MARIOGAM | Mario | https://spoj.pl/problems/MARIOGAM/
+STRDIST | String Distance | https://spoj.pl/problems/STRDIST/
+LIS2 | Another Longest Increasing Subsequence Problem | https://spoj.pl/problems/LIS2/
+ARRANGE | Arranging Amplifiers | https://spoj.pl/problems/ARRANGE/
+BUILD | Building Beacons | https://spoj.pl/problems/BUILD/
+CCOST | Calculate The Cost | https://spoj.pl/problems/CCOST/
+RESIST | Kirchhof Law | https://spoj.pl/problems/RESIST/
+DSUBSEQ | Distinct Subsequences | https://spoj.pl/problems/DSUBSEQ/
+ENEMY | Eliminate The Enemies | https://spoj.pl/problems/ENEMY/
+FFROG | Flying Frogs | https://spoj.pl/problems/FFROG/
+GLGRID | G-Line Grid | https://spoj.pl/problems/GLGRID/
+HHAND | Hospital at Hands | https://spoj.pl/problems/HHAND/
+ININT | Incrementing The Integer | https://spoj.pl/problems/ININT/
+JAZZYJOB | Jazzy Job | https://spoj.pl/problems/JAZZYJOB/
+MINTRIAN | Minimal Triangulations of Graphs | https://spoj.pl/problems/MINTRIAN/
+PLD | Palindromes | https://spoj.pl/problems/PLD/
+RABBIT1 | Counting Rabbits | https://spoj.pl/problems/RABBIT1/
+PHONELIN | Phone Lines | https://spoj.pl/problems/PHONELIN/
+MAGIC4 | Magic Program IV | https://spoj.pl/problems/MAGIC4/
+GNY07A | Mispelling | https://spoj.pl/problems/GNY07A/
+GNY07B | Conversions | https://spoj.pl/problems/GNY07B/
+GNY07C | Encoding | https://spoj.pl/problems/GNY07C/
+GNY07D | Decoding | https://spoj.pl/problems/GNY07D/
+GNY07E | Flipping Burned Pancakes | https://spoj.pl/problems/GNY07E/
+GNY07F | Monkey Vines | https://spoj.pl/problems/GNY07F/
+GNY07G | Model Rocket Height | https://spoj.pl/problems/GNY07G/
+GNY07H | Tiling a Grid With Dominoes | https://spoj.pl/problems/GNY07H/
+GNY07I | Spatial Concepts Test | https://spoj.pl/problems/GNY07I/
+PERMUT3 | Another Permutation Problem | https://spoj.pl/problems/PERMUT3/
+CLK | Chomp | https://spoj.pl/problems/CLK/
+SC1 | Starcraft I | https://spoj.pl/problems/SC1/
+KPARCH | Archiver | https://spoj.pl/problems/KPARCH/
+KPSORT | Weird sorting | https://spoj.pl/problems/KPSORT/
+WAR | Art of War | https://spoj.pl/problems/WAR/
+EXAMPLE | Example | https://spoj.pl/problems/EXAMPLE/
+ILLUM | Illumination | https://spoj.pl/problems/ILLUM/
+PUTIN | Put a Point in a Hyperspace | https://spoj.pl/problems/PUTIN/
+QTREE4 | Query on a tree IV | https://spoj.pl/problems/QTREE4/
+POLYSSQ | Polygon | https://spoj.pl/problems/POLYSSQ/
+MSTS | Count Minimum Spanning Trees | https://spoj.pl/problems/MSTS/
+GANNHAT | Closest distance | https://spoj.pl/problems/GANNHAT/
+SPP | Recursive Sequence (Version II) | https://spoj.pl/problems/SPP/
+UNTITLED | Untitled Problem | https://spoj.pl/problems/UNTITLED/
+COWCAR | Cow Cars | https://spoj.pl/problems/COWCAR/
+GLASNICI | Glasnici | https://spoj.pl/problems/GLASNICI/
+QUADAREA | Maximal Quadrilateral Area | https://spoj.pl/problems/QUADAREA/
+ARMY | Army Strength | https://spoj.pl/problems/ARMY/
+BREAK | Breaking in | https://spoj.pl/problems/BREAK/
+INVENT | Inventing Test Data | https://spoj.pl/problems/INVENT/
+KEQ | K Equal Digits | https://spoj.pl/problems/KEQ/
+LARGE | Large party | https://spoj.pl/problems/LARGE/
+RAIL | Simplify the Railroad System | https://spoj.pl/problems/RAIL/
+PRHYME | Perfect Rhyme | https://spoj.pl/problems/PRHYME/
+GUESSING | Number Guessing Game | https://spoj.pl/problems/GUESSING/
+SUMSUMS | Summing Sums | https://spoj.pl/problems/SUMSUMS/
+PRETILE | Prefix Tiling | https://spoj.pl/problems/PRETILE/
+INCSEQ | Increasing Subsequences | https://spoj.pl/problems/INCSEQ/
+CSUBSEQS | Common Subsequences | https://spoj.pl/problems/CSUBSEQS/
+INCDSEQ | Distinct Increasing Subsequences | https://spoj.pl/problems/INCDSEQ/
+RRSCHED | Round-Robin Scheduling | https://spoj.pl/problems/RRSCHED/
+TLE | Time Limit Exceeded | https://spoj.pl/problems/TLE/
+DETER3 | Find The Determinant III | https://spoj.pl/problems/DETER3/
+SDGAME | Super Dice Game | https://spoj.pl/problems/SDGAME/
+MLE | Memory Limit Exceeded | https://spoj.pl/problems/MLE/
+BROKEN | Broken Keyboard | https://spoj.pl/problems/BROKEN/
+PDECODE | Decode the Strings | https://spoj.pl/problems/PDECODE/
+FOREST2 | Forest | https://spoj.pl/problems/FOREST2/
+HELPBOB | Help Bob | https://spoj.pl/problems/HELPBOB/
+SDGAME2 | Another understanding of Super Dice Game | https://spoj.pl/problems/SDGAME2/
+KNIGHTS | Knights of the Round Table | https://spoj.pl/problems/KNIGHTS/
+DOCTOR | The Cow Doctor | https://spoj.pl/problems/DOCTOR/
+WILD | Wild West | https://spoj.pl/problems/WILD/
+CLONE | Find the Clones | https://spoj.pl/problems/CLONE/
+WARE | The Warehouse | https://spoj.pl/problems/WARE/
+WIDGET | Widget Factory | https://spoj.pl/problems/WIDGET/
+MARTIAN | Martian Mining | https://spoj.pl/problems/MARTIAN/
+WORDRING | Word Rings | https://spoj.pl/problems/WORDRING/
+PARTY2 | Party of Cloaked Killers | https://spoj.pl/problems/PARTY2/
+VOL | Volunteers | https://spoj.pl/problems/VOL/
+GEOPROB | One Geometry Problem | https://spoj.pl/problems/GEOPROB/
+TRANSP1 | Transportation | https://spoj.pl/problems/TRANSP1/
+NOTATRI | Not a Triangle | https://spoj.pl/problems/NOTATRI/
+GCD2 | GCD2 | https://spoj.pl/problems/GCD2/
+GSS5 | Can you answer these queries V | https://spoj.pl/problems/GSS5/
+QTREE5 | Query on a tree V | https://spoj.pl/problems/QTREE5/
+UNTITLE1 | Untitled Problem II | https://spoj.pl/problems/UNTITLE1/
+SHOOTING | Emmons | https://spoj.pl/problems/SHOOTING/
+ECLIPSE | Eclipse | https://spoj.pl/problems/ECLIPSE/
+TRIOMINO | Triomino Game | https://spoj.pl/problems/TRIOMINO/
+PAINTBLK | Painting Blocks (Act I) | https://spoj.pl/problems/PAINTBLK/
+PAINTBLC | Painting Blocks (Act II) | https://spoj.pl/problems/PAINTBLC/
+ELECTRO | Electrophoretic | https://spoj.pl/problems/ELECTRO/
+FILTER | Median Filter | https://spoj.pl/problems/FILTER/
+LIFEGAME | Life Game | https://spoj.pl/problems/LIFEGAME/
+LAND | Subdividing a Land | https://spoj.pl/problems/LAND/
+LINE | Connect Line Segments | https://spoj.pl/problems/LINE/
+OILCOMP | Oil Company | https://spoj.pl/problems/OILCOMP/
+RPS | Finding the Top RPS Player | https://spoj.pl/problems/RPS/
+VORONOI | Revenge of Voronoi | https://spoj.pl/problems/VORONOI/
+WALL | Castle Wall | https://spoj.pl/problems/WALL/
+MUL2COM | Binary multiplication | https://spoj.pl/problems/MUL2COM/
+SOLDIER | Help the soldier | https://spoj.pl/problems/SOLDIER/
+SEQ5 | How many subsequences | https://spoj.pl/problems/SEQ5/
+COPYDNA | Copying DNA | https://spoj.pl/problems/COPYDNA/
+MOD | Power Modulo Inverted | https://spoj.pl/problems/MOD/
+DICTSUB | Dictionary Subsequences | https://spoj.pl/problems/DICTSUB/
+ODDDIV | Odd Numbers of Divisors | https://spoj.pl/problems/ODDDIV/
+GRAPHGAM | Charlesbert and Merangelou | https://spoj.pl/problems/GRAPHGAM/
+STRLCP | Longest Common Prefix | https://spoj.pl/problems/STRLCP/
+PALNUM | Palindromic Number | https://spoj.pl/problems/PALNUM/
+STABARDS | Stabards | https://spoj.pl/problems/STABARDS/
+STSTRING | Strings | https://spoj.pl/problems/STSTRING/
+GORELIAN | Here We Go(relians) Again | https://spoj.pl/problems/GORELIAN/
+PERMSG | Permutation Exponentiation | https://spoj.pl/problems/PERMSG/
+DPEQN | Congruence Equation | https://spoj.pl/problems/DPEQN/
+LINES | Game of Lines | https://spoj.pl/problems/LINES/
+DOORSPEN | Doors and Penguins | https://spoj.pl/problems/DOORSPEN/
+DIVREL | Divisibility Relation | https://spoj.pl/problems/DIVREL/
+TREECST | Tree Construction | https://spoj.pl/problems/TREECST/
+PALIM | Yet Another Longest Palindrome Problem | https://spoj.pl/problems/PALIM/
+TYPESET | Typesettin | https://spoj.pl/problems/TYPESET/
+SLINK | Slink | https://spoj.pl/problems/SLINK/
+EDS | Electronic Document Security | https://spoj.pl/problems/EDS/
+GUARD | Guard | https://spoj.pl/problems/GUARD/
+RACETIME | Race Against Time | https://spoj.pl/problems/RACETIME/
+DQUERY | D-query | https://spoj.pl/problems/DQUERY/
+ORDERSET | Order statistic set | https://spoj.pl/problems/ORDERSET/
+SA04C | Roman Patrollers | https://spoj.pl/problems/SA04C/
+SA04D | Very Special Boxes  | https://spoj.pl/problems/SA04D/
+HEXTILE | Hex Tile Equations | https://spoj.pl/problems/HEXTILE/
+BRIDGES2 | The Bridges of San Mochti | https://spoj.pl/problems/BRIDGES2/
+BULLETIN | Bulletin Board | https://spoj.pl/problems/BULLETIN/
+SERIALN | Serial Numbers | https://spoj.pl/problems/SERIALN/
+UMNOZAK | Umnozak | https://spoj.pl/problems/UMNOZAK/
+DOUBLE | Doubled Numbers | https://spoj.pl/problems/DOUBLE/
+HIGHWAY | Cestarine | https://spoj.pl/problems/HIGHWAY/
+STACK | Stack | https://spoj.pl/problems/STACK/
+IMGREC2 | Digital Image Recognition | https://spoj.pl/problems/IMGREC2/
+CAVLI | Cavli | https://spoj.pl/problems/CAVLI/
+SETNJA | Setnja | https://spoj.pl/problems/SETNJA/
+SVADA | Svada | https://spoj.pl/problems/SVADA/
+ROUNDT | Round Table | https://spoj.pl/problems/ROUNDT/
+PERMCODE | Permutation Code | https://spoj.pl/problems/PERMCODE/
+SCAVHUNT | Scavenger Hunt | https://spoj.pl/problems/SCAVHUNT/
+STAMPS | Stamps | https://spoj.pl/problems/STAMPS/
+PARKINGL | Parking Lot | https://spoj.pl/problems/PARKINGL/
+BUGLIFE | A Bug&#8217;s Life | https://spoj.pl/problems/BUGLIFE/
+MIRRORED | Mirrored Pairs | https://spoj.pl/problems/MIRRORED/
+SSHUFFLE | String Shuffle | https://spoj.pl/problems/SSHUFFLE/
+TOURIST | Tourist | https://spoj.pl/problems/TOURIST/
+HIGHWAYS | Highways | https://spoj.pl/problems/HIGHWAYS/
+MONSTER | Monster Trap | https://spoj.pl/problems/MONSTER/
+YODA | Yoda Goes Palindromic ! | https://spoj.pl/problems/YODA/
+QUALITY | Contest System Quality Assurance Tester | https://spoj.pl/problems/QUALITY/
+CHMAZE | Changing Maze | https://spoj.pl/problems/CHMAZE/
+DNPALIN | Double Near Palindromes | https://spoj.pl/problems/DNPALIN/
+KNIGHTSR | The Knights of the Round Circle | https://spoj.pl/problems/KNIGHTSR/
+TRIBE2 | Tribe Council | https://spoj.pl/problems/TRIBE2/
+NOTOKNOT | Knot or Not | https://spoj.pl/problems/NOTOKNOT/
+LAGRANGE | Lagrange&#8217;s Four-Square Theorem | https://spoj.pl/problems/LAGRANGE/
+SAMER08A | Almost Shortest Path | https://spoj.pl/problems/SAMER08A/
+SAMER08B | Bases | https://spoj.pl/problems/SAMER08B/
+SAMER08C | Candy | https://spoj.pl/problems/SAMER08C/
+SAMER08D | DNA Sequences | https://spoj.pl/problems/SAMER08D/
+SAMER08E | Electricity | https://spoj.pl/problems/SAMER08E/
+SAMER08F | Feynman | https://spoj.pl/problems/SAMER08F/
+SAMER08G | Pole Position | https://spoj.pl/problems/SAMER08G/
+SAMER08H | Higgs Boson | https://spoj.pl/problems/SAMER08H/
+SAMER08I | Traveling Shoemaker Problem | https://spoj.pl/problems/SAMER08I/
+SAMER08J | Bora Bora | https://spoj.pl/problems/SAMER08J/
+SAMER08K | Shrinking Polygons | https://spoj.pl/problems/SAMER08K/
+FALLINGI | Falling Ice | https://spoj.pl/problems/FALLINGI/
+OROSNAKE | Ouroboros Snake | https://spoj.pl/problems/OROSNAKE/
+HIST2 | Histogram | https://spoj.pl/problems/HIST2/
+LASTDIG | The last digit | https://spoj.pl/problems/LASTDIG/
+CEPC08B | SkyScrapers | https://spoj.pl/problems/CEPC08B/
+SONG | Song Contest | https://spoj.pl/problems/SONG/
+RAMP | The Skateparkï¿½s New Ramps | https://spoj.pl/problems/RAMP/
+ROBIN | Robintron | https://spoj.pl/problems/ROBIN/
+DRIVE | Drive through MegaCity | https://spoj.pl/problems/DRIVE/
+DEPOSIT | Deposit | https://spoj.pl/problems/DEPOSIT/
+BABY | Baby | https://spoj.pl/problems/BABY/
+BEGIN | Begin | https://spoj.pl/problems/BEGIN/
+CROSSBIT | Crossbits | https://spoj.pl/problems/CROSSBIT/
+ELIM | Elimination | https://spoj.pl/problems/ELIM/
+TOPCODE | The  Top-Code | https://spoj.pl/problems/TOPCODE/
+HIDTRI | Hidden Triangle | https://spoj.pl/problems/HIDTRI/
+BRAILLE | Braille Transcription | https://spoj.pl/problems/BRAILLE/
+NBLTHIEF | The Nobel Thief | https://spoj.pl/problems/NBLTHIEF/
+CPRIME | Prime Number Theorem | https://spoj.pl/problems/CPRIME/
+BGAME | Game on board | https://spoj.pl/problems/BGAME/
+MATRICA | Matrica | https://spoj.pl/problems/MATRICA/
+BST | Binary Search Tree | https://spoj.pl/problems/BST/
+NAJKRACI | Najkraci | https://spoj.pl/problems/NAJKRACI/
+GLOVE | Choosing Gloves | https://spoj.pl/problems/GLOVE/
+BOYSCOUT | Boy Scouts | https://spoj.pl/problems/BOYSCOUT/
+PARITY | Parity | https://spoj.pl/problems/PARITY/
+HASH | Hashing | https://spoj.pl/problems/HASH/
+DISJPATH | Disjoint Paths | https://spoj.pl/problems/DISJPATH/
+COMPANY | Company | https://spoj.pl/problems/COMPANY/
+TREESIM | Tree Similarity | https://spoj.pl/problems/TREESIM/
+RSTAURNT | Restaurant Tab | https://spoj.pl/problems/RSTAURNT/
+PAGAIN | Prime Again  | https://spoj.pl/problems/PAGAIN/
+PATHEADS | Patting Heads | https://spoj.pl/problems/PATHEADS/
+MINMOVE | Minimum Rotations | https://spoj.pl/problems/MINMOVE/
+WORDCNT | Word Counting | https://spoj.pl/problems/WORDCNT/
+LUCKYNUM | Lucky Numbers | https://spoj.pl/problems/LUCKYNUM/
+HNSUBWAY | Hanoi Subway System Construction | https://spoj.pl/problems/HNSUBWAY/
+EARTHQK | Earthquakes | https://spoj.pl/problems/EARTHQK/
+PRETTYP | Pretty Printing | https://spoj.pl/problems/PRETTYP/
+TRAFFICN | Traffic Network | https://spoj.pl/problems/TRAFFICN/
+WINSTRAT | Winning Strategy | https://spoj.pl/problems/WINSTRAT/
+HEADQRT | Farthest Headquarters | https://spoj.pl/problems/HEADQRT/
+ATOURISM | Adventure Tourism | https://spoj.pl/problems/ATOURISM/
+MOEBIUS | Moebius | https://spoj.pl/problems/MOEBIUS/
+CATTLEB | Cattle Bruisers | https://spoj.pl/problems/CATTLEB/
+MOOPIZZA | Moo University - Emergency Pizza Order | https://spoj.pl/problems/MOOPIZZA/
+KGSS | Maximum Sum | https://spoj.pl/problems/KGSS/
+PROOT | Primitive Root | https://spoj.pl/problems/PROOT/
+SNOOKER | Snooker | https://spoj.pl/problems/SNOOKER/
+RAINBOW | Rainbow Ride | https://spoj.pl/problems/RAINBOW/
+TREX | Taming a T-REX | https://spoj.pl/problems/TREX/
+SLIKAR | Slikar | https://spoj.pl/problems/SLIKAR/
+TREZOR | Trezor | https://spoj.pl/problems/TREZOR/
+PERIODNI | Periodni | https://spoj.pl/problems/PERIODNI/
+SUBSUMS | Subset Sums | https://spoj.pl/problems/SUBSUMS/
+JEDNAKOS | JEDNAKOST | https://spoj.pl/problems/JEDNAKOS/
+GONDOR | GONDOR | https://spoj.pl/problems/GONDOR/
+MAJMUN | MAJMUN | https://spoj.pl/problems/MAJMUN/
+BRTREE | Bread Tree | https://spoj.pl/problems/BRTREE/
+GEORGE | George | https://spoj.pl/problems/GEORGE/
+STREET | Street | https://spoj.pl/problems/STREET/
+LUBEN | Lubenica | https://spoj.pl/problems/LUBEN/
+KRUS | Kruska | https://spoj.pl/problems/KRUS/
+TRES | Tresnja | https://spoj.pl/problems/TRES/
+MLASERP | Laser Phones | https://spoj.pl/problems/MLASERP/
+VCIRCLES | Area of circles | https://spoj.pl/problems/VCIRCLES/
+RELJEF | Reljef | https://spoj.pl/problems/RELJEF/
+VPALIN | Finding Palindromes | https://spoj.pl/problems/VPALIN/
+VBOSS | Who is The Boss | https://spoj.pl/problems/VBOSS/
+MTOTALF | Total Flow | https://spoj.pl/problems/MTOTALF/
+VMILI | Military Story | https://spoj.pl/problems/VMILI/
+GCDEX | GCD Extreme | https://spoj.pl/problems/GCDEX/
+VPARTY | Party At School | https://spoj.pl/problems/VPARTY/
+TABLIC | Tablica | https://spoj.pl/problems/TABLIC/
+CVJETICI | Cvjetici | https://spoj.pl/problems/CVJETICI/
+MMAXPER | Rectangles Perimeter | https://spoj.pl/problems/MMAXPER/
+MAJSTOR | Majstor | https://spoj.pl/problems/MAJSTOR/
+CIJEVI | Cijevi | https://spoj.pl/problems/CIJEVI/
+M3TILE | LATGACH3 | https://spoj.pl/problems/M3TILE/
+WHEN | When (You Believe) | https://spoj.pl/problems/WHEN/
+MCOINS | Coins Game | https://spoj.pl/problems/MCOINS/
+MCLONUM | Closest Number | https://spoj.pl/problems/MCLONUM/
+MRECTCNT | Rectangles  Counting | https://spoj.pl/problems/MRECTCNT/
+SPACESET | Space settlement | https://spoj.pl/problems/SPACESET/
+BOBALLS | Bouncing Balls | https://spoj.pl/problems/BOBALLS/
+MTRGAME | Matrix Game | https://spoj.pl/problems/MTRGAME/
+MAXISET | Maximal Independent Set | https://spoj.pl/problems/MAXISET/
+CVXPOLY | Convex Polygons | https://spoj.pl/problems/CVXPOLY/
+PALDR | Even Palindrome | https://spoj.pl/problems/PALDR/
+FINFRAC | Finding Fractions | https://spoj.pl/problems/FINFRAC/
+MCQUERY | MinCut Query | https://spoj.pl/problems/MCQUERY/
+BNWNIM | Black and White Nim | https://spoj.pl/problems/BNWNIM/
+FWFUNC | Fight with functions | https://spoj.pl/problems/FWFUNC/
+MTREECOL | Color a tree | https://spoj.pl/problems/MTREECOL/
+MPOLSTAR | Star Polygon or Not | https://spoj.pl/problems/MPOLSTAR/
+BYTESE1 | Lucius Dungeon | https://spoj.pl/problems/BYTESE1/
+BYTESE2 | The Great Ball | https://spoj.pl/problems/BYTESE2/
+BYTESM1 | Mystical River | https://spoj.pl/problems/BYTESM1/
+BYTESM2 | Philosophers Stone | https://spoj.pl/problems/BYTESM2/
+BYTESH1 | Filchs Dilemna | https://spoj.pl/problems/BYTESH1/
+MMAHWIRE | Manhattan Wire | https://spoj.pl/problems/MMAHWIRE/
+MPOLGRID | Polygon on the Grid | https://spoj.pl/problems/MPOLGRID/
+MDIGITS | Counting Digits | https://spoj.pl/problems/MDIGITS/
+MDIGITS1 | Different Digits | https://spoj.pl/problems/MDIGITS1/
+MPART | Group Partition | https://spoj.pl/problems/MPART/
+MTRIAREA | Maximum Triangle Area | https://spoj.pl/problems/MTRIAREA/
+MCIRGAME | Point Connection Game in a Circle | https://spoj.pl/problems/MCIRGAME/
+MMINPER | Minimum Permutation | https://spoj.pl/problems/MMINPER/
+MRECAMAN | Recaman&#8217;s Sequence | https://spoj.pl/problems/MRECAMAN/
+MMATRIX | SHIFT Operator on Matrix | https://spoj.pl/problems/MMATRIX/
+MCONSTR | Search of Concatenated Strings | https://spoj.pl/problems/MCONSTR/
+MKTHPATH | Kth Shortest Path | https://spoj.pl/problems/MKTHPATH/
+MDOLLS | Nested Dolls | https://spoj.pl/problems/MDOLLS/
+MBEEWALK | Bee Walk | https://spoj.pl/problems/MBEEWALK/
+MKTHNUM | K-th Number | https://spoj.pl/problems/MKTHNUM/
+MPOLEVAL | Polynomial Evaluation - Angry Teacher | https://spoj.pl/problems/MPOLEVAL/
+MMINPAID | Paid Roads | https://spoj.pl/problems/MMINPAID/
+MJOURNEY | Journey with Pigs | https://spoj.pl/problems/MJOURNEY/
+MELE2 | ELEVATOR II | https://spoj.pl/problems/MELE2/
+MINVEST | Investment Money | https://spoj.pl/problems/MINVEST/
+MMINMAX | Minimax Triangulation | https://spoj.pl/problems/MMINMAX/
+MMMGAME | M&M Game | https://spoj.pl/problems/MMMGAME/
+MCONVERT | Convert to Decimal Base System | https://spoj.pl/problems/MCONVERT/
+STARGATE | Stargates | https://spoj.pl/problems/STARGATE/
+M00PAIR | 0 0 Pairs | https://spoj.pl/problems/M00PAIR/
+MTREE | Another Tree Problem  | https://spoj.pl/problems/MTREE/
+MKUHAR | Most Servings Meal | https://spoj.pl/problems/MKUHAR/
+POLQUERY | Police Query | https://spoj.pl/problems/POLQUERY/
+DISQUERY | Distance Query | https://spoj.pl/problems/DISQUERY/
+MZVRK | Whirligig number | https://spoj.pl/problems/MZVRK/
+MPOINT | Point Visible | https://spoj.pl/problems/MPOINT/
+MBRACKET | Shortest Regular Bracket   | https://spoj.pl/problems/MBRACKET/
+MSTRING | String problem | https://spoj.pl/problems/MSTRING/
+RIGHTTRI | Right Triangle Counting  | https://spoj.pl/problems/RIGHTTRI/
+FROGGER | FROGGER | https://spoj.pl/problems/FROGGER/
+GALLUP | GALLUP | https://spoj.pl/problems/GALLUP/
+SUBWAYPL | Subway planning | https://spoj.pl/problems/SUBWAYPL/
+CPU | Exploding CPU | https://spoj.pl/problems/CPU/
+MBIPALIN | Bipalindrome | https://spoj.pl/problems/MBIPALIN/
+MMASS | Mass of Molecule | https://spoj.pl/problems/MMASS/
+PHONELST | Phone List | https://spoj.pl/problems/PHONELST/
+MDOSTAVA | Pizza Delivery | https://spoj.pl/problems/MDOSTAVA/
+MNERED | NERED | https://spoj.pl/problems/MNERED/
+CUCKOO | Cuckoo Hashing | https://spoj.pl/problems/CUCKOO/
+MREPLBRC | Counting The Way of Bracket Replacement | https://spoj.pl/problems/MREPLBRC/
+MGAME1 | Game | https://spoj.pl/problems/MGAME1/
+MCARDS | Card Sorting | https://spoj.pl/problems/MCARDS/
+KPGAME | A game with probability | https://spoj.pl/problems/KPGAME/
+MPOLY | Polygon | https://spoj.pl/problems/MPOLY/
+MSAFE | Rob Mini-Safe | https://spoj.pl/problems/MSAFE/
+MPIGS | Sell Pigs | https://spoj.pl/problems/MPIGS/
+MORPH | Morphing is Fun | https://spoj.pl/problems/MORPH/
+TWOPROF | Two Professors | https://spoj.pl/problems/TWOPROF/
+MBLAST | BLAST | https://spoj.pl/problems/MBLAST/
+MTELE | Tele Broadcast | https://spoj.pl/problems/MTELE/
+MTRAIN | Locomotive | https://spoj.pl/problems/MTRAIN/
+MVECTOR | Sum of Vectors | https://spoj.pl/problems/MVECTOR/
+EPALIN | Extend to Palindrome | https://spoj.pl/problems/EPALIN/
+FASTFLOW | Fast Maximum Flow | https://spoj.pl/problems/FASTFLOW/
+ETF | Euler Totient Function | https://spoj.pl/problems/ETF/
+ELLIPSE | Ellipse | https://spoj.pl/problems/ELLIPSE/
+IZBORI | IZBORI | https://spoj.pl/problems/IZBORI/
+OTOCI | OTOCI | https://spoj.pl/problems/OTOCI/
+PLAHTE | PLAHTE | https://spoj.pl/problems/PLAHTE/
+DOMINO2 | Domino | https://spoj.pl/problems/DOMINO2/
+MA1 | A1 Road | https://spoj.pl/problems/MA1/
+HS08PAUL | A conjecture of Paul Erdï¿½s | https://spoj.pl/problems/HS08PAUL/
+HS08FOUR | Four colors | https://spoj.pl/problems/HS08FOUR/
+SQFREE | Square-free integers | https://spoj.pl/problems/SQFREE/
+DROOT | Multiplicative digital root | https://spoj.pl/problems/DROOT/
+KPURSUIT | A Knightly Pursuit | https://spoj.pl/problems/KPURSUIT/
+HERDING | Herding | https://spoj.pl/problems/HERDING/
+LATTICE | Distance on a square lattice | https://spoj.pl/problems/LATTICE/
+TEMPTISL | Temptation Island | https://spoj.pl/problems/TEMPTISL/
+PIZZALOC | Pizza Location | https://spoj.pl/problems/PIZZALOC/
+MELE3 | MELE3 | https://spoj.pl/problems/MELE3/
+FCANDY | Candy (Again) | https://spoj.pl/problems/FCANDY/
+CCCCUBE | Cube | https://spoj.pl/problems/CCCCUBE/
+HS08CODE | Break a New RSA system | https://spoj.pl/problems/HS08CODE/
+HS08EQ | Amazing equality | https://spoj.pl/problems/HS08EQ/
+LANDING | Landing | https://spoj.pl/problems/LANDING/
+MSKYCODE | Sky Code | https://spoj.pl/problems/MSKYCODE/
+MSE08G | Another Lucky Numbers | https://spoj.pl/problems/MSE08G/
+MSE08H | GCD Determinant  | https://spoj.pl/problems/MSE08H/
+DOMINOES | Dominoes | https://spoj.pl/problems/DOMINOES/
+LEGO | Lego | https://spoj.pl/problems/LEGO/
+HAMSTER1 | Hamster flight | https://spoj.pl/problems/HAMSTER1/
+RATING | Coder Ratings | https://spoj.pl/problems/RATING/
+BRPAR | Brackets Parade | https://spoj.pl/problems/BRPAR/
+MSE07E | Showstopper | https://spoj.pl/problems/MSE07E/
+MATCHING | Fast Maximum Matching | https://spoj.pl/problems/MATCHING/
+MSE06E | Payment System | https://spoj.pl/problems/MSE06E/
+MSE06H | Japan | https://spoj.pl/problems/MSE06H/
+MSE06I | "Shortest" pair of paths  | https://spoj.pl/problems/MSE06I/
+QUEEN | Wandering Queen | https://spoj.pl/problems/QUEEN/
+MPILOT | Pilots | https://spoj.pl/problems/MPILOT/
+TTTABLE | Train TimeTable | https://spoj.pl/problems/TTTABLE/
+BFROTATE | rotate it | https://spoj.pl/problems/BFROTATE/
+AE00 | Rectangles | https://spoj.pl/problems/AE00/
+AE1B | Tables | https://spoj.pl/problems/AE1B/
+AE2B | (K,N)-Knight | https://spoj.pl/problems/AE2B/
+AE2A | Dice | https://spoj.pl/problems/AE2A/
+AE3A | Drilling | https://spoj.pl/problems/AE3A/
+AE4B | The way to Bytemountain | https://spoj.pl/problems/AE4B/
+AE4A | Stamps | https://spoj.pl/problems/AE4A/
+AE5B1 | Byteantean towns | https://spoj.pl/problems/AE5B1/
+AE5A1 | Circular game | https://spoj.pl/problems/AE5A1/
+AE5B2 | Permutacja | https://spoj.pl/problems/AE5B2/
+AE5A2 | Quasi-template | https://spoj.pl/problems/AE5A2/
+MFISH | Catch Fish | https://spoj.pl/problems/MFISH/
+EVERLAST | The fate of the pineapple | https://spoj.pl/problems/EVERLAST/
+KRECT | Counting K-Rectangle | https://spoj.pl/problems/KRECT/
+EBOXES | Empty Boxes | https://spoj.pl/problems/EBOXES/
+QMAX3VN | Giï¿½ tr&#7883; l&#7899;n nh&#7845;t 3 | https://spoj.pl/problems/QMAX3VN/
+TWINSNOW | Snowflakes | https://spoj.pl/problems/TWINSNOW/
+TABLE5X5 | Twofive | https://spoj.pl/problems/TABLE5X5/
+CARDSHUF | Cards shuffing | https://spoj.pl/problems/CARDSHUF/
+DAGCNT | Counting Arborescence | https://spoj.pl/problems/DAGCNT/
+FENCE1 | Build a Fence | https://spoj.pl/problems/FENCE1/
+AREA1 | Circle vs Triangle | https://spoj.pl/problems/AREA1/
+REPAIR1 | Repair the Door | https://spoj.pl/problems/REPAIR1/
+EXPR3 | Counting Expressions | https://spoj.pl/problems/EXPR3/
+FACTOR1 | Factorization, Factorization, Factorization | https://spoj.pl/problems/FACTOR1/
+GEM | Gem | https://spoj.pl/problems/GEM/
+HIGHWAY1 | Highway | https://spoj.pl/problems/HIGHWAY1/
+INTEGER1 | Power of Integer | https://spoj.pl/problems/INTEGER1/
+JUMP1 | Jumping Hands | https://spoj.pl/problems/JUMP1/
+KPGRAPHS | Counting Graphs | https://spoj.pl/problems/KPGRAPHS/
+GF2 | Irreducible polynomials over GF2 | https://spoj.pl/problems/GF2/
+MIB | Spelling Lists | https://spoj.pl/problems/MIB/
+ARITH2 | Simple Arithmetics II | https://spoj.pl/problems/ARITH2/
+BOBALLS2 | Bouncing Balls II | https://spoj.pl/problems/BOBALLS2/
+BRCKTS2 | Brackets II | https://spoj.pl/problems/BRCKTS2/
+MOVIE | Going to the Movies | https://spoj.pl/problems/MOVIE/
+AIRLINES | Jumbo Airlines | https://spoj.pl/problems/AIRLINES/
+SHOP2 | Shopping II | https://spoj.pl/problems/SHOP2/
+ANTTT | The Ant | https://spoj.pl/problems/ANTTT/
+PLAYFAIR | Playfair Cracker | https://spoj.pl/problems/PLAYFAIR/
+FLOWGROW | Flower growing | https://spoj.pl/problems/FLOWGROW/
+EXPR4 | Counting Expressions II | https://spoj.pl/problems/EXPR4/
+MCHAOS | Chaos Strings | https://spoj.pl/problems/MCHAOS/
+MROADS | Roads Repair | https://spoj.pl/problems/MROADS/
+MOBIVINA | MobiZone vs VinaGone | https://spoj.pl/problems/MOBIVINA/
+GSS6 | Can you answer these queries VI | https://spoj.pl/problems/GSS6/
+PGCD | Primes in GCD Table | https://spoj.pl/problems/PGCD/
+UCI2009B | Binomial Coefficients | https://spoj.pl/problems/UCI2009B/
+UCI2009D | Digger Octaves | https://spoj.pl/problems/UCI2009D/
+FROGS | Frog Wrestling | https://spoj.pl/problems/FROGS/
+STREDUCE | String reduction | https://spoj.pl/problems/STREDUCE/
+BANDMATR | Determinant of Banded Matrices | https://spoj.pl/problems/BANDMATR/
+ANARC08A | Tobo or not Tobo | https://spoj.pl/problems/ANARC08A/
+ANARC08B | Adding Sevens | https://spoj.pl/problems/ANARC08B/
+ANARC08C | Match Maker | https://spoj.pl/problems/ANARC08C/
+ANARC08D | Adding up Triangles | https://spoj.pl/problems/ANARC08D/
+ANARC08E | Relax! It is just a game | https://spoj.pl/problems/ANARC08E/
+ANARC08F | Einbahnstrasse | https://spoj.pl/problems/ANARC08F/
+ANARC08G | Think I will Buy Me a Football Team | https://spoj.pl/problems/ANARC08G/
+ANARC08H | Musical Chairs | https://spoj.pl/problems/ANARC08H/
+ANARC08I | I Speak Whales | https://spoj.pl/problems/ANARC08I/
+ANARC08J | A Day at the Races | https://spoj.pl/problems/ANARC08J/
+ANARC05B | The Double HeLiX | https://spoj.pl/problems/ANARC05B/
+ANARC05H | Chop Ahoy! Revisited! | https://spoj.pl/problems/ANARC05H/
+ANARC05I | What is your Logo | https://spoj.pl/problems/ANARC05I/
+ANARC07C | Rotating Rings | https://spoj.pl/problems/ANARC07C/
+ANARC07G | Let go to the movies | https://spoj.pl/problems/ANARC07G/
+CYCLERUN | Riding in cycles | https://spoj.pl/problems/CYCLERUN/
+ABCDEF | ABCDEF | https://spoj.pl/problems/ABCDEF/
+GCJ08C | Star Wars | https://spoj.pl/problems/GCJ08C/
+WLOO0707 | Texas Trip | https://spoj.pl/problems/WLOO0707/
+FENCE3 | Electric Fences | https://spoj.pl/problems/FENCE3/
+NWERC04H | SETI | https://spoj.pl/problems/NWERC04H/
+ARITHSEQ | Arithmetic sequence | https://spoj.pl/problems/ARITHSEQ/
+PMATRIX | Proving Equivalences | https://spoj.pl/problems/PMATRIX/
+CCROSS | Cross Mountain Climb | https://spoj.pl/problems/CCROSS/
+GASWARS | Gas Wars | https://spoj.pl/problems/GASWARS/
+HHEMANT | Help Hemant Verma | https://spoj.pl/problems/HHEMANT/
+WIRELESS | Wireless | https://spoj.pl/problems/WIRELESS/
+GREMLINS | Gremlins | https://spoj.pl/problems/GREMLINS/
+CCROSSX | Cross Mountain Climb Extreme | https://spoj.pl/problems/CCROSSX/
+FUNPROB | Yanu in Movie theatre | https://spoj.pl/problems/FUNPROB/
+TWICE | Twice | https://spoj.pl/problems/TWICE/
+GPINTRI | Grid Points in a Triangle | https://spoj.pl/problems/GPINTRI/
+ZSEQ | ZSequence | https://spoj.pl/problems/ZSEQ/
+PA06ANT | Ant | https://spoj.pl/problems/PA06ANT/
+BRI | Bridge | https://spoj.pl/problems/BRI/
+AMBIG | Words on graphs | https://spoj.pl/problems/AMBIG/
+DAGCNT2 | Counting in a DAG | https://spoj.pl/problems/DAGCNT2/
+RLM | Run-Length Mathematics | https://spoj.pl/problems/RLM/
+FACT1 | Integer Factorization (20 digits) | https://spoj.pl/problems/FACT1/
+FACT0 | Integer Factorization (15 digits) | https://spoj.pl/problems/FACT0/
+FACT2 | Integer Factorization (29 digits) | https://spoj.pl/problems/FACT2/
+BRII | Bridges! More bridges! | https://spoj.pl/problems/BRII/
+GOALFR | Goal for Raï¿½l | https://spoj.pl/problems/GOALFR/
+MOWS | Madrids One Way Streets | https://spoj.pl/problems/MOWS/
+FAKETSP | Traveling Salesman | https://spoj.pl/problems/FAKETSP/
+LIM | Lost in Madrid | https://spoj.pl/problems/LIM/
+LFM | Library for Madrid | https://spoj.pl/problems/LFM/
+CRAZYR | Crazy Receptionist | https://spoj.pl/problems/CRAZYR/
+CASTANET | Decode the Castanets | https://spoj.pl/problems/CASTANET/
+GUERNICA | Guernica | https://spoj.pl/problems/GUERNICA/
+STRGAMB | Street Gambler | https://spoj.pl/problems/STRGAMB/
+GCD3 | Discrete Math Problem | https://spoj.pl/problems/GCD3/
+MBALL | Feline Olympics - Mouseball | https://spoj.pl/problems/MBALL/
+PRETTY | Pretty function | https://spoj.pl/problems/PRETTY/
+MYSTIC | Mystic  Craft | https://spoj.pl/problems/MYSTIC/
+TOP10 | Top 10 | https://spoj.pl/problems/TOP10/
+SPAMD | Spam Detection | https://spoj.pl/problems/SPAMD/
+TUTMRBL | Playing with Marbles | https://spoj.pl/problems/TUTMRBL/
+SPHIWAY | Two "Ways" | https://spoj.pl/problems/SPHIWAY/
+GERGOVIA | Wine trading in Gergovia | https://spoj.pl/problems/GERGOVIA/
+MINSEQ | Minimal Possible String | https://spoj.pl/problems/MINSEQ/
+BOMB | Bomb the Bridge | https://spoj.pl/problems/BOMB/
+HELLOKIT | Hello Kitty | https://spoj.pl/problems/HELLOKIT/
+PAIRGRPH | A Pair of Graphs | https://spoj.pl/problems/PAIRGRPH/
+BNYINT | Binary Integer | https://spoj.pl/problems/BNYINT/
+CRYPTO6 | Cryptography Reloaded (Act I) | https://spoj.pl/problems/CRYPTO6/
+DEJAVU | Dï¿½j&agrave; vu | https://spoj.pl/problems/DEJAVU/
+CABLEXPR | Experiment on a &#8230; Cable | https://spoj.pl/problems/CABLEXPR/
+FCSYS | Fire-Control System | https://spoj.pl/problems/FCSYS/
+STCKHOLM | Get-Together at Stockholm | https://spoj.pl/problems/STCKHOLM/
+HISTORY | History of Languages | https://spoj.pl/problems/HISTORY/
+JMFILTER | Junk-Mail Filter | https://spoj.pl/problems/JMFILTER/
+ALICECUB | Alice&#8217;s Cube | https://spoj.pl/problems/ALICECUB/
+BFALG | Brute-force Algorithm EXTREME | https://spoj.pl/problems/BFALG/
+COMPRESS | Compressed String | https://spoj.pl/problems/COMPRESS/
+CRYPTO7 | Cryptography Reloaded (Act II) | https://spoj.pl/problems/CRYPTO7/
+TETRIS2D | Exciting Time | https://spoj.pl/problems/TETRIS2D/
+FLOWERS2 | Flowers Placement | https://spoj.pl/problems/FLOWERS2/
+TRACTOR | Game Simulator | https://spoj.pl/problems/TRACTOR/
+HEROARR | Heroes Arrangement | https://spoj.pl/problems/HEROARR/
+IEXPOLRE | Island Explorer | https://spoj.pl/problems/IEXPOLRE/
+O2JAM | Jinyuetuan Puzzle | https://spoj.pl/problems/O2JAM/
+FACVSPOW | Factorial vs Power | https://spoj.pl/problems/FACVSPOW/
+VIENTIAN | Tower of Vientiane | https://spoj.pl/problems/VIENTIAN/
+PAIRSORT | Double Sorting | https://spoj.pl/problems/PAIRSORT/
+MONONUM | Monotonous numbers | https://spoj.pl/problems/MONONUM/
+DIFFDIAG | Differential Diagnosis | https://spoj.pl/problems/DIFFDIAG/
+GARDENAR | Area of a Garden | https://spoj.pl/problems/GARDENAR/
+XOINC | A Coin Game | https://spoj.pl/problems/XOINC/
+REC | Recurrence | https://spoj.pl/problems/REC/
+GNYR09F | Adjacent Bit Counts | https://spoj.pl/problems/GNYR09F/
+COMBAT | Air Combat | https://spoj.pl/problems/COMBAT/
+FAMILYP | Family Problems | https://spoj.pl/problems/FAMILYP/
+INTERVA2 | Interval Challenge | https://spoj.pl/problems/INTERVA2/
+MEXICAN | Mexican Standoff | https://spoj.pl/problems/MEXICAN/
+QUERYSTR | Query Problem | https://spoj.pl/problems/QUERYSTR/
+TETRAVEX | Tetravex Puzzle | https://spoj.pl/problems/TETRAVEX/
+MINES4 | Four Mines | https://spoj.pl/problems/MINES4/
+FISHNET | Fishing Net | https://spoj.pl/problems/FISHNET/
+ANARC09A | Seinfeld | https://spoj.pl/problems/ANARC09A/
+ANARC09B | Tiles of Tetris, Not! | https://spoj.pl/problems/ANARC09B/
+ANARC09C | Not So Flat After All | https://spoj.pl/problems/ANARC09C/
+ANARC09D | Hop Do not Walk | https://spoj.pl/problems/ANARC09D/
+ANARC09F | Air Strike | https://spoj.pl/problems/ANARC09F/
+BIRD | Bird or not bird | https://spoj.pl/problems/BIRD/
+CT | Counting triangles | https://spoj.pl/problems/CT/
+DP | Deliver pizza | https://spoj.pl/problems/DP/
+EQ | Electronic queue | https://spoj.pl/problems/EQ/
+FP | Finding password | https://spoj.pl/problems/FP/
+GS | Going to school | https://spoj.pl/problems/GS/
+HOUSES2 | Houses | https://spoj.pl/problems/HOUSES2/
+HSEQ | Heavy Sequences | https://spoj.pl/problems/HSEQ/
+PHU09H | Buy Your House | https://spoj.pl/problems/PHU09H/
+PHU09K | Highway Patrol | https://spoj.pl/problems/PHU09K/
+BSMATH1 | Math with Bases (Easy) | https://spoj.pl/problems/BSMATH1/
+KUTH | Kutevi Hard | https://spoj.pl/problems/KUTH/
+SEQUOIA | Sequoiadendron | https://spoj.pl/problems/SEQUOIA/
+CPAIR | Counting pairs | https://spoj.pl/problems/CPAIR/
+BSMATH2 | Math with Bases | https://spoj.pl/problems/BSMATH2/
+ISUN1 | LL and ErBao | https://spoj.pl/problems/ISUN1/
+SERVICEH | Mobile Service Hard | https://spoj.pl/problems/SERVICEH/
+NG0FRCTN | Fractions on Tree | https://spoj.pl/problems/NG0FRCTN/
+PATULJCI | Snow White and the N dwarfs | https://spoj.pl/problems/PATULJCI/
+NG1FRCTN | Fractions on Tree ( reloaded !) | https://spoj.pl/problems/NG1FRCTN/
+RESN04 | STONE GAME  | https://spoj.pl/problems/RESN04/
+LASTDIG2 | The last digit re-visited | https://spoj.pl/problems/LASTDIG2/
+LPRIME | Primes of Lambda | https://spoj.pl/problems/LPRIME/
+KSEQ | 123 Sequence | https://spoj.pl/problems/KSEQ/
+PARADOX | Paradox | https://spoj.pl/problems/PARADOX/
+ALTPERM | Alternating Permutations | https://spoj.pl/problems/ALTPERM/
+PERMJUMP | Permutation Jumping | https://spoj.pl/problems/PERMJUMP/
+ANDROUND | AND Rounds | https://spoj.pl/problems/ANDROUND/
+XORROUND | XOR Rounds | https://spoj.pl/problems/XORROUND/
+TROOPS | Troops of Sand Monsters | https://spoj.pl/problems/TROOPS/
+CEOI09TR | Tri | https://spoj.pl/problems/CEOI09TR/
+SQFFACT | Square-free Integers Factorization | https://spoj.pl/problems/SQFFACT/
+LENGFACT | Factorial length | https://spoj.pl/problems/LENGFACT/
+FINDMAX | Finding Maximum | https://spoj.pl/problems/FINDMAX/
+FINDPRM | Finding Primes | https://spoj.pl/problems/FINDPRM/
+LCMSUM | LCM Sum | https://spoj.pl/problems/LCMSUM/
+MAXSUMSQ | Maximum Sum Sequences | https://spoj.pl/problems/MAXSUMSQ/
+SELTEAM | Selecting Teams | https://spoj.pl/problems/SELTEAM/
+TRKNIGHT | Travelling Knight | https://spoj.pl/problems/TRKNIGHT/
+TRGRID | Traversing Grid | https://spoj.pl/problems/TRGRID/
+WEIRDFN | Weird Function | https://spoj.pl/problems/WEIRDFN/
+FRQPRIME | Frequent Prime Ranges | https://spoj.pl/problems/FRQPRIME/
+YAPP | Yet Another Permutations Problem | https://spoj.pl/problems/YAPP/
+MATGAME | Matrix Game | https://spoj.pl/problems/MATGAME/
+DINGRP | Dinner | https://spoj.pl/problems/DINGRP/
+QCJ1 | Mountain Walking | https://spoj.pl/problems/QCJ1/
+QCJ2 | Another Box Problem | https://spoj.pl/problems/QCJ2/
+QCJ3 | The Game | https://spoj.pl/problems/QCJ3/
+QCJ4 | Minimum Diameter Circle | https://spoj.pl/problems/QCJ4/
+PBCGAME | PBCGAME | https://spoj.pl/problems/PBCGAME/
+GCDSQF | Another GCD problem | https://spoj.pl/problems/GCDSQF/
+SOCOLA | Chocolate | https://spoj.pl/problems/SOCOLA/
+BRIDGE | Building Bridges | https://spoj.pl/problems/BRIDGE/
+SSEQ | Standing Sequence | https://spoj.pl/problems/SSEQ/
+HOMEC | Homecoming | https://spoj.pl/problems/HOMEC/
+MAJOR | Majority | https://spoj.pl/problems/MAJOR/
+OAE | OAE | https://spoj.pl/problems/OAE/
+JANE | Jane and Tarzan | https://spoj.pl/problems/JANE/
+EDIST | Edit distance | https://spoj.pl/problems/EDIST/
+INCPOWK | Increasing Powers of K | https://spoj.pl/problems/INCPOWK/
+FERT21_0 | Matches | https://spoj.pl/problems/FERT21_0/
+INVCNT | Inversion Count | https://spoj.pl/problems/INVCNT/
+FNRANK | Rank of a Fraction | https://spoj.pl/problems/FNRANK/
+NGM2 | Another Game With Numbers | https://spoj.pl/problems/NGM2/
+SUMMUL | Sum of products | https://spoj.pl/problems/SUMMUL/
+PYRA | Treeramids | https://spoj.pl/problems/PYRA/
+BOMBER | Bomberman | https://spoj.pl/problems/BOMBER/
+ROBBERY2 | Robbery 2 | https://spoj.pl/problems/ROBBERY2/
+SHMOOGLE | Shmoogle Wave | https://spoj.pl/problems/SHMOOGLE/
+YODANESS | Yodaness Level | https://spoj.pl/problems/YODANESS/
+EXPER | Experiment | https://spoj.pl/problems/EXPER/
+ROOTCIPH | Decipher | https://spoj.pl/problems/ROOTCIPH/
+MOVMRBL | Move Marbles | https://spoj.pl/problems/MOVMRBL/
+ARDA1 | The hunt for Gollum | https://spoj.pl/problems/ARDA1/
+NGON | Many polygons | https://spoj.pl/problems/NGON/
+ZUMA | ZUMA | https://spoj.pl/problems/ZUMA/
+RPSSL | Rock-Paper-Scissors-Lizard-Spock | https://spoj.pl/problems/RPSSL/
+SAMTWARR | Two Array Problem | https://spoj.pl/problems/SAMTWARR/
+KKKCT2 | Counting Triangles 2 | https://spoj.pl/problems/KKKCT2/
+MB1 | PP numbers | https://spoj.pl/problems/MB1/
+TDKPRIME | Finding the Kth Prime | https://spoj.pl/problems/TDKPRIME/
+TDPRIMES | Printing some primes | https://spoj.pl/problems/TDPRIMES/
+BOWLING1 | Bowling | https://spoj.pl/problems/BOWLING1/
+HAMSTER2 | Hamster Flight 2 | https://spoj.pl/problems/HAMSTER2/
+VGCD | The Very Greatest Common Divisor | https://spoj.pl/problems/VGCD/
+PRIMES2 | Printing some primes (Hard) | https://spoj.pl/problems/PRIMES2/
+KPRIMES2 | Finding the Kth Prime (Hard) | https://spoj.pl/problems/KPRIMES2/
+BCHOCO | Breaking Chocolates | https://spoj.pl/problems/BCHOCO/
+DCOUNT | Counting Diameter | https://spoj.pl/problems/DCOUNT/
+TSPAGAIN | Travelling Salesman Again ! | https://spoj.pl/problems/TSPAGAIN/
+JOCHEF | Farmer Sepp | https://spoj.pl/problems/JOCHEF/
+NDIVPHI | N DIV PHI_N | https://spoj.pl/problems/NDIVPHI/
+NDIVPHI2 | N DIV PHI_N (Hard) | https://spoj.pl/problems/NDIVPHI2/
+PRUBALL | Esferas | https://spoj.pl/problems/PRUBALL/
+DIVCON | Divide and conquer | https://spoj.pl/problems/DIVCON/
+SEGTREE | Segment Tree | https://spoj.pl/problems/SEGTREE/
+HCHAINS | Islands and Hotel Chains | https://spoj.pl/problems/HCHAINS/
+SNOWGAME | Snowball Game | https://spoj.pl/problems/SNOWGAME/
+SEQ6 | Consecutive sequence | https://spoj.pl/problems/SEQ6/
+ELCS | Easy Longest Common Substring | https://spoj.pl/problems/ELCS/
+GCJ101C | Load Testing  | https://spoj.pl/problems/GCJ101C/
+MRECT1 | ï¿½i&#7875;m tr&#234;n c&#7841;nh h&#236;nh ch&#7919; nh&#7853;t - HRASTOVI | https://spoj.pl/problems/MRECT1/
+BOCOMP | A - Comparison Expressions | https://spoj.pl/problems/BOCOMP/
+GCJ101BB | Picking Up Chicks | https://spoj.pl/problems/GCJ101BB/
+BOLESSON | B - Esperanto Lessons | https://spoj.pl/problems/BOLESSON/
+BOKO | C - Karaoke | https://spoj.pl/problems/BOKO/
+BOMARBLE | D - Playing with Marbles | https://spoj.pl/problems/BOMARBLE/
+BOPERISH | E - Publish of Perish | https://spoj.pl/problems/BOPERISH/
+GCJ101AB | Make it Smooth | https://spoj.pl/problems/GCJ101AB/
+CT101CC | Making Chess Boards | https://spoj.pl/problems/CT101CC/
+MBR | Multiplying by Rotation  | https://spoj.pl/problems/MBR/
+BLOCK | Transform a sequence | https://spoj.pl/problems/BLOCK/
+TWOPATHS | Two Paths | https://spoj.pl/problems/TWOPATHS/
+PFOLD | Paper Fold | https://spoj.pl/problems/PFOLD/
+GOLDG | Goldbach graphs | https://spoj.pl/problems/GOLDG/
+COEF | Coeficientes | https://spoj.pl/problems/COEF/
+CT14E | Camels | https://spoj.pl/problems/CT14E/
+CHEFMAY | Nice Quadrangles | https://spoj.pl/problems/CHEFMAY/
+SEQFUN | Sequence Function | https://spoj.pl/problems/SEQFUN/
+HC | Happy Coins | https://spoj.pl/problems/HC/
+DINONUM | Dinostratus Numbers | https://spoj.pl/problems/DINONUM/
+GSS7 | Can you answer these queries VII | https://spoj.pl/problems/GSS7/
+ABSURD | Absurd prices | https://spoj.pl/problems/ABSURD/
+CHEATING | Cheating or Not | https://spoj.pl/problems/CHEATING/
+CATTACK | Counter attack | https://spoj.pl/problems/CATTACK/
+CAPCITY | Capital City | https://spoj.pl/problems/CAPCITY/
+ASSIGN5 | Yet Another Assignment Problem | https://spoj.pl/problems/ASSIGN5/
+CFJUN21 | Seller Bob | https://spoj.pl/problems/CFJUN21/
+CTFLAG | Flag | https://spoj.pl/problems/CTFLAG/
+FPLAN | Field Plan | https://spoj.pl/problems/FPLAN/
+HACKING | Hacking | https://spoj.pl/problems/HACKING/
+LMCONSTR | Last Minute Construction | https://spoj.pl/problems/LMCONSTR/
+LINEUP | Lineup | https://spoj.pl/problems/LINEUP/
+POLYNOM | Polynomial | https://spoj.pl/problems/POLYNOM/
+SBETS | Soccer Bets | https://spoj.pl/problems/SBETS/
+TBGAME | Two Ball Game | https://spoj.pl/problems/TBGAME/
+TOSCORE | To Score or not to score | https://spoj.pl/problems/TOSCORE/
+CT10R3B | Fence | https://spoj.pl/problems/CT10R3B/
+CT16E | Fish | https://spoj.pl/problems/CT16E/
+ASISTENT | Asistent | https://spoj.pl/problems/ASISTENT/
+WONKA1 | Wonkas Oompa-Impa Dilemma | https://spoj.pl/problems/WONKA1/
+PWSUM | Power Sums | https://spoj.pl/problems/PWSUM/
+MEPPERM | Maximum Edge of Powers of Permutation | https://spoj.pl/problems/MEPPERM/
+SUB_PROB | Substring Problem | https://spoj.pl/problems/SUB_PROB/
+RPAR | Raining Parabolas | https://spoj.pl/problems/RPAR/
+XYYHHTT | Catch Sheep | https://spoj.pl/problems/XYYHHTT/
+CT23E | Tree game  | https://spoj.pl/problems/CT23E/
+CTOI10D2 | PIN | https://spoj.pl/problems/CTOI10D2/
+CTOI10D3 | A HUGE TOWER | https://spoj.pl/problems/CTOI10D3/
+CTOI10D1 | MP3 Player | https://spoj.pl/problems/CTOI10D1/
+CTOI09_1 | IOI2009 Mecho | https://spoj.pl/problems/CTOI09_1/
+PARTPAL | Partial Palindrome | https://spoj.pl/problems/PARTPAL/
+INDEPCNT | Odd Independent Sets | https://spoj.pl/problems/INDEPCNT/
+PERMPATT | Check 1324 | https://spoj.pl/problems/PERMPATT/
+RNDORDER | The Least Number | https://spoj.pl/problems/RNDORDER/
+ARRANGE2 | Rearranging Digits | https://spoj.pl/problems/ARRANGE2/
+SUMSLOPE | Summing Slopes | https://spoj.pl/problems/SUMSLOPE/
+STJEPAN | Beer Machines | https://spoj.pl/problems/STJEPAN/
+AVOIDSOS | Avoiding SOS Grids | https://spoj.pl/problems/AVOIDSOS/
+VLATTICE | Visible Lattice Points | https://spoj.pl/problems/VLATTICE/
+BUILDING | Buildings | https://spoj.pl/problems/BUILDING/
+ACAB | Police Business | https://spoj.pl/problems/ACAB/
+CFPARTY | Party | https://spoj.pl/problems/CFPARTY/
+ZIGZAG | Zig-Zag rabbit | https://spoj.pl/problems/ZIGZAG/
+CPATTERN | Cow Patterns | https://spoj.pl/problems/CPATTERN/
+KOLACI | Cookies | https://spoj.pl/problems/KOLACI/
+CT25C | Roads in Berland | https://spoj.pl/problems/CT25C/
+CROBOTS | Crashing Robots | https://spoj.pl/problems/CROBOTS/
+CRYPTON | The Embarrassed Cryptographer | https://spoj.pl/problems/CRYPTON/
+NECKDEC | Necklace Decomposition | https://spoj.pl/problems/NECKDEC/
+ADVEDIST | Advanced Edit Distance | https://spoj.pl/problems/ADVEDIST/
+BACKTPOL | Back To The Polygon | https://spoj.pl/problems/BACKTPOL/
+CANDN | Charly And Nito | https://spoj.pl/problems/CANDN/
+DTWW | Doing The Word Wrap | https://spoj.pl/problems/DTWW/
+EDDIST | Edit Distance | https://spoj.pl/problems/EDDIST/
+FTHEELF | Feanor The Elf | https://spoj.pl/problems/FTHEELF/
+GK | G Key | https://spoj.pl/problems/GK/
+HEPNUM | Heptadecimal Numbers | https://spoj.pl/problems/HEPNUM/
+INDIPROG | Indicator of progression | https://spoj.pl/problems/INDIPROG/
+TTREAT | Happy Telephones | https://spoj.pl/problems/TTREAT/
+HEADSHOT | Headshot | https://spoj.pl/problems/HEADSHOT/
+IOIGARD | Garden 2005 | https://spoj.pl/problems/IOIGARD/
+IOIPALIN | Palindrome 2000 | https://spoj.pl/problems/IOIPALIN/
+IOIBOUND | Boundary 2003 | https://spoj.pl/problems/IOIBOUND/
+CF25E | Test | https://spoj.pl/problems/CF25E/
+EGYPIZZA | Pizza | https://spoj.pl/problems/EGYPIZZA/
+AXIS | Axis of Symmetry | https://spoj.pl/problems/AXIS/
+BYECAKES | Bye Bye Cakes | https://spoj.pl/problems/BYECAKES/
+COUNTPAS | Counting Pascal | https://spoj.pl/problems/COUNTPAS/
+DINOSM | Dinosaur Menace | https://spoj.pl/problems/DINOSM/
+ESJAIL | Escape from Jail | https://spoj.pl/problems/ESJAIL/
+FALTAENV | Falta Envido | https://spoj.pl/problems/FALTAENV/
+GUESSTHE | Guess the Number | https://spoj.pl/problems/GUESSTHE/
+HEXBOARD | Hexagonal Board | https://spoj.pl/problems/HEXBOARD/
+INTEGMAX | Integral Maximization | https://spoj.pl/problems/INTEGMAX/
+CURSE | The Pharaoh Curse | https://spoj.pl/problems/CURSE/
+CAL | Strange Calendar | https://spoj.pl/problems/CAL/
+ALCHE | Alchemy | https://spoj.pl/problems/ALCHE/
+BORW | Black or White | https://spoj.pl/problems/BORW/
+CLOSEST | Closest Triplet | https://spoj.pl/problems/CLOSEST/
+DRAWM | Draw Mountains | https://spoj.pl/problems/DRAWM/
+ELASTIC | Elastic Bands | https://spoj.pl/problems/ELASTIC/
+FINDSR | Find String Roots | https://spoj.pl/problems/FINDSR/
+CLOCKS | The Clocks | https://spoj.pl/problems/CLOCKS/
+TRIKA | Training for final | https://spoj.pl/problems/TRIKA/
+GARBAGE | Garbage Collection | https://spoj.pl/problems/GARBAGE/
+HOMEW | Homework | https://spoj.pl/problems/HOMEW/
+INVESORT | Inversion Sort | https://spoj.pl/problems/INVESORT/
+IPCELLS | Cells | https://spoj.pl/problems/IPCELLS/
+PLYGRND | Playground | https://spoj.pl/problems/PLYGRND/
+ROOKS | Chess part1 | https://spoj.pl/problems/ROOKS/
+PERFUME | Perfume | https://spoj.pl/problems/PERFUME/
+PBOARD | Blocks for kids | https://spoj.pl/problems/PBOARD/
+SUBLEX | Lexicographical Substring Search | https://spoj.pl/problems/SUBLEX/
+LITE | Light Switching | https://spoj.pl/problems/LITE/
+NUMGAME | Number Game | https://spoj.pl/problems/NUMGAME/
+DIGNUM | Digital LED Number | https://spoj.pl/problems/DIGNUM/
+CNTTREE | Trees Again | https://spoj.pl/problems/CNTTREE/
+GRIDCOIN | Placing Coins on a Grid | https://spoj.pl/problems/GRIDCOIN/
+MULTQ3 | Multiples of 3 | https://spoj.pl/problems/MULTQ3/
+LCKYCONT | Lucky Controller | https://spoj.pl/problems/LCKYCONT/
+CHEFJUN | Prime Pattern | https://spoj.pl/problems/CHEFJUN/
+CHEFJUL | Happy Days | https://spoj.pl/problems/CHEFJUL/
+SHUFFLEN | Shuffle Music | https://spoj.pl/problems/SHUFFLEN/
+KULE | Spheres | https://spoj.pl/problems/KULE/
+MSTRMND | Mastermind | https://spoj.pl/problems/MSTRMND/
+SHUFFLE1 | Shuffling | https://spoj.pl/problems/SHUFFLE1/
+ITERBIT | Iterated Bitcount Function | https://spoj.pl/problems/ITERBIT/
+TREESUM | Tree Sum | https://spoj.pl/problems/TREESUM/
+MCOMP | Manhattan Companies | https://spoj.pl/problems/MCOMP/
+FUNFACT | Factorial challenge | https://spoj.pl/problems/FUNFACT/
+ACTIV | Activities | https://spoj.pl/problems/ACTIV/
+PKA | Airplane Parking | https://spoj.pl/problems/PKA/
+PKD | Rating Hazard | https://spoj.pl/problems/PKD/
+PC8H | Repair Depots | https://spoj.pl/problems/PC8H/
+MESS | Messy Administration | https://spoj.pl/problems/MESS/
+ONTIME | Just on Time | https://spoj.pl/problems/ONTIME/
+PANCAKES | Delicious Pancakes | https://spoj.pl/problems/PANCAKES/
+BEENUMS | Beehive Numbers | https://spoj.pl/problems/BEENUMS/
+CAMELOT | Camelot | https://spoj.pl/problems/CAMELOT/
+DRAWQUAD | Drawing Quadrilaterals | https://spoj.pl/problems/DRAWQUAD/
+ESCJAILA | Escape from Jail Again | https://spoj.pl/problems/ESCJAILA/
+FILRTEST | File Recover Testing | https://spoj.pl/problems/FILRTEST/
+GIRLSNBS | Girls and Boys | https://spoj.pl/problems/GIRLSNBS/
+HACKERS | Hackers | https://spoj.pl/problems/HACKERS/
+IMPUNITS | Imperial Units | https://spoj.pl/problems/IMPUNITS/
+JARA | Jara&#8217;s Legacy | https://spoj.pl/problems/JARA/
+RANJAN02 | Tower Of Hanoi - Revisited | https://spoj.pl/problems/RANJAN02/
+BIO1 | Rooks | https://spoj.pl/problems/BIO1/
+FLIB | Flibonakki | https://spoj.pl/problems/FLIB/
+LGLOVE | LCM GCD Love | https://spoj.pl/problems/LGLOVE/
+SBACT | Slow Growing Bacteria | https://spoj.pl/problems/SBACT/
+BIO | Biology | https://spoj.pl/problems/BIO/
+CF33C | Wonderful Randomized Sum | https://spoj.pl/problems/CF33C/
+HAROWS | A - Crazy Rows | https://spoj.pl/problems/HAROWS/
+HASTOCK | B - Stock Charts | https://spoj.pl/problems/HASTOCK/
+HAPLANT | C- Watering Plants | https://spoj.pl/problems/HAPLANT/
+HAALPHA | D - Alphabetomials | https://spoj.pl/problems/HAALPHA/
+HATEAM | E - Football Team | https://spoj.pl/problems/HATEAM/
+HARANGES | F - Interesting Ranges | https://spoj.pl/problems/HARANGES/
+LEXIPOS | Lexicographic position | https://spoj.pl/problems/LEXIPOS/
+HLP | Help in organizing | https://spoj.pl/problems/HLP/
+HISIX | Hi6 | https://spoj.pl/problems/HISIX/
+IITD1 | Another Sorting Algorithm | https://spoj.pl/problems/IITD1/
+IITD5 | Expected Cycle Sums | https://spoj.pl/problems/IITD5/
+IITD4 | Divisor Summation Powered | https://spoj.pl/problems/IITD4/
+YOKOF | Power Calculus | https://spoj.pl/problems/YOKOF/
+YOKOH | The Best Name for Your Baby | https://spoj.pl/problems/YOKOH/
+YOKOC | Cubic Eight-Puzzle | https://spoj.pl/problems/YOKOC/
+NUMOFPAL | Number of Palindromes | https://spoj.pl/problems/NUMOFPAL/
+MISERMAN | Wise And Miser | https://spoj.pl/problems/MISERMAN/
+PC8C | Cave Crisis | https://spoj.pl/problems/PC8C/
+PC8F | Optimal Strategy for the ICPC | https://spoj.pl/problems/PC8F/
+MLK | Milk Trading | https://spoj.pl/problems/MLK/
+CF36D | New Game with a Chess Piece | https://spoj.pl/problems/CF36D/
+FIBFACT | Fibonacci Factor | https://spoj.pl/problems/FIBFACT/
+DIVISER9 | Divisors VI | https://spoj.pl/problems/DIVISER9/
+NE06D | Driving Direction | https://spoj.pl/problems/NE06D/
+MATHS | Mathematics | https://spoj.pl/problems/MATHS/
+BPORT | Building Ports | https://spoj.pl/problems/BPORT/
+SHOPPERS | SHOPPERS | https://spoj.pl/problems/SHOPPERS/
+ARCHI | Architecture | https://spoj.pl/problems/ARCHI/
+TELECOM | Telecommunications | https://spoj.pl/problems/TELECOM/
+PEBBLE | Pebble Solver | https://spoj.pl/problems/PEBBLE/
+CPCRC1C | Sum of Digits | https://spoj.pl/problems/CPCRC1C/
+ELEC | Electrical Engineering | https://spoj.pl/problems/ELEC/
+CSQUARE | Powered and Squared | https://spoj.pl/problems/CSQUARE/
+FLWRS | Flowers | https://spoj.pl/problems/FLWRS/
+HOMO | Homo or Hetero | https://spoj.pl/problems/HOMO/
+CHEM | Chemistry | https://spoj.pl/problems/CHEM/
+ENVIRON | Environmental Engineering | https://spoj.pl/problems/ENVIRON/
+CENCRY | Encryption | https://spoj.pl/problems/CENCRY/
+CIVIL | Civil Engineering | https://spoj.pl/problems/CIVIL/
+JZPCIR | Jumping Zippy | https://spoj.pl/problems/JZPCIR/
+COMDIV | Number of common divisors | https://spoj.pl/problems/COMDIV/
+HPYNOS | Happy Numbers I | https://spoj.pl/problems/HPYNOS/
+TWIST | Twist and whirl - want to cheat  | https://spoj.pl/problems/TWIST/
+BOI7ESC | Escape | https://spoj.pl/problems/BOI7ESC/
+BOI7SOU | Sound | https://spoj.pl/problems/BOI7SOU/
+BOI7FEN | Fence | https://spoj.pl/problems/BOI7FEN/
+BOI7SEQ | Sequence | https://spoj.pl/problems/BOI7SEQ/
+OLOLO | Onotole needs your help | https://spoj.pl/problems/OLOLO/
+MBINGO | Bingo! | https://spoj.pl/problems/MBINGO/
+MCOCIR | Cocircular Points | https://spoj.pl/problems/MCOCIR/
+HPYNOSII | Happy Numbers II | https://spoj.pl/problems/HPYNOSII/
+MFLAR10 | Flowers Flourish from France | https://spoj.pl/problems/MFLAR10/
+MGLAR10 | Growing Strings | https://spoj.pl/problems/MGLAR10/
+MHLAR10 | Hyperactive Girl | https://spoj.pl/problems/MHLAR10/
+MKLAR10 | Kids&#8217; Wishes | https://spoj.pl/problems/MKLAR10/
+MJLAR10 | Jollo | https://spoj.pl/problems/MJLAR10/
+MELAR10 | Electric Needs | https://spoj.pl/problems/MELAR10/
+MILAR10 | Ingenious Metro | https://spoj.pl/problems/MILAR10/
+HLPRSRCH | Help a researcher | https://spoj.pl/problems/HLPRSRCH/
+EXFOR | Explicit Formula | https://spoj.pl/problems/EXFOR/
+ANARC09I | Kind of a blur | https://spoj.pl/problems/ANARC09I/
+ANARC09J | National Treasure | https://spoj.pl/problems/ANARC09J/
+ANARC09H | Land Division | https://spoj.pl/problems/ANARC09H/
+ANARC09G | Stock Chase | https://spoj.pl/problems/ANARC09G/
+LLCA | Largest Labeled Common Ancestor | https://spoj.pl/problems/LLCA/
+COMFUNC | Commuting Functions | https://spoj.pl/problems/COMFUNC/
+DEFKIN | Defense of a Kingdom | https://spoj.pl/problems/DEFKIN/
+KITROB | Kitchen Robot | https://spoj.pl/problems/KITROB/
+LPRISON | The Lucky Prisoner | https://spoj.pl/problems/LPRISON/
+COWPIC | Cow Photographs  | https://spoj.pl/problems/COWPIC/
+TREEISO | Tree Isomorphism | https://spoj.pl/problems/TREEISO/
+JZPSTA | Stacks of Zippy | https://spoj.pl/problems/JZPSTA/
+ADV04A1 | Tower Game (Hard) | https://spoj.pl/problems/ADV04A1/
+ADV04B1 | Upper Right King (Hard) | https://spoj.pl/problems/ADV04B1/
+ADV04C | Deal or No Deal | https://spoj.pl/problems/ADV04C/
+ADV04D | UFO | https://spoj.pl/problems/ADV04D/
+ADV04E | Prisoner of Benda | https://spoj.pl/problems/ADV04E/
+ADV04F1 | Four Chips (Hard) | https://spoj.pl/problems/ADV04F1/
+ADV04G1 | Regular expressions (Hard) | https://spoj.pl/problems/ADV04G1/
+ADV04H | Join | https://spoj.pl/problems/ADV04H/
+ADV04J | Invisible point | https://spoj.pl/problems/ADV04J/
+ADV04K | Calculator | https://spoj.pl/problems/ADV04K/
+ADV04L | Miles and kilometers | https://spoj.pl/problems/ADV04L/
+C1LJUTNJ | Ljutnja | https://spoj.pl/problems/C1LJUTNJ/
+C1TABOVI | Tabovi | https://spoj.pl/problems/C1TABOVI/
+C2CRNI | Crni | https://spoj.pl/problems/C2CRNI/
+ADV04I1 | Boards (Hard) | https://spoj.pl/problems/ADV04I1/
+SPFIBO | Fibonacci Sequence | https://spoj.pl/problems/SPFIBO/
+SKYLINE | Skyline | https://spoj.pl/problems/SKYLINE/
+FINDPATH | CALCULATE PATH FOR JERRY | https://spoj.pl/problems/FINDPATH/
+OSPROB1 | Operating System Problems (Task Scheduling) | https://spoj.pl/problems/OSPROB1/
+MULPAL | Multiplicative Palindrome | https://spoj.pl/problems/MULPAL/
+ACPC10G | A Knights&#8217; Tale | https://spoj.pl/problems/ACPC10G/
+ACPC10H | Jumping Beans | https://spoj.pl/problems/ACPC10H/
+ACPC10I | The Cyber Traveling Salesman | https://spoj.pl/problems/ACPC10I/
+ACPC10F | World of cubes | https://spoj.pl/problems/ACPC10F/
+ACPC10E | Sometimes, a penalty is good! | https://spoj.pl/problems/ACPC10E/
+ACPC10A | What&#8217;s Next | https://spoj.pl/problems/ACPC10A/
+ACPC10D | Tri graphs | https://spoj.pl/problems/ACPC10D/
+ACPC10B | Sum the Square | https://spoj.pl/problems/ACPC10B/
+FIBOSUM | Fibonacci Sum | https://spoj.pl/problems/FIBOSUM/
+HORRIBLE | Horrible Queries | https://spoj.pl/problems/HORRIBLE/
+TTOP | Tree Topology | https://spoj.pl/problems/TTOP/
+SOCIALNE | Possible Friends | https://spoj.pl/problems/SOCIALNE/
+AMR10A | Playground | https://spoj.pl/problems/AMR10A/
+AMR10B | Regex Edit Distance | https://spoj.pl/problems/AMR10B/
+AMR10C | Square Free Factorization | https://spoj.pl/problems/AMR10C/
+AMR10D | Soccer Teams | https://spoj.pl/problems/AMR10D/
+AMR10E | Stocks Prediction | https://spoj.pl/problems/AMR10E/
+AMR10F | Cookies Piles | https://spoj.pl/problems/AMR10F/
+AMR10G | Christmas Play | https://spoj.pl/problems/AMR10G/
+AMR10H | Shopping Rush | https://spoj.pl/problems/AMR10H/
+AMR10I | Dividing Stones | https://spoj.pl/problems/AMR10I/
+AMR10J | Mixing Chemicals | https://spoj.pl/problems/AMR10J/
+CIRU | The area of the union of circles | https://spoj.pl/problems/CIRU/
+NUMG | God of Number Theory | https://spoj.pl/problems/NUMG/
+SEQN | Sequence | https://spoj.pl/problems/SEQN/
+JZPGYZ | Sevenk Love Oimaster | https://spoj.pl/problems/JZPGYZ/
+SPQUEUE | Queue | https://spoj.pl/problems/SPQUEUE/
+IOIISL08 | Islands | https://spoj.pl/problems/IOIISL08/
+TABLE | Crashï¿½s number table | https://spoj.pl/problems/TABLE/
+SHLIGHTS | Shifting Lights | https://spoj.pl/problems/SHLIGHTS/
+KFRIENDS | Friendly Knights | https://spoj.pl/problems/KFRIENDS/
+DPMAX | Dot Product Maximization | https://spoj.pl/problems/DPMAX/
+ACPC10C | Normalized Form | https://spoj.pl/problems/ACPC10C/
+POLYU | POLYU | https://spoj.pl/problems/POLYU/
+CIRUT | CIRU2 | https://spoj.pl/problems/CIRUT/
+SKY | Sky Lift | https://spoj.pl/problems/SKY/
+STREETR | Street Trees | https://spoj.pl/problems/STREETR/
+CHAIR | Chairs | https://spoj.pl/problems/CHAIR/
+BUREAU | Bureaucracy | https://spoj.pl/problems/BUREAU/
+CIRCSCR | Circles On A Screen | https://spoj.pl/problems/CIRCSCR/
+XMAX | XOR Maximization | https://spoj.pl/problems/XMAX/
+NSUBSTR | Substrings | https://spoj.pl/problems/NSUBSTR/
+NFACTOR | N-Factorful | https://spoj.pl/problems/NFACTOR/
+ZEROCNT | Zero Count | https://spoj.pl/problems/ZEROCNT/
+PSTR | Number of Prime Strings | https://spoj.pl/problems/PSTR/
+INTCOMB | Combination Of Integers | https://spoj.pl/problems/INTCOMB/
+DIST | Distance | https://spoj.pl/problems/DIST/
+NONDEC | Non-Decreasing Numbers | https://spoj.pl/problems/NONDEC/
+WEIGHT | Weighted Sum | https://spoj.pl/problems/WEIGHT/
+RECTMAT | Rectangles in a Matrix | https://spoj.pl/problems/RECTMAT/
+MATCH | Perfect Matching | https://spoj.pl/problems/MATCH/
+FASTFOOD | Fast Food Restaurant | https://spoj.pl/problems/FASTFOOD/
+WINGOLD | Win gold medal  | https://spoj.pl/problems/WINGOLD/
+SIGNGAME | Red Balls | https://spoj.pl/problems/SIGNGAME/
+PLAYSIGN | color the balls | https://spoj.pl/problems/PLAYSIGN/
+GLJIVE | GLJIVE | https://spoj.pl/problems/GLJIVE/
+SCROLL | Spreadsheet scrolling | https://spoj.pl/problems/SCROLL/
+CHOCDIST | Chocolate distribution | https://spoj.pl/problems/CHOCDIST/
+TRIEQUAL | Triangle equality | https://spoj.pl/problems/TRIEQUAL/
+MILPATR | Military patrol | https://spoj.pl/problems/MILPATR/
+PARTPLNE | Partitioning the plane | https://spoj.pl/problems/PARTPLNE/
+LEAKCONT | Leaky containers | https://spoj.pl/problems/LEAKCONT/
+PROGPROG | Progressive progressions | https://spoj.pl/problems/PROGPROG/
+MOVEBOOK | Move the books | https://spoj.pl/problems/MOVEBOOK/
+ROADTRIP | Road trip | https://spoj.pl/problems/ROADTRIP/
+GNTFNTN | Giant fountain | https://spoj.pl/problems/GNTFNTN/
+SSTRCITS | Sister cities | https://spoj.pl/problems/SSTRCITS/
+SKISLOPE | Ski slopes | https://spoj.pl/problems/SKISLOPE/
+PLCNMGME | Place-name game | https://spoj.pl/problems/PLCNMGME/
+ENUMRTNL | Enumeration of rationals | https://spoj.pl/problems/ENUMRTNL/
+CNTTEAMS | Counting the teams | https://spoj.pl/problems/CNTTEAMS/
+BRODOVI | BRODOVI | https://spoj.pl/problems/BRODOVI/
+MIDO | KOSARK | https://spoj.pl/problems/MIDO/
+CCHESS | COSTLY CHESS | https://spoj.pl/problems/CCHESS/
+PRISMSA | TRIANGULAR PRISM | https://spoj.pl/problems/PRISMSA/
+TSUM | Triple Sums | https://spoj.pl/problems/TSUM/
+AVION1 | AVION | https://spoj.pl/problems/AVION1/
+PARKET1 | PARKET | https://spoj.pl/problems/PARKET1/
+BALL | The Ball | https://spoj.pl/problems/BALL/
+YOUTUBE | Youtube | https://spoj.pl/problems/YOUTUBE/
+QUADRATE | Quadratic Equation | https://spoj.pl/problems/QUADRATE/
+KCYCLES | Count The Cycles | https://spoj.pl/problems/KCYCLES/
+TEMPLEQ | Temple Queues | https://spoj.pl/problems/TEMPLEQ/
+CANDYSTN | Candies and Milestones | https://spoj.pl/problems/CANDYSTN/
+MNMXPATH | Min  Max 01 Path | https://spoj.pl/problems/MNMXPATH/
+FAVSUBS | Favorite Sub Hair | https://spoj.pl/problems/FAVSUBS/
+SNAKYNUM | Snaky Numbers | https://spoj.pl/problems/SNAKYNUM/
+CLNFORUM | Clean the Forum Posts | https://spoj.pl/problems/CLNFORUM/
+SQUA_REV | Revenge of the squares | https://spoj.pl/problems/SQUA_REV/
+BTCODE_A | Traversing Grid | https://spoj.pl/problems/BTCODE_A/
+BTCODE_B | Finding Minimum | https://spoj.pl/problems/BTCODE_B/
+BTCODE_C | Fun With Inequalities | https://spoj.pl/problems/BTCODE_C/
+BTCODE_D | Maximum Profit | https://spoj.pl/problems/BTCODE_D/
+BTCODE_E | Recover Polynomials | https://spoj.pl/problems/BTCODE_E/
+BTCODE_F | Life Game | https://spoj.pl/problems/BTCODE_F/
+BTCODE_G | Coloring Trees | https://spoj.pl/problems/BTCODE_G/
+BTCODE_H | Trie Expectation | https://spoj.pl/problems/BTCODE_H/
+BTCODE_I | Permutation Game | https://spoj.pl/problems/BTCODE_I/
+BTCODE_J | Grid Tiling | https://spoj.pl/problems/BTCODE_J/
+BTCODE_K | Array Sorting | https://spoj.pl/problems/BTCODE_K/
+SQUAREV1 | Revenge of the squares (variation) | https://spoj.pl/problems/SQUAREV1/
+KOLICA | Kolica | https://spoj.pl/problems/KOLICA/
+NOVICE43 | Problem 3 | https://spoj.pl/problems/NOVICE43/
+PLOT1 | Plotting functions (variation) | https://spoj.pl/problems/PLOT1/
+PROBLEM4 | PRIMITIVEROOTS | https://spoj.pl/problems/PROBLEM4/
+AVDM | Adventure in Moving | https://spoj.pl/problems/AVDM/
+BARN | Barn Allocation | https://spoj.pl/problems/BARN/
+GPA1 | GRADE POINT AVERAGE | https://spoj.pl/problems/GPA1/
+POCALC1 | Ancient Pocket Calculator | https://spoj.pl/problems/POCALC1/
+PHONMESS | Messy Phone List | https://spoj.pl/problems/PHONMESS/
+MAXSUB | Maximum Subset of Array | https://spoj.pl/problems/MAXSUB/
+NOSQ | No Squares Numbers | https://spoj.pl/problems/NOSQ/
+NACCI | Nacci Fear | https://spoj.pl/problems/NACCI/
+PSWITCH | Party Switching | https://spoj.pl/problems/PSWITCH/
+POCALC2 | Modern Pocket Calculator | https://spoj.pl/problems/POCALC2/
+MAIN72 | Subset sum | https://spoj.pl/problems/MAIN72/
+MAIN73 | Manoj and Pankaj  | https://spoj.pl/problems/MAIN73/
+MAIN74 | Euclids algorithm revisited  | https://spoj.pl/problems/MAIN74/
+MAIN75 | BST again | https://spoj.pl/problems/MAIN75/
+LSQF | Longest Square Factor | https://spoj.pl/problems/LSQF/
+ABCD | Colours A, B, C, D | https://spoj.pl/problems/ABCD/
+LINQSOLV | Linear Equation Solver | https://spoj.pl/problems/LINQSOLV/
+FOUROW | Four in a row | https://spoj.pl/problems/FOUROW/
+REVSEQ | Reverse the sequence | https://spoj.pl/problems/REVSEQ/
+PRIMPERM | Prime Permutations | https://spoj.pl/problems/PRIMPERM/
+TAILS | Tails all the way  | https://spoj.pl/problems/TAILS/
+WAGE | Wood, Axe and Grass | https://spoj.pl/problems/WAGE/
+TRAVERSE | Traverse through the board | https://spoj.pl/problems/TRAVERSE/
+NY10E | Non-Decreasing Digits | https://spoj.pl/problems/NY10E/
+NY10A | Penney Game | https://spoj.pl/problems/NY10A/
+NY10B | Nim-B Sum | https://spoj.pl/problems/NY10B/
+NY10C | Just The Simple Fax | https://spoj.pl/problems/NY10C/
+NY10D | Show Me The Fax | https://spoj.pl/problems/NY10D/
+NY10F | I2C | https://spoj.pl/problems/NY10F/
+NWERC10G | Selling Land | https://spoj.pl/problems/NWERC10G/
+NWERC10H | Stock Prices | https://spoj.pl/problems/NWERC10H/
+ALIENS1 | Alien arithmetic | https://spoj.pl/problems/ALIENS1/
+CHEFFEB | Bogosort | https://spoj.pl/problems/CHEFFEB/
+CHEFMAR | Squares Game | https://spoj.pl/problems/CHEFMAR/
+ITRIX_B | Lucky Sequence Again | https://spoj.pl/problems/ITRIX_B/
+ITRIX_C | Maximum - Profit -- Version II | https://spoj.pl/problems/ITRIX_C/
+ITRIX_D | Board-Queries | https://spoj.pl/problems/ITRIX_D/
+ITRIX_E | THE BLACK AND WHITE QUEENS | https://spoj.pl/problems/ITRIX_E/
+MAXLN | THE MAX LINES | https://spoj.pl/problems/MAXLN/
+GAME2 | Looks like Nim - but it is not | https://spoj.pl/problems/GAME2/
+CLOPPAIR | Closest Point Pair | https://spoj.pl/problems/CLOPPAIR/
+MAKETREE | Hierarchy | https://spoj.pl/problems/MAKETREE/
+BFIT | Best Fit | https://spoj.pl/problems/BFIT/
+CHARLIE | Charlie and the Chocolate Factory | https://spoj.pl/problems/CHARLIE/
+CUBEND | Suffix Of Cube | https://spoj.pl/problems/CUBEND/
+NSUBSTR2 | Substrings II | https://spoj.pl/problems/NSUBSTR2/
+WORD | Wordplay | https://spoj.pl/problems/WORD/
+MAIN8_C | Shake Shake Shaky | https://spoj.pl/problems/MAIN8_C/
+MAIN8_D | Coing tossing  | https://spoj.pl/problems/MAIN8_D/
+MAIN8_E | Cover the string | https://spoj.pl/problems/MAIN8_E/
+SKIING | Alpine Skiing | https://spoj.pl/problems/SKIING/
+STRDIST2 | String distance | https://spoj.pl/problems/STRDIST2/
+SILVER | Cut the Silver Bar | https://spoj.pl/problems/SILVER/
+DOMINO1 | The Longest Chain of Domino Tiles | https://spoj.pl/problems/DOMINO1/
+DYNALCA | Dynamic LCA | https://spoj.pl/problems/DYNALCA/
+SPOINTS | Separate Points | https://spoj.pl/problems/SPOINTS/
+SWJAM | Swimming Jam | https://spoj.pl/problems/SWJAM/
+TWENTYQ | Twenty Questions | https://spoj.pl/problems/TWENTYQ/
+CUBARTWK | Cubist Artwork | https://spoj.pl/problems/CUBARTWK/
+MRAVOGRA | Mravograd | https://spoj.pl/problems/MRAVOGRA/
+OKRET | Okret | https://spoj.pl/problems/OKRET/
+SEQ7 | Yet Another Sequence Problem | https://spoj.pl/problems/SEQ7/
+LCDS | Longest Common Difference Subsequence | https://spoj.pl/problems/LCDS/
+AVARY | Avaricious Maryanna | https://spoj.pl/problems/AVARY/
+BWORK | Boring Homework | https://spoj.pl/problems/BWORK/
+COMPLETE | Complete the Set | https://spoj.pl/problems/COMPLETE/
+DETECT | Detection of Extraterrestrial | https://spoj.pl/problems/DETECT/
+TENNIS | Entertainment | https://spoj.pl/problems/TENNIS/
+MAHJONG | Fudan Extracurricular Lives | https://spoj.pl/problems/MAHJONG/
+FEELUCK | Google is Feeling Lucky | https://spoj.pl/problems/FEELUCK/
+HERBICID | Herbicide | https://spoj.pl/problems/HERBICID/
+IMITATE | Imitation | https://spoj.pl/problems/IMITATE/
+JUICE | Juice Extractor | https://spoj.pl/problems/JUICE/
+PRATA | Roti Prata | https://spoj.pl/problems/PRATA/
+GNUM | Guess number! | https://spoj.pl/problems/GNUM/
+DOUTI | Double Time | https://spoj.pl/problems/DOUTI/
+POCRI | Power Crisis | https://spoj.pl/problems/POCRI/
+PATT | Pattern Matching | https://spoj.pl/problems/PATT/
+PROBOR | Probablistic OR | https://spoj.pl/problems/PROBOR/
+VILLAGES | Villages by the River | https://spoj.pl/problems/VILLAGES/
+PLUSEVI | How Many Plusses | https://spoj.pl/problems/PLUSEVI/
+PAAAARTY | Party! | https://spoj.pl/problems/PAAAARTY/
+GRIDPNTS | Grid points (speed variation) | https://spoj.pl/problems/GRIDPNTS/
+XIXO | brownie | https://spoj.pl/problems/XIXO/
+THRBL | Catapult that ball | https://spoj.pl/problems/THRBL/
+LQDNUMS | LQDNUMBERS | https://spoj.pl/problems/LQDNUMS/
+KOICOST | Cost | https://spoj.pl/problems/KOICOST/
+KOIREP | Representatives | https://spoj.pl/problems/KOIREP/
+KOILINE | Line up | https://spoj.pl/problems/KOILINE/
+FUPRCO | Funny programming contest | https://spoj.pl/problems/FUPRCO/
+KAMIL | Kamil | https://spoj.pl/problems/KAMIL/
+BYTEFOOD | Food Shortage in Byteland | https://spoj.pl/problems/BYTEFOOD/
+SOLSTRAS | Solovay-Strassen Inverted | https://spoj.pl/problems/SOLSTRAS/
+JOHNNY | Johnny Goes Shopping | https://spoj.pl/problems/JOHNNY/
+SOLVING | Solving the Puzzle | https://spoj.pl/problems/SOLVING/
+PSPHERE | Points on a Sphere | https://spoj.pl/problems/PSPHERE/
+PAWNS | Pawns Gone Wild | https://spoj.pl/problems/PAWNS/
+BURNCITY | The Burning City | https://spoj.pl/problems/BURNCITY/
+HANOI | Nightmare in the Towers of Hanoi | https://spoj.pl/problems/HANOI/
+BYTELE | Bytelandian Telecom | https://spoj.pl/problems/BYTELE/
+SANTA | Santa Claus and the Presents | https://spoj.pl/problems/SANTA/
+CTQUINE | Plant a Christmas Tree | https://spoj.pl/problems/CTQUINE/
+PIVAL | Digits of Pi | https://spoj.pl/problems/PIVAL/
+DCODE | The Modern Dress Code | https://spoj.pl/problems/DCODE/
+MFENCE | Herdkeeper | https://spoj.pl/problems/MFENCE/
+ATSHELT | Atomic Shelters | https://spoj.pl/problems/ATSHELT/
+TMBOX | The Turing Music Box | https://spoj.pl/problems/TMBOX/
+HWORK | Johnny and the Optimisation of Homework | https://spoj.pl/problems/HWORK/
+BRIGAMI | Bytelandian Origami | https://spoj.pl/problems/BRIGAMI/
+DERAIL | Closing down Railway Lines | https://spoj.pl/problems/DERAIL/
+CROSSES | The Game of Crosses & Crosses | https://spoj.pl/problems/CROSSES/
+EVAL | Digits of e | https://spoj.pl/problems/EVAL/
+BFORG | The Secret Fellowship of Byteland | https://spoj.pl/problems/BFORG/
+JCROSS | Japan Crossword | https://spoj.pl/problems/JCROSS/
+IMGREC1 | Simple Image Recognition | https://spoj.pl/problems/IMGREC1/
+XWORDS | X-Words | https://spoj.pl/problems/XWORDS/
+MGAME | Enjoying a Multiplayer Game | https://spoj.pl/problems/MGAME/
+DISPLACE | Displace | https://spoj.pl/problems/DISPLACE/
+MAMMOTH | Tethering the Mammoths | https://spoj.pl/problems/MAMMOTH/
+SIZECON | Size Contest | https://spoj.pl/problems/SIZECON/
+TFRACAL2 | Fractions Calculator | https://spoj.pl/problems/TFRACAL2/
+TSSTR | Shortest Superstring | https://spoj.pl/problems/TSSTR/
+RIS | Rectangles in a Square | https://spoj.pl/problems/RIS/
+LIB | Literature List | https://spoj.pl/problems/LIB/
+TTR | Tetris AI | https://spoj.pl/problems/TTR/
+HIR | Hard Image Recognition | https://spoj.pl/problems/HIR/
+MSWP | Minesweeper | https://spoj.pl/problems/MSWP/
+DELIVERY | Delivery plan | https://spoj.pl/problems/DELIVERY/
+PRIC | Prime checker | https://spoj.pl/problems/PRIC/
+SUD | SuDoku Puzzle | https://spoj.pl/problems/SUD/
+ELC | Electrification | https://spoj.pl/problems/ELC/
+DIP | Digital Image Processing | https://spoj.pl/problems/DIP/
+SQRT2 | Digits of SQRT(2) | https://spoj.pl/problems/SQRT2/
+PT07E | Yet another computer network problem | https://spoj.pl/problems/PT07E/
+SLEXSORT | Lexicographic sort | https://spoj.pl/problems/SLEXSORT/
+MATH2 | Math II | https://spoj.pl/problems/MATH2/
+INTER | Intercept | https://spoj.pl/problems/INTER/
+GCD | Greatest Common Divisor | https://spoj.pl/problems/GCD/
+BRAINF_K | Brainf_ck | https://spoj.pl/problems/BRAINF_K/
+EXPR2 | Analyse Simple Arithmetical Expressions | https://spoj.pl/problems/EXPR2/
+ERRORMIN | Error Minimization | https://spoj.pl/problems/ERRORMIN/
+MAGIC2 | Magic Program II | https://spoj.pl/problems/MAGIC2/
+JAWB | JawBreaker Game | https://spoj.pl/problems/JAWB/
+MAR | Markov Algorithm | https://spoj.pl/problems/MAR/
+EYES | Robo Eye | https://spoj.pl/problems/EYES/
+CARL | Carl | https://spoj.pl/problems/CARL/
+SPOJTEST | Glenbow Museum | https://spoj.pl/problems/SPOJTEST/
+SELF | Super Quine | https://spoj.pl/problems/SELF/
+NOP | Nop | https://spoj.pl/problems/NOP/
+BFWRITE | Brainf F##k Writing | https://spoj.pl/problems/BFWRITE/
+RELBOARD | Relative Board | https://spoj.pl/problems/RELBOARD/
+PLCNUM2 | Place the Numbers II | https://spoj.pl/problems/PLCNUM2/
+POLYBIUS | Polybius square | https://spoj.pl/problems/POLYBIUS/
+DDATE | Dos Date | https://spoj.pl/problems/DDATE/
+DBP | Burned Pancakes Tower | https://spoj.pl/problems/DBP/
+SQDIFF | Area Difference | https://spoj.pl/problems/SQDIFF/
+MONS | Monster | https://spoj.pl/problems/MONS/
+BRACKETS | Fully Parenthesized Expression | https://spoj.pl/problems/BRACKETS/
+DEC_BIN | Terminating or Non-Terminating | https://spoj.pl/problems/DEC_BIN/
+CYCLE | Cycles, More Cycles | https://spoj.pl/problems/CYCLE/
+REVINPUT | Reverse the Input | https://spoj.pl/problems/REVINPUT/
+WORDNUM | Word To Number | https://spoj.pl/problems/WORDNUM/
+MB2 | Reverse text | https://spoj.pl/problems/MB2/
+NPRIME | Nth Prime | https://spoj.pl/problems/NPRIME/
+BENDA | Prisoner of Benda (Challenge) | https://spoj.pl/problems/BENDA/
+DIE_PIP | The Electronic Dice | https://spoj.pl/problems/DIE_PIP/
+XMAS | Christmas Tree | https://spoj.pl/problems/XMAS/
+NUMWORD | Number to Word | https://spoj.pl/problems/NUMWORD/
+LINC | Linear Congruences | https://spoj.pl/problems/LINC/
+PRINTF | Printf Parser | https://spoj.pl/problems/PRINTF/
+WAYS | PATHS | https://spoj.pl/problems/WAYS/
+PL_QUINE | Brainf_cked! | https://spoj.pl/problems/PL_QUINE/
+MODULUS2 | BF_MODULUS | https://spoj.pl/problems/MODULUS2/
+FIBSUM | Sum of Fibonacci numbers | https://spoj.pl/problems/FIBSUM/
+BALLS | Distributing the balls | https://spoj.pl/problems/BALLS/
+EQCHECK | Equation Check | https://spoj.pl/problems/EQCHECK/
+PHIVAL | Digits of Phi (Golden Ratio) | https://spoj.pl/problems/PHIVAL/
+PLDGTS | Summing up Last digits | https://spoj.pl/problems/PLDGTS/
+GRIDPNT | Grid points | https://spoj.pl/problems/GRIDPNT/
+TLCS | Longest Common Subsequence | https://spoj.pl/problems/TLCS/
+PT07I | The Ants in a Tree | https://spoj.pl/problems/PT07I/
+NKLEAVES | Leaves | https://spoj.pl/problems/NKLEAVES/
+NKMARS | Mars Map | https://spoj.pl/problems/NKMARS/
+NKTEAM | Team Selection | https://spoj.pl/problems/NKTEAM/
+NKMOBILE | IOI01 Mobiles | https://spoj.pl/problems/NKMOBILE/
+NKMOU | IOI05 Mountains | https://spoj.pl/problems/NKMOU/
+NKPAIRS | IOI07 Pairs | https://spoj.pl/problems/NKPAIRS/
+NKMINERS | IOI07 Miners | https://spoj.pl/problems/NKMINERS/
+NKTRAFIC | Monkey island | https://spoj.pl/problems/NKTRAFIC/
+NKPANO | Billboard painting | https://spoj.pl/problems/NKPANO/
+NKDIST | Distance | https://spoj.pl/problems/NKDIST/
+VTRI | Triangles | https://spoj.pl/problems/VTRI/
+VSTEPS | Steps | https://spoj.pl/problems/VSTEPS/
+QTREE3 | Query on a tree again! | https://spoj.pl/problems/QTREE3/
+VBLOCKS | Blocks | https://spoj.pl/problems/VBLOCKS/
+VBOARD | Chessboard | https://spoj.pl/problems/VBOARD/
+MAKHOA | The secret key | https://spoj.pl/problems/MAKHOA/
+NDIGIT | The Nth digit | https://spoj.pl/problems/NDIGIT/
+FACUP | The FA cup | https://spoj.pl/problems/FACUP/
+CWAY | Counting paths in a complete graph | https://spoj.pl/problems/CWAY/
+KDEL | Removing digits | https://spoj.pl/problems/KDEL/
+INTEGER7 | Integers | https://spoj.pl/problems/INTEGER7/
+PCYCLE | Exploring the maze | https://spoj.pl/problems/PCYCLE/
+HELPPM | Help the PM! | https://spoj.pl/problems/HELPPM/
+NHP | Harry Potter and the Deathly Maze | https://spoj.pl/problems/NHP/
+TRIBE | Tribe | https://spoj.pl/problems/TRIBE/
+KINGDOM | The mightiest kingdom | https://spoj.pl/problems/KINGDOM/
+BINLADEN | Bin Laden | https://spoj.pl/problems/BINLADEN/
+WIFI | Computer lab | https://spoj.pl/problems/WIFI/
+REDUCT | Copier Reduction | https://spoj.pl/problems/REDUCT/
+CONDIG | Consecutive Digits | https://spoj.pl/problems/CONDIG/
+PAINTER | Painter | https://spoj.pl/problems/PAINTER/
+PRIMESUB | Primary X-Subfactor Series | https://spoj.pl/problems/PRIMESUB/
+PACK1 | Packing | https://spoj.pl/problems/PACK1/
+SYMORD | Symmetric Order | https://spoj.pl/problems/SYMORD/
+BOOKSH | Overflowing Bookshelf | https://spoj.pl/problems/BOOKSH/
+FLOWLAY | Flow Layout | https://spoj.pl/problems/FLOWLAY/
+GRAFT | Tree Grafting | https://spoj.pl/problems/GRAFT/
+UPTIME | Server Relocation | https://spoj.pl/problems/UPTIME/
+LINEARPA | Linear Pachinko | https://spoj.pl/problems/LINEARPA/
+FRSEARCH | Frugal Search | https://spoj.pl/problems/FRSEARCH/
+GOGOGORE | Go Go Gorelians | https://spoj.pl/problems/GOGOGORE/
+MST | Minimum Spanning Tree | https://spoj.pl/problems/MST/
+CONNECT2 | Connect | https://spoj.pl/problems/CONNECT2/
+SUMSQ | Sum of Squares | https://spoj.pl/problems/SUMSQ/
+FASTW | Fast Width  | https://spoj.pl/problems/FASTW/
+BOIFAC | BOI 97 - Factorial | https://spoj.pl/problems/BOIFAC/
+BOI97TE | BOI 97 - Task Execution | https://spoj.pl/problems/BOI97TE/
+TAMCAM | Tam Cam | https://spoj.pl/problems/TAMCAM/
+BOI97SN | BOI 97 - Street Network | https://spoj.pl/problems/BOI97SN/
+MDIGITS2 | First Number | https://spoj.pl/problems/MDIGITS2/
+HCN3D | The God-land | https://spoj.pl/problems/HCN3D/
+HOMELESS | Homeless Jozo | https://spoj.pl/problems/HOMELESS/
+HWAYADS | Highway Advertising | https://spoj.pl/problems/HWAYADS/
+MASKTAPE | Masking Tape | https://spoj.pl/problems/MASKTAPE/
+MKOKOS | KOKOS | https://spoj.pl/problems/MKOKOS/
+TOPALIN | Palindrome String | https://spoj.pl/problems/TOPALIN/
+TOINCSEQ | Non-decreasing sequence | https://spoj.pl/problems/TOINCSEQ/
+SELFDIV | Self-divisible Number | https://spoj.pl/problems/SELFDIV/
+NSC | Nuga chia k&#7865;o | https://spoj.pl/problems/NSC/
+CLEAR | Clear Numbers | https://spoj.pl/problems/CLEAR/
+MARBLE | A Marble Game | https://spoj.pl/problems/MARBLE/
+BLAND | Exchanging Land for a Fan | https://spoj.pl/problems/BLAND/
+WINNER | Who is the winner | https://spoj.pl/problems/WINNER/
+BINPAL | Binary palindrome | https://spoj.pl/problems/BINPAL/
+SMAX | Maximum area | https://spoj.pl/problems/SMAX/
+BRHQUADR | Quadratics | https://spoj.pl/problems/BRHQUADR/
+SBRICKS | Stacks of Bricks | https://spoj.pl/problems/SBRICKS/
+SBRICKS2 | Stacks of Bricks 2 | https://spoj.pl/problems/SBRICKS2/
+BRHAR | Accelerated Reading | https://spoj.pl/problems/BRHAR/
+BRHPHYS | Physics Grade | https://spoj.pl/problems/BRHPHYS/
+BRHWURD | Words | https://spoj.pl/problems/BRHWURD/
+BRHMAIL | Chain Mail | https://spoj.pl/problems/BRHMAIL/
+BRHMUSIC | Musical Frequencies | https://spoj.pl/problems/BRHMUSIC/
+SARRAY | Suffix Array | https://spoj.pl/problems/SARRAY/
+VNINGAME | Tr&#242; ch&#417;i | https://spoj.pl/problems/VNINGAME/
+SIGSEGV | Return SIGSEGV | https://spoj.pl/problems/SIGSEGV/
+SCRAMBLE | SCRAMBLE1 | https://spoj.pl/problems/SCRAMBLE/
+SPMAP | Treasure map  | https://spoj.pl/problems/SPMAP/
+DUGOVI | Borrowing money | https://spoj.pl/problems/DUGOVI/
+INSULENG | Insulation | https://spoj.pl/problems/INSULENG/
+SAMDRAW | Artistic Samhita | https://spoj.pl/problems/SAMDRAW/
+BGEEK | Brainfuck Geek!!! (Bonus Question) | https://spoj.pl/problems/BGEEK/
+SALESMAN | Salesman | https://spoj.pl/problems/SALESMAN/
+INTSS | Internally Stable Sets | https://spoj.pl/problems/INTSS/
+BCEASY | Bottom Coder (Easy) | https://spoj.pl/problems/BCEASY/
+BCHARD | Bottom Coder (Hard) | https://spoj.pl/problems/BCHARD/
+TCONNUM | Simple Numbers Conversion | https://spoj.pl/problems/TCONNUM/
+TMUL | Not So Fast Multiplication | https://spoj.pl/problems/TMUL/
+TSHPATH | The Turtleï¿½s Shortest Path | https://spoj.pl/problems/TSHPATH/
+TDBFS | Searching the Graph | https://spoj.pl/problems/TDBFS/
+INTEST | Enormous Input Test | https://spoj.pl/problems/INTEST/
+SUMTRIAN | Sums in a Triangle (tutorial) | https://spoj.pl/problems/SUMTRIAN/
+TFOSS | Fossil in the Ice | https://spoj.pl/problems/TFOSS/
+ARMIES | Armies | https://spoj.pl/problems/ARMIES/
+MMATCH | The Cursed Room | https://spoj.pl/problems/MMATCH/
+TSORT | Turbo Sort | https://spoj.pl/problems/TSORT/
+PRINT | Prime Intervals | https://spoj.pl/problems/PRINT/
+PL6COL | 6-Coloring of Planar Graphs | https://spoj.pl/problems/PL6COL/
+LEXISORT | Easy Sorting | https://spoj.pl/problems/LEXISORT/
+J4FUN | Just for Fun (Easy) | https://spoj.pl/problems/J4FUN/
+TFIB | How many Fibs | https://spoj.pl/problems/TFIB/
+PAYBACK | Byteland Money Exchange | https://spoj.pl/problems/PAYBACK/
+HFLOOR | Hotel Floors | https://spoj.pl/problems/HFLOOR/
+FFARM | Fruit Farm | https://spoj.pl/problems/FFARM/
+JHNSN | Johnsons Algorithm | https://spoj.pl/problems/JHNSN/
+MPOWER | Power it! | https://spoj.pl/problems/MPOWER/
+PCV1 | Problems Collection (Volume 1) | https://spoj.pl/problems/PCV1/
+LOTTERY | Tickets lottery | https://spoj.pl/problems/LOTTERY/
+ADOMINO | Arranging Dominoes | https://spoj.pl/problems/ADOMINO/
+SNOWMAN | Snowman | https://spoj.pl/problems/SNOWMAN/
+NIMGAME | Special Nim Game | https://spoj.pl/problems/NIMGAME/
+RECEQU | Recurrence Equation Finder | https://spoj.pl/problems/RECEQU/
+RLDEC | Run Length Decoding | https://spoj.pl/problems/RLDEC/
+COUNTISL | How many Islands | https://spoj.pl/problems/COUNTISL/
+CZ_PROB2 | Sum of Factors | https://spoj.pl/problems/CZ_PROB2/
+CZ_PROB3 | Ping Pong Probability | https://spoj.pl/problems/CZ_PROB3/
+CZ_PROB4 | Dividing Spaces | https://spoj.pl/problems/CZ_PROB4/
+CZ_PROB7 | Put Them on a Circle | https://spoj.pl/problems/CZ_PROB7/
+PCV2 | Problems Collection (Volume 2) | https://spoj.pl/problems/PCV2/
+EASUDOKU | Easy sudoku | https://spoj.pl/problems/EASUDOKU/
+TREE3 | Charge | https://spoj.pl/problems/TREE3/
+ANNOYING | Annoying painting tool | https://spoj.pl/problems/ANNOYING/
+BLACK | Black and white painting | https://spoj.pl/problems/BLACK/
+DELI | Deli Deli | https://spoj.pl/problems/DELI/
+DETER | Find The Determinant | https://spoj.pl/problems/DETER/
+MKBOOK | Making Book | https://spoj.pl/problems/MKBOOK/
+CLIQSEP | Clique Separation | https://spoj.pl/problems/CLIQSEP/
+PAINTPOI | Painting Points | https://spoj.pl/problems/PAINTPOI/
+BBOARD | Billboard | https://spoj.pl/problems/BBOARD/
+PANEL | Panel | https://spoj.pl/problems/PANEL/
+CCUBE | Colorful Cubes | https://spoj.pl/problems/CCUBE/
+JCEASY | Jamcode 2006 (Easy) | https://spoj.pl/problems/JCEASY/
+JCHARD | Jamcode 2006 (Hard) | https://spoj.pl/problems/JCHARD/
+ANALYS_T | Program Analyser (tutorial) | https://spoj.pl/problems/ANALYS_T/
+MAGIC | Magic Program | https://spoj.pl/problems/MAGIC/
+MAGIC3 | Magic Program III | https://spoj.pl/problems/MAGIC3/
+POINTS | Point Nesting | https://spoj.pl/problems/POINTS/
+PCV3 | Problems Collection (Volume 3) | https://spoj.pl/problems/PCV3/
+REX | RegExp Master | https://spoj.pl/problems/REX/
+BCH | The Longest Chain | https://spoj.pl/problems/BCH/
+ARJ | Autoarchive | https://spoj.pl/problems/ARJ/
+MXP | Max Power | https://spoj.pl/problems/MXP/
+ELDORADO | El Dorado | https://spoj.pl/problems/ELDORADO/
+CONANGSS | Help Conan 8 !! Hurry up !! | https://spoj.pl/problems/CONANGSS/
+FACTSUM | Super Factor Sum | https://spoj.pl/problems/FACTSUM/
+SPRIME | Super Primes | https://spoj.pl/problems/SPRIME/
+ADUN | Adding two numbers | https://spoj.pl/problems/ADUN/
+LOOKSAY | Look and Say | https://spoj.pl/problems/LOOKSAY/
+CURICULA | Time to Graduate | https://spoj.pl/problems/CURICULA/
+SEVENPER | The Seven Percent Solution | https://spoj.pl/problems/SEVENPER/
+PERBITS | Persistent Bits | https://spoj.pl/problems/PERBITS/
+ROCKSKIP | Rock Skipping | https://spoj.pl/problems/ROCKSKIP/
+KQUERY | K-query | https://spoj.pl/problems/KQUERY/
+KQUERY2 | K-query II | https://spoj.pl/problems/KQUERY2/
+SOFTBUG | Software Bugs | https://spoj.pl/problems/SOFTBUG/
+PASCALTR | Pascals Travels | https://spoj.pl/problems/PASCALTR/
+SPEEDLM | Speed Limit | https://spoj.pl/problems/SPEEDLM/
+LMIS | Longest Monotonically Nondecreasing Sequence | https://spoj.pl/problems/LMIS/
+KNAPSACK | The Knapsack Problem | https://spoj.pl/problems/KNAPSACK/
+MERGSORT | Mergesort | https://spoj.pl/problems/MERGSORT/
+FASTPOW | Fast Power | https://spoj.pl/problems/FASTPOW/
+GARDENHU | Garden Hull | https://spoj.pl/problems/GARDENHU/
+CALCAREA | Calculate the Area | https://spoj.pl/problems/CALCAREA/
+INOUTEST | Enormous Input and Output Test | https://spoj.pl/problems/INOUTEST/
+NETIQUE | Netiquette | https://spoj.pl/problems/NETIQUE/
+LOGPOWER | n-th Power | https://spoj.pl/problems/LOGPOWER/
+EZDIJKST | Easy Dijkstra Problem | https://spoj.pl/problems/EZDIJKST/
+KLUCKY | Lucky Number | https://spoj.pl/problems/KLUCKY/
+MMOD29 | CALCULATE POW(2004,X) MOD 29 | https://spoj.pl/problems/MMOD29/
+BICOLOR | Bicolor | https://spoj.pl/problems/BICOLOR/
+TREEQ | Tree Query | https://spoj.pl/problems/TREEQ/
+MCITYHAL | Repair City Hall | https://spoj.pl/problems/MCITYHAL/
+MSTICK | Wooden Sticks | https://spoj.pl/problems/MSTICK/
+MPRIME1 | Sum of Primes | https://spoj.pl/problems/MPRIME1/
+HARDWARE | HARDWARE | https://spoj.pl/problems/HARDWARE/
+JACKPOT | JACKPOT | https://spoj.pl/problems/JACKPOT/
+PROBTNPO | The 3n plus 1 problem | https://spoj.pl/problems/PROBTNPO/
+DOUGHNUT | Harry and big doughnuts | https://spoj.pl/problems/DOUGHNUT/
+DIOEQ | DIOPHANTINE | https://spoj.pl/problems/DIOEQ/
+APLUSB2 | A plus B | https://spoj.pl/problems/APLUSB2/
+MSE08D | Lucky cities  | https://spoj.pl/problems/MSE08D/
+MSE08F | Quick answer  | https://spoj.pl/problems/MSE08F/
+MSE08I | Internet Service Providers  | https://spoj.pl/problems/MSE08I/
+MSE07B | Double Queue | https://spoj.pl/problems/MSE07B/
+MSE07F | Highway - MSE07F | https://spoj.pl/problems/MSE07F/
+MFMOBILE | Mobile (Again) | https://spoj.pl/problems/MFMOBILE/
+INV | Inversions | https://spoj.pl/problems/INV/
+PLCNUM1 | Place the Numbers I | https://spoj.pl/problems/PLCNUM1/
+AE3B | Pawn | https://spoj.pl/problems/AE3B/
+ADWFNSNW | A Dwarf - N Snow Whites | https://spoj.pl/problems/ADWFNSNW/
+LPS | Longest Palindromic Substring | https://spoj.pl/problems/LPS/
+LOTR1 | Helms Deep | https://spoj.pl/problems/LOTR1/
+UCI2009A | Adding Base36 BigNumbers | https://spoj.pl/problems/UCI2009A/
+SPIDEY1 | Mysterio s Menace | https://spoj.pl/problems/SPIDEY1/
+DESDEHAS | Desde Hasta | https://spoj.pl/problems/DESDEHAS/
+PROBTRES | The 3n plus 1 problem V2 | https://spoj.pl/problems/PROBTRES/
+COOLNUM | Cool Numbers | https://spoj.pl/problems/COOLNUM/
+ADDREVUT | Add and Reverse Sums | https://spoj.pl/problems/ADDREVUT/
+PC3 | MCD | https://spoj.pl/problems/PC3/
+KZWC | Z meet | https://spoj.pl/problems/KZWC/
+PITYFERM | Pitagoras y Fermat | https://spoj.pl/problems/PITYFERM/
+KZHAPPY | Happy Sequence | https://spoj.pl/problems/KZHAPPY/
+PRIMOKRI | Primo Kripta | https://spoj.pl/problems/PRIMOKRI/
+FAIRPART | Fair Partition | https://spoj.pl/problems/FAIRPART/
+FLOTTERY | Fantastic Lottery | https://spoj.pl/problems/FLOTTERY/
+PLANE | Plane Division | https://spoj.pl/problems/PLANE/
+YUPANA | Yupana inca | https://spoj.pl/problems/YUPANA/
+COLLIDER | The innovative collider | https://spoj.pl/problems/COLLIDER/
+EEIGHTS | Eeights | https://spoj.pl/problems/EEIGHTS/
+FLATLAND | Flat Land | https://spoj.pl/problems/FLATLAND/
+KZGD | Good Sequence | https://spoj.pl/problems/KZGD/
+KZBLK | ABC Blocks | https://spoj.pl/problems/KZBLK/
+MEOWIST | Meowist Networking | https://spoj.pl/problems/MEOWIST/
+PYTHTRIP | Pythagorean Triples | https://spoj.pl/problems/PYTHTRIP/
+MCL | Most Common Letter | https://spoj.pl/problems/MCL/
+ALPHMATH | Alphabet Arithmetic | https://spoj.pl/problems/ALPHMATH/
+SPANCONJ | Spanish Conjugation | https://spoj.pl/problems/SPANCONJ/
+FIBOBASE | Fibonacci Counting System | https://spoj.pl/problems/FIBOBASE/
+ROB | Robbery | https://spoj.pl/problems/ROB/
+ANGRYKN | Angry Knights | https://spoj.pl/problems/ANGRYKN/
+BRHFBALL | Lsu Football | https://spoj.pl/problems/BRHFBALL/
+OLDP | Old problem | https://spoj.pl/problems/OLDP/
+ALCH | Alchemy | https://spoj.pl/problems/ALCH/
+MCPC06C | Surprising Strings | https://spoj.pl/problems/MCPC06C/
+MCPC06G | Root of the Problem | https://spoj.pl/problems/MCPC06G/
+RATIONAL | Rational Number | https://spoj.pl/problems/RATIONAL/
+BIGFIBB | Interesting determinant | https://spoj.pl/problems/BIGFIBB/
+ANARC09E | Probability One | https://spoj.pl/problems/ANARC09E/
+IPS | Interleaved Periodic String | https://spoj.pl/problems/IPS/
+FILIP | Filip | https://spoj.pl/problems/FILIP/
+GRID | Grid | https://spoj.pl/problems/GRID/
+ANAG | Anagram | https://spoj.pl/problems/ANAG/
+RNUM | Rnumber | https://spoj.pl/problems/RNUM/
+SQRE | Square | https://spoj.pl/problems/SQRE/
+SIMEQN | A simple equation | https://spoj.pl/problems/SIMEQN/
+DECSTRNG | Decreasing Strings | https://spoj.pl/problems/DECSTRNG/
+SURPRISE | The Element of Surprise | https://spoj.pl/problems/SURPRISE/
+GENCHESS | Generalized Chess | https://spoj.pl/problems/GENCHESS/
+HFUN | H Function | https://spoj.pl/problems/HFUN/
+PROBLEM | Problem | https://spoj.pl/problems/PROBLEM/
+SUCCESS | Success | https://spoj.pl/problems/SUCCESS/
+XMEDIAN | Median | https://spoj.pl/problems/XMEDIAN/
+SUPERPW | SuperPower | https://spoj.pl/problems/SUPERPW/
+DIGRT | Digital Root Counter | https://spoj.pl/problems/DIGRT/
+FGROUP | Find the group | https://spoj.pl/problems/FGROUP/
+CIRCP | Circle Counting | https://spoj.pl/problems/CIRCP/
+GCJ2010 | Snapper Chain | https://spoj.pl/problems/GCJ2010/
+LEXI1 | Lexicographic Order 1 | https://spoj.pl/problems/LEXI1/
+LEXI2 | Lexicographic Order 2 | https://spoj.pl/problems/LEXI2/
+LEXI3 | Lexicographic Order 3 | https://spoj.pl/problems/LEXI3/
+LEXI4 | Lexicographic Order 4 | https://spoj.pl/problems/LEXI4/
+HMT1 | How Many Trees 1 | https://spoj.pl/problems/HMT1/
+HMT2 | How Many Trees 2 | https://spoj.pl/problems/HMT2/
+GCJ2K10 | Rope Intranet | https://spoj.pl/problems/GCJ2K10/
+CARDGAME | Card Game | https://spoj.pl/problems/CARDGAME/
+TEST00 | Prime numbers | https://spoj.pl/problems/TEST00/
+BLOWFUSE | Blowing Fuses | https://spoj.pl/problems/BLOWFUSE/
+NONSTOP | No Red Lights Pl !! | https://spoj.pl/problems/NONSTOP/
+NEXTODD | The next odd number | https://spoj.pl/problems/NEXTODD/
+INFINITY | Biggest ! | https://spoj.pl/problems/INFINITY/
+NTH | Nth greater value | https://spoj.pl/problems/NTH/
+TAKE4 | Take Away Game | https://spoj.pl/problems/TAKE4/
+PERMRANK | Rank of a Permutation | https://spoj.pl/problems/PERMRANK/
+FIBOREP | Fibonacci Representation | https://spoj.pl/problems/FIBOREP/
+MINMAX | Reward for the hard work | https://spoj.pl/problems/MINMAX/
+HACK | A little hacking | https://spoj.pl/problems/HACK/
+TILEGAME | Tile game | https://spoj.pl/problems/TILEGAME/
+THANKS | Thank you Chief ;) | https://spoj.pl/problems/THANKS/
+RANJAN03 | Vikram & Betaal | https://spoj.pl/problems/RANJAN03/
+CCONST | C style constants | https://spoj.pl/problems/CCONST/
+NEWLANG | Minimum and maximum numbers | https://spoj.pl/problems/NEWLANG/
+SALSA | Salsa Dance | https://spoj.pl/problems/SALSA/
+OWNCALC | Making your own Calculator | https://spoj.pl/problems/OWNCALC/
+CPCRC1A | Easy Game | https://spoj.pl/problems/CPCRC1A/
+CPCRC1B | Squares | https://spoj.pl/problems/CPCRC1B/
+CPCRC1D | Frequent Values | https://spoj.pl/problems/CPCRC1D/
+ARR | ARRAY(EASY) | https://spoj.pl/problems/ARR/
+ADV04A | Tower Game (Easy) | https://spoj.pl/problems/ADV04A/
+ADV04B | Upper Right King (Easy) | https://spoj.pl/problems/ADV04B/
+ADV04F | Four Chips (Easy) | https://spoj.pl/problems/ADV04F/
+ADV04G | Regular expressions (Easy) | https://spoj.pl/problems/ADV04G/
+ADV04I | Boards (Easy) | https://spoj.pl/problems/ADV04I/
+HPYNOSI | Happy Numbers II - Trial | https://spoj.pl/problems/HPYNOSI/
+WNAME | Weekdays | https://spoj.pl/problems/WNAME/
+PECOSSTR | PECOS STRING | https://spoj.pl/problems/PECOSSTR/
+FIBPARIT | Fibonnaci Parity | https://spoj.pl/problems/FIBPARIT/
+GOLDCOIN | Gold distribution | https://spoj.pl/problems/GOLDCOIN/
+NOVICE21 | Problem 1 | https://spoj.pl/problems/NOVICE21/
+NOVICE22 | Problem 2 | https://spoj.pl/problems/NOVICE22/
+NOVICE23 | Problem 3 | https://spoj.pl/problems/NOVICE23/
+NOVICE24 | Problem 4 | https://spoj.pl/problems/NOVICE24/
+NOVICE25 | Problem 5 | https://spoj.pl/problems/NOVICE25/
+BINSTR | Binary Strings | https://spoj.pl/problems/BINSTR/
+PRSQRFR | Perfect Composites | https://spoj.pl/problems/PRSQRFR/
+EPR | PrePrimes | https://spoj.pl/problems/EPR/
+FIBPOS | Fibonacci Terms | https://spoj.pl/problems/FIBPOS/
+PRIME12 | Fun With Primes | https://spoj.pl/problems/PRIME12/
+PTTRN | Find The Pattern | https://spoj.pl/problems/PTTRN/
+COMPSTR | Compare The Strings | https://spoj.pl/problems/COMPSTR/
+WLCME | Welcome To Code - Easy | https://spoj.pl/problems/WLCME/
+WLCME2 | Welcome To Code - Hard | https://spoj.pl/problems/WLCME2/
+REPEAT | Find the unique Number | https://spoj.pl/problems/REPEAT/
+BITCNT | Bit count | https://spoj.pl/problems/BITCNT/
+LARSQR | Largest Square in a Circle | https://spoj.pl/problems/LARSQR/
+BICAKE | Birthday cake | https://spoj.pl/problems/BICAKE/
+DOPECNT | count frequency of digits | https://spoj.pl/problems/DOPECNT/
+ZBROJ | ZBROJ | https://spoj.pl/problems/ZBROJ/
+GRDGOVT | Greedy Government | https://spoj.pl/problems/GRDGOVT/
+PROBLEM1 | MODULUS | https://spoj.pl/problems/PROBLEM1/
+NOVICE41 | Problem 1 | https://spoj.pl/problems/NOVICE41/
+NOVICE42 | Problem 2 | https://spoj.pl/problems/NOVICE42/
+NOVICE44 | Problem 4 | https://spoj.pl/problems/NOVICE44/
+NOVICE45 | Problem 5 | https://spoj.pl/problems/NOVICE45/
+PROBLEM6 | AVERYEASYPROBLEM | https://spoj.pl/problems/PROBLEM6/
+AVG | AVERAGE | https://spoj.pl/problems/AVG/
+CIRCINT | Intersecting Circles | https://spoj.pl/problems/CIRCINT/
+COLORF | Colorful Blocks | https://spoj.pl/problems/COLORF/
+LUCKYN | Lucky Numbers | https://spoj.pl/problems/LUCKYN/
+BTHSP | Back to High School Physics | https://spoj.pl/problems/BTHSP/
+SKEWB | Skew Binary | https://spoj.pl/problems/SKEWB/
+QUINEI | The Quine  | https://spoj.pl/problems/QUINEI/
+MAIN71 | Lexicographical ordering | https://spoj.pl/problems/MAIN71/
+TPRIMPER | Prime Permutations (easy) | https://spoj.pl/problems/TPRIMPER/
+NOVICE51 | A Simple Game  | https://spoj.pl/problems/NOVICE51/
+NOVICE52 | String Game | https://spoj.pl/problems/NOVICE52/
+NOVICE53 | Square number game  | https://spoj.pl/problems/NOVICE53/
+NOVICE54 | Prime game | https://spoj.pl/problems/NOVICE54/
+NOVICE55 | Grid painting | https://spoj.pl/problems/NOVICE55/
+TEASTER | Waiting for Easter | https://spoj.pl/problems/TEASTER/
+MAIN8_A | Cout | https://spoj.pl/problems/MAIN8_A/
+MAIN8_B | Overlapping Squares | https://spoj.pl/problems/MAIN8_B/
+SUMMIT | Find summits | https://spoj.pl/problems/SUMMIT/

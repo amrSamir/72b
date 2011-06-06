@@ -34,6 +34,7 @@ public class OJToolkit implements EntryPoint {
 	 */
 	@Override
 	public void onModuleLoad() {
+//		SpojProblemsToDBAdder s = new SpojProblemsToDBAdder();
 		RootPanel rootPanel = RootPanel.get();
 		System.out.println("start");
 		DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);

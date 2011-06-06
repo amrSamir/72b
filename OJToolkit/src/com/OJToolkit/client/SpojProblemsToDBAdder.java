@@ -43,11 +43,11 @@ public class SpojProblemsToDBAdder extends Content {
 		 */
 
 		for (int i = 0; i < linesArr.length; i++) {
-			splitted = linesArr[i].split("\" ");
-			problemSpoj.setProblemCode(splitted[0].replaceAll("\"", ""));
-			problemSpoj.setProblemName(splitted[1].replaceAll("\"", ""));
-			problemSpoj.setType(splitted[2].replaceAll("\"", ""));
-			problemSpoj.setUrl(splitted[3].replaceAll("\"", "").replaceAll(
+			splitted = linesArr[i].split(" \\| ");
+			problemSpoj.setProblemCode(splitted[0]);
+			problemSpoj.setProblemName(splitted[1]);
+			problemSpoj.setType("classical");
+			problemSpoj.setUrl(splitted[2].replaceAll(
 			        "https", "http"));
 
 			/*

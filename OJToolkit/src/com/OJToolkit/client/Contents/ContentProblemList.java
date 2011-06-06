@@ -10,6 +10,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -27,36 +28,17 @@ import com.google.gwt.view.client.SingleSelectionModel;
  */
 public class ContentProblemList extends Content {
 
-	/**
-	 * The Service for getting the problems from the server
-	 */
-	private final SubmissionServiceAsync submissionService = GWT
-	        .create(SubmissionService.class);
+	//  The Service for getting the problems from the server
+	private final SubmissionServiceAsync submissionService = GWT.create(SubmissionService.class);
 
-	/**
-	 * Number of problems in database. It's constant as it costs much time to
-	 * query all problems in the database so
-	 */
 	int numberOfProblems = 6684;
-
-	/**
-	 * The starting index of the page
-	 */
 	int pageStart = 0;
-
-	/**
-	 * ArrayList that contains the fetched problems from database
-	 */
+	//have problem list in array list
 	ArrayList<ProblemData> problemsList;
-
-	/**
-	 * The widget which displays the problems
-	 */
+	//have the problem data in cell table to view it as table
 	CellTable<ProblemData> table;
-
-	/**
-	 * Display the problems in pages
-	 */
+	
+	
 	public ContentProblemList() {
 		super();
 		VerticalPanel vPanel = new VerticalPanel();
@@ -64,6 +46,7 @@ public class ContentProblemList extends Content {
 		initWidget(scrollPanel);
 		scrollPanel.add(vPanel);
 		table = new CellTable<ProblemData>();
+		
 		final ListDataProvider<ProblemData> dataProvider = new ListDataProvider<ProblemData>();
 
 		// Set the columns
@@ -91,11 +74,12 @@ public class ContentProblemList extends Content {
 		table.addColumn(problemTitleColumn, "Problem Title");
 		table.addColumn(problemTypeColumn, "Problem Type");
 
-		// Set the total row count. This isn't strictly necessary, but it
-		// affects paging calculations, so its good habit to keep the row count
-		// up to date.
+		/*
+		 Set the total row count. This isn't strictly necessary, but it
+		 affects paging calculations, so its good habit to keep the row count
+		 up to date.
+		 */
 		table.setRowCount(numberOfProblems, true);
-
 		SimplePager pager = new SimplePager();
 		pager.setDisplay(table);
 		pager.setPageSize(50);
@@ -106,9 +90,11 @@ public class ContentProblemList extends Content {
 		}
 
 		dataProvider.setList(problemsList);
-
-		// We need to fetch the first 50 problems from the database as they are
-		// the first problems loaded
+		/*
+		 We need to fetch the first 50 problems from the database as they are
+		 the first problems loaded
+		*/
+		
 		fitchFiftyProblems();
 
 		onClickHandler();
@@ -121,22 +107,17 @@ public class ContentProblemList extends Content {
 	public void fitchFiftyProblems() {
 		submissionService.getProblems(pageStart,
 		        new AsyncCallback<ArrayList<ProblemData>>() {
-
 			        @Override
 			        public void onSuccess(ArrayList<ProblemData> result) {
-
 				        for (int i = 0; i < result.size(); i++) {
 					        problemsList.set(pageStart + i, result.get(i));
 
 				        }
 				        table.setRowData(0, problemsList);
 			        }
-
 			        @Override
 			        public void onFailure(Throwable caught) {
-				        System.out.println("Failure");
-				        // TODO Auto-generated method stub
-
+			        	Window.alert("Failed to Load Problems data!");
 			        }
 		        });
 
@@ -150,14 +131,12 @@ public class ContentProblemList extends Content {
 		final SingleSelectionModel mySelectionModel = new SingleSelectionModel<ProblemData>();
 		table.setSelectionModel(mySelectionModel);
 		mySelectionModel.addSelectionChangeHandler(new Handler() {
-
 			@Override
 			public void onSelectionChange(SelectionChangeEvent event) {
 				ProblemData problemData = (ProblemData) mySelectionModel
 				        .getSelectedObject();
 				CoreContainer.getInstance().setContent(
 				        new ContentProblemPage(problemData));
-
 			}
 		});
 	}

@@ -21,6 +21,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sun.java.swing.plaf.windows.resources.windows;
 
 public class ContentProblemPage extends Content {
 
@@ -30,6 +31,7 @@ public class ContentProblemPage extends Content {
 	        .create(LanguageService.class);
 
 	public ContentProblemPage(final ProblemData problem) {
+		
 		ScrollPanel scrollPanel = new ScrollPanel();
 		initWidget(scrollPanel);
 		VerticalPanel verticalPanel = new VerticalPanel();
@@ -58,22 +60,17 @@ public class ContentProblemPage extends Content {
 
 		final ListBox comboBox = new ListBox();
 
-		languageService
-		        .getLanguages(new AsyncCallback<ArrayList<LanguageData>>() {
-
+		languageService.getLanguages(new AsyncCallback<ArrayList<LanguageData>>() {
 			        @Override
 			        public void onSuccess(ArrayList<LanguageData> result) {
 				        for (int i = 0; i < result.size(); i++)
 					        comboBox.addItem(result.get(i).getLanguageName(),
 					                result.get(i).getLanguageValue());
-
 			        }
 
 			        @Override
 			        public void onFailure(Throwable caught) {
 				        Window.alert("Failed to get list of languages");
-				        // TODO Auto-generated method stub
-
 			        }
 		        });
 
@@ -84,35 +81,27 @@ public class ContentProblemPage extends Content {
 		btnSubmit.setSize("100px", "28px");
 
 		btnSubmit.addClickHandler(new ClickHandler() {
-
 			@Override
 			public void onClick(ClickEvent event) {
-				// Window.alert(comboBox.getValue(comboBox.getSelectedIndex()));
 				submissionService.submitCode(problem.getProblemCode(),
 				        textArea.getText(),
 				        comboBox.getValue(comboBox.getSelectedIndex()),
 				        new AsyncCallback<Void>() {
-
 					        @Override
 					        public void onSuccess(Void result) {
 						        Window.alert("Submitted successfully");
 						        CoreContainer.getInstance().setContent(
 						                new ContentProblemStatus());
-						        // TODO Auto-generated method stub
-
 					        }
 
 					        @Override
 					        public void onFailure(Throwable caught) {
-						        // TODO Auto-generated method stub
-
+					        	//Window.alert("Failed to Submit !");
+					        	//for testing 
+					        	Window.alert("Failed to Submit!\n"+"errorMsg: " + caught.getMessage());
 					        }
 				        });
-				// TODO Auto-generated method stub
-
 			}
 		});
-
-		// TODO Auto-generated constructor stub
 	}
 }

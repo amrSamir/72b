@@ -12,9 +12,9 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
 public class LeftPanel extends Content {
-
+	enum Labels {ViewCoders,AddAccounts,ViewProblems};
+	
 	public LeftPanel(final HandlerManager eventBus) {
-
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		absolutePanel.setStyleName("LeftPanel");
 		initWidget(absolutePanel);
@@ -24,70 +24,34 @@ public class LeftPanel extends Content {
 		Image widget = new Image(img);
 
 		absolutePanel.add(widget);
+		
+		
+		Label lableViewCoders = addLeftPanel_lable("View Coders",eventBus,Labels.ViewCoders);
+		absolutePanel.add(lableViewCoders, 39, 57);
 
-		// String sessionID = Cookies.getCookie("reg");
-
-		// if (sessionID != null) {
-		// if(AppController.isEnabled){
-		Label lblLabel = new Label("View Coders");
+		Label lableAddAccount = addLeftPanel_lable("Add Accounts",eventBus,Labels.AddAccounts);		
+		absolutePanel.add(lableAddAccount, 39, 180);
+		
+		Label lableViewProblem = addLeftPanel_lable("View Problems",eventBus,Labels.ViewProblems);		
+		absolutePanel.add(lableViewProblem, 39, 136);
+		
+	}
+	Label addLeftPanel_lable(String LableName, final HandlerManager eventBus,final Labels L){
+		
+		Label lblLabel = new Label(LableName);
 		lblLabel.setStyleName("LeftPanel-Label");
 		lblLabel.addClickHandler(new ClickHandler() {
-
 			@Override
 			public void onClick(ClickEvent event) {
-				eventBus.fireEvent(new ViewCodersEvent());
-				// CoreContainer.getInstance().setContent(
-				// new ContentCoderList());
+				if(L.equals(Labels.ViewCoders))
+					eventBus.fireEvent(new ViewCodersEvent());
+				else if(L.equals(Labels.AddAccounts))
+					eventBus.fireEvent(new AddAccountEvent());
+				else if(L.equals(Labels.ViewProblems))
+					eventBus.fireEvent(new AlreadyRegisteredEvent());
 			}
 		});
-		absolutePanel.add(lblLabel, 39, 57);
-
-		Label lblAddAccounts = new Label("Add Accounts");
-		lblAddAccounts.setStyleName("LeftPanel-Label");
-		lblAddAccounts.addClickHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-				eventBus.fireEvent(new AddAccountEvent());
-				// CoreContainer.getInstance().setContent(
-				// new ContentCoderList());
-			}
-		});
-		absolutePanel.add(lblAddAccounts, 39, 180);
-
-		Label lblLabel_1 = new Label("View Problems");
-
-		lblLabel_1.addClickHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-				/*
-				 * CoreContainer.getInstance().setContent(
-				 * new ContentProblemList());
-				 */
-				eventBus.fireEvent(new AlreadyRegisteredEvent());
-			}
-		});
-		absolutePanel.add(lblLabel_1, 39, 136);
-		lblLabel_1.setStyleName("LeftPanel-Label");
-		// } else {
-		// if (Cookies.getCookie("loggedIn") != null) {
-		/*
-		 * Label lblLabel_2 = new Label("Registration");
-		 * lblLabel_2.addClickHandler(new ClickHandler() {
-		 * @Override
-		 * public void onClick(ClickEvent event) {
-		 * CoreContainer.getInstance().setContent(
-		 * new ContentRegistration());
-		 * eventBus.fireEvent(new RegistrationEvent());
-		 * }
-		 * });
-		 * absolutePanel.add(lblLabel_2, 39, 222);
-		 * lblLabel_2.setStyleName("LeftPanel-Label");
-		 */
-		// }
-		// TODO Auto-generated constructor stub
-
-		// }
+		return lblLabel ;
+		
 	}
 }

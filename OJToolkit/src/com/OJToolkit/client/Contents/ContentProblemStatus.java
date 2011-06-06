@@ -15,8 +15,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class ContentProblemStatus extends Content {
 
-	private final SubmissionServiceAsync submissionService = GWT
-	        .create(SubmissionService.class);
+	private final SubmissionServiceAsync submissionService = GWT.create(SubmissionService.class);
 
 	public ContentProblemStatus() {
 
@@ -70,15 +69,11 @@ public class ContentProblemStatus extends Content {
 						        txtMemory.setText(result.getMem());
 						        txtProblemLink.setText(result.getProblemLink());
 						        txtTime.setText(result.getTime());
-						        // TODO Auto-generated method stub
-
 					        }
 
 					        @Override
 					        public void onFailure(Throwable caught) {
-						        Window.alert("can't retriee problem status");
-						        // TODO Auto-generated method stub
-
+						        Window.alert("can't retriee problem status");						       
 					        }
 				        });
 
@@ -95,18 +90,14 @@ public class ContentProblemStatus extends Content {
 				        txtMemory.setText(result.getMem());
 				        txtProblemLink.setText(result.getProblemLink());
 				        txtTime.setText(result.getTime());
-				        // TODO Auto-generated method stub
 
 			        }
-
 			        @Override
 			        public void onFailure(Throwable caught) {
 				        Window.alert("can't retrieve problem status");
-				        // TODO Auto-generated method stub
-
 			        }
 		        });
-		// TODO Auto-generated constructor stub
+
 	}
 
 }

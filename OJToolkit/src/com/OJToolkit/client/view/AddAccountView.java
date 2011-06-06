@@ -21,7 +21,8 @@ public class AddAccountView extends Composite implements
         AddAccountPresenter.Display {
 
 	Button btnAddSpojAccount;
-	Button btnAddXAccount;
+	Button btnAddTimusAccount;
+	Button btnAddUVAAccount;
 	TextBox txtAccountUsername;
 	TextBox txtAccountPassword;
 	Label lblUsername;
@@ -40,8 +41,11 @@ public class AddAccountView extends Composite implements
 		btnAddSpojAccount.setSize("200", "200");
 		absolutePanel.add(btnAddSpojAccount);
 
-		btnAddXAccount = new Button("Add X Account");
-		absolutePanel.add(btnAddXAccount);
+		btnAddTimusAccount = new Button("Add Timus Account");
+		absolutePanel.add(btnAddTimusAccount);
+		
+		btnAddUVAAccount = new Button("Add UVA Account");
+		absolutePanel.add(btnAddUVAAccount);
 
 		lblUsername = new Label();
 		// lblUsername.setVisible(false);
@@ -92,12 +96,12 @@ public class AddAccountView extends Composite implements
 	/*
 	 * (non-Javadoc)
 	 * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#
-	 * getAddXAccountButton()
+	 * getAddTimusAccountButton()
 	 */
 	@Override
-	public HasClickHandlers getAddXAccountButton() {
+	public HasClickHandlers getAddTimusAccountButton() {
 		// TODO Auto-generated method stub
-		return btnAddXAccount;
+		return btnAddTimusAccount;
 	}
 
 	/*
@@ -170,10 +174,22 @@ public class AddAccountView extends Composite implements
 		if (addedAccounts.contains("SPOJ")) {
 			btnAddSpojAccount.setVisible(false);
 		}
-		if (addedAccounts.contains("X")) {
-			btnAddXAccount.setVisible(false);
+		if (addedAccounts.contains("Timus")) {
+			btnAddTimusAccount.setVisible(false);
+		}
+		if(addedAccounts.contains("UVA")){
+			btnAddUVAAccount.setVisible(false);
 		}
 
 	}
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#getAddUVAAccountButton()
+     */
+    @Override
+    public HasClickHandlers getAddUVAAccountButton() {
+	    // TODO Auto-generated method stub
+	    return btnAddUVAAccount;
+    }
 
 }

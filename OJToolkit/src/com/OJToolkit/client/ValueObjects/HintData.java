@@ -27,7 +27,7 @@ public class HintData {
 
 
 	/**
-	 * @return
+	 * @return code hint
 	 */
 	public Long getHintCode() {
 		return hintCode;
@@ -45,7 +45,7 @@ public class HintData {
 
 
 	/**
-	 * @return
+	 * @return problem code
 	 */
 	public String getProblemCode() {
 		return problemCode;
@@ -63,7 +63,7 @@ public class HintData {
 
 
 	/**
-	 * @return
+	 * @return hint 
 	 */
 	public String getHintString() {
 		return hintString;
@@ -81,7 +81,7 @@ public class HintData {
 
 
 	/**
-	 * @return
+	 * @return user id 
 	 */
 	public Long getUserID() {
 		return userID;

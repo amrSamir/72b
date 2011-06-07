@@ -21,9 +21,7 @@ public class ProblemStatusData implements Serializable {
 	/**
 	 * Create an object of the problem status
 	 */
-	public ProblemStatusData() {
-		// TODO Auto-generated constructor stub
-	}
+	public ProblemStatusData() {}
 
 	/**
 	 * Create an object of the problem status

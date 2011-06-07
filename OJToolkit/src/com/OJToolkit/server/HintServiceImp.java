@@ -21,6 +21,9 @@ HintService {
 	private static final Logger LOG = Logger
 	        .getLogger(LanguageServiceImpl.class.getName());
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.HintService#addHint(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void addHint(String problemID, String hintString) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
@@ -36,6 +39,9 @@ HintService {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.HintService#getHints(java.lang.String)
+	 */
 	@Override
 	public ArrayList<HintData> getHints(String problemID) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();

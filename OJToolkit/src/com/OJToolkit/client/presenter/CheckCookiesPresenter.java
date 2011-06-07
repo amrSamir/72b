@@ -20,6 +20,10 @@ public class CheckCookiesPresenter implements Presenter {
 
 	private final HandlerManager eventBus;
 
+	/**
+	 * 
+	 * @param eventBus
+	 */
 	public CheckCookiesPresenter(HandlerManager eventBus) {
 
 		this.eventBus = eventBus;
@@ -27,6 +31,9 @@ public class CheckCookiesPresenter implements Presenter {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void checkCookies() {
 		String isLoggedInCookie = Cookies.getCookie("isLoggedInCookie");
 		String isRegisteredCookie = Cookies.getCookie("isRegisteredCookie");

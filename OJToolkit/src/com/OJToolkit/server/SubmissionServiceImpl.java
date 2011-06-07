@@ -30,7 +30,6 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public void submitCode(String problemCode, String ojType, String code,
 	        String language) {
-		// TODO Auto-generated method stub
 		Judge judge = null;
 		String judgeUsername = "";
 		String judgePassword = "";
@@ -66,7 +65,6 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				        problemCode, language, code);
 				System.out.println("Submitted");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -81,6 +79,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	// * -------- MEM --> The memory used by the solution.
 	// *
 	//
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.SubmissionService#getLastProblemStatus(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ProblemStatusData getLastProblemStatus(String problemCode,
 	        String ojType) throws Exception {
@@ -116,12 +117,14 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		        s.getProblemId(), s.getStatus(), s.getRuntime(),
 		        s.getMemoryUsed());
 		return dpStatus;
-		// TODO Auto-generated method stub
 
 	}
 
 	int counter = 0;
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(com.OJToolkit.client.ValueObjects.ProblemData)
+	 */
 	@Override
 	public void saveSpojProblemtoDB(ProblemData problemData) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
@@ -143,10 +146,13 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			pm.close();
 		}
 
-		// TODO Auto-generated method stub
+
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.SubmissionService#getProblems(long)
+	 */
 	@Override
 	public ArrayList<ProblemData> getProblems(long start) {
 		// System.out.println("startttttttt getproblems " + start);
@@ -182,12 +188,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			}
 
 		} finally {
-			// TODO: handle exception
 			pm.close();
 		}
-		// TODO Auto-generated method stub
-
-		// TODO Auto-generated method stub
 		return ret;
 	}
 
@@ -215,11 +217,11 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			problemData.setUrl(problems.get(0).getUrl());
 
 		} finally {
-			// TODO: handle exception
+		
 			pm.close();
 		}
 
-		// TODO Auto-generated method stub
+		
 		return problemData;
 	}
 

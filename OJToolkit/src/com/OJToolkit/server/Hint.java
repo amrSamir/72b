@@ -23,6 +23,13 @@ public class Hint {
 	private Long userID;
 
 	
+	/**
+	 * Hint Constractor
+	 * @param hintCode
+	 * @param problemCode
+	 * @param hintString
+	 * @param userID
+	 */
 	public Hint(Long hintCode, String problemCode, String hintString,
 			Long userID) {
 		super();
@@ -34,48 +41,73 @@ public class Hint {
 
 
 
+	/**
+	 * @return hint 
+	 */
 	public Long getHintCode() {
 		return hintCode;
 	}
 
 
 
+	/**
+	 * set hint 
+	 * @param hintCode
+	 */
 	public void setHintCode(Long hintCode) {
 		this.hintCode = hintCode;
 	}
 
 
 
+	/**
+	 * @return problem code
+	 */
 	public String getProblemCode() {
 		return problemCode;
 	}
 
 
 
+	/**
+	 * @param problemCode
+	 */
 	public void setProblemCode(String problemCode) {
 		this.problemCode = problemCode;
 	}
 
 
 
+	/**
+	 * @return hintString
+	 */
 	public String getHintString() {
 		return hintString;
 	}
 
 
 
+	/**
+	 * @param hintString
+	 */
 	public void setHintString(String hintString) {
 		this.hintString = hintString;
 	}
 
 
 
+	/**
+	 * @return userid 
+	 */
 	public Long getUserID() {
 		return userID;
 	}
 
 
 
+	/**
+	 * @param userID
+	 */
 	public void setUserID(Long userID) {
 		this.userID = userID;
 	}

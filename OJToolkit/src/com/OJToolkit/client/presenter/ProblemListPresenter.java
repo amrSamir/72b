@@ -59,7 +59,8 @@ public class ProblemListPresenter implements Presenter {
 
 	
 	/**
-	 * Genrate the Problem list presenter
+	 * Generate the Problem list presenter
+	 * 
 	 * @param submissionService
 	 * @param eventBus
 	 * @param display
@@ -106,8 +107,6 @@ public class ProblemListPresenter implements Presenter {
 			        @Override
 			        public void onFailure(Throwable caught) {
 				        System.out.println("Failure");
-				        // TODO Auto-generated method stub
-
 			        }
 		        });
 
@@ -154,8 +153,6 @@ public class ProblemListPresenter implements Presenter {
 	private void bind() {
 		onClickHandler();
 		onPageChangeHandler();
-		// TODO Auto-generated method stub
-
 	}
 
 	/*
@@ -168,7 +165,6 @@ public class ProblemListPresenter implements Presenter {
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
-		// TODO Auto-generated method stub
 
 	}
 

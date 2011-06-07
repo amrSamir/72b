@@ -21,9 +21,5 @@ public class TopPanel extends Content {
 		Image widget = new Image(img);
 
 		absolutePanel.add(widget);
-		
-		
-		
-		
 	}
 }

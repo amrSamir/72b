@@ -110,8 +110,7 @@ public class ProblemPresenter implements Presenter {
 				hintService.addHint("X", "eshtaaaaaaa3aaaal", new AsyncCallback<Void>() {
 					
 					@Override
-					public void onSuccess(Void result) {
-						// TODO Auto-generated method stub
+					public void onSuccess(Void result) {					
 						 Window.alert("Good!");
 						
 					}

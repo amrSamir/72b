@@ -21,9 +21,11 @@ public class DataStoreHandler {
 
 	public DataStoreHandler() {
 
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @return list of coders 
+	 */
 	public static List<Coder> getAllCoders() {
 		pm = getPersistenceManager();
 		String select_query = "select from " + Coder.class.getName();
@@ -34,12 +36,18 @@ public class DataStoreHandler {
 		return coders;
 	}
 
+	/**
+	 * @throws NotLoggedInException
+	 */
 	static void checkLoggedIn() throws NotLoggedInException {
 		if (getUser() == null) {
 			throw new NotLoggedInException("Not logged in.");
 		}
 	}
 
+	/**
+	 * @return user 
+	 */
 	static User getUser() {
 		UserService userService = UserServiceFactory.getUserService();
 		return userService.getCurrentUser();

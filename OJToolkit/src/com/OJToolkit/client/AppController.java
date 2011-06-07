@@ -86,6 +86,16 @@ public class AppController implements ValueChangeHandler<String> {
 	private String OJType;
 	private String problemCode;
 
+	/**
+	 * control the site and changes the pages 
+	 * @param eventBus
+	 * @param submissionService
+	 * @param languageService
+	 * @param loginService
+	 * @param coderService
+	 * @param sourceCodeService
+	 * @param hintService
+	 */
 	public AppController(HandlerManager eventBus,
 	        SubmissionServiceAsync submissionService,
 	        LanguageServiceAsync languageService,
@@ -116,8 +126,6 @@ public class AppController implements ValueChangeHandler<String> {
 			        public void onSubmitProblem(
 			                ViewProblemSubmissionStatusEvent event) {
 				        doViewProblemSubmissionStatus(event.problem);
-				        // TODO Auto-generated method stub
-
 			        }
 		        });
 
@@ -157,8 +165,6 @@ public class AppController implements ValueChangeHandler<String> {
 			@Override
 			public void onLogin(LoginEvent event) {
 				doOnLogin();
-				// TODO Auto-generated method stub
-
 			}
 
 		});
@@ -189,13 +195,10 @@ public class AppController implements ValueChangeHandler<String> {
 			@Override
 			public void onAddAccount(AddAccountEvent event) {
 				doOnAddAccount();
-				// TODO Auto-generated method stub
-
 			}
 
 		});
 
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -222,7 +225,7 @@ public class AppController implements ValueChangeHandler<String> {
 	protected void doOnAddAccountDetails(String oJType) {
 		this.OJType = oJType;
 		History.newItem("addAccountDetails");
-		// TODO Auto-generated method stub
+
 
 	}
 
@@ -239,7 +242,6 @@ public class AppController implements ValueChangeHandler<String> {
 	 */
 	protected void doOnViewCoders() {
 		History.newItem("viewCoders");
-		// TODO Auto-generated method stub
 
 	}
 

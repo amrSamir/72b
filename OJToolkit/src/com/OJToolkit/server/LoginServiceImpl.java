@@ -10,6 +10,9 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class LoginServiceImpl extends RemoteServiceServlet implements
         LoginService {
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.LoginService#login(java.lang.String)
+	 */
 	@Override
 	public LoginInfo login(String requestUri) {
 		UserService userService = UserServiceFactory.getUserService();

@@ -134,6 +134,13 @@ public class Coder {
     	UVAPassword = uVAPassword;
     }
 
+	/**
+	 * Contractor for the Coder
+	 * @param username
+	 * @param email
+	 * @param SPOJUsername
+	 * @param SPOJPassword
+	 */
 	public Coder(String username, String email, String SPOJUsername,
 	        String SPOJPassword) {
 		this.username = username;

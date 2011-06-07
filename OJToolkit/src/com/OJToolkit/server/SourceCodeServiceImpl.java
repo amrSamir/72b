@@ -48,10 +48,12 @@ public class SourceCodeServiceImpl  extends RemoteServiceServlet implements Sour
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.SourceCodeService#getCodes(java.lang.Long, java.lang.String)
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public  ArrayList<SourceCodeData> getCodes(Long myuserID, String myproblemID) {
-		// TODO Auto-generated method stub
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		 ArrayList<SourceCodeData> sourceCodes = new  ArrayList<SourceCodeData>(); 
 		 

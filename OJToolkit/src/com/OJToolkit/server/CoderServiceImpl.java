@@ -24,26 +24,6 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 	        .getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
-	/*
-	 * public void addCoder(String username, String SPOJUsername, String
-	 * SPOJPassword) throws NotLoggedInException {
-	 * //DataStoreHandler.checkLoggedIn();
-	 * PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-	 * try{
-	 * User user = DataStoreHandler.getUser();
-	 * Coder c = new Coder(username,user.getEmail(),SPOJUsername,SPOJPassword);
-	 * pm.makePersistent(c);
-	 * } finally{
-	 * pm.close();
-	 * }
-	 * // TODO Auto-generated method stub
-	 * }
-	 */
-
-	// TODO Auto-generated method stub
-
-	// }
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public ArrayList<CoderData> viewCoders() throws NotLoggedInException {
@@ -69,7 +49,6 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			pm.close();
 		}
 
-		// TODO Auto-generated method stub
 		return coders;
 	}
 
@@ -99,11 +78,9 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				isRegistered = true;
 			}
 
-		} finally {
-			// TODO: handle exception
+		} finally {			
 			pm.close();
 		}
-		// TODO Auto-generated method stub
 		return isRegistered;
 	}
 
@@ -129,10 +106,15 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		} finally {
 			pm.close();
 		}
-		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Check if the coder name is already taken 
+	 * @param pm
+	 * @param username
+	 * @return
+	 */
 	boolean isAlreadyTaken(PersistenceManager pm, String username) {
 		String select_query = "select from " + Coder.class.getName();
 		Query query = pm.newQuery(select_query);
@@ -180,9 +162,6 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		} finally {
 			pm.close();
 		}
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-
 	}
 
 	/*

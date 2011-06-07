@@ -20,6 +20,9 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 	private static final Logger LOG = Logger
 	        .getLogger(LanguageServiceImpl.class.getName());
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.LanguageService#getLanguages(java.lang.String)
+	 */
 	@Override
 	public ArrayList<LanguageData> getLanguages(String OJType) throws NotLoggedInException {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
@@ -38,14 +41,14 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 		} finally {
 			pm.close();
 		}
-
-		// TODO Auto-generated method stub
 		return languages;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.LanguageService#addLanguages()
+	 */
 	@Override
 	public void addLanguages() {
-		// TODO Auto-generated method stub
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
 /*			String[] languages = new String[] { "C++ (g++ 4.0.0-8)",

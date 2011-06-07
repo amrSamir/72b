@@ -41,7 +41,7 @@ public class SourceCodeData {
 		this.date = date;
 	}
 	/**
-	 * @return
+	 * @return coderID 
 	 */
 	public Long getCodeID() {
 		return codeID;
@@ -53,7 +53,7 @@ public class SourceCodeData {
 		this.codeID = codeID;
 	}
 	/**
-	 * @return
+	 * @return userID 
 	 */
 	public Long getUserID() {
 		return userID;
@@ -65,7 +65,7 @@ public class SourceCodeData {
 		this.userID = userID;
 	}
 	/**
-	 * @return
+	 * @return ProblemCode
 	 */
 	public String getProblemCode() {
 		return problemCode;
@@ -77,7 +77,7 @@ public class SourceCodeData {
 		this.problemCode = problemCode;
 	}
 	/**
-	 * @return
+	 * @return problemName
 	 */
 	public String getProblemName() {
 		return problemName;
@@ -89,7 +89,7 @@ public class SourceCodeData {
 		this.problemName = problemName;
 	}
 	/**
-	 * @return
+	 * @return problemUrl
 	 */
 	public String getUrl() {
 		return url;
@@ -101,7 +101,7 @@ public class SourceCodeData {
 		this.url = url;
 	}
 	/**
-	 * @return
+	 * @return ProblemCode 
 	 */
 	public String getCode() {
 		return code;
@@ -113,7 +113,7 @@ public class SourceCodeData {
 		this.code = code;
 	}
 	/**
-	 * @return
+	 * @return ProblemNotes
 	 */
 	public String getNote() {
 		return note;
@@ -125,7 +125,7 @@ public class SourceCodeData {
 		this.note = note;
 	}
 	/**
-	 * @return
+	 * @return probleJudgeResult
 	 */
 	public String getJudgeResult() {
 		return judgeResult;
@@ -137,7 +137,7 @@ public class SourceCodeData {
 		this.judgeResult = judgeResult;
 	}
 	/**
-	 * @return
+	 * @return submitionDate
 	 */
 	public String getDate() {
 		return date;
@@ -148,7 +148,5 @@ public class SourceCodeData {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
-	
 
 }

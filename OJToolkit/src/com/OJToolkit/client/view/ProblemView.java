@@ -8,16 +8,19 @@ import java.util.ArrayList;
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.presenter.ProblemPresenter;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.user.client.ui.SplitLayoutPanel;
+import com.google.gwt.user.client.ui.StackLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -27,48 +30,55 @@ import com.google.gwt.user.client.ui.Widget;
 public class ProblemView extends Composite implements ProblemPresenter.Display {
 
 	private final Button btnSubmit;
-	VerticalPanel verticalPanel;
-	TextBox lblPrblmTitle;
+	VerticalPanel masterPanel;
+	StackLayoutPanel splitPanel;
+	Label lblPrblmTitle;
 	ListBox comboBox;
 	TextArea txtCode;
 	Frame problemStatementFrame;
 
 	public ProblemView() {
-		ScrollPanel scrollPanel = new ScrollPanel();
-		initWidget(scrollPanel);
-		verticalPanel = new VerticalPanel();
-		verticalPanel.setSize("100%", "100%");
-		scrollPanel.setSize("100%", "100%");
-		scrollPanel.add(verticalPanel);
+		masterPanel = new VerticalPanel();
+		masterPanel.setSize("100%", "100%");
+		initWidget(masterPanel);
 
-		Label lblNewLabel = new Label("Problem Title: ");
-		verticalPanel.add(lblNewLabel);
+		lblPrblmTitle = new Label();
+		lblPrblmTitle.setStylePrimaryName("ProblemTitle");
+		lblPrblmTitle.setSize("100%", "30px");
+		masterPanel.add(lblPrblmTitle);
 
-		lblPrblmTitle = new TextBox();
-		lblPrblmTitle.setReadOnly(true);
-		verticalPanel.add(lblPrblmTitle);
+		splitPanel = new StackLayoutPanel(Unit.EM);
+		splitPanel.setSize("100%", "590px");
+		masterPanel.add(splitPanel);
 
-		// error here with frame
+		AbsolutePanel problemStatementPanel = new AbsolutePanel();
+		problemStatementPanel.setSize("100%", "100%");
 		problemStatementFrame = new Frame();
+		problemStatementFrame.setSize("100%", "100%");
+		problemStatementPanel.add(problemStatementFrame, 0, 0);
+		splitPanel.add(problemStatementPanel, "Problem Statement", 2);
 
-		verticalPanel.add(problemStatementFrame);
+		VerticalPanel verticalPanel2 = new VerticalPanel();
+		verticalPanel2.setSize("100%", "100%");
+		ScrollPanel scrollPanel = new ScrollPanel();
+		scrollPanel.setSize("100%", "100%");
+		scrollPanel.add(verticalPanel2);
 
-		Label lblNewLabel_1 = new Label("Code");
-		verticalPanel.add(lblNewLabel_1);
+		splitPanel.add(scrollPanel, "Submit Code", 2);
 
 		txtCode = new TextArea();
-		verticalPanel.add(txtCode);
-		txtCode.setSize("90%", "300px");
+		verticalPanel2.add(txtCode);
+		txtCode.setSize("100%", "300px");
 
 		Label lblLanguage = new Label("Language");
-		verticalPanel.add(lblLanguage);
+		verticalPanel2.add(lblLanguage);
 
 		comboBox = new ListBox();
 
-		verticalPanel.add(comboBox);
+		verticalPanel2.add(comboBox);
 
 		btnSubmit = new Button("Submit");
-		verticalPanel.add(btnSubmit);
+		verticalPanel2.add(btnSubmit);
 		btnSubmit.setSize("100px", "28px");
 
 	}
@@ -94,12 +104,9 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	@Override
 	public void setProblem(ProblemData problem) {
 		problemStatementFrame.setUrl(problem.getUrl());
-
-		problemStatementFrame.setSize("90%", "300px");
-
 		lblPrblmTitle.setText(problem.getProblemName());
 		String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
-		if(!addedAccountsCookie.contains(problem.getOjType())){
+		if (!addedAccountsCookie.contains(problem.getOjType())) {
 			txtCode.setVisible(false);
 			btnSubmit.setVisible(false);
 		}

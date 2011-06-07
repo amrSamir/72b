@@ -20,5 +20,9 @@ public interface MyResource extends ClientBundle {
 
 	@Source("Banner_Vertical.jpg")
 	public ImageResource imgVertical();
+	
+	@Source("Logo.png")
+	public ImageResource imgLogo();
+	
 
 }

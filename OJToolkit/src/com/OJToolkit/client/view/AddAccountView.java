@@ -4,11 +4,14 @@
 package com.OJToolkit.client.view;
 
 import com.OJToolkit.client.presenter.AddAccountPresenter;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.DecoratedPopupPanel;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -20,59 +23,46 @@ import com.google.gwt.user.client.ui.Widget;
 public class AddAccountView extends Composite implements
         AddAccountPresenter.Display {
 
-	Button btnAddSpojAccount;
-	Button btnAddTimusAccount;
-	Button btnAddUVAAccount;
-	TextBox txtAccountUsername;
-	TextBox txtAccountPassword;
-	Label lblUsername;
-	Label lblPassword;
-	VerticalPanel absolutePanel;
-	Button btnAddAccount;
+	Button [] btnAddAccount;
+	TextBox [] txtAccountUsername;
+	TextBox [] txtAccountPassword;
+	TabLayoutPanel tabPanel;
+	final String [] ojs = {"SPOJ","UVA","Timus"};
+	
 
 	/**
 	 * add account view page  
 	 */
 	public AddAccountView() {
-		absolutePanel = new VerticalPanel();
-		initWidget(absolutePanel);
+		tabPanel = new TabLayoutPanel(2.5, Unit.EM);
+		tabPanel.setSize("100%", "100%");
+	    tabPanel.setAnimationDuration(500);
+	    initWidget(tabPanel);
 
-		Label lblTitle = new Label("Add Account");
-		absolutePanel.add(lblTitle);
+	    btnAddAccount = new Button[ojs.length];
+	    txtAccountUsername = new TextBox[ojs.length];
+	    txtAccountPassword = new TextBox[ojs.length];
+	    
+	    for(int i =0  ; i < ojs.length; ++i) {
+	    	VerticalPanel verticalPanel = new VerticalPanel();
+	    	
+	    	Label lblUsername = new Label(ojs[i] + " Username");
+	    	verticalPanel.add(lblUsername);
+	    	
+	    	txtAccountUsername[i] = new TextBox();
+	    	verticalPanel.add(txtAccountUsername[i]);
+	    	
+	    	Label lblPassword = new Label(ojs[i] + " Password");
+	    	verticalPanel.add(lblPassword);
+	    	
+	    	txtAccountPassword[i] = new TextBox();
+	    	verticalPanel.add(txtAccountPassword[i]);
+	    	
+	    	btnAddAccount[i] = new Button("Save Account");
+	    	verticalPanel.add(btnAddAccount[i]);
 
-		btnAddSpojAccount = new Button("Add SPOJ Account");
-		btnAddSpojAccount.setSize("200", "200");
-		absolutePanel.add(btnAddSpojAccount);
-
-		btnAddTimusAccount = new Button("Add Timus Account");
-		absolutePanel.add(btnAddTimusAccount);
-		
-		btnAddUVAAccount = new Button("Add UVA Account");
-		absolutePanel.add(btnAddUVAAccount);
-
-		lblUsername = new Label();
-		// lblUsername.setVisible(false);
-		// absolutePanel.add(lblUsername);
-
-		lblPassword = new Label();
-		// lblPassword.setVisible(false);
-		// absolutePanel.add(lblPassword);
-
-		txtAccountUsername = new TextBox();
-		absolutePanel.add(lblUsername);
-		txtAccountUsername.setVisible(false);
-		absolutePanel.add(txtAccountUsername);
-
-		txtAccountPassword = new TextBox();
-		txtAccountPassword.setVisible(false);
-		absolutePanel.add(lblPassword);
-		// txtAccountPassword.setVisible(false);
-		absolutePanel.add(txtAccountPassword);
-
-		btnAddAccount = new Button("Add Account");
-		btnAddAccount.setVisible(false);
-		absolutePanel.add(btnAddAccount);
-
+	    	tabPanel.add(verticalPanel,"Add Account "+ojs[i]);
+	    }
 	}
 
 	/*
@@ -91,7 +81,7 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasClickHandlers getAddSpojAccountButton() {
-		return btnAddSpojAccount;
+		return btnAddAccount[0];
 	}
 
 	/*
@@ -101,7 +91,7 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasClickHandlers getAddTimusAccountButton() {
-		return btnAddTimusAccount;
+		return btnAddAccount[1];
 	}
 
 	/*
@@ -112,7 +102,7 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasValue<String> getAccountUserName() {
-		return txtAccountUsername;
+		return txtAccountUsername[tabPanel.getSelectedIndex()];
 	}
 
 	/*
@@ -123,7 +113,7 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasValue<String> getAccountPassword() {
-		return txtAccountPassword;
+		return txtAccountPassword[tabPanel.getSelectedIndex()];
 	}
 
 	/*
@@ -139,11 +129,11 @@ public class AddAccountView extends Composite implements
 		 * lblUsername.setVisible(true);
 		 * lblPassword.setVisible(true);
 		 */
-		txtAccountUsername.setVisible(true);
-		txtAccountPassword.setVisible(true);
-		lblUsername.setText(accountType + " Username : ");
-		lblPassword.setText(accountType + " Password : ");
-		btnAddAccount.setVisible(true);
+//		txtAccountUsername.setVisible(true);
+//		txtAccountPassword.setVisible(true);
+//		lblUsername.setText(accountType + " Username : ");
+//		lblPassword.setText(accountType + " Password : ");
+//		btnAddAccount.setVisible(true);
 
 		// initWidget(absolutePanel);
 
@@ -156,7 +146,7 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasClickHandlers getAddAccountButton() {
-		return btnAddAccount;
+		return btnAddAccount[tabPanel.getSelectedIndex()];
 	}
 
 	/*
@@ -167,15 +157,15 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public void setAddedAccounts(String addedAccounts) {
-		if (addedAccounts.contains("SPOJ")) {
-			btnAddSpojAccount.setVisible(false);
-		}
-		if (addedAccounts.contains("Timus")) {
-			btnAddTimusAccount.setVisible(false);
-		}
-		if(addedAccounts.contains("UVA")){
-			btnAddUVAAccount.setVisible(false);
-		}
+//		if (addedAccounts.contains("SPOJ")) {
+//			btnAddSpojAccount.setVisible(false);
+//		}
+//		if (addedAccounts.contains("Timus")) {
+//			btnAddTimusAccount.setVisible(false);
+//		}
+//		if(addedAccounts.contains("UVA")){
+//			btnAddUVAAccount.setVisible(false);
+//		}
 
 	}
 
@@ -184,9 +174,16 @@ public class AddAccountView extends Composite implements
      */
     @Override
     public HasClickHandlers getAddUVAAccountButton() {
-	    return btnAddUVAAccount;
+	    return btnAddAccount[2];
     }
 
-
-
+	@Override
+	public void notifySave() {
+	    DecoratedPopupPanel simplePopup = new DecoratedPopupPanel(true);
+	    simplePopup.setAnimationEnabled(true);
+	    simplePopup.setWidth("150px");
+	    simplePopup.setWidget(new Label("Saved"));
+	    simplePopup.setPopupPosition(200, 200);
+	    simplePopup.show();
+	}
 }

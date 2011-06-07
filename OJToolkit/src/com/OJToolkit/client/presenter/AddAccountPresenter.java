@@ -39,6 +39,8 @@ public class AddAccountPresenter implements Presenter {
 
 		void setAddedAccounts(String addedAccounts);
 
+		void notifySave();
+		
 		Widget asWidget();
 	}
 
@@ -138,7 +140,7 @@ public class AddAccountPresenter implements Presenter {
 										AppController.COOKIES_EXPIRYDATE, null,
 										"/", false);
 								display.setAddedAccounts(addedAccounts);
-
+								display.notifySave();
 							}
 
 							@Override

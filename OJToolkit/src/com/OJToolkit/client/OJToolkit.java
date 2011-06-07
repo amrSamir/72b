@@ -45,24 +45,26 @@ public class OJToolkit implements EntryPoint {
 		dockLayoutPanel.setSize("100%", "100%");
 		rootPanel.add(dockLayoutPanel, 0, 0);
 
-		/**
-		 * North panel
-		 */
-		AbsolutePanel topPanel = new AbsolutePanel();
-		dockLayoutPanel.addNorth(topPanel, 10);
-		topPanel.setSize("100%", "100%");
-
+		
 		/**
 		 * West panel
 		 */
 		AbsolutePanel leftPanel = new AbsolutePanel();
-		dockLayoutPanel.addWest(leftPanel, 15);
+		dockLayoutPanel.addWest(leftPanel, 12);
 		leftPanel.setSize("100%", "100%");
+
+		/**
+		 * North panel
+		 */
+		AbsolutePanel topPanel = new AbsolutePanel();
+		dockLayoutPanel.addNorth(topPanel, 5);
+		topPanel.setSize("100%", "100%");
 
 		/**
 		 * Center panel
 		 */
 		AbsolutePanel core = new AbsolutePanel();
+		core.setStylePrimaryName("CorePanel");
 		dockLayoutPanel.add(core);
 
 		SubmissionServiceAsync submissionService = GWT

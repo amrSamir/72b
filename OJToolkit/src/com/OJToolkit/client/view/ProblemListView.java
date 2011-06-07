@@ -7,8 +7,10 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.presenter.ProblemListPresenter;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.cellview.client.AbstractHasData;
 import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.RowStyles;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Composite;
@@ -56,7 +58,12 @@ public class ProblemListView extends Composite implements
 		initWidget(scrollPanel);
 
 		scrollPanel.add(vPanel);
+		
+		
+
+		
 		table = new CellTable<ProblemData>();
+		table.setSize("100%", "100%");
 
 		dataProvider = new ListDataProvider<ProblemData>();
 
@@ -81,20 +88,39 @@ public class ProblemListView extends Composite implements
 		};
 
 		// Add the columns to the table
+		table.setRowStyles(new RowStyles<ProblemData>() {
+			
+			@Override
+			public String getStyleNames(ProblemData row, int rowIndex) {
+				// TODO Auto-generated method stub
+				return "TableRow";
+			}
+		});
+		
 		table.addColumn(problemCodeColumn, "Problem Code");
+		table.setColumnWidth(problemCodeColumn, 20, Unit.PC);
+		
 		table.addColumn(problemTitleColumn, "Problem Title");
+		table.setColumnWidth(problemTitleColumn, 60, Unit.PC);
+		
 		table.addColumn(problemTypeColumn, "Online Judge");
+		table.setColumnWidth(problemTypeColumn, 20, Unit.PC);
+		
 
 		// Set the total row count. This isn't strictly necessary, but it
 		// affects paging calculations, so its good habit to keep the row count
 		// up to date.
 		table.setRowCount(numberOfProblems, true);
 
+		
+
+		dataProvider.addDataDisplay(table);
+		
 		SimplePager pager = new SimplePager();
 		pager.setDisplay(table);
 		pager.setPageSize(50);
-
-		dataProvider.addDataDisplay(table);
+		pager.setStylePrimaryName("AlignCenter");
+		
 		vPanel.add(table);
 		vPanel.add(pager);
 

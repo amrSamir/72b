@@ -23,8 +23,8 @@ public class SpojProblemsToDBAdder extends Content {
 
 	public SpojProblemsToDBAdder() {
 		System.out.println("Initializer");
-		addSPOJProblems();
-		//addLanguages();
+		//addSPOJProblems();
+		addLanguages();
 
 
 	}
@@ -42,7 +42,7 @@ public class SpojProblemsToDBAdder extends Content {
 		
 			problem.setUrl(splitted[2].replaceAll(
 			        "https", "http"));
-			problem.setOjType("Timus");
+			problem.setOjType("UVA");
 			
 			submissionService.saveSpojProblemtoDB(problem,
 			        new AsyncCallback<Void>() {

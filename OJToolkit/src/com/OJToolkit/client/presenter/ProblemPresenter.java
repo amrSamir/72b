@@ -34,11 +34,12 @@ public class ProblemPresenter implements Presenter {
 	private final HandlerManager eventBus;
 	private ProblemData problem;
 	private final String problemCode;
+	private final String ojType;
 	private final LanguageServiceAsync languageService;
 	private SourceCodeServiceAsync sourceCodeService ;
 	private HintServiceAsync hintService;
 
-	public ProblemPresenter(String problemCode,
+	public ProblemPresenter(String substring,
 	        SubmissionServiceAsync submssionService,
 	        LanguageServiceAsync languageService, HandlerManager eventBus,
 	        SourceCodeServiceAsync sourceCodeService,
@@ -49,7 +50,9 @@ public class ProblemPresenter implements Presenter {
 		this.languageService = languageService;
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
-		this.problemCode = problemCode;
+		String[] tokensArr = substring.split("-");
+    	this.problemCode = tokensArr[0];
+    	this.ojType = tokensArr[1];
 		this.display = display;
 		this.sourceCodeService = sourceCodeService ;
 		this.hintService = hintService;
@@ -57,7 +60,7 @@ public class ProblemPresenter implements Presenter {
 		// this.display.setProblem(problemCode);
 		bind();
 
-		this.submssionService.getProblem(problemCode,
+		this.submssionService.getProblem(problemCode, ojType,
 		        new AsyncCallback<ProblemData>() {
 			        @Override
 			        public void onSuccess(ProblemData result) {
@@ -83,7 +86,7 @@ public class ProblemPresenter implements Presenter {
 			        for (int i = 0; i < result.size(); i++)
 				        languages.add(new LanguageData(result.get(i)
 				                .getLanguageName(), result.get(i)
-				                .getLanguageValue(), "SPOJ"));
+				                .getLanguageValue(), result.get(i).getOjType()));
 			        display.setLanguages(languages);
 		        }
 
@@ -142,12 +145,12 @@ public class ProblemPresenter implements Presenter {
 				
 			 
 				
-				submssionService.submitCode(problem.getProblemCode(),
+				submssionService.submitCode(problem.getProblemCode(),problem.getOjType(),
 				        display.getCode(), display.getSelectedLanguageValue(),
 				        new AsyncCallback<Void>() {
 					        @Override
 					        public void onSuccess(Void result) {
-						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(problem.getProblemCode()));
+						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(problem));
 					        }
 
 					        @Override

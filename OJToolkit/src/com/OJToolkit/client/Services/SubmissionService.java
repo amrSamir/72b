@@ -23,7 +23,7 @@ public interface SubmissionService extends RemoteService {
 	 * @param language
 	 *            The language of the code
 	 */
-	public void submitCode(String problemCode, String code, String language);
+	public void submitCode(String problemCode, String ojType, String code, String language);
 
 	/**
 	 * Gets the result of judging the problem
@@ -31,7 +31,7 @@ public interface SubmissionService extends RemoteService {
 	 * @return the result of judging the problem
 	 * @throws Exception
 	 */
-	public ProblemStatusData getLastProblemStatus(String problemCode) throws Exception;
+	public ProblemStatusData getLastProblemStatus(String problemCode, String ojType) throws Exception;
 
 	/**
 	 * Save a problem to the datastore
@@ -57,6 +57,6 @@ public interface SubmissionService extends RemoteService {
 	 *            the problem code of the problem to be fetched
 	 * @return Problem
 	 */
-	public ProblemData getProblem(String problemCode);
+	public ProblemData getProblem(String problemCode, String ojType);
 
 }

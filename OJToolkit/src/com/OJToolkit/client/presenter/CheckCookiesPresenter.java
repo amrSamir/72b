@@ -34,6 +34,8 @@ public class CheckCookiesPresenter implements Presenter {
 	//	System.out.println(AppController.isEnabled);
 		if (isLoggedInCookie != null) {
 			if (isRegisteredCookie != null) {
+				Cookies.setCookie("isEnabledCookie", "YES",
+				        AppController.COOKIES_EXPIRYDATE, null, "/", false);
 				//AppController.isEnabled = true;
 				if (addedAccountsCookie == null) {
 					eventBus.fireEvent(new AddAccountEvent());

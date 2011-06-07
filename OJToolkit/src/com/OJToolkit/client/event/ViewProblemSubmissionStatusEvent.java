@@ -3,6 +3,7 @@
  */
 package com.OJToolkit.client.event;
 
+import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
@@ -14,13 +15,13 @@ public class ViewProblemSubmissionStatusEvent extends
 
 	public static Type<ViewProblemSubmissionStatusEventHandler> TYPE = new Type<ViewProblemSubmissionStatusEventHandler>();
 
-	public String problemCode;
+	public ProblemData problem;
 	/**
      * @param problemCode The problemcode of the submitted problem
      */
-    public ViewProblemSubmissionStatusEvent(String problemCode) {
+    public ViewProblemSubmissionStatusEvent(ProblemData problem) {
 	    super();
-    	this.problemCode = problemCode;
+    	this.problem = problem;
     }
 
 	/*

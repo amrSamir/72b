@@ -16,6 +16,7 @@ import com.OJToolkit.server.engine.Judge;
 import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Submission;
 import com.OJToolkit.server.engine.Timus;
+import com.OJToolkit.server.engine.UVA;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
@@ -27,25 +28,33 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
 	@Override
-	public void submitCode(String problemCode, String code, String language) {
+	public void submitCode(String problemCode, String ojType, String code,
+	        String language) {
 		// TODO Auto-generated method stub
 		Judge judge = null;
-		ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
-		if (problem.getOjType().equals("SPOJ")) {
+		if (ojType.equals("SPOJ")) {
+			System.out.println("Submit in SPOOOOJ");
 			judgeUsername = DataStoreHandler.getAllCoders().get(0)
 			        .getSPOJUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getSPOJPassword();
 			judge = new SPOJ();
-		} else if (problem.getOjType().equals("Timus")) {
+		} else if (ojType.equals("Timus")) {
 			judgeUsername = DataStoreHandler.getAllCoders().get(0)
 			        .getTimusUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getTimusPassword();
 			judge = new Timus();
+		} else if (ojType.equals("UVA")) {
+			judgeUsername = DataStoreHandler.getAllCoders().get(0)
+			        .getUVAUsername();
+			judgePassword = DataStoreHandler.getAllCoders().get(0)
+			        .getUVAPassword();
+			judge = new UVA();
 		}
+
 		if (judge != null) {
 			try {
 				System.out.println("language value: " + language);
@@ -54,7 +63,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				System.out.println("Problem Code: " + problemCode);
 				System.out.println("Code: " + code);
 				judge.submitProblem(judgeUsername, judgePassword,
-				        problemCode.replaceAll(" ", ""), language, code);
+				        problemCode, language, code);
 				System.out.println("Submitted");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -73,27 +82,34 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	// *
 	//
 	@Override
-	public ProblemStatusData getLastProblemStatus(String problemCode)
-	        throws Exception {
+	public ProblemStatusData getLastProblemStatus(String problemCode,
+	        String ojType) throws Exception {
 		Judge judge = null;
-		ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
-		if (problem.getOjType().equals("SPOJ")) {
+		if (ojType.equals("SPOJ")) {
+			System.out.println("submission result for SPOJ");
 			judgeUsername = DataStoreHandler.getAllCoders().get(0)
 			        .getSPOJUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getSPOJPassword();
 			judge = new SPOJ();
-		} else if (problem.getOjType().equals("Timus")) {
+		} else if (ojType.equals("Timus")) {
 			System.out.println("submission result for timus");
 			judgeUsername = DataStoreHandler.getAllCoders().get(0)
 			        .getTimusUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getTimusPassword();
 			judge = new Timus();
+		} else if (ojType.equals("UVA")) {
+			System.out.println("submission result for UVA");
+			judgeUsername = DataStoreHandler.getAllCoders().get(0)
+			        .getUVAUsername();
+			judgePassword = DataStoreHandler.getAllCoders().get(0)
+			        .getUVAPassword();
+			judge = new UVA();
 		}
-		
+
 		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
 
 		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(),
@@ -182,16 +198,17 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	 * String)
 	 */
 	@Override
-	public ProblemData getProblem(String problemCode) {
+	public ProblemData getProblem(String problemCode, String ojType) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		ProblemData problemData = new ProblemData();
 		try {
 			String select_query = "select from " + Problem.class.getName();
 			Query query = pm.newQuery(select_query);
 			// query.setFilter("probID == problemID");
-			query.setFilter("problemCode == probCode");
-			query.declareParameters("java.lang.String probCode");
-			List<Problem> problems = (List<Problem>) query.execute(problemCode);
+			query.setFilter("problemCode == probCode && ojType == OJType");
+			query.declareParameters("java.lang.String probCode, java.lang.String OJType");
+			List<Problem> problems = (List<Problem>) query.execute(problemCode,
+			        ojType);
 			problemData.setProblemCode(problems.get(0).getProblemCode());
 			problemData.setProblemName(problems.get(0).getProblemName());
 			problemData.setOjType(problems.get(0).getOjType());

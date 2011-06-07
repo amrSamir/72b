@@ -4,6 +4,7 @@
 package com.OJToolkit.client.presenter;
 
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
+import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -30,20 +31,21 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	private final SubmissionServiceAsync submssionService;
 	private final HandlerManager eventBus;
 	private ProblemStatusData problemStatus;
-	private final String problemCode;
+	//private final String problemCode;
+	private final ProblemData problem;
 	/**
 	 * Generate Problem statue page
 	 * @param submssionService
 	 * @param eventBus
 	 * @param display
 	 */
-	public ProblemSubmissionStatusPresenter(String problemCode,
+	public ProblemSubmissionStatusPresenter(ProblemData problem,
 	        SubmissionServiceAsync submssionService, HandlerManager eventBus,
 	        final Display display) {
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
 		this.problemStatus = new ProblemStatusData();
-		this.problemCode = problemCode;
+		this.problem = problem;
 		this.display = display;
 		
 
@@ -57,7 +59,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	 */
 	void callGetLastProblemStatusService() {
 		submssionService
-		        .getLastProblemStatus(problemCode,new AsyncCallback<ProblemStatusData>() {
+		        .getLastProblemStatus(problem.getProblemCode(),problem.getOjType(),new AsyncCallback<ProblemStatusData>() {
 
 			        @Override
 			        public void onSuccess(ProblemStatusData result) {

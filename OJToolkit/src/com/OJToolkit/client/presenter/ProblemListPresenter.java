@@ -53,7 +53,7 @@ public class ProblemListPresenter implements Presenter {
 	private final HandlerManager eventBus;
 	private final AbstractHasData<ProblemData> table;
 	private final ArrayList<ProblemData> problemsList;
-	private int numberOfProblems = 2141 + 595;
+	private int numberOfProblems = 2141 + 595 + 2925;
 	private  int pageStart = 0;
 	String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
 

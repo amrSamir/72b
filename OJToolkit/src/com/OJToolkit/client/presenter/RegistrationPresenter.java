@@ -89,7 +89,7 @@ public class RegistrationPresenter implements Presenter {
 
 					        @Override
 					        public void onSuccess(Void result) {
-						        Window.alert("Added to datastore");
+						     //   Window.alert("Added to datastore");
 						        Cookies.setCookie("isRegisteredCookie", "YES",
 						                AppController.COOKIES_EXPIRYDATE, null,
 						                "/", false);

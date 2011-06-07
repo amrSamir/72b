@@ -5,6 +5,8 @@ package com.OJToolkit.client;
 
 import java.util.Date;
 
+import com.OJToolkit.client.Contents.LeftPanel;
+import com.OJToolkit.client.Contents.TopPanel;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.Services.HintServiceAsync;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
@@ -32,24 +34,20 @@ import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CodersPresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
-import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
 import com.OJToolkit.client.presenter.Presenter;
 import com.OJToolkit.client.presenter.ProblemListPresenter;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
-import com.OJToolkit.client.presenter.TopPanelPresenter;
 import com.OJToolkit.client.view.AddAccountView;
 import com.OJToolkit.client.view.CodersView;
 import com.OJToolkit.client.view.InvitationView;
-import com.OJToolkit.client.view.LeftPanelView;
 import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemListView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
 import com.OJToolkit.client.view.ProblemView;
 import com.OJToolkit.client.view.RegistrationView;
-import com.OJToolkit.client.view.TopPanelView;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -88,16 +86,6 @@ public class AppController implements ValueChangeHandler<String> {
 	private String OJType;
 	private String problemCode;
 
-	/**
-	 * control the site and changes the pages 
-	 * @param eventBus
-	 * @param submissionService
-	 * @param languageService
-	 * @param loginService
-	 * @param coderService
-	 * @param sourceCodeService
-	 * @param hintService
-	 */
 	public AppController(HandlerManager eventBus,
 	        SubmissionServiceAsync submissionService,
 	        LanguageServiceAsync languageService,
@@ -128,6 +116,8 @@ public class AppController implements ValueChangeHandler<String> {
 			        public void onSubmitProblem(
 			                ViewProblemSubmissionStatusEvent event) {
 				        doViewProblemSubmissionStatus(event.problem);
+				        // TODO Auto-generated method stub
+
 			        }
 		        });
 
@@ -167,6 +157,8 @@ public class AppController implements ValueChangeHandler<String> {
 			@Override
 			public void onLogin(LoginEvent event) {
 				doOnLogin();
+				// TODO Auto-generated method stub
+
 			}
 
 		});
@@ -197,10 +189,13 @@ public class AppController implements ValueChangeHandler<String> {
 			@Override
 			public void onAddAccount(AddAccountEvent event) {
 				doOnAddAccount();
+				// TODO Auto-generated method stub
+
 			}
 
 		});
 
+		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -227,7 +222,7 @@ public class AppController implements ValueChangeHandler<String> {
 	protected void doOnAddAccountDetails(String oJType) {
 		this.OJType = oJType;
 		History.newItem("addAccountDetails");
-
+		// TODO Auto-generated method stub
 
 	}
 
@@ -244,13 +239,15 @@ public class AppController implements ValueChangeHandler<String> {
 	 */
 	protected void doOnViewCoders() {
 		History.newItem("viewCoders");
+		// TODO Auto-generated method stub
 
 	}
 
 	/**
 	 * view problem
 	 * 
-	 * @param problem to be shown
+	 * @param problem
+	 *            to be shown
 	 */
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
@@ -276,8 +273,9 @@ public class AppController implements ValueChangeHandler<String> {
 	}
 
 	/**
-	 * view problem submission 
-	 * @param problemCode 
+	 * view problem submission
+	 * 
+	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem) {
 		this.problem = problem;
@@ -288,13 +286,10 @@ public class AppController implements ValueChangeHandler<String> {
 		this.container = core;
 		this.topPanel = topPanel;
 		this.leftPanel = leftPanel;
-		Presenter presenter = null;
-		
-		presenter = new TopPanelPresenter(new TopPanelView());
-		presenter.go(this.topPanel);
 
-		presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));
-		presenter.go(this.leftPanel);
+		this.topPanel.add(new TopPanel());
+
+		this.leftPanel.add(new LeftPanel(eventBus));
 		if ("".equals(History.getToken())) {
 
 			// String sessionID = Cookies.getCookie("reg");

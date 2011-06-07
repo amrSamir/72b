@@ -39,7 +39,6 @@ public class CodersPresenter implements Presenter {
 	 */
 	public CodersPresenter(CoderServiceAsync coderService,
 			HandlerManager eventBus, final Display display) {
-		System.out.println("fe coder presnter");
 		
 		this.coderService = coderService;
 		this.eventBus = eventBus;

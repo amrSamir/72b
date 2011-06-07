@@ -60,7 +60,7 @@ public class LoginPresenter implements Presenter {
 				        if (!result.isLoggedIn()) {
 
 				        } else {
-					        Window.alert("Logged In");
+					       // Window.alert("Logged In");
 					        // create logged in cookie
 					        Cookies.setCookie("isLoggedInCookie", "YES",
 					                AppController.COOKIES_EXPIRYDATE, null,

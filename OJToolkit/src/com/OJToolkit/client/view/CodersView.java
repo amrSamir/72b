@@ -39,6 +39,7 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 	 * view coder page 
 	 */
 	public CodersView() {
+		System.out.println("in coder view");
 		ScrollPanel ScrollCoders = new ScrollPanel() ;
 		ScrollCoders.setSize("100%", "100%") ;
 		initWidget(ScrollCoders);
@@ -47,6 +48,7 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 		ScrollCoders.add(vpanelCoder);
 		
 		coderDataProvider = new ListDataProvider<CoderData>();
+		codersTable = new CellTable<CoderData>() ;
 		TextColumn<CoderData> coderUserNameColumn = new TextColumn<CoderData>() {
 			@Override
 			public String getValue(CoderData coder) {

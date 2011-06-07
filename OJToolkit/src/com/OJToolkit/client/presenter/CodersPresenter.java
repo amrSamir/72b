@@ -27,8 +27,8 @@ public class CodersPresenter implements Presenter {
 	private final CoderServiceAsync coderService;
 	private final HandlerManager eventBus;
 	private final AbstractHasData<CoderData> codersTable;
-	private final ArrayList<CoderData> codersList;
-	private final int numOfCoders = 0;
+	private ArrayList<CoderData> codersList;
+	private int numOfCoders = 1;
 	private int pageStart = 0;
 
 	/**
@@ -39,21 +39,22 @@ public class CodersPresenter implements Presenter {
 	 */
 	public CodersPresenter(CoderServiceAsync coderService,
 			HandlerManager eventBus, final Display display) {
+		System.out.println("fe coder presnter");
 		
 		this.coderService = coderService;
 		this.eventBus = eventBus;
 		this.display = display;
 		codersTable = this.display.getTable();
 		
-		this.codersList = new ArrayList<CoderData>();
+		
+		codersList = new  ArrayList<CoderData>() ;
 		for (int i = 0; i <= numOfCoders; i++) {
 			codersList.add(null);
 		}
-		fitchCoders() ;
-//		this.display.setCodersList(codersList);
-//		this.display.setNumberOfCoders(numOfCoders);
+		this.display.setNumberOfCoders(numOfCoders);
+		this.display.setCodersList(codersList);
 		this.display.setPageStart(pageStart);
-
+		fitchCoders() ;
 	}
 
 	/**
@@ -63,13 +64,15 @@ public class CodersPresenter implements Presenter {
 		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
 			@Override
 			public void onSuccess(ArrayList<CoderData> result) {
-				display.setNumberOfCoders(result.size());
-				display.setCodersList(result);
+				for(int i = 0 ; i < result.size() ; i++){
+					codersList.set(pageStart + i, result.get(i)) ;
+				}
+				codersTable.setRowData(0,codersList);
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("Failed to load coder Data!\n" + "error : "
+				Window.alert("Failed to load coder Data!\n" + "Error : "
 						+ caught.getMessage());
 			}
 		});

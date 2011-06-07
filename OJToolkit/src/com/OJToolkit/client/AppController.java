@@ -81,6 +81,8 @@ public class AppController implements ValueChangeHandler<String> {
 	private HasWidgets leftPanel;
 	private ProblemData problem;
 	private String OJType;
+	private String problemCode;
+	
 
 	public AppController(HandlerManager eventBus,
 	        SubmissionServiceAsync submissionService,
@@ -110,7 +112,7 @@ public class AppController implements ValueChangeHandler<String> {
 			        @Override
 			        public void onSubmitProblem(
 			                ViewProblemSubmissionStatusEvent event) {
-				        doViewProblemSubmissionStatus();
+				        doViewProblemSubmissionStatus(event.problemCode);
 				        // TODO Auto-generated method stub
 
 			        }
@@ -265,8 +267,10 @@ public class AppController implements ValueChangeHandler<String> {
 
 	/**
 	 * view problem submission 
+	 * @param problemCode 
 	 */
-	private void doViewProblemSubmissionStatus() {
+	private void doViewProblemSubmissionStatus(String problemCode) {
+		this.problemCode = problemCode;
 		History.newItem("problemSubmissionStatus");
 	}
 
@@ -313,7 +317,7 @@ public class AppController implements ValueChangeHandler<String> {
 				presenter = new RegistrationPresenter(coderService, eventBus,
 				        new RegistrationView());
 			} else if (token.equals("problemSubmissionStatus")) {
-				presenter = new ProblemSubmissionStatusPresenter(
+				presenter = new ProblemSubmissionStatusPresenter(problemCode,
 				        submissionService, eventBus,
 				        new ProblemSubmissionStatusView());
 			} else if (token.startsWith("problem")) {

@@ -10,7 +10,8 @@ public interface SubmissionServiceAsync {
 	void submitCode(String problemCode, String code, String language,
 			AsyncCallback<Void> callback);
 
-	void getLastProblemStatus(AsyncCallback<ProblemStatusData> callback);
+	void getLastProblemStatus(String problemCode,
+            AsyncCallback<ProblemStatusData> callback);
 
 	void saveSpojProblemtoDB(ProblemData problemData,
 			AsyncCallback<Void> callback);

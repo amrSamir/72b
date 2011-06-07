@@ -15,6 +15,7 @@ import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.OJToolkit.server.engine.Judge;
 import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Submission;
+import com.OJToolkit.server.engine.Timus;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
@@ -32,18 +33,18 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
-		if (problem.getOjType() == "SPOJ") {
+		if (problem.getOjType().equals("SPOJ")) {
 			judgeUsername = DataStoreHandler.getAllCoders().get(0)
 			        .getSPOJUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getSPOJPassword();
 			judge = new SPOJ();
-		} else if (problem.getOjType() == "Timus") {
+		} else if (problem.getOjType().equals("Timus")) {
 			judgeUsername = DataStoreHandler.getAllCoders().get(0)
 			        .getTimusUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getTimusPassword();
-			judge = new SPOJ();
+			judge = new Timus();
 		}
 		if (judge != null) {
 			try {
@@ -72,19 +73,27 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	// *
 	//
 	@Override
-	public ProblemStatusData getLastProblemStatus() throws Exception {
+	public ProblemStatusData getLastProblemStatus(String problemCode)
+	        throws Exception {
 		Judge judge = null;
-		// ProblemData problem = getProblem(problemCode);
+		ProblemData problem = getProblem(problemCode);
 		String judgeUsername = "";
 		String judgePassword = "";
-		// if (problem.getType() == "SPOJ") {
-		judgeUsername = DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJUsername();
-		judgePassword = DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJPassword();
-
-		judge = new SPOJ();
-		// }
+		if (problem.getOjType().equals("SPOJ")) {
+			judgeUsername = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJUsername();
+			judgePassword = DataStoreHandler.getAllCoders().get(0)
+			        .getSPOJPassword();
+			judge = new SPOJ();
+		} else if (problem.getOjType().equals("Timus")) {
+			System.out.println("submission result for timus");
+			judgeUsername = DataStoreHandler.getAllCoders().get(0)
+			        .getTimusUsername();
+			judgePassword = DataStoreHandler.getAllCoders().get(0)
+			        .getTimusPassword();
+			judge = new Timus();
+		}
+		
 		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
 
 		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(),

@@ -147,7 +147,7 @@ public class ProblemPresenter implements Presenter {
 				        new AsyncCallback<Void>() {
 					        @Override
 					        public void onSuccess(Void result) {
-						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent());
+						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(problem.getProblemCode()));
 					        }
 
 					        @Override

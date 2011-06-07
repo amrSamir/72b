@@ -202,7 +202,13 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			List<Coder> coders = (List<Coder>) query.execute(DataStoreHandler
 			        .getUser().getEmail());
 			if (coders.get(0).getSPOJUsername() != null) {
-				ret += "SPOJ";
+				ret += "SPOJ-";
+			}
+			if (coders.get(0).getTimusUsername() != null) {
+				ret += "Timus-";
+			}
+			if (coders.get(0).getUVAUsername() != null) {
+				ret += "UVA-";
 			}
 		} finally {
 			pm.close();

@@ -53,8 +53,8 @@ public class ProblemListPresenter implements Presenter {
 	private final HandlerManager eventBus;
 	private final AbstractHasData<ProblemData> table;
 	private final ArrayList<ProblemData> problemsList;
-	private int numberOfProblems = 0;
-	private int pageStart = 0;
+	private int numberOfProblems = 2141 + 595;
+	private  int pageStart = 0;
 	String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
 
 	
@@ -69,12 +69,6 @@ public class ProblemListPresenter implements Presenter {
 
 		this.submissionService = submissionService;
 		this.eventBus = eventBus;
-		if (addedAccountsCookie.contains("SPOJ")) {
-			numberOfProblems += 2141;
-		}
-		if (addedAccountsCookie.contains("Timus")) {
-			numberOfProblems += 595;
-		}
 		this.display = display;
 		table = display.getTable();
 		this.display.setNumberOfProblems(numberOfProblems);

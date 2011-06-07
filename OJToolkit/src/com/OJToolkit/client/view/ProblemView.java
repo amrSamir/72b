@@ -9,6 +9,7 @@ import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Frame;
@@ -29,7 +30,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	VerticalPanel verticalPanel;
 	TextBox lblPrblmTitle;
 	ListBox comboBox;
-	TextArea CodeText;
+	TextArea txtCode;
 	Frame problemStatementFrame;
 
 	public ProblemView() {
@@ -55,9 +56,9 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		Label lblNewLabel_1 = new Label("Code");
 		verticalPanel.add(lblNewLabel_1);
 
-		CodeText = new TextArea();
-		verticalPanel.add(CodeText);
-		CodeText.setSize("90%", "300px");
+		txtCode = new TextArea();
+		verticalPanel.add(txtCode);
+		txtCode.setSize("90%", "300px");
 
 		Label lblLanguage = new Label("Language");
 		verticalPanel.add(lblLanguage);
@@ -97,6 +98,11 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		problemStatementFrame.setSize("90%", "300px");
 
 		lblPrblmTitle.setText(problem.getProblemName());
+		String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
+		if(!addedAccountsCookie.contains(problem.getOjType())){
+			txtCode.setVisible(false);
+			btnSubmit.setVisible(false);
+		}
 
 	}
 
@@ -122,7 +128,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	 */
 	@Override
 	public String getCode() {
-		return CodeText.getText();
+		return txtCode.getText();
 	}
 
 	/*

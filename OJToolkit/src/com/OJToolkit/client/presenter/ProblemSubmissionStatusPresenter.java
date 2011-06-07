@@ -30,20 +30,22 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	private final SubmissionServiceAsync submssionService;
 	private final HandlerManager eventBus;
 	private ProblemStatusData problemStatus;
-
+	private final String problemCode;
 	/**
 	 * Generate Problem statue page
 	 * @param submssionService
 	 * @param eventBus
 	 * @param display
 	 */
-	public ProblemSubmissionStatusPresenter(
+	public ProblemSubmissionStatusPresenter(String problemCode,
 	        SubmissionServiceAsync submssionService, HandlerManager eventBus,
 	        final Display display) {
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
 		this.problemStatus = new ProblemStatusData();
+		this.problemCode = problemCode;
 		this.display = display;
+		
 
 		bind();
 		callGetLastProblemStatusService();
@@ -55,7 +57,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	 */
 	void callGetLastProblemStatusService() {
 		submssionService
-		        .getLastProblemStatus(new AsyncCallback<ProblemStatusData>() {
+		        .getLastProblemStatus(problemCode,new AsyncCallback<ProblemStatusData>() {
 
 			        @Override
 			        public void onSuccess(ProblemStatusData result) {

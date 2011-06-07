@@ -27,11 +27,11 @@ public interface SubmissionService extends RemoteService {
 
 	/**
 	 * Gets the result of judging the problem
-	 * 
+	 * @param problemCode the code of the last submitted problem
 	 * @return the result of judging the problem
 	 * @throws Exception
 	 */
-	public ProblemStatusData getLastProblemStatus() throws Exception;
+	public ProblemStatusData getLastProblemStatus(String problemCode) throws Exception;
 
 	/**
 	 * Save a problem to the datastore

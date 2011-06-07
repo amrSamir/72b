@@ -14,6 +14,15 @@ public class ViewProblemSubmissionStatusEvent extends
 
 	public static Type<ViewProblemSubmissionStatusEventHandler> TYPE = new Type<ViewProblemSubmissionStatusEventHandler>();
 
+	public String problemCode;
+	/**
+     * @param problemCode The problemcode of the submitted problem
+     */
+    public ViewProblemSubmissionStatusEvent(String problemCode) {
+	    super();
+    	this.problemCode = problemCode;
+    }
+
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()

@@ -29,15 +29,10 @@ public class AddAccountPresenter implements Presenter {
 
 		HasClickHandlers getAddUVAAccountButton();
 
-		HasClickHandlers getAddAccountButton();
 
 		HasValue<String> getAccountUserName();
 
 		HasValue<String> getAccountPassword();
-
-		void setAccountType(String accountType);
-
-		void setAddedAccounts(String addedAccounts);
 
 		void notifySave();
 		
@@ -79,7 +74,6 @@ public class AddAccountPresenter implements Presenter {
 				addedAccounts = result;
 				Cookies.setCookie("addedAccountsCookie", addedAccounts,
 						AppController.COOKIES_EXPIRYDATE, null, "/", false);
-				display.setAddedAccounts(addedAccounts);
 			}
 		});
 
@@ -93,8 +87,10 @@ public class AddAccountPresenter implements Presenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				System.out.println("Ana spoj w edas 3alia");
 				accountType = "SPOJ";
-				display.setAccountType(accountType);
+				addAccount(accountType);
+				//display.setAccountType(accountType);
 			}
 		});
 
@@ -102,8 +98,10 @@ public class AddAccountPresenter implements Presenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				System.out.println("Ana timus w edas 3alia");
 				accountType = "Timus";
-				display.setAccountType(accountType);
+				addAccount(accountType);
+				//display.setAccountType(accountType);
 				// eventBus.fireEvent(new AddAccountDetailsEvent("X"));
 
 			}
@@ -114,43 +112,41 @@ public class AddAccountPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				accountType = "UVA";
-				display.setAccountType(accountType);
+				addAccount(accountType);
+				//display.setAccountType(accountType);
 				// eventBus.fireEvent(new AddAccountDetailsEvent("X"));
 			}
 		});
 
-		display.getAddAccountButton().addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				// System.out.println(accountType);
-				// eventBus.fireEvent(new AddAccountDetailsEvent("SPOJ"));
-				coderService.addAccount(accountType, display
-						.getAccountUserName().getValue(), display
-						.getAccountPassword().getValue(),
-						new AsyncCallback<Void>() {
 
-							@Override
-							public void onSuccess(Void result) {
-								// eventBus.fireEvent(new
-								// AlreadyRegisteredEvent());
-								addedAccounts += "-" + accountType;
-								Cookies.setCookie("addedAccountsCookie",
-										addedAccounts,
-										AppController.COOKIES_EXPIRYDATE, null,
-										"/", false);
-								display.setAddedAccounts(addedAccounts);
-								display.notifySave();
-							}
+	}
+	
+	private void addAccount(String ojType){
 
-							@Override
-							public void onFailure(Throwable caught) {
-								Window.alert("add account failer!!!");
-							}
-						});
+		// eventBus.fireEvent(new AddAccountDetailsEvent("SPOJ"));
+		coderService.addAccount(ojType, display
+				.getAccountUserName().getValue(), display
+				.getAccountPassword().getValue(),
+				new AsyncCallback<Void>() {
 
-			}
-		});
+					@Override
+					public void onSuccess(Void result) {
+						// eventBus.fireEvent(new
+						// AlreadyRegisteredEvent());
+						addedAccounts += "-" + accountType;
+						Cookies.setCookie("addedAccountsCookie",
+								addedAccounts,
+								AppController.COOKIES_EXPIRYDATE, null,
+								"/", false);
+						display.notifySave();
+					}
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("add account failer!!!");
+					}
+				});
 
 	}
 

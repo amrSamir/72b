@@ -91,7 +91,7 @@ public class AddAccountView extends Composite implements
 	 */
 	@Override
 	public HasClickHandlers getAddTimusAccountButton() {
-		return btnAddAccount[1];
+		return btnAddAccount[2];
 	}
 
 	/*
@@ -116,65 +116,18 @@ public class AddAccountView extends Composite implements
 		return txtAccountPassword[tabPanel.getSelectedIndex()];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.OJToolkit.client.presenter.AddAccountPresenter.Display#setAccountType
-	 * (java.lang.String)
-	 */
-	@Override
-	public void setAccountType(String accountType) {
 
-		/*
-		 * lblUsername.setVisible(true);
-		 * lblPassword.setVisible(true);
-		 */
-//		txtAccountUsername.setVisible(true);
-//		txtAccountPassword.setVisible(true);
-//		lblUsername.setText(accountType + " Username : ");
-//		lblPassword.setText(accountType + " Password : ");
-//		btnAddAccount.setVisible(true);
 
-		// initWidget(absolutePanel);
 
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#
-	 * getAddAccountButton()
-	 */
-	@Override
-	public HasClickHandlers getAddAccountButton() {
-		return btnAddAccount[tabPanel.getSelectedIndex()];
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.OJToolkit.client.presenter.AddAccountPresenter.Display#setAddedAccounts
-	 * (java.lang.String)
-	 */
-	@Override
-	public void setAddedAccounts(String addedAccounts) {
-//		if (addedAccounts.contains("SPOJ")) {
-//			btnAddSpojAccount.setVisible(false);
-//		}
-//		if (addedAccounts.contains("Timus")) {
-//			btnAddTimusAccount.setVisible(false);
-//		}
-//		if(addedAccounts.contains("UVA")){
-//			btnAddUVAAccount.setVisible(false);
-//		}
-
-	}
+	
 
 	/* (non-Javadoc)
      * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#getAddUVAAccountButton()
      */
     @Override
     public HasClickHandlers getAddUVAAccountButton() {
-	    return btnAddAccount[2];
+	   return btnAddAccount[1];
     }
 
 	@Override

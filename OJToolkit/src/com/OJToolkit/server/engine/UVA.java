@@ -128,13 +128,13 @@ public class UVA implements Judge {
 
     @Override
     public Problem getProblemInfo(String problemId) {
-            // TODO Auto-generated method stub
+            // TODO remove the null
             return null;
     }
 
     @Override
     public ArrayList<String> getProblemsSolved(String coderId) {
-
+    		//TODO remove the null
             return null;
     }
 
@@ -173,10 +173,8 @@ public class UVA implements Judge {
 	            if (cc == 301)
                     System.out.println("Submitted successfully");
             } catch (HttpException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
             } catch (IOException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
             }
         

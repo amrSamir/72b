@@ -87,7 +87,6 @@ public class AddAccountPresenter implements Presenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				System.out.println("Ana spoj w edas 3alia");
 				accountType = "SPOJ";
 				addAccount(accountType);
 				//display.setAccountType(accountType);
@@ -98,7 +97,6 @@ public class AddAccountPresenter implements Presenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				System.out.println("Ana timus w edas 3alia");
 				accountType = "Timus";
 				addAccount(accountType);
 				//display.setAccountType(accountType);

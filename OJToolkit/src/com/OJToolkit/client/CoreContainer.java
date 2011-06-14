@@ -40,8 +40,5 @@ public class CoreContainer {
 	 */
 	public void setContent(HasWidgets container) {
 		core.clear();
-		//
-		// TODO Auto-generated method stub
-
 	}
 }

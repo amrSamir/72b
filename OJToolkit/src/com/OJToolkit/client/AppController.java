@@ -18,6 +18,8 @@ import com.OJToolkit.client.event.AlreadyRegisteredEvent;
 import com.OJToolkit.client.event.AlreadyRegisteredEventHandler;
 import com.OJToolkit.client.event.CheckCookiesEvent;
 import com.OJToolkit.client.event.CheckCookiesEventHandler;
+import com.OJToolkit.client.event.LeftPanelEvent;
+import com.OJToolkit.client.event.LeftPanelEventHandler;
 import com.OJToolkit.client.event.LoginEvent;
 import com.OJToolkit.client.event.LoginEventHandler;
 import com.OJToolkit.client.event.RegisterationEventHandler;
@@ -181,6 +183,20 @@ public class AppController implements ValueChangeHandler<String> {
 			        }
 
 		        });
+		
+		eventBus.addHandler(LeftPanelEvent.TYPE,
+		        new LeftPanelEventHandler() {
+
+					@Override
+                    public void onLeftPanel(LeftPanelEvent event) {
+						doOnLeftPanel();
+	        
+	                    
+                    }
+
+			    
+
+		        });
 
 		eventBus.addHandler(ViewCodersEvent.TYPE, new ViewCodersEventHandler() {
 
@@ -202,6 +218,16 @@ public class AppController implements ValueChangeHandler<String> {
 		});
 
 	}
+
+	/**
+     * 
+     */
+    protected void doOnLeftPanel() {
+    	Presenter presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));
+		presenter.go(this.leftPanel);
+	    // TODO Auto-generated method stub
+	    
+    }
 
 	/**
 	 * add cookies to history
@@ -360,6 +386,7 @@ public class AppController implements ValueChangeHandler<String> {
 				} else if (token.equals("alreadyRegistered")) {
 					presenter = new ProblemListPresenter(submissionService,
 					        eventBus, new ProblemListView());
+					
 				} else if (token.equals("viewCoders")) {
 					presenter = new CodersPresenter(coderService, eventBus,
 					        new CodersView());

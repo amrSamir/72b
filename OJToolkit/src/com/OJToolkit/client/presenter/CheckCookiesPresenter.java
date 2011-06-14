@@ -6,10 +6,12 @@ package com.OJToolkit.client.presenter;
 import com.OJToolkit.client.AppController;
 import com.OJToolkit.client.event.AddAccountEvent;
 import com.OJToolkit.client.event.AlreadyRegisteredEvent;
+import com.OJToolkit.client.event.LeftPanelEvent;
 import com.OJToolkit.client.event.LoginEvent;
 import com.OJToolkit.client.event.RegistrationEvent;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 /**
@@ -43,6 +45,8 @@ public class CheckCookiesPresenter implements Presenter {
 			if (isRegisteredCookie != null) {
 				Cookies.setCookie("isEnabledCookie", "YES",
 				        AppController.COOKIES_EXPIRYDATE, null, "/", false);
+				eventBus.fireEvent(new LeftPanelEvent());
+				
 				//AppController.isEnabled = true;
 				if (addedAccountsCookie == null) {
 					eventBus.fireEvent(new AddAccountEvent());

@@ -19,6 +19,9 @@ public class LeftPanelView extends Composite implements
 		LeftPanelPresenter.Display {
 	
 	enum Labels {ViewCoders,AddAccounts,ViewProblems};
+	Label lblViewCoders;
+	Label lblAddAccount;
+	Label lblViewProblem;
 
 	
 	// Hack to be fixed
@@ -34,17 +37,17 @@ public class LeftPanelView extends Composite implements
 		absolutePanel.add(widget, 30, 10);
 		
 
-		Label lableViewCoders = addLeftPanel_lable("View Coders", eventBus,
+		 lblViewCoders = addLeftPanel_lable("View Coders", eventBus,
 				Labels.ViewCoders);
-		absolutePanel.add(lableViewCoders, 0, 140);
+		absolutePanel.add(lblViewCoders, 0, 140);
 
-		Label lableAddAccount = addLeftPanel_lable("Add Accounts", eventBus,
+		 lblAddAccount = addLeftPanel_lable("Add Accounts", eventBus,
 				Labels.AddAccounts);
-		absolutePanel.add(lableAddAccount, 0, 220);
+		absolutePanel.add(lblAddAccount, 0, 220);
 
-		Label lableViewProblem = addLeftPanel_lable("View Problems", eventBus,
+		 lblViewProblem = addLeftPanel_lable("View Problems", eventBus,
 				Labels.ViewProblems);
-		absolutePanel.add(lableViewProblem, 0, 180);
+		absolutePanel.add(lblViewProblem, 0, 180);
 	}
 
 	private Label addLeftPanel_lable(String LableName,
@@ -72,5 +75,15 @@ public class LeftPanelView extends Composite implements
 	public Widget asWidget() {
 		return this;
 	}
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.LeftPanelPresenter.Display#setEnabled(boolean)
+     */
+    @Override
+    public void setEnabled(boolean isEnabled) {
+    	 lblViewCoders.setVisible(isEnabled);
+    	 lblAddAccount.setVisible(isEnabled);
+    	 lblViewProblem.setVisible(isEnabled);
+    }
 
 }

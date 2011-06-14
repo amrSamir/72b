@@ -13,7 +13,7 @@ public class SourceCodeData {
 	private String code;
 	private String note;
 	private String judgeResult;
-	private String date;
+	private Long date;
 	
 	/**
 	 * @param codeID
@@ -28,7 +28,7 @@ public class SourceCodeData {
 	 */
 	public SourceCodeData(Long codeID, Long userID, String problemCode,
 			String problemName, String url, String code, String note,
-			String judgeResult, String date) {
+			String judgeResult, Long date) {
 		super();
 		this.codeID = codeID;
 		this.userID = userID;
@@ -139,13 +139,13 @@ public class SourceCodeData {
 	/**
 	 * @return submitionDate
 	 */
-	public String getDate() {
+	public Long getDate() {
 		return date;
 	}
 	/**
 	 * @param date
 	 */
-	public void setDate(String date) {
+	public void setDate(Long date) {
 		this.date = date;
 	}
 

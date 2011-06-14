@@ -34,13 +34,19 @@ public class SourceCodeServiceImpl  extends RemoteServiceServlet implements Sour
 		try {
 			   LOG.log(Level.WARNING,"Z" );
 			Long myUserID = DataStoreHandler.getAllCoders().get(0).getUserID();
-		 
+		 	
 			SourceCode sc = new SourceCode();
+			log(myUserID.toString());
+			sc.setUserID(myUserID);
 			sc.setCode(code);
 			sc.setProblemCode(problemCode);
 			sc.setProblemName(problemName);
 			sc.setUrl(url);
 			
+			java.util.Date date = new java.util.Date();
+			Long dateLong = date.getTime();
+			sc.setDate(dateLong);
+		//	sc.setJudgeResult(judgeResult)
 			pm.makePersistent(sc);
 			} finally {
 			pm.close();

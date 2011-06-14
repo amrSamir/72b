@@ -51,7 +51,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			        .getUVAUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getUVAPassword();
-			judge = new UVA();
+		//	judge = new UVA();
 		}
 
 		if (judge != null) {
@@ -108,7 +108,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			        .getUVAUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getUVAPassword();
-			judge = new UVA();
+		//	judge = new UVA();
 		}
 
 		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);

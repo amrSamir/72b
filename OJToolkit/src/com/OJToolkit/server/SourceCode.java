@@ -30,10 +30,10 @@ public class SourceCode {
 	@Persistent
 	private String judgeResult;
 	@Persistent
-	private String date;
+	private Long date;
 	public SourceCode(Long codeID, Long userID, String problemCode,
 			String problemName, String url, String code, String note,
-			String judgeResult, String date) {
+			String judgeResult, Long date) {
 		super();
 		this.codeID = codeID;
 		this.userID = userID;
@@ -94,10 +94,10 @@ public class SourceCode {
 	public void setJudgeResult(String judgeResult) {
 		this.judgeResult = judgeResult;
 	}
-	public String getDate() {
+	public Long getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Long date) {
 		this.date = date;
 	}
 	

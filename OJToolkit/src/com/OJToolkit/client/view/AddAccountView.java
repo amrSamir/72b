@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratedPopupPanel;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -25,7 +26,7 @@ public class AddAccountView extends Composite implements
 
 	Button [] btnAddAccount;
 	TextBox [] txtAccountUsername;
-	TextBox [] txtAccountPassword;
+	PasswordTextBox [] txtAccountPassword;
 	TabLayoutPanel tabPanel;
 	final String [] ojs = {"SPOJ","UVA","Timus"};
 	
@@ -41,7 +42,7 @@ public class AddAccountView extends Composite implements
 
 	    btnAddAccount = new Button[ojs.length];
 	    txtAccountUsername = new TextBox[ojs.length];
-	    txtAccountPassword = new TextBox[ojs.length];
+	    txtAccountPassword = new PasswordTextBox[ojs.length];
 	    
 	    for(int i =0  ; i < ojs.length; ++i) {
 	    	VerticalPanel verticalPanel = new VerticalPanel();
@@ -55,7 +56,7 @@ public class AddAccountView extends Composite implements
 	    	Label lblPassword = new Label(ojs[i] + " Password");
 	    	verticalPanel.add(lblPassword);
 	    	
-	    	txtAccountPassword[i] = new TextBox();
+	    	txtAccountPassword[i] = new PasswordTextBox();
 	    	verticalPanel.add(txtAccountPassword[i]);
 	    	
 	    	btnAddAccount[i] = new Button("Save Account");

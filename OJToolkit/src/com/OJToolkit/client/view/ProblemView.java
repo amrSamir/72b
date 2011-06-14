@@ -41,16 +41,15 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		masterPanel = new VerticalPanel();
 		masterPanel.setSize("100%", "100%");
 		initWidget(masterPanel);
-
+		
 		lblPrblmTitle = new Label();
 		lblPrblmTitle.setStylePrimaryName("ProblemTitle");
-		lblPrblmTitle.setSize("100%", "30px");
+		lblPrblmTitle.setSize("100%", "100%");
 		masterPanel.add(lblPrblmTitle);
-
+		masterPanel.setCellHeight(lblPrblmTitle, "50px");
 		splitPanel = new StackLayoutPanel(Unit.EM);
-		splitPanel.setSize("100%", "590px");
+		splitPanel.setSize("100%", "100%");
 		masterPanel.add(splitPanel);
-
 		AbsolutePanel problemStatementPanel = new AbsolutePanel();
 		problemStatementPanel.setSize("100%", "100%");
 		problemStatementFrame = new Frame();

@@ -1,6 +1,5 @@
 package com.OJToolkit.client;
 
-import com.OJToolkit.client.Contents.Content;
 import com.OJToolkit.client.Contents.MyResource;
 import com.OJToolkit.client.Services.LanguageService;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
@@ -8,10 +7,9 @@ import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class SpojProblemsToDBAdder extends Content {
+public class SpojProblemsToDBAdder {
 
 	private final SubmissionServiceAsync submissionService = GWT
 	        .create(SubmissionService.class);
@@ -22,11 +20,9 @@ public class SpojProblemsToDBAdder extends Content {
 
 
 	public SpojProblemsToDBAdder() {
-		System.out.println("Initializer");
-		//addSPOJProblems();
+		System.out.println("ahmedazraq-SpojProblemsToDBAdder-Initializer");
+		addSPOJProblems();
 		addLanguages();
-
-
 	}
 	
 	private void addSPOJProblems(){
@@ -42,7 +38,7 @@ public class SpojProblemsToDBAdder extends Content {
 		
 			problem.setUrl(splitted[2].replaceAll(
 			        "https", "http"));
-			problem.setOjType("UVA");
+			problem.setOjType("SPOJ");
 			
 			submissionService.saveSpojProblemtoDB(problem,
 			        new AsyncCallback<Void>() {

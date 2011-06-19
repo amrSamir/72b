@@ -44,37 +44,12 @@ public class RegistrationPresenter implements Presenter {
 
 		this.coderService = coderService;
 		this.eventBus = eventBus;
-		checkRegistered();
 		this.display = display;
 
 		bind();
 
 	}
 
-	/**
-	 * check if already registered
-	 */
-	public void checkRegistered() {
-		System.out.println("Checking if registered");
-		coderService.checkRegistered(new AsyncCallback<Boolean>() {
-
-			@Override
-			public void onSuccess(Boolean result) {
-				if (result == true) {
-					Cookies.setCookie("isRegisteredCookie", "YES",
-					        AppController.COOKIES_EXPIRYDATE, null, "/", false);
-					eventBus.fireEvent(new CheckCookiesEvent());
-				} else {
-					// do nothing as you are already in RegistrationPresenter
-				}
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// show error and remain on the same page
-			}
-		});
-	}
 
 	/**
      * 

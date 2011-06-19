@@ -54,10 +54,17 @@ public interface CoderService extends RemoteService {
 	public boolean checkRegistered() throws NotLoggedInException;
 
 	/**
-	 * gets the added Account to the logged in user
+	 * gets the added Account for the logged in user
 	 * 
 	 * @return String with all the added accounts types
 	 */
 	public String getAddedAccounts();
+	
+	/**
+	 * Gets the username of the logged in user
+	 * @param accountType the account type
+	 * @return the username of the logged in user for the specific account type
+	 */
+	public String getUsername(String accountType);
 
 }

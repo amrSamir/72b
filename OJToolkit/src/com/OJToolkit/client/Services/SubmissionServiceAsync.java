@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.view.client.Range;
 
 public interface SubmissionServiceAsync {
 	/**

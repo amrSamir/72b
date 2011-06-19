@@ -8,6 +8,9 @@ import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.logical.shared.HasSelectionHandlers;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
@@ -29,14 +32,20 @@ public class AddAccountPresenter implements Presenter {
 
 		HasClickHandlers getAddUVAAccountButton();
 
-
 		HasValue<String> getAccountUserName();
 
 		HasValue<String> getAccountPassword();
+		
+		HasValue<String> getAlreadyRegisteredMessage();
+
+		HasSelectionHandlers<Integer> getSelectionHandler();
 
 		void notifySave();
-		
+
 		Widget asWidget();
+		 
+		void setVisible();
+
 	}
 
 	private final Display display;
@@ -53,7 +62,7 @@ public class AddAccountPresenter implements Presenter {
 	 * @param display
 	 */
 	public AddAccountPresenter(CoderServiceAsync coderService,
-			HandlerManager eventBus, final Display display) {
+	        HandlerManager eventBus, final Display display) {
 		// System.out.println("Ana 3nd Add Account Presenter...");
 		// LOG.log(Level.SEVERE, "Ana 3nd Add Account Presenter...");
 
@@ -62,6 +71,7 @@ public class AddAccountPresenter implements Presenter {
 		this.display = display;
 		bind();
 
+		setUsername("SPOJ");
 		this.coderService.getAddedAccounts(new AsyncCallback<String>() {
 
 			@Override
@@ -73,7 +83,33 @@ public class AddAccountPresenter implements Presenter {
 			public void onSuccess(String result) {
 				addedAccounts = result;
 				Cookies.setCookie("addedAccountsCookie", addedAccounts,
-						AppController.COOKIES_EXPIRYDATE, null, "/", false);
+				        AppController.COOKIES_EXPIRYDATE, null, "/", false);
+			}
+		});
+
+	}
+
+	/**
+	 * @param accountType
+	 */
+	private void setUsername(String accountType) {
+		this.coderService.getUsername(accountType, new AsyncCallback<String>() {
+
+			@Override
+			public void onSuccess(String result) {
+				if (result != null) {
+					display.getAccountUserName().setValue(result);
+					display.getAlreadyRegisteredMessage().setValue("You have already added this account. If you want to modify it, make the changes then save!");
+					display.setVisible();
+				} else{
+					display.getAlreadyRegisteredMessage().setValue("You have already added this account, modify it or delete it by clearing the text fields then save");
+				}
+
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+
 			}
 		});
 
@@ -89,7 +125,7 @@ public class AddAccountPresenter implements Presenter {
 			public void onClick(ClickEvent event) {
 				accountType = "SPOJ";
 				addAccount(accountType);
-				//display.setAccountType(accountType);
+				// display.setAccountType(accountType);
 			}
 		});
 
@@ -99,7 +135,7 @@ public class AddAccountPresenter implements Presenter {
 			public void onClick(ClickEvent event) {
 				accountType = "Timus";
 				addAccount(accountType);
-				//display.setAccountType(accountType);
+				// display.setAccountType(accountType);
 				// eventBus.fireEvent(new AddAccountDetailsEvent("X"));
 
 			}
@@ -111,46 +147,56 @@ public class AddAccountPresenter implements Presenter {
 			public void onClick(ClickEvent event) {
 				accountType = "UVA";
 				addAccount(accountType);
-				//display.setAccountType(accountType);
+				// display.setAccountType(accountType);
 				// eventBus.fireEvent(new AddAccountDetailsEvent("X"));
 			}
 		});
 
+		display.getSelectionHandler().addSelectionHandler(
+		        new SelectionHandler<Integer>() {
 
+			        @Override
+			        public void onSelection(SelectionEvent<Integer> event) {
+				        if (event.getSelectedItem() == 1) {
+				        	setUsername("UVA");
+				        } else if (event.getSelectedItem() == 2) {
+				        	setUsername("Timus");
+				        }
+
+			        }
+		        });
 
 	}
-	
-	private void addAccount(String ojType){
+
+	private void addAccount(String ojType) {
 
 		// eventBus.fireEvent(new AddAccountDetailsEvent("SPOJ"));
-		coderService.addAccount(ojType, display
-				.getAccountUserName().getValue(), display
-				.getAccountPassword().getValue(),
-				new AsyncCallback<Void>() {
+		coderService.addAccount(ojType,
+		        display.getAccountUserName().getValue(), display
+		                .getAccountPassword().getValue(),
+		        new AsyncCallback<Void>() {
 
-					@Override
-					public void onSuccess(Void result) {
-						// eventBus.fireEvent(new
-						// AlreadyRegisteredEvent());
-						addedAccounts += "-" + accountType;
-						Cookies.setCookie("addedAccountsCookie",
-								addedAccounts,
-								AppController.COOKIES_EXPIRYDATE, null,
-								"/", false);
-						display.notifySave();
-					}
+			        @Override
+			        public void onSuccess(Void result) {
+				        // eventBus.fireEvent(new
+				        // AlreadyRegisteredEvent());
+				        addedAccounts += "-" + accountType;
+				        Cookies.setCookie("addedAccountsCookie", addedAccounts,
+				                AppController.COOKIES_EXPIRYDATE, null, "/",
+				                false);
+				        display.notifySave();
+			        }
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("add account failer!!!");
-					}
-				});
+			        @Override
+			        public void onFailure(Throwable caught) {
+				        Window.alert("add account failer!!!");
+			        }
+		        });
 
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client
 	 * .ui.HasWidgets)
@@ -158,7 +204,7 @@ public class AddAccountPresenter implements Presenter {
 	@Override
 	public void go(HasWidgets container) {
 		container.clear();
-		container.add(display.asWidget());		
+		container.add(display.asWidget());
 	}
 
 }

@@ -11,6 +11,7 @@ import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.LoginServiceAsync;
 import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
+import com.OJToolkit.client.ValueObjects.LoginInfo;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.event.AddAccountEvent;
 import com.OJToolkit.client.event.AddAccountEventHandler;
@@ -24,6 +25,8 @@ import com.OJToolkit.client.event.LoginEvent;
 import com.OJToolkit.client.event.LoginEventHandler;
 import com.OJToolkit.client.event.RegisterationEventHandler;
 import com.OJToolkit.client.event.RegistrationEvent;
+import com.OJToolkit.client.event.TopPanelEvent;
+import com.OJToolkit.client.event.TopPanelEventHandler;
 import com.OJToolkit.client.event.ViewCodersEvent;
 import com.OJToolkit.client.event.ViewCodersEventHandler;
 import com.OJToolkit.client.event.ViewProblemEvent;
@@ -89,9 +92,12 @@ public class AppController implements ValueChangeHandler<String> {
 	private ProblemData problem;
 	private String OJType;
 	private String problemCode;
+	
+	private LoginInfo loginInfo;
 
 	/**
-	 * control the site and changes the pages 
+	 * control the site and changes the pages
+	 * 
 	 * @param eventBus
 	 * @param submissionService
 	 * @param languageService
@@ -168,7 +174,7 @@ public class AppController implements ValueChangeHandler<String> {
 
 			@Override
 			public void onLogin(LoginEvent event) {
-				doOnLogin();
+				doOnLogin(event.loginInfo);
 			}
 
 		});
@@ -183,20 +189,27 @@ public class AppController implements ValueChangeHandler<String> {
 			        }
 
 		        });
+
+		eventBus.addHandler(LeftPanelEvent.TYPE, new LeftPanelEventHandler() {
+
+			@Override
+			public void onLeftPanel(LeftPanelEvent event) {
+				doOnLeftPanel();
+
+			}
+
+		});
 		
-		eventBus.addHandler(LeftPanelEvent.TYPE,
-		        new LeftPanelEventHandler() {
+		eventBus.addHandler(TopPanelEvent.TYPE, new TopPanelEventHandler() {
 
-					@Override
-                    public void onLeftPanel(LeftPanelEvent event) {
-						doOnLeftPanel();
-	        
-	                    
-                    }
+	
+			@Override
+            public void onTopPanel(TopPanelEvent event) {
+				doOnTopPanel(event.logoutURL);
+	            
+            }
 
-			    
-
-		        });
+		});
 
 		eventBus.addHandler(ViewCodersEvent.TYPE, new ViewCodersEventHandler() {
 
@@ -220,14 +233,24 @@ public class AppController implements ValueChangeHandler<String> {
 	}
 
 	/**
+     * @param logoutURL2
+     */
+    protected void doOnTopPanel(String logoutURL) {
+    	Presenter presenter = new TopPanelPresenter(
+		        logoutURL, new TopPanelView());
+		presenter.go(this.topPanel);
+    }
+
+	/**
      * 
      */
-    protected void doOnLeftPanel() {
-    	Presenter presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));
+	protected void doOnLeftPanel() {
+		Presenter presenter = new LeftPanelPresenter(
+		        new LeftPanelView(eventBus));
 		presenter.go(this.leftPanel);
-	    // TODO Auto-generated method stub
-	    
-    }
+		// TODO Auto-generated method stub
+
+	}
 
 	/**
 	 * add cookies to history
@@ -239,8 +262,10 @@ public class AppController implements ValueChangeHandler<String> {
 
 	/**
 	 * add login in history
+	 * @param loginInfo 
 	 */
-	protected void doOnLogin() {
+	protected void doOnLogin(LoginInfo result) {
+		loginInfo = result;
 		History.newItem("login");
 
 	}
@@ -253,7 +278,6 @@ public class AppController implements ValueChangeHandler<String> {
 	protected void doOnAddAccountDetails(String oJType) {
 		this.OJType = oJType;
 		History.newItem("addAccountDetails");
-
 
 	}
 
@@ -276,7 +300,8 @@ public class AppController implements ValueChangeHandler<String> {
 	/**
 	 * view problem
 	 * 
-	 * @param problem to be shown
+	 * @param problem
+	 *            to be shown
 	 */
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
@@ -302,8 +327,9 @@ public class AppController implements ValueChangeHandler<String> {
 	}
 
 	/**
-	 * view problem submission 
-	 * @param problemCode 
+	 * view problem submission
+	 * 
+	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem) {
 		this.problem = problem;
@@ -315,8 +341,9 @@ public class AppController implements ValueChangeHandler<String> {
 		this.topPanel = topPanel;
 		this.leftPanel = leftPanel;
 		Presenter presenter = null;
-		
-		presenter = new TopPanelPresenter(new TopPanelView());
+		String logoutURLCookie = Cookies.getCookie("logoutURL");
+
+		presenter = new TopPanelPresenter(logoutURLCookie==null?"":logoutURLCookie,new TopPanelView());
 		presenter.go(this.topPanel);
 
 		presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));
@@ -346,21 +373,25 @@ public class AppController implements ValueChangeHandler<String> {
 		String token = event.getValue();
 		String isEnabledCookie = Cookies.getCookie("isEnabledCookie");
 		String isInvitedCookie = Cookies.getCookie("isInvitedCookie");
-
+		System.out.println("AE-AppController-Status:token=" + token
+		        + "&isEnabled=" + (isEnabledCookie != null) + "&isInvited="
+		        + (isInvitedCookie != null));
 		if (token != null) {
 
 			Presenter presenter = null;
 			if ((isInvitedCookie == null)) {
-					presenter = new InvitationPresenter(eventBus,new InvitationView());
+				presenter = new InvitationPresenter(eventBus,
+				        new InvitationView());
 			}
-			
-		//	System.out.println(isInvitedCookie);
+
+			// System.out.println(isInvitedCookie);
 			if (isInvitedCookie != null && isEnabledCookie != null) {
 				if (token.equals("invitation")) {
-					presenter = new CheckCookiesPresenter(eventBus);
+					presenter = new CheckCookiesPresenter(coderService, loginService,
+					        eventBus);
 				}
 				if (token.equals("login")) {
-					presenter = new LoginPresenter(loginService, coderService,
+					presenter = new LoginPresenter(loginInfo, loginService, coderService,
 					        eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
@@ -386,7 +417,7 @@ public class AppController implements ValueChangeHandler<String> {
 				} else if (token.equals("alreadyRegistered")) {
 					presenter = new ProblemListPresenter(submissionService,
 					        eventBus, new ProblemListView());
-					
+
 				} else if (token.equals("viewCoders")) {
 					presenter = new CodersPresenter(coderService, eventBus,
 					        new CodersView());
@@ -394,17 +425,22 @@ public class AppController implements ValueChangeHandler<String> {
 					presenter = new AddAccountPresenter(coderService, eventBus,
 					        new AddAccountView());
 				} else if (token.equals("checkCookies")) {
-					presenter = new CheckCookiesPresenter(eventBus);
+					presenter = new CheckCookiesPresenter(coderService, loginService,
+					        eventBus);
 				}
-			} else if (isInvitedCookie != null){
+			} else if (isInvitedCookie != null) {
 				if (token.equals("login")) {
-					presenter = new LoginPresenter(loginService, coderService,
+					presenter = new LoginPresenter(loginInfo, loginService, coderService,
 					        eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
 					        eventBus, new RegistrationView());
+				} else if (token.equals("invitation")) {
+					presenter = new CheckCookiesPresenter(coderService, loginService,
+					        eventBus);
 				} else {
-					presenter = new CheckCookiesPresenter(eventBus);
+					presenter = new CheckCookiesPresenter(coderService, loginService,
+					        eventBus);
 				}
 
 			}

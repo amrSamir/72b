@@ -3,6 +3,7 @@
  */
 package com.OJToolkit.client.event;
 
+import com.OJToolkit.client.ValueObjects.LoginInfo;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
@@ -12,9 +13,11 @@ import com.google.gwt.event.shared.GwtEvent;
 public class LoginEvent extends GwtEvent<LoginEventHandler> {
 
 	public static Type<LoginEventHandler> TYPE = new Type<LoginEventHandler>();
-
-	public LoginEvent() {
+	public LoginInfo loginInfo;
+	public LoginEvent(LoginInfo result) {
+		
 		super();
+		this.loginInfo = result;
 	}
 
 	/*

@@ -6,6 +6,7 @@ import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.google.gwt.view.client.Range;
 
 /**
  * @author 72B Contains all the submission and problems services
@@ -49,7 +50,8 @@ public interface SubmissionService extends RemoteService {
 	 * @return 50 Problems from the datastore
 	 */
 	public ArrayList<ProblemData> getProblems(long start);
-
+	
+	
 	/**
 	 * Fetch Problem from database
 	 * 
@@ -58,5 +60,5 @@ public interface SubmissionService extends RemoteService {
 	 * @return Problem
 	 */
 	public ProblemData getProblem(String problemCode, String ojType);
-
+	
 }

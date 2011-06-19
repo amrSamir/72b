@@ -31,6 +31,7 @@ public class LoginPresenter implements Presenter {
 	private final LoginServiceAsync loginService;
 	private final CoderServiceAsync coderService;
 	private final HandlerManager eventBus;
+	//private final LoginInfo loginInfo;
 
 	/**
 	 * 
@@ -39,38 +40,15 @@ public class LoginPresenter implements Presenter {
 	 * @param eventBus
 	 * @param display
 	 */
-	public LoginPresenter(LoginServiceAsync loginService,
+	public LoginPresenter(LoginInfo result, LoginServiceAsync loginService,
 	        CoderServiceAsync coderService, final HandlerManager eventBus,
 	        final Display display) {
 		this.loginService = loginService;
 		this.coderService = coderService;
 		this.eventBus = eventBus;
 		this.display = display;
-		loginService.login(GWT.getHostPageBaseURL(),
-		        new AsyncCallback<LoginInfo>() {
-			        @Override
-			        public void onFailure(Throwable error) {
-				        Window.alert("login_failed");
-			        }
-
-			        @Override
-			        public void onSuccess(LoginInfo result) {
-				        display.setLoginURL(result.getLoginUrl());
-
-				        if (!result.isLoggedIn()) {
-
-				        } else {
-					       // Window.alert("Logged In");
-					        // create logged in cookie
-					        Cookies.setCookie("isLoggedInCookie", "YES",
-					                AppController.COOKIES_EXPIRYDATE, null,
-					                "/", false);
-					        eventBus.fireEvent(new CheckCookiesEvent());
-					        // checkRegistered();
-				        }
-			        }
-		        });
-
+		 display.setLoginURL(result.getLoginUrl());
+		
 	}
 
 	/*

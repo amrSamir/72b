@@ -29,4 +29,6 @@ public interface CoderServiceAsync {
 			AsyncCallback<Void> callback);
 	void getAddedAccounts(AsyncCallback<String> callback);
 
+	void getUsername(String accountType, AsyncCallback<String> callback);
+
 }

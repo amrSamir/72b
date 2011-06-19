@@ -195,4 +195,34 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		return ret;
 	}
 
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.Services.CoderService#getUsername(java.lang.String)
+     */
+    @Override
+    public String getUsername(String accountType) {
+    	PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		String ret = null;
+		try {
+
+			String select_query = "select from " + Coder.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("email == userEmail");
+			query.declareParameters("java.lang.String userEmail");
+			List<Coder> coders = (List<Coder>) query.execute(DataStoreHandler
+			        .getUser().getEmail());
+			if (accountType.equals("SPOJ")) {
+				ret = coders.get(0).getSPOJUsername();
+			}
+			else if (accountType.equals("Timus")) {
+				ret = coders.get(0).getTimusUsername();
+			}
+			else if (accountType.equals("UVA")) {
+				ret = coders.get(0).getUVAUsername();
+			}
+		} finally {
+			pm.close();
+		}
+		
+		return ret;
+    }
 }

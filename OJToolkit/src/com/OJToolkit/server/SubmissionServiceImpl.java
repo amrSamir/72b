@@ -9,6 +9,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
+import com.OJToolkit.client.Exceptions.NotLoggedInException;
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
@@ -17,6 +18,7 @@ import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Submission;
 import com.OJToolkit.server.engine.Timus;
 import com.OJToolkit.server.engine.UVA;
+import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
@@ -51,7 +53,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			        .getUVAUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getUVAPassword();
-		//	judge = new UVA();
+			// judge = new UVA();
 		}
 
 		if (judge != null) {
@@ -61,8 +63,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				System.out.println("Password" + judgePassword);
 				System.out.println("Problem Code: " + problemCode);
 				System.out.println("Code: " + code);
-				judge.submitProblem(judgeUsername, judgePassword,
-				        problemCode, language, code);
+				judge.submitProblem(judgeUsername, judgePassword, problemCode,
+				        language, code);
 				System.out.println("Submitted");
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -79,8 +81,11 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	// * -------- MEM --> The memory used by the solution.
 	// *
 	//
-	/* (non-Javadoc)
-	 * @see com.OJToolkit.client.Services.SubmissionService#getLastProblemStatus(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.Services.SubmissionService#getLastProblemStatus(
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
 	public ProblemStatusData getLastProblemStatus(String problemCode,
@@ -108,22 +113,27 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			        .getUVAUsername();
 			judgePassword = DataStoreHandler.getAllCoders().get(0)
 			        .getUVAPassword();
-		//	judge = new UVA();
+			// judge = new UVA();
 		}
 
 		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
-
 		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(),
 		        s.getProblemId(), s.getStatus(), s.getRuntime(),
 		        s.getMemoryUsed());
+		addSubmissionResult(DataStoreHandler.getAllCoders().get(0)
+		        .getUsername(), judgeUsername, problemCode, ojType,
+		        s.getStatus(), s.getRuntime(), s.getMemoryUsed(), s.getDate());
 		return dpStatus;
 
 	}
 
 	int counter = 0;
 
-	/* (non-Javadoc)
-	 * @see com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(com.OJToolkit.client.ValueObjects.ProblemData)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(com
+	 * .OJToolkit.client.ValueObjects.ProblemData)
 	 */
 	@Override
 	public void saveSpojProblemtoDB(ProblemData problemData) {
@@ -146,11 +156,10 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			pm.close();
 		}
 
-
-
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see com.OJToolkit.client.Services.SubmissionService#getProblems(long)
 	 */
 	@Override
@@ -217,12 +226,52 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			problemData.setUrl(problems.get(0).getUrl());
 
 		} finally {
-		
+
 			pm.close();
 		}
 
-		
 		return problemData;
+	}
+
+	public void addSubmissionResult(String username, String judgeUsername,
+	        String problemCode, String judgeType, String judgeResult,
+	        String time, String memory, String date) {
+
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try {
+
+			String select_query = "select from "
+			        + UserSubmission.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("judgeUsername  == jUsername && date == jDate");
+			query.declareParameters("java.lang.String jUsername,java.lang.String jDate");
+			List<UserSubmission> submissions = (List<UserSubmission>) query
+			        .execute(judgeUsername, date);
+			System.out.println("AE-SubmServImp-" + submissions.size());
+			if (submissions.size() > 0) {
+				submissions.get(0).setJudgeResult(judgeResult);
+				submissions.get(0).setJudgeType(judgeType);
+				submissions.get(0).setMemory(memory);
+				submissions.get(0).setProblemCode(problemCode);
+				submissions.get(0).setTime(time);
+				submissions.get(0).setUsername(username);
+				pm.makePersistent(submissions.get(0));
+			} else {
+				UserSubmission submission = new UserSubmission();
+				submission.setDate(date);
+				submission.setJudgeResult(judgeResult);
+				submission.setJudgeType(judgeType);
+				submission.setJudgeUsername(judgeUsername);
+				submission.setMemory(memory);
+				submission.setProblemCode(problemCode);
+				submission.setTime(time);
+				submission.setUsername(username);
+				pm.makePersistent(submission);
+			}
+		} finally {
+			pm.close();
+		}
+
 	}
 
 }

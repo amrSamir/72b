@@ -6,6 +6,9 @@ package com.OJToolkit.client.view;
 import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.logical.shared.HasSelectionHandlers;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratedPopupPanel;
@@ -26,6 +29,7 @@ public class AddAccountView extends Composite implements
 
 	Button [] btnAddAccount;
 	TextBox [] txtAccountUsername;
+	TextBox [] txtAlreadyRegisteredMessage;
 	PasswordTextBox [] txtAccountPassword;
 	TabLayoutPanel tabPanel;
 	final String [] ojs = {"SPOJ","UVA","Timus"};
@@ -42,6 +46,7 @@ public class AddAccountView extends Composite implements
 
 	    btnAddAccount = new Button[ojs.length];
 	    txtAccountUsername = new TextBox[ojs.length];
+	    txtAlreadyRegisteredMessage = new TextBox[ojs.length];
 	    txtAccountPassword = new PasswordTextBox[ojs.length];
 	    
 	    for(int i =0  ; i < ojs.length; ++i) {
@@ -61,7 +66,12 @@ public class AddAccountView extends Composite implements
 	    	
 	    	btnAddAccount[i] = new Button("Save Account");
 	    	verticalPanel.add(btnAddAccount[i]);
-
+	    	
+	    	txtAlreadyRegisteredMessage[i] = new TextBox();
+	    	txtAlreadyRegisteredMessage[i].setVisible(false);
+	    	verticalPanel.add(txtAlreadyRegisteredMessage[i]);
+	    	
+	    	
 	    	tabPanel.add(verticalPanel,"Add Account "+ojs[i]);
 	    }
 	}
@@ -140,4 +150,32 @@ public class AddAccountView extends Composite implements
 	    simplePopup.setPopupPosition(200, 200);
 	    simplePopup.show();
 	}
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#getSelectionHandler()
+     */
+    @Override
+    public HasSelectionHandlers<Integer> getSelectionHandler() {
+	    return tabPanel;
+    }
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#getAlreadyRegisteredMessage()
+     */
+    @Override
+    public HasValue<String> getAlreadyRegisteredMessage() {
+		return txtAlreadyRegisteredMessage[tabPanel.getSelectedIndex()];
+
+    }
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#setVisible()
+     */
+    @Override
+    public void setVisible() {
+    	txtAlreadyRegisteredMessage[tabPanel.getSelectedIndex()].setVisible(true);    
+    }
+    
+
+    
 }

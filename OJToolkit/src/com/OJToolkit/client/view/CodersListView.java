@@ -78,7 +78,6 @@ public class CodersListView extends Composite implements CodersListPresenter.Dis
 		coderTablePager.setDisplay(codersTable);
 		coderTablePager.setPageSize(50);
 		
-		coderDataProvider.addDataDisplay(codersTable);
 		vpanelCoder.add(codersTable);
 		vpanelCoder.add(coderTablePager) ;
 		// absolutePanel = new AbsolutePanel();

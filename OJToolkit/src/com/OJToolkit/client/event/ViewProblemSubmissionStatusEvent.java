@@ -16,12 +16,15 @@ public class ViewProblemSubmissionStatusEvent extends
 	public static Type<ViewProblemSubmissionStatusEventHandler> TYPE = new Type<ViewProblemSubmissionStatusEventHandler>();
 
 	public ProblemData problem;
+
+	public boolean isAnonymousSubmission;
 	/**
      * @param problemCode The problemcode of the submitted problem
      */
-    public ViewProblemSubmissionStatusEvent(ProblemData problem) {
+    public ViewProblemSubmissionStatusEvent(ProblemData problem, boolean isAnonymousSubmission) {
 	    super();
     	this.problem = problem;
+    	this.isAnonymousSubmission = isAnonymousSubmission;
     }
 
 	/*

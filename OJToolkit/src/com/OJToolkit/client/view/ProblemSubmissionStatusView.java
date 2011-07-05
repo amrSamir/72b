@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  * @author 72B May 10, 2011
  */
 public class ProblemSubmissionStatusView extends Composite implements
-		ProblemSubmissionStatusPresenter.Display {
+        ProblemSubmissionStatusPresenter.Display {
 
 	private Button btnRefresh;
 	VerticalPanel verticalPanel;
@@ -25,6 +25,8 @@ public class ProblemSubmissionStatusView extends Composite implements
 	TextBox txtJudgeResult;
 	TextBox txtTime;
 	TextBox txtMemory;
+	Label lblTime;
+	Label lblMemory;
 
 	public ProblemSubmissionStatusView() {
 		VerticalPanel verticalPanel = new VerticalPanel();
@@ -47,14 +49,13 @@ public class ProblemSubmissionStatusView extends Composite implements
 
 		txtJudgeResult = new TextBox();
 		verticalPanel.add(txtJudgeResult);
-
-		Label lblTime = new Label("Time");
+		lblTime = new Label("Time");
 		verticalPanel.add(lblTime);
 
 		txtTime = new TextBox();
 		verticalPanel.add(txtTime);
 
-		Label lblMemory = new Label("Memory");
+		lblMemory = new Label("Memory");
 		verticalPanel.add(lblMemory);
 
 		txtMemory = new TextBox();
@@ -67,7 +68,6 @@ public class ProblemSubmissionStatusView extends Composite implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter.Display
 	 * #getRefreshButton()
@@ -79,13 +79,19 @@ public class ProblemSubmissionStatusView extends Composite implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter.Display
 	 * #setSubmissionResult(com.OJToolkit.client.ValueObjects.ProblemStatusData)
 	 */
 	@Override
 	public void setSubmissionResult(ProblemStatusData result) {
+		if (result.getJudgeResult().equals("compilation error")
+		        || result.getJudgeResult().equals("Wrong answer")) {
+			lblMemory.setVisible(false);
+			lblTime.setVisible(false);
+			txtMemory.setVisible(false);
+			txtTime.setVisible(false);
+		}
 		txtDate.setText(result.getDate());
 		txtJudgeResult.setText(result.getJudgeResult());
 		txtMemory.setText(result.getMem());

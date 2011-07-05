@@ -16,7 +16,9 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.cellview.client.ColumnSortEvent;
 import com.google.gwt.user.cellview.client.ColumnSortEvent.AsyncHandler;
+import com.google.gwt.user.cellview.client.ColumnSortEvent.Handler;
 import com.google.gwt.user.cellview.client.ColumnSortList;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.SimplePager.TextLocation;
@@ -89,7 +91,7 @@ public class ProblemList2Presenter implements Presenter {
 	private HashMap<Column<ProblemData, String>, String> columnMap;
 
 	public ProblemList2Presenter(SubmissionServiceAsync submissionService,
-			HandlerManager eventBus) {
+	        HandlerManager eventBus) {
 		this.submissionService = submissionService;
 		this.eventBus = eventBus;
 	}
@@ -112,7 +114,7 @@ public class ProblemList2Presenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				cellTable.setVisibleRangeAndClearData(
-						cellTable.getVisibleRange(), true);
+				        cellTable.getVisibleRange(), true);
 			}
 		});
 
@@ -122,27 +124,43 @@ public class ProblemList2Presenter implements Presenter {
 
 		// Attach a Async sort handler to cellTable.
 		AsyncHandler sortHandler = new AsyncHandler(cellTable);
+		cellTable.addColumnSortHandler(new Handler() {
+
+			@Override
+			public void onColumnSort(ColumnSortEvent event) {
+				if (event.getColumn() == null)
+					return;
+
+				String columnName = columnMap.get(event.getColumn());
+				if (columnName.equals("problemCode"))
+					searchType.setSelectedIndex(0);
+				else if (columnName.equals("problemName"))
+					searchType.setSelectedIndex(1);
+				else
+					searchType.setSelectedIndex(2);
+			}
+		});
 		cellTable.addColumnSortHandler(sortHandler);
 
 		// Create a Pager to control the table.
 		SimplePager.Resources pagerResources = GWT
-				.create(SimplePager.Resources.class);
+		        .create(SimplePager.Resources.class);
 		pager = new SimplePager(TextLocation.CENTER, pagerResources, false, 0,
-				true);
+		        true);
 		pager.setDisplay(cellTable);
 
 		// Add a selection model so we can select cells.
 		final SingleSelectionModel<ProblemData> selectionModel = new SingleSelectionModel<ProblemData>();
 		selectionModel
-				.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+		        .addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
 
-					@Override
-					public void onSelectionChange(SelectionChangeEvent event) {
-						ProblemData problemData = selectionModel
-								.getSelectedObject();
-						eventBus.fireEvent(new ViewProblemEvent(problemData));
-					}
-				});
+			        @Override
+			        public void onSelectionChange(SelectionChangeEvent event) {
+				        ProblemData problemData = selectionModel
+				                .getSelectedObject();
+				        eventBus.fireEvent(new ViewProblemEvent(problemData));
+			        }
+		        });
 		cellTable.setSelectionModel(selectionModel);
 
 		// Initialize the columns.
@@ -162,7 +180,7 @@ public class ProblemList2Presenter implements Presenter {
 
 				// If searching or sorting Queries changed, the range is reset
 				if (!sortingQuery.equals(previousSortingQuery)
-						|| !searchQuery.equals(previousSearchQuery)) {
+				        || !searchQuery.equals(previousSearchQuery)) {
 					pager.setPage(0);
 					previousSortingQuery = sortingQuery;
 					previousSearchQuery = searchQuery;
@@ -170,18 +188,18 @@ public class ProblemList2Presenter implements Presenter {
 
 				// Fetch problem from server
 				submissionService.getProblems(range, sortingQuery, searchQuery,
-						new AsyncCallback<ArrayList<ProblemData>>() {
+				        new AsyncCallback<ArrayList<ProblemData>>() {
 
-							@Override
-							public void onSuccess(ArrayList<ProblemData> result) {
-								cellTable.setRowData(range.getStart(), result);
-							}
+					        @Override
+					        public void onSuccess(ArrayList<ProblemData> result) {
+						        cellTable.setRowData(range.getStart(), result);
+					        }
 
-							@Override
-							public void onFailure(Throwable caught) {
-								System.out.println("Failure");
-							}
-						});
+					        @Override
+					        public void onFailure(Throwable caught) {
+						        System.out.println("Failure");
+					        }
+				        });
 			}
 		};
 
@@ -201,13 +219,13 @@ public class ProblemList2Presenter implements Presenter {
 	 * Add the columns to the table.
 	 */
 	private void initTableColumns(
-			final SelectionModel<ProblemData> selectionModel,
-			AsyncHandler sortHandler) {
+	        final SelectionModel<ProblemData> selectionModel,
+	        AsyncHandler sortHandler) {
 		columnMap = new HashMap<Column<ProblemData, String>, String>();
 
 		// Problem Code.
 		Column<ProblemData, String> problemCodeColumn = new Column<ProblemData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(ProblemData object) {
 				return object.getProblemCode();
@@ -220,7 +238,7 @@ public class ProblemList2Presenter implements Presenter {
 
 		// Problem Name.
 		Column<ProblemData, String> problemNameColumn = new Column<ProblemData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(ProblemData object) {
 				return object.getProblemName();
@@ -233,7 +251,7 @@ public class ProblemList2Presenter implements Presenter {
 
 		// Online Judge.
 		Column<ProblemData, String> onlineJudgeColumn = new Column<ProblemData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(ProblemData object) {
 				return object.getOjType();
@@ -252,6 +270,12 @@ public class ProblemList2Presenter implements Presenter {
 		// Columns currently sorted
 		String sortingQuery = "";
 
+		// If different sorting than searching, disable sorting
+		if (sortList.size() == 0
+		        || !columnMap.get(sortList.get(0).getColumn()).equals(
+		                searchType.getValue(searchType.getSelectedIndex())))
+			return sortingQuery;
+
 		for (int i = 0; i < sortList.size(); i++) {
 			if (i != 0)
 				sortingQuery += ", ";
@@ -265,6 +289,6 @@ public class ProblemList2Presenter implements Presenter {
 	String getSearchQuery() {
 		String type = searchType.getValue(searchType.getSelectedIndex());
 		return type + " >= \"" + searchBox.getText() + "\" && " + type
-				+ " < \"" + searchBox.getText() + "\ufffd\"";
+		        + " < \"" + searchBox.getText() + "\ufffd\"";
 	}
 }

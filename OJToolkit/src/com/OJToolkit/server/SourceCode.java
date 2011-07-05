@@ -6,6 +6,8 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import com.google.appengine.api.datastore.Text;
+
 
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
@@ -24,7 +26,7 @@ public class SourceCode {
 	@Persistent
 	private String url;
 	@Persistent
-	private String code;
+	private Text code;
 	@Persistent
 	private String note;
 	@Persistent
@@ -40,7 +42,7 @@ public class SourceCode {
 		this.problemCode = problemCode;
 		this.problemName = problemName;
 		this.url = url;
-		this.code = code;
+		this.code = new Text(code);
 		this.note = note;
 		this.judgeResult = judgeResult;
 		this.date = date;
@@ -77,10 +79,10 @@ public class SourceCode {
 		this.url = url;
 	}
 	public String getCode() {
-		return code;
+		return code.getValue();
 	}
 	public void setCode(String code) {
-		this.code = code;
+		this.code = new Text(code);
 	}
 	public String getNote() {
 		return note;

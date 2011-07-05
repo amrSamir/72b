@@ -33,19 +33,22 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	private ProblemStatusData problemStatus;
 	//private final String problemCode;
 	private final ProblemData problem;
+	
+	private  boolean isAnonymousSubmission = false;
 	/**
 	 * Generate Problem statue page
 	 * @param submssionService
 	 * @param eventBus
 	 * @param display
 	 */
-	public ProblemSubmissionStatusPresenter(ProblemData problem,
+	public ProblemSubmissionStatusPresenter(ProblemData problem, boolean isAnonymousSubmission,
 	        SubmissionServiceAsync submssionService, HandlerManager eventBus,
 	        final Display display) {
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
 		this.problemStatus = new ProblemStatusData();
 		this.problem = problem;
+		this.isAnonymousSubmission = isAnonymousSubmission;
 		this.display = display;
 		
 
@@ -59,12 +62,13 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	 */
 	void callGetLastProblemStatusService() {
 		submssionService
-		        .getLastProblemStatus(problem.getProblemCode(),problem.getOjType(),new AsyncCallback<ProblemStatusData>() {
+		        .getLastProblemStatus(isAnonymousSubmission, problem.getProblemCode(),problem.getOjType(),new AsyncCallback<ProblemStatusData>() {
 
 			        @Override
 			        public void onSuccess(ProblemStatusData result) {
 				        problemStatus = result;
 				        display.setSubmissionResult(result);
+				        
 			        }
 
 			        @Override

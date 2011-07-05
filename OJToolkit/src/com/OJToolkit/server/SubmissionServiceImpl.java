@@ -20,38 +20,57 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.gwt.view.client.Range;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
-		SubmissionService {
+        SubmissionService {
 	// long DBStartIndex = 14680;
 	// long DBStartIndex =73670;
 	private static final Logger LOG = Logger
-			.getLogger(SubmissionServiceImpl.class.getName());
+	        .getLogger(SubmissionServiceImpl.class.getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
 	@Override
-	public void submitCode(String problemCode, String ojType, String code,
-			String language) {
+	public void submitCode(boolean isAnonymousSubmission, String problemCode,
+	        String ojType, String code, String language) {
 		Judge judge = null;
 		String judgeUsername = "";
 		String judgePassword = "";
-		if (ojType.equals("SPOJ")) {
-			System.out.println("Submit in SPOOOOJ");
-			judgeUsername = DataStoreHandler.getAllCoders().get(0)
-					.getSPOJUsername();
-			judgePassword = DataStoreHandler.getAllCoders().get(0)
-					.getSPOJPassword();
-			judge = new SPOJ();
-		} else if (ojType.equals("Timus")) {
-			judgeUsername = DataStoreHandler.getAllCoders().get(0)
-					.getTimusUsername();
-			judgePassword = DataStoreHandler.getAllCoders().get(0)
-					.getTimusPassword();
-			judge = new Timus();
-		} else if (ojType.equals("UVA")) {
-			judgeUsername = DataStoreHandler.getAllCoders().get(0)
-					.getUVAUsername();
-			judgePassword = DataStoreHandler.getAllCoders().get(0)
-					.getUVAPassword();
-			// judge = new UVA();
+		if (isAnonymousSubmission) {
+			if (ojType.equals("SPOJ")) {
+				System.out.println("Submit in SPOOOOJ");
+				judgeUsername = "ojtest";
+				judgePassword = "123456";
+				judge = new SPOJ();
+			} else if (ojType.equals("Timus")) {
+				judgeUsername = "108015CD";
+				judgePassword = "123456";
+				judge = new Timus();
+			} else if (ojType.equals("UVA")) {
+				judgeUsername = "uvatest72";
+				judgePassword = "123456";
+				// judge = new UVA();
+			}
+
+		} else {
+
+			if (ojType.equals("SPOJ")) {
+				System.out.println("Submit in SPOOOOJ");
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+				        .getSPOJUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+				        .getSPOJPassword();
+				judge = new SPOJ();
+			} else if (ojType.equals("Timus")) {
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+				        .getTimusUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+				        .getTimusPassword();
+				judge = new Timus();
+			} else if (ojType.equals("UVA")) {
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+				        .getUVAUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+				        .getUVAPassword();
+				// judge = new UVA();
+			}
 		}
 
 		if (judge != null) {
@@ -62,7 +81,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				System.out.println("Problem Code: " + problemCode);
 				System.out.println("Code: " + code);
 				judge.submitProblem(judgeUsername, judgePassword, problemCode,
-						language, code);
+				        language, code);
 				System.out.println("Submitted");
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -81,45 +100,62 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	//
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#getLastProblemStatus(
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public ProblemStatusData getLastProblemStatus(String problemCode,
-			String ojType) throws Exception {
+	public ProblemStatusData getLastProblemStatus(
+	        boolean isAnonymousSubmission, String problemCode, String ojType)
+	        throws Exception {
 		Judge judge = null;
 		String judgeUsername = "";
 		String judgePassword = "";
-		if (ojType.equals("SPOJ")) {
-			System.out.println("submission result for SPOJ");
-			judgeUsername = DataStoreHandler.getAllCoders().get(0)
-					.getSPOJUsername();
-			judgePassword = DataStoreHandler.getAllCoders().get(0)
-					.getSPOJPassword();
-			judge = new SPOJ();
-		} else if (ojType.equals("Timus")) {
-			System.out.println("submission result for timus");
-			judgeUsername = DataStoreHandler.getAllCoders().get(0)
-					.getTimusUsername();
-			judgePassword = DataStoreHandler.getAllCoders().get(0)
-					.getTimusPassword();
-			judge = new Timus();
-		} else if (ojType.equals("UVA")) {
-			System.out.println("submission result for UVA");
-			judgeUsername = DataStoreHandler.getAllCoders().get(0)
-					.getUVAUsername();
-			judgePassword = DataStoreHandler.getAllCoders().get(0)
-					.getUVAPassword();
-			// judge = new UVA();
+		if (isAnonymousSubmission) {
+			if (ojType.equals("SPOJ")) {
+				System.out.println("Submit in SPOOOOJ");
+				judgeUsername = "ojtest";
+				judgePassword = "123456";
+				judge = new SPOJ();
+			} else if (ojType.equals("Timus")) {
+				judgeUsername = "108015CD";
+				judgePassword = "123456";
+				judge = new Timus();
+			} else if (ojType.equals("UVA")) {
+				judgeUsername = "uvatest72";
+				judgePassword = "123456";
+				// judge = new UVA();
+			}
+		} else {
+
+			if (ojType.equals("SPOJ")) {
+				System.out.println("submission result for SPOJ");
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+				        .getSPOJUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+				        .getSPOJPassword();
+				judge = new SPOJ();
+			} else if (ojType.equals("Timus")) {
+				System.out.println("submission result for timus");
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+				        .getTimusUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+				        .getTimusPassword();
+				judge = new Timus();
+			} else if (ojType.equals("UVA")) {
+				System.out.println("submission result for UVA");
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+				        .getUVAUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+				        .getUVAPassword();
+				// judge = new UVA();
+			}
 		}
 
 		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
-
 		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(),
-				s.getProblemId(), s.getStatus(), s.getRuntime(),
-				s.getMemoryUsed());
+		        s.getProblemId(), s.getStatus(), s.getRuntime(),
+		        s.getMemoryUsed());
 		addSubmissionResult(DataStoreHandler.getAllCoders().get(0)
 		        .getUsername(), judgeUsername, problemCode, ojType,
 		        s.getStatus(), s.getRuntime(), s.getMemoryUsed(), s.getDate());
@@ -131,7 +167,6 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(com
 	 * .OJToolkit.client.ValueObjects.ProblemData)
@@ -145,8 +180,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			// (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
 
 			Problem problem = new Problem(problemData.getProblemCode(),
-					problemData.getProblemName(), problemData.getUrl(),
-					problemData.getOjType());
+			        problemData.getProblemName(), problemData.getUrl(),
+			        problemData.getOjType());
 
 			pm.makePersistent(problem);
 
@@ -161,21 +196,21 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see com.OJToolkit.client.Services.SubmissionService#getProblems(long)
 	 */
 	@Override
 	public ArrayList<ProblemData> getProblems(Range range, String sortingQuery,
-			String searchQuery) {
+	        String searchQuery) {
 		ArrayList<ProblemData> ret = new ArrayList<ProblemData>();
 		ProblemData problemData = new ProblemData();
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
+			LOG.info(sortingQuery);
 			String select_query = "select from " + Problem.class.getName();
 			Query queryToGetStartIndex = pm.newQuery(select_query);
 			queryToGetStartIndex.setRange(0, 1);
 			List<Problem> tempProblems = (List<Problem>) queryToGetStartIndex
-					.execute();
+			        .execute();
 			// long startIndex = tempProblems.get(0).getProbID();
 			// long start = startIndex+range.getStart();
 			// System.out.println("new index " + start);
@@ -186,7 +221,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				query.setOrdering(sortingQuery);
 			query.setFilter(searchQuery);
 			query.setRange(range.getStart(),
-					range.getStart() + range.getLength());
+			        range.getStart() + range.getLength());
 			// query.declareParameters("java.lang.String problemID");
 			List<Problem> problems = (List<Problem>) query.execute();
 
@@ -196,8 +231,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				problemData.setOjType(problem.getOjType());
 				problemData.setUrl(problem.getUrl());
 				ret.add(new ProblemData(problemData.getProblemCode(),
-						problemData.getProblemName(), problemData.getUrl(),
-						problemData.getOjType()));
+				        problemData.getProblemName(), problemData.getUrl(),
+				        problemData.getOjType()));
 			}
 
 		} finally {
@@ -208,7 +243,6 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#getProblem(java.lang.
 	 * String)
@@ -224,7 +258,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			query.setFilter("problemCode == probCode && ojType == OJType");
 			query.declareParameters("java.lang.String probCode, java.lang.String OJType");
 			List<Problem> problems = (List<Problem>) query.execute(problemCode,
-					ojType);
+			        ojType);
 			problemData.setProblemCode(problems.get(0).getProblemCode());
 			problemData.setProblemName(problems.get(0).getProblemName());
 			problemData.setOjType(problems.get(0).getOjType());

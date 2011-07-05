@@ -77,13 +77,15 @@ public class AppController implements ValueChangeHandler<String> {
 	private final HintServiceAsync hintService;
 
 	private String problemStr = "problem";
+
+	private boolean isAnonymousSubmission = false;
 	// public static boolean isEnabled;
 
 	/**
 	 * remembers cookie for 2 weeks.
 	 */
 	public static final Date COOKIES_EXPIRYDATE = new Date(
-	        System.currentTimeMillis() + 1000 * 60 * 60);
+	        System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 14);
 
 	private HasWidgets container;
 	private HasWidgets topPanel;
@@ -133,7 +135,8 @@ public class AppController implements ValueChangeHandler<String> {
 			        @Override
 			        public void onSubmitProblem(
 			                ViewProblemSubmissionStatusEvent event) {
-				        doViewProblemSubmissionStatus(event.problem);
+				        doViewProblemSubmissionStatus(event.problem,
+				                event.isAnonymousSubmission);
 			        }
 		        });
 
@@ -200,12 +203,11 @@ public class AppController implements ValueChangeHandler<String> {
 		
 		eventBus.addHandler(TopPanelEvent.TYPE, new TopPanelEventHandler() {
 
-	
 			@Override
-            public void onTopPanel(TopPanelEvent event) {
+			public void onTopPanel(TopPanelEvent event) {
 				doOnTopPanel(event.logoutURL);
-	            
-            }
+
+			}
 
 		});
 
@@ -323,10 +325,13 @@ public class AppController implements ValueChangeHandler<String> {
 
 	/**
 	 * view problem submission 
+	 * @param isAnonymousSubmission2
 	 * @param problemCode
 	 */
-	private void doViewProblemSubmissionStatus(ProblemData problem) {
+	private void doViewProblemSubmissionStatus(ProblemData problem,
+	        boolean isAnonymousSubmission2) {
 		this.problem = problem;
+		this.isAnonymousSubmission = isAnonymousSubmission2;
 		History.newItem("problemSubmissionStatus");
 	}
 
@@ -337,7 +342,8 @@ public class AppController implements ValueChangeHandler<String> {
 		Presenter presenter = null;
 		String logoutURLCookie = Cookies.getCookie("logoutURL");
 
-		presenter = new TopPanelPresenter(logoutURLCookie==null?"":logoutURLCookie,new TopPanelView());
+		presenter = new TopPanelPresenter(logoutURLCookie == null ? ""
+		        : logoutURLCookie, new TopPanelView());
 		presenter.go(this.topPanel);
 
 		presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));
@@ -369,7 +375,7 @@ public class AppController implements ValueChangeHandler<String> {
 		String isInvitedCookie = Cookies.getCookie("isInvitedCookie");
 		System.out.println("AE-AppController-Status:token=" + token
 		        + "&isEnabled=" + (isEnabledCookie != null) + "&isInvited="
-		        + (isInvitedCookie != null));
+		        + (isInvitedCookie != null ? isInvitedCookie : "NO"));
 		if (token != null) {
 
 			Presenter presenter = null;
@@ -378,7 +384,6 @@ public class AppController implements ValueChangeHandler<String> {
 				        new InvitationView());
 			}
 
-			// System.out.println(isInvitedCookie);
 			if (isInvitedCookie != null && isEnabledCookie != null) {
 				if (token.equals("invitation")) {
 					presenter = new CheckCookiesPresenter(coderService, loginService,
@@ -391,9 +396,12 @@ public class AppController implements ValueChangeHandler<String> {
 					presenter = new RegistrationPresenter(coderService,
 					        eventBus, new RegistrationView());
 				} else if (token.equals("problemSubmissionStatus")) {
-					presenter = new ProblemSubmissionStatusPresenter(problem,
-					        submissionService, eventBus,
-					        new ProblemSubmissionStatusView());
+					if (problem != null) {
+						presenter = new ProblemSubmissionStatusPresenter(
+						        problem, isAnonymousSubmission,
+						        submissionService, eventBus,
+						        new ProblemSubmissionStatusView());
+					}
 				} else if (token.startsWith("problem")) {
 					if (problem == null) {
 						presenter = new ProblemPresenter(token.substring(7),

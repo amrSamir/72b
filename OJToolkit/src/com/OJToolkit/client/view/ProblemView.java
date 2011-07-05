@@ -12,13 +12,14 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Frame;
+import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.StackLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -33,9 +34,13 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	VerticalPanel masterPanel;
 	StackLayoutPanel splitPanel;
 	Label lblPrblmTitle;
+	Label lblNotRegistered;
+	Hyperlink hprAddAccounts;
 	ListBox comboBox;
 	TextArea txtCode;
 	Frame problemStatementFrame;
+	private boolean isAnonymousSubmission = false;
+	Anchor problemLink;
 
 	public ProblemView() {
 		masterPanel = new VerticalPanel();
@@ -46,10 +51,37 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		lblPrblmTitle.setStylePrimaryName("ProblemTitle");
 		lblPrblmTitle.setSize("100%", "100%");
 		masterPanel.add(lblPrblmTitle);
-		masterPanel.setCellHeight(lblPrblmTitle, "50px");
+		masterPanel.setCellHeight(lblPrblmTitle, "5%");
+		
+		
+		lblNotRegistered = new Label("fds");
+		lblNotRegistered.setVisible(false);
+		lblNotRegistered.setSize("100%", "100%");
+		lblNotRegistered.setStylePrimaryName("ProblemTitle");
+		masterPanel.add(lblNotRegistered);
+		//masterPanel.setCellHeight(lblNotRegistered, "5%");
+		
+		
+		hprAddAccounts = new Hyperlink("fdsf","addAccount");
+		hprAddAccounts.setVisible(false);
+		hprAddAccounts.setStylePrimaryName("ProblemTitle");
+		hprAddAccounts.setSize("100%", "100%");
+		//masterPanel.setCellHeight(hprAddAccounts, "5%");
+		masterPanel.add(hprAddAccounts);
+		
+		
+		problemLink = new Anchor();
+		problemLink.setStyleName("ProblemTitle");
+		problemLink.setSize("100%", "100%");
+		masterPanel.setCellHeight(problemLink, "5%");
+		masterPanel.add(problemLink);
+		
+	
 		splitPanel = new StackLayoutPanel(Unit.EM);
 		splitPanel.setSize("100%", "100%");
 		masterPanel.add(splitPanel);
+		masterPanel.setCellHeight(splitPanel, "100%");
+		
 		AbsolutePanel problemStatementPanel = new AbsolutePanel();
 		problemStatementPanel.setSize("100%", "100%");
 		problemStatementFrame = new Frame();
@@ -104,10 +136,21 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	public void setProblem(ProblemData problem) {
 		problemStatementFrame.setUrl(problem.getUrl());
 		lblPrblmTitle.setText(problem.getProblemName());
+		problemLink.setText("Open the problem in " + problem.getOjType());
+		problemLink.setHref(problem.getUrl());
+		problemLink.setTarget("_blank");
 		String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
 		if (!addedAccountsCookie.contains(problem.getOjType())) {
-			txtCode.setVisible(false);
-			btnSubmit.setVisible(false);
+			isAnonymousSubmission = true;
+			lblNotRegistered.setText("You are not registered at " + problem.getOjType() + 
+					" or you haven't provided us with your account details.\n" + 
+					"You can submit code anonymously or ");
+			lblNotRegistered.setVisible(true);
+			hprAddAccounts.setText("Add "+problem.getOjType() +" Details");
+			hprAddAccounts.setTargetHistoryToken("addAccount");
+			hprAddAccounts.setVisible(true);
+			masterPanel.setCellHeight(lblNotRegistered, "5%");
+			masterPanel.setCellHeight(hprAddAccounts, "5%");
 		}
 
 	}
@@ -164,5 +207,13 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	public Widget asWidget() {
 		return this;
 	}
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#isAnonymousSubmission()
+     */
+    @Override
+    public boolean isAnonymousSubmission() {
+	    return isAnonymousSubmission;
+    }
 
 }

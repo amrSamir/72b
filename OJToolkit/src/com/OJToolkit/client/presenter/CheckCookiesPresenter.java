@@ -96,7 +96,6 @@ public class CheckCookiesPresenter implements Presenter {
 		
 		String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
 		String isRegisteredCookie = Cookies.getCookie("isRegisteredCookie");
-		isRegisteredCookie = Cookies.getCookie("isRegisteredCookie");
 		if (isRegisteredCookie != null) {
 			Cookies.setCookie("isEnabledCookie", "YES",
 			        AppController.COOKIES_EXPIRYDATE, null, "/", false);

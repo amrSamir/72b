@@ -7,8 +7,7 @@ import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratedPopupPanel;
@@ -33,6 +32,9 @@ public class AddAccountView extends Composite implements
 	PasswordTextBox [] txtAccountPassword;
 	TabLayoutPanel tabPanel;
 	final String [] ojs = {"SPOJ","UVA","Timus"};
+	final String [] registrationLinks = { "http://www.spoj.pl/register/" , 
+			"http://uva.onlinejudge.org/index.php?option=com_comprofiler&task=registers",
+			"http://acm.timus.ru/register.aspx" };
 	
 
 	/**
@@ -60,18 +62,16 @@ public class AddAccountView extends Composite implements
 	    	
 	    	Label lblPassword = new Label(ojs[i] + " Password");
 	    	verticalPanel.add(lblPassword);
-	    	
 	    	txtAccountPassword[i] = new PasswordTextBox();
-	    	verticalPanel.add(txtAccountPassword[i]);
-	    	
+	    	verticalPanel.add(txtAccountPassword[i]);	
 	    	btnAddAccount[i] = new Button("Save Account");
 	    	verticalPanel.add(btnAddAccount[i]);
-	    	
 	    	txtAlreadyRegisteredMessage[i] = new TextBox();
 	    	txtAlreadyRegisteredMessage[i].setVisible(false);
 	    	verticalPanel.add(txtAlreadyRegisteredMessage[i]);
-	    	
-	    	
+	    	Anchor regLink = new Anchor("**If you currently don't have an account at " + ojs[i] + ", click here to register!", false, registrationLinks[i]);
+	    	regLink.setTarget("_blank");
+	    	verticalPanel.add(regLink);
 	    	tabPanel.add(verticalPanel,"Add Account "+ojs[i]);
 	    }
 	}

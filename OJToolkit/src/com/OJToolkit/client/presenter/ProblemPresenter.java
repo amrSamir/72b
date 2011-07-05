@@ -22,11 +22,18 @@ public class ProblemPresenter implements Presenter {
 
 	public interface Display {
 		HasClickHandlers getSubmitButton();
+
 		void setProblem(ProblemData problem);
+
 		void setLanguages(ArrayList<LanguageData> languages);
+
 		String getCode();
+
 		String getSelectedLanguageValue();
+
 		Widget asWidget();
+
+		boolean isAnonymousSubmission();
 	}
 
 	private final Display display;
@@ -36,27 +43,25 @@ public class ProblemPresenter implements Presenter {
 	private final String problemCode;
 	private final String ojType;
 	private final LanguageServiceAsync languageService;
-	private SourceCodeServiceAsync sourceCodeService ;
+	private SourceCodeServiceAsync sourceCodeService;
 	private HintServiceAsync hintService;
 
 	public ProblemPresenter(String substring,
 	        SubmissionServiceAsync submssionService,
 	        LanguageServiceAsync languageService, HandlerManager eventBus,
-	        SourceCodeServiceAsync sourceCodeService,
-	        final Display display,
+	        SourceCodeServiceAsync sourceCodeService, final Display display,
 	        HintServiceAsync hintService) {
-		
-	
+
 		this.languageService = languageService;
 		this.submssionService = submssionService;
 		this.eventBus = eventBus;
 		String[] tokensArr = substring.split("-");
-    	this.problemCode = tokensArr[0];
-    	this.ojType = tokensArr[1];
+		this.problemCode = tokensArr[0];
+		this.ojType = tokensArr[1];
 		this.display = display;
-		this.sourceCodeService = sourceCodeService ;
+		this.sourceCodeService = sourceCodeService;
 		this.hintService = hintService;
-		
+
 		// this.display.setProblem(problemCode);
 		bind();
 
@@ -66,90 +71,55 @@ public class ProblemPresenter implements Presenter {
 			        public void onSuccess(ProblemData result) {
 				        problem = result;
 				        getLanguages();
-				        display.setProblem(problem);				        
+				        display.setProblem(problem);
 			        }
+
 			        @Override
 			        public void onFailure(Throwable caught) {
 				        System.out.println("Failed to load problem");
 			        }
 		        });
-		
+
 	}
-	
-	private void getLanguages(){
-		  this.languageService
-	        .getLanguages(problem.getOjType(),new AsyncCallback<ArrayList<LanguageData>>() {
 
-		        @Override
-		        public void onSuccess(ArrayList<LanguageData> result) {
-			        ArrayList<LanguageData> languages = new ArrayList<LanguageData>();
-			        for (int i = 0; i < result.size(); i++)
-				        languages.add(new LanguageData(result.get(i)
-				                .getLanguageName(), result.get(i)
-				                .getLanguageValue(), result.get(i).getOjType()));
-			        display.setLanguages(languages);
-		        }
+	private void getLanguages() {
+		this.languageService.getLanguages(problem.getOjType(),
+		        new AsyncCallback<ArrayList<LanguageData>>() {
 
-		        @Override
-		        public void onFailure(Throwable caught) {
-			        Window.alert("Failed to get list of languages!!");
-		        }
-	        });
+			        @Override
+			        public void onSuccess(ArrayList<LanguageData> result) {
+				        ArrayList<LanguageData> languages = new ArrayList<LanguageData>();
+				        for (int i = 0; i < result.size(); i++)
+					        languages.add(new LanguageData(result.get(i)
+					                .getLanguageName(), result.get(i)
+					                .getLanguageValue(), result.get(i)
+					                .getOjType()));
+				        display.setLanguages(languages);
+			        }
+
+			        @Override
+			        public void onFailure(Throwable caught) {
+				        Window.alert("Failed to get list of languages!!");
+			        }
+		        });
 	}
 
 	private void bind() {
+
 		display.getSubmitButton().addClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				System.out.println("aah");
-			//	String sourceCodeString = ;
-				java.util.Date date = new java.util.Date();
-				
-				/// Delete this >>>>> Just for testing
-				hintService.addHint("X", "eshtaaaaaaa3aaaal", new AsyncCallback<Void>() {
-					
-					@Override
-					public void onSuccess(Void result) {					
-						 Window.alert("Good!");
-						
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						 Window.alert("NO");
-					}
-				});
-				
-				
-				// Review your code data paramters again 
-				sourceCodeService.addCode(display.getCode(), problem.getProblemCode()
-						, problem.getProblemName(), problem.getUrl()
-						, new AsyncCallback<Void>()   
-						{
 
-							@Override
-							public void onFailure(Throwable caught) {
-								 Window.alert("Oh! Failed to save code!");
-								
-							}
-
-							@Override
-							public void onSuccess(Void result) {
-								 Window.alert("your code has been saved!");
-									
-							}
-					
-				});
-				
-			 
-				
-				submssionService.submitCode(problem.getProblemCode(),problem.getOjType(),
+				submssionService.submitCode(display.isAnonymousSubmission(),
+				        problem.getProblemCode(), problem.getOjType(),
 				        display.getCode(), display.getSelectedLanguageValue(),
 				        new AsyncCallback<Void>() {
 					        @Override
 					        public void onSuccess(Void result) {
-						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(problem));
+						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(
+						                problem, display
+						                        .isAnonymousSubmission()));
 					        }
 
 					        @Override
@@ -157,6 +127,45 @@ public class ProblemPresenter implements Presenter {
 						        Window.alert("Failed to submit!!");
 					        }
 				        });
+
+				// String sourceCodeString = ;
+				java.util.Date date = new java.util.Date();
+
+				// / Delete this >>>>> Just for testing
+				hintService.addHint("X", "eshtaaaaaaa3aaaal",
+				        new AsyncCallback<Void>() {
+
+					        @Override
+					        public void onSuccess(Void result) {
+						        Window.alert("Good!");
+
+					        }
+
+					        @Override
+					        public void onFailure(Throwable caught) {
+						        Window.alert("NO");
+					        }
+				        });
+
+				// Review your code data paramters again
+				sourceCodeService.addCode(display.getCode(),
+				        problem.getProblemCode(), problem.getProblemName(),
+				        problem.getUrl(), new AsyncCallback<Void>() {
+
+					        @Override
+					        public void onFailure(Throwable caught) {
+						        // Window.alert("Oh! Failed to save code!");
+
+					        }
+
+					        @Override
+					        public void onSuccess(Void result) {
+						        // Window.alert("your code has been saved!");
+
+					        }
+
+				        });
+
 			}
 		});
 	}

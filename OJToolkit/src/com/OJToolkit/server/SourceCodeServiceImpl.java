@@ -8,13 +8,9 @@ import java.util.logging.Logger;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
-import javax.jws.soap.SOAPBinding.Use;
 
-import com.OJToolkit.client.Exceptions.NotLoggedInException;
 import com.OJToolkit.client.Services.SourceCodeService;
-import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.SourceCodeData;
-import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 

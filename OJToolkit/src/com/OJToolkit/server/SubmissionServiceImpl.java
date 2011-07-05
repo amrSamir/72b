@@ -253,9 +253,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			problemData.setProblemName(problems.get(0).getProblemName());
 			problemData.setOjType(problems.get(0).getOjType());
 			problemData.setUrl(problems.get(0).getUrl());
-
 		} finally {
-
 			pm.close();
 		}
 

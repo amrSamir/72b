@@ -9,6 +9,62 @@ import java.io.Serializable;
 public class CoderProfileData implements Serializable {
 	private String username;
 	private String email;
+	/**
+     * @return the uVAUsername
+     */
+    public String getUVAUsername() {
+    	return UVAUsername;
+    }
+
+	/**
+     * @param uVAUsername the uVAUsername to set
+     */
+    public void setUVAUsername(String uVAUsername) {
+    	UVAUsername = uVAUsername;
+    }
+
+	/**
+     * @return the timusUsername
+     */
+    public String getTimusUsername() {
+    	return TimusUsername;
+    }
+
+	/**
+     * @param timusUsername the timusUsername to set
+     */
+    public void setTimusUsername(String timusUsername) {
+    	TimusUsername = timusUsername;
+    }
+
+	/**
+     * @return the numberOfSubmission
+     */
+    public int getNumberOfSubmission() {
+    	return numberOfSubmission;
+    }
+
+	/**
+     * @param numberOfSubmission the numberOfSubmission to set
+     */
+    public void setNumberOfSubmission(int numberOfSubmission) {
+    	this.numberOfSubmission = numberOfSubmission;
+    }
+
+	/**
+     * @return the numberOfSolved
+     */
+    public int getNumberOfSolved() {
+    	return numberOfSolved;
+    }
+
+	/**
+     * @param numberOfSolved the numberOfSolved to set
+     */
+    public void setNumberOfSolved(int numberOfSolved) {
+    	this.numberOfSolved = numberOfSolved;
+    }
+
 	private String SPOJUsername;
 	private String UVAUsername;
 	private String TimusUsername;

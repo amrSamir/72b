@@ -12,6 +12,7 @@ import javax.jdo.Query;
 import com.OJToolkit.client.Exceptions.NotLoggedInException;
 import com.OJToolkit.client.Services.CoderService;
 import com.OJToolkit.client.ValueObjects.CoderData;
+import com.OJToolkit.client.ValueObjects.CoderProfileData;
 import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.gwt.view.client.Range;
@@ -83,7 +84,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				isRegistered = true;
 			}
 
-		} finally {			
+		} finally {
 			pm.close();
 		}
 		return isRegistered;
@@ -115,7 +116,8 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 	}
 
 	/**
-	 * Check if the coder name is already taken 
+	 * Check if the coder name is already taken
+	 * 
 	 * @param pm
 	 * @param username
 	 * @return
@@ -200,12 +202,14 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		return ret;
 	}
 
-	/* (non-Javadoc)
-     * @see com.OJToolkit.client.Services.CoderService#getUsername(java.lang.String)
-     */
-    @Override
-    public String getUsername(String accountType) {
-    	PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.Services.CoderService#getUsername(java.lang.String)
+	 */
+	@Override
+	public String getUsername(String accountType) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		String ret = null;
 		try {
 
@@ -217,17 +221,59 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			        .getUser().getEmail());
 			if (accountType.equals("SPOJ")) {
 				ret = coders.get(0).getSPOJUsername();
-			}
-			else if (accountType.equals("Timus")) {
+			} else if (accountType.equals("Timus")) {
 				ret = coders.get(0).getTimusUsername();
-			}
-			else if (accountType.equals("UVA")) {
+			} else if (accountType.equals("UVA")) {
 				ret = coders.get(0).getUVAUsername();
 			}
 		} finally {
 			pm.close();
 		}
-		
+
 		return ret;
-    }
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.OJToolkit.client.Services.CoderService#getCoderDetails(java.lang.
+	 * String)
+	 */
+	@Override
+	public CoderProfileData getCoderDetails(String username) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		CoderProfileData ret = new CoderProfileData();
+		try {
+			String select_query = "select from " + Coder.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("username == userName");
+			query.declareParameters("java.lang.String userName");
+			List<Coder> coders = (List<Coder>) query.execute(username);
+			ret.setEmail(coders.get(0).getEmail());
+			ret.setSPOJUsername(coders.get(0).getSPOJUsername());
+			ret.setUVAUsername(coders.get(0).getUVAUsername());
+			ret.setTimusUsername(coders.get(0).getTimusUsername());
+
+			select_query = "select from " + UserSubmission.class.getName();
+			query = pm.newQuery(select_query);
+			query.setFilter("username == userName");
+			query.declareParameters("java.lang.String userName");
+			List<UserSubmission> userSubmissions = (List<UserSubmission>) query
+			        .execute(username);
+			ret.setNumberOfSubmission(userSubmissions.size());
+
+			select_query = "select from " + UserSubmission.class.getName();
+			query = pm.newQuery(select_query);
+			query.setFilter("username == userName && judgeResult == jResult");
+			query.declareParameters("java.lang.String userName, java.lang.String jResult");
+			userSubmissions = (List<UserSubmission>) query.execute(username,
+			        "Accepted");
+			ret.setNumberOfSolved(userSubmissions.size());
+
+		} finally {
+			pm.close();
+		}
+
+		return ret;
+	}
 }

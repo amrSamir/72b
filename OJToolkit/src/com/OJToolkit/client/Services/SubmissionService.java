@@ -43,15 +43,27 @@ public interface SubmissionService extends RemoteService {
 	public void saveSpojProblemtoDB(ProblemData problemData);
 
 	/**
-	 * Get 50 Problems from the datastore
+	 * Get Problems from the datastore
 	 * 
-	 * @param start
-	 *            the start index of the problems
+	 * @param range
+	 *            the range of the problems
+	 * @param
 	 * @return 50 Problems from the datastore
 	 */
-	public ArrayList<ProblemData> getProblems(long start);
-	
-	
+	/**
+	 * Get Problems from the datastore
+	 * 
+	 * @param range
+	 *            the range of the problems
+	 * @param sortingQuery
+	 *            to sort ascending or descending different columns
+	 * @param searchQuery
+	 *            filters for values in a certaing column
+	 * @return
+	 */
+	public ArrayList<ProblemData> getProblems(Range range, String sortingQuery,
+			String searchQuery);
+
 	/**
 	 * Fetch Problem from database
 	 * 
@@ -60,5 +72,5 @@ public interface SubmissionService extends RemoteService {
 	 * @return Problem
 	 */
 	public ProblemData getProblem(String problemCode, String ojType);
-	
+
 }

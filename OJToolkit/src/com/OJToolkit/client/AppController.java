@@ -35,22 +35,21 @@ import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEventHandler;
 import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.OJToolkit.client.presenter.CheckCookiesPresenter;
-import com.OJToolkit.client.presenter.CodersPresenter;
+import com.OJToolkit.client.presenter.CodersListPresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
 import com.OJToolkit.client.presenter.Presenter;
-import com.OJToolkit.client.presenter.ProblemListPresenter;
+import com.OJToolkit.client.presenter.ProblemList2Presenter;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
 import com.OJToolkit.client.presenter.TopPanelPresenter;
 import com.OJToolkit.client.view.AddAccountView;
-import com.OJToolkit.client.view.CodersView;
+import com.OJToolkit.client.view.CodersListView;
 import com.OJToolkit.client.view.InvitationView;
 import com.OJToolkit.client.view.LeftPanelView;
 import com.OJToolkit.client.view.LoginView;
-import com.OJToolkit.client.view.ProblemListView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
 import com.OJToolkit.client.view.ProblemView;
 import com.OJToolkit.client.view.RegistrationView;
@@ -96,8 +95,7 @@ public class AppController implements ValueChangeHandler<String> {
 	private LoginInfo loginInfo;
 
 	/**
-	 * control the site and changes the pages
-	 * 
+	 * control the site and changes the pages 
 	 * @param eventBus
 	 * @param submissionService
 	 * @param languageService
@@ -248,8 +246,6 @@ public class AppController implements ValueChangeHandler<String> {
 		Presenter presenter = new LeftPanelPresenter(
 		        new LeftPanelView(eventBus));
 		presenter.go(this.leftPanel);
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -300,8 +296,7 @@ public class AppController implements ValueChangeHandler<String> {
 	/**
 	 * view problem
 	 * 
-	 * @param problem
-	 *            to be shown
+	 * @param problem to be shown
 	 */
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
@@ -327,8 +322,7 @@ public class AppController implements ValueChangeHandler<String> {
 	}
 
 	/**
-	 * view problem submission
-	 * 
+	 * view problem submission 
 	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem) {
@@ -415,12 +409,12 @@ public class AppController implements ValueChangeHandler<String> {
 						        hintService);
 					}
 				} else if (token.equals("alreadyRegistered")) {
-					presenter = new ProblemListPresenter(submissionService,
-					        eventBus, new ProblemListView());
+					presenter = new ProblemList2Presenter(submissionService,
+					        eventBus);
 
 				} else if (token.equals("viewCoders")) {
-					presenter = new CodersPresenter(coderService, eventBus,
-					        new CodersView());
+					presenter = new CodersListPresenter(coderService, eventBus,
+					        new CodersListView());
 				} else if (token.equals("addAccount")) {
 					presenter = new AddAccountPresenter(coderService, eventBus,
 					        new AddAccountView());

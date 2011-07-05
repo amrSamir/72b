@@ -207,22 +207,12 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		try {
 			LOG.info(sortingQuery);
 			String select_query = "select from " + Problem.class.getName();
-			Query queryToGetStartIndex = pm.newQuery(select_query);
-			queryToGetStartIndex.setRange(0, 1);
-			List<Problem> tempProblems = (List<Problem>) queryToGetStartIndex
-			        .execute();
-			// long startIndex = tempProblems.get(0).getProbID();
-			// long start = startIndex+range.getStart();
-			// System.out.println("new index " + start);
 			Query query = pm.newQuery(select_query);
-			// query.setFilter("probID == problemID");
-			// query.setFilter("probID >= problemID");
 			if (!sortingQuery.equals(""))
 				query.setOrdering(sortingQuery);
 			query.setFilter(searchQuery);
 			query.setRange(range.getStart(),
 			        range.getStart() + range.getLength());
-			// query.declareParameters("java.lang.String problemID");
 			List<Problem> problems = (List<Problem>) query.execute();
 
 			for (Problem problem : problems) {

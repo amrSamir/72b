@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.view.client.Range;
 
 /**
  * @author 72B May 13, 2011
@@ -20,10 +21,8 @@ public interface CoderServiceAsync {
 	 */
 	void checkRegistered(AsyncCallback<Boolean> callback);
 
-	/**
-	 * @see com.OJToolkit.client.Services.CoderService#viewCoders()
-	 */
-	void viewCoders(AsyncCallback<ArrayList<CoderData>> callback);
+	void viewCoders(Range range, String sortingQuery,
+			AsyncCallback<ArrayList<CoderData>> callback);
 
 	void addAccount(String accountType, String username, String password,
 			AsyncCallback<Void> callback);

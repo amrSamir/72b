@@ -6,6 +6,7 @@ import com.OJToolkit.client.Exceptions.NotLoggedInException;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.google.gwt.view.client.Range;
 
 /**
  * @author 72B All the services related to the coder
@@ -42,7 +43,7 @@ public interface CoderService extends RemoteService {
 	 * @throws NotLoggedInException
 	 *             Thrown if the user is not logged in
 	 */
-	public ArrayList<CoderData> viewCoders() throws NotLoggedInException;
+	public ArrayList<CoderData> viewCoders(Range range, String sortingQuery) throws NotLoggedInException;
 
 	/**
 	 * Checks whether the user is registered or not

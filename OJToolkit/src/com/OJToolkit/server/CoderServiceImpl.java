@@ -14,6 +14,7 @@ import com.OJToolkit.client.Services.CoderService;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.gwt.view.client.Range;
 
 @SuppressWarnings("serial")
 public class CoderServiceImpl extends RemoteServiceServlet implements
@@ -26,7 +27,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public ArrayList<CoderData> viewCoders() throws NotLoggedInException {
+	public ArrayList<CoderData> viewCoders(Range range, String sortingQuery) throws NotLoggedInException {
 		// DataStoreHandler.checkLoggedIn();
 		LOG.log(Level.SEVERE, "SPOJ_Username2");
 		// DataStoreHandler dsh = new DataStoreHandler();
@@ -38,6 +39,10 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		ArrayList<CoderData> coders = new ArrayList<CoderData>();
 		try {
 			Query q = pm.newQuery(Coder.class);
+			if (!sortingQuery.equals(""))
+				q.setOrdering(sortingQuery);
+			q.setRange(range.getStart(),
+			        range.getStart() + range.getLength());
 			List<Coder> codersDB = (List<Coder>) q.execute();
 			for (Coder coder : codersDB) {
 				coders.add(new CoderData(coder.getUserID(),

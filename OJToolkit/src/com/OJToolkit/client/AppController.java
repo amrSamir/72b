@@ -35,7 +35,7 @@ import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEventHandler;
 import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.OJToolkit.client.presenter.CheckCookiesPresenter;
-import com.OJToolkit.client.presenter.CodersListPresenter;
+import com.OJToolkit.client.presenter.CoderListPresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
@@ -46,7 +46,6 @@ import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
 import com.OJToolkit.client.presenter.TopPanelPresenter;
 import com.OJToolkit.client.view.AddAccountView;
-import com.OJToolkit.client.view.CodersListView;
 import com.OJToolkit.client.view.InvitationView;
 import com.OJToolkit.client.view.LeftPanelView;
 import com.OJToolkit.client.view.LoginView;
@@ -421,8 +420,7 @@ public class AppController implements ValueChangeHandler<String> {
 					        eventBus);
 
 				} else if (token.equals("viewCoders")) {
-					presenter = new CodersListPresenter(coderService, eventBus,
-					        new CodersListView());
+					presenter = new CoderListPresenter(coderService, eventBus);
 				} else if (token.equals("addAccount")) {
 					presenter = new AddAccountPresenter(coderService, eventBus,
 					        new AddAccountView());

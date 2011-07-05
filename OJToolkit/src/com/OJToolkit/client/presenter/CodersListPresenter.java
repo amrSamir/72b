@@ -11,8 +11,10 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
-
-public class CodersPresenter implements Presenter {
+import com.google.gwt.view.client.SelectionChangeEvent;
+import com.google.gwt.view.client.SingleSelectionModel;
+import com.google.gwt.view.client.SelectionChangeEvent.Handler;
+public class CodersListPresenter implements Presenter {
 
 	public interface Display {
 		AbstractHasData<CoderData> getTable();
@@ -28,7 +30,6 @@ public class CodersPresenter implements Presenter {
 	private final HandlerManager eventBus;
 	private final AbstractHasData<CoderData> codersTable;
 	private ArrayList<CoderData> codersList;
-	private int numOfCoders = 1;
 	private int pageStart = 0;
 
 	/**
@@ -37,21 +38,15 @@ public class CodersPresenter implements Presenter {
 	 * @param eventBus
 	 * @param display
 	 */
-	public CodersPresenter(CoderServiceAsync coderService,
+	public CodersListPresenter(CoderServiceAsync coderService,
 			HandlerManager eventBus, final Display display) {
 		
 		this.coderService = coderService;
 		this.eventBus = eventBus;
 		this.display = display;
 		codersTable = this.display.getTable();
-		
-		
 		codersList = new  ArrayList<CoderData>() ;
-		for (int i = 0; i <= numOfCoders; i++) {
-			codersList.add(null);
-		}
-		this.display.setNumberOfCoders(numOfCoders);
-		this.display.setCodersList(codersList);
+		
 		this.display.setPageStart(pageStart);
 		fitchCoders() ;
 	}
@@ -63,21 +58,38 @@ public class CodersPresenter implements Presenter {
 		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
 			@Override
 			public void onSuccess(ArrayList<CoderData> result) {
-				for(int i = 0 ; i < result.size() ; i++){
-					codersList.set(pageStart + i, result.get(i)) ;
-				}
-				codersTable.setRowData(0,codersList);
+				codersList.addAll(result);
+				display.setCodersList(codersList);
+//				for(int i = 0 ; i < result.size() ; i++){
+//					codersList.set(pageStart + i, result.get(i)) ;
+//				}
+//				codersTable.setRowData(0,codersList);
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("Failed to load coder Data!\n" + "Error : "
-						+ caught.getMessage());
+				Window.alert("Failed to load coder Data!\n" + "Error : "+ caught.getMessage());
 			}
 		});
 
 	}
 
+	private void onClickHandler(){
+		final SingleSelectionModel mySelectionModel = new SingleSelectionModel<CoderData>();
+		codersTable.setSelectionModel(mySelectionModel) ;
+		mySelectionModel.addSelectionChangeHandler(new Handler() {
+			@Override
+			public void onSelectionChange(SelectionChangeEvent event) {
+				CoderData coder = (CoderData) mySelectionModel.getSelectedObject();
+				//fire event
+				//eventBus.fireEvent(new ViewCoderEvent(coder));
+			}
+		});
+	}
+	private void bind() {
+		onClickHandler();
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.OJToolkit.client.presenter.Presenter#go(com.google.gwt.user.client.ui.HasWidgets)
 	 */

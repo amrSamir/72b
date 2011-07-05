@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
-import com.OJToolkit.client.presenter.CodersPresenter;
+import com.OJToolkit.client.presenter.CodersListPresenter;
 import com.google.gwt.user.cellview.client.AbstractHasData;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.SimplePager;
@@ -25,7 +25,7 @@ import com.google.gwt.view.client.ListDataProvider;
 /**
  * @author 72B Apr 26, 2011
  */
-public class CodersView extends Composite implements CodersPresenter.Display {
+public class CodersListView extends Composite implements CodersListPresenter.Display {
 
 	AbsolutePanel absolutePanel;
 
@@ -38,7 +38,8 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 	/**
 	 * view coder page 
 	 */
-	public CodersView() {
+	public CodersListView() {
+		codersList = new ArrayList<CoderData>();
 		System.out.println("in coder view");
 		ScrollPanel ScrollCoders = new ScrollPanel() ;
 		ScrollCoders.setSize("100%", "100%") ;
@@ -110,8 +111,9 @@ public class CodersView extends Composite implements CodersPresenter.Display {
 //		for (CoderData coder : coders) {
 //			viewCoder(coder);
 //		}
-		this.codersList = coders ;
+		codersList.addAll(coders) ;
 		coderDataProvider.setList(coders);
+		coderDataProvider.addDataDisplay(codersTable);
 	}
 
 //	public void viewCoder(CoderData coder) {

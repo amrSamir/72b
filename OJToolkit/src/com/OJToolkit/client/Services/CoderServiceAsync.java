@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.CoderProfileData;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.Range;
 
@@ -33,5 +34,8 @@ public interface CoderServiceAsync {
 
 	void getCoderDetails(String username,
             AsyncCallback<CoderProfileData> callback);
+
+	void getCoderSubmissions(String username, Range range, String sortingQuery,
+            AsyncCallback<ArrayList<SubmissionData>> callback);
 
 }

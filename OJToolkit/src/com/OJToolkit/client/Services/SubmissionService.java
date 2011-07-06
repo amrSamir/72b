@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.google.gwt.view.client.Range;
@@ -64,5 +65,7 @@ public interface SubmissionService extends RemoteService {
 	 * @return Problem
 	 */
 	public ProblemData getProblem(String problemCode, String ojType);
+	
+	public ArrayList<SubmissionData> getSubmissions(Range range, String sortingQuery);
 
 }

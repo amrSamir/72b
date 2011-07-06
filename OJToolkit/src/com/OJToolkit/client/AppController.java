@@ -27,15 +27,20 @@ import com.OJToolkit.client.event.RegisterationEventHandler;
 import com.OJToolkit.client.event.RegistrationEvent;
 import com.OJToolkit.client.event.TopPanelEvent;
 import com.OJToolkit.client.event.TopPanelEventHandler;
+import com.OJToolkit.client.event.ViewCoderProfileEvent;
+import com.OJToolkit.client.event.ViewCoderProfileEventHandler;
 import com.OJToolkit.client.event.ViewCodersEvent;
 import com.OJToolkit.client.event.ViewCodersEventHandler;
 import com.OJToolkit.client.event.ViewProblemEvent;
 import com.OJToolkit.client.event.ViewProblemEventHandler;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEventHandler;
+import com.OJToolkit.client.event.ViewSubmissionsEvent;
+import com.OJToolkit.client.event.ViewSubmissionsEventHandler;
 import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CoderListPresenter;
+import com.OJToolkit.client.presenter.CoderProfilePresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
@@ -44,6 +49,7 @@ import com.OJToolkit.client.presenter.ProblemList2Presenter;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
+import com.OJToolkit.client.presenter.SubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.TopPanelPresenter;
 import com.OJToolkit.client.view.AddAccountView;
 import com.OJToolkit.client.view.InvitationView;
@@ -92,11 +98,12 @@ public class AppController implements ValueChangeHandler<String> {
 	private ProblemData problem;
 	private String OJType;
 	private String problemCode;
-	
+
 	private LoginInfo loginInfo;
 
 	/**
-	 * control the site and changes the pages 
+	 * control the site and changes the pages
+	 * 
 	 * @param eventBus
 	 * @param submissionService
 	 * @param languageService
@@ -199,7 +206,7 @@ public class AppController implements ValueChangeHandler<String> {
 			}
 
 		});
-		
+
 		eventBus.addHandler(TopPanelEvent.TYPE, new TopPanelEventHandler() {
 
 			@Override
@@ -229,16 +236,51 @@ public class AppController implements ValueChangeHandler<String> {
 
 		});
 
+		eventBus.addHandler(ViewCoderProfileEvent.TYPE,
+		        new ViewCoderProfileEventHandler() {
+
+			        @Override
+			        public void onViewCoderProfile(ViewCoderProfileEvent event) {
+				        doOnViewCoderProfileEvent(event.username);
+			        }
+
+		        });
+
+		eventBus.addHandler(ViewSubmissionsEvent.TYPE,
+		        new ViewSubmissionsEventHandler() {
+
+			        @Override
+			        public void onViewSubmissions(ViewSubmissionsEvent event) {
+				        doOnViewCoderProfileEvent();
+			        }
+
+		        });
+
 	}
 
 	/**
-     * @param logoutURL2
+     * 
      */
-    protected void doOnTopPanel(String logoutURL) {
-    	Presenter presenter = new TopPanelPresenter(
-		        logoutURL, new TopPanelView());
-		presenter.go(this.topPanel);
+    protected void doOnViewCoderProfileEvent() {
+    	History.newItem("status");
+	    
     }
+
+	/**
+	 * @param username
+	 */
+	protected void doOnViewCoderProfileEvent(String username) {
+		History.newItem("profile=" + username);
+	}
+
+	/**
+	 * @param logoutURL2
+	 */
+	protected void doOnTopPanel(String logoutURL) {
+		Presenter presenter = new TopPanelPresenter(logoutURL,
+		        new TopPanelView());
+		presenter.go(this.topPanel);
+	}
 
 	/**
      * 
@@ -259,7 +301,8 @@ public class AppController implements ValueChangeHandler<String> {
 
 	/**
 	 * add login in history
-	 * @param loginInfo 
+	 * 
+	 * @param loginInfo
 	 */
 	protected void doOnLogin(LoginInfo result) {
 		loginInfo = result;
@@ -297,14 +340,14 @@ public class AppController implements ValueChangeHandler<String> {
 	/**
 	 * view problem
 	 * 
-	 * @param problem to be shown
+	 * @param problem
+	 *            to be shown
 	 */
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
 		problemStr = "problem" + problem.getProblemCode() + "-"
 		        + problem.getOjType();
 		History.newItem(problemStr);
-
 	}
 
 	/**
@@ -323,7 +366,8 @@ public class AppController implements ValueChangeHandler<String> {
 	}
 
 	/**
-	 * view problem submission 
+	 * view problem submission
+	 * 
 	 * @param isAnonymousSubmission2
 	 * @param problemCode
 	 */
@@ -385,12 +429,12 @@ public class AppController implements ValueChangeHandler<String> {
 
 			if (isInvitedCookie != null && isEnabledCookie != null) {
 				if (token.equals("invitation")) {
-					presenter = new CheckCookiesPresenter(coderService, loginService,
-					        eventBus);
+					presenter = new CheckCookiesPresenter(coderService,
+					        loginService, eventBus);
 				}
 				if (token.equals("login")) {
-					presenter = new LoginPresenter(loginInfo, loginService, coderService,
-					        eventBus, new LoginView());
+					presenter = new LoginPresenter(loginInfo, loginService,
+					        coderService, eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
 					        eventBus, new RegistrationView());
@@ -425,22 +469,27 @@ public class AppController implements ValueChangeHandler<String> {
 					presenter = new AddAccountPresenter(coderService, eventBus,
 					        new AddAccountView());
 				} else if (token.equals("checkCookies")) {
-					presenter = new CheckCookiesPresenter(coderService, loginService,
-					        eventBus);
+					presenter = new CheckCookiesPresenter(coderService,
+					        loginService, eventBus);
+				} else if (token.startsWith("profile")) {
+					presenter = new CoderProfilePresenter(coderService,
+					        token.substring(8), eventBus);
+				} else if(token.equals("status")){
+					presenter = new SubmissionStatusPresenter(submissionService, eventBus);
 				}
 			} else if (isInvitedCookie != null) {
 				if (token.equals("login")) {
-					presenter = new LoginPresenter(loginInfo, loginService, coderService,
-					        eventBus, new LoginView());
+					presenter = new LoginPresenter(loginInfo, loginService,
+					        coderService, eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
 					        eventBus, new RegistrationView());
 				} else if (token.equals("invitation")) {
-					presenter = new CheckCookiesPresenter(coderService, loginService,
-					        eventBus);
+					presenter = new CheckCookiesPresenter(coderService,
+					        loginService, eventBus);
 				} else {
-					presenter = new CheckCookiesPresenter(coderService, loginService,
-					        eventBus);
+					presenter = new CheckCookiesPresenter(coderService,
+					        loginService, eventBus);
 				}
 
 			}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.Range;
 
@@ -31,5 +32,8 @@ public interface SubmissionServiceAsync {
 	 */
 	void getProblem(String problemCode, String ojType,
 	        AsyncCallback<ProblemData> callback);
+
+	void getSubmissions(Range range, String sortingQuery,
+            AsyncCallback<ArrayList<SubmissionData>> callback);
 
 }

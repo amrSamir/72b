@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.OJToolkit.client.Services.CoderServiceAsync;
-import com.OJToolkit.client.ValueObjects.CoderData;
+import com.OJToolkit.client.Services.SubmissionServiceAsync;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.client.event.ViewCoderProfileEvent;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
@@ -28,15 +30,15 @@ import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.view.client.SingleSelectionModel;
 
-public class CoderListPresenter implements Presenter {
-	interface Binder extends UiBinder<Widget, CoderListPresenter> {
+public class SubmissionStatusPresenter implements Presenter {
+	interface Binder extends UiBinder<Widget, SubmissionStatusPresenter> {
 	}
 
 	/**
 	 * The main CellTable.
 	 */
 	@UiField(provided = true)
-	CellTable<CoderData> cellTable;
+	CellTable<SubmissionData> cellTable;
 
 	/**
 	 * The pager used to change the range of data.
@@ -47,7 +49,7 @@ public class CoderListPresenter implements Presenter {
 	/**
 	 * Service to get populate list
 	 */
-	private final CoderServiceAsync coderService;
+	private final SubmissionServiceAsync submissionService;
 
 	/**
 	 * The event bus to notify event changes
@@ -57,16 +59,16 @@ public class CoderListPresenter implements Presenter {
 	/**
 	 * The map from column to its name, used in sending sorted column to RPC
 	 */
-	private HashMap<Column<CoderData, String>, String> columnMap;
+	private HashMap<Column<SubmissionData, String>, String> columnMap;
 
 	/**
 	 * Previous sorting and search Query
 	 */
 	private String previousSortingQuery;
 
-	public CoderListPresenter(CoderServiceAsync coderService,
+	public SubmissionStatusPresenter(SubmissionServiceAsync submissionService,
 	        HandlerManager eventBus) {
-		this.coderService = coderService;
+		this.submissionService = submissionService;
 		this.eventBus = eventBus;
 	}
 
@@ -76,7 +78,7 @@ public class CoderListPresenter implements Presenter {
 		previousSortingQuery = "";
 
 		// Create a CellTable.
-		cellTable = new CellTable<CoderData>();
+		cellTable = new CellTable<SubmissionData>();
 		cellTable.setWidth("100%", true);
 
 		// Attach a Async sort handler to cellTable.
@@ -91,17 +93,16 @@ public class CoderListPresenter implements Presenter {
 		pager.setDisplay(cellTable);
 
 		// Add a selection model so we can select cells.
-		final SingleSelectionModel<CoderData> selectionModel = new SingleSelectionModel<CoderData>();
+		final SingleSelectionModel<SubmissionData> selectionModel = new SingleSelectionModel<SubmissionData>();
 		selectionModel
 		        .addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
 
 			        @Override
 			        public void onSelectionChange(SelectionChangeEvent event) {
-				        CoderData coderData = selectionModel
+				        SubmissionData SubmissionData = selectionModel
 				                .getSelectedObject();
-				        eventBus.fireEvent(new ViewCoderProfileEvent(coderData
-				          
-				        		.getUsername()));
+				        eventBus.fireEvent(new ViewCoderProfileEvent(SubmissionData
+				                .getUsername()));
 			        }
 		        });
 		cellTable.setSelectionModel(selectionModel);
@@ -110,9 +111,9 @@ public class CoderListPresenter implements Presenter {
 		initTableColumns(selectionModel, sortHandler);
 
 		// Create a AsyncData Provider to get Data from server
-		AsyncDataProvider<CoderData> dataProvider = new AsyncDataProvider<CoderData>() {
+		AsyncDataProvider<SubmissionData> dataProvider = new AsyncDataProvider<SubmissionData>() {
 			@Override
-			protected void onRangeChanged(HasData<CoderData> display) {
+			protected void onRangeChanged(HasData<SubmissionData> display) {
 				final Range range = display.getVisibleRange();
 
 				// Columns currently sorted
@@ -125,19 +126,23 @@ public class CoderListPresenter implements Presenter {
 				}
 
 				// Fetch problem from server
-				coderService.viewCoders(range, sortingQuery,
-				        new AsyncCallback<ArrayList<CoderData>>() {
+				submissionService.getSubmissions(range, sortingQuery,
+				        new AsyncCallback<ArrayList<SubmissionData>>() {
 
 					        @Override
-					        public void onSuccess(ArrayList<CoderData> result) {
+					        public void onSuccess(
+					                ArrayList<SubmissionData> result) {
 						        cellTable.setRowData(range.getStart(), result);
+
 					        }
 
 					        @Override
 					        public void onFailure(Throwable caught) {
-						        System.out.println("Failure");
+						        // TODO Auto-generated method stub
+
 					        }
 				        });
+
 			}
 		};
 
@@ -157,15 +162,15 @@ public class CoderListPresenter implements Presenter {
 	 * Add the columns to the table.
 	 */
 	private void initTableColumns(
-	        final SelectionModel<CoderData> selectionModel,
+	        final SelectionModel<SubmissionData> selectionModel,
 	        AsyncHandler sortHandler) {
-		columnMap = new HashMap<Column<CoderData, String>, String>();
+		columnMap = new HashMap<Column<SubmissionData, String>, String>();
 
 		// Username.
-		Column<CoderData, String> usernameColumn = new Column<CoderData, String>(
+		Column<SubmissionData, String> usernameColumn = new Column<SubmissionData, String>(
 		        new TextCell()) {
 			@Override
-			public String getValue(CoderData object) {
+			public String getValue(SubmissionData object) {
 				return object.getUsername();
 			}
 		};
@@ -174,18 +179,80 @@ public class CoderListPresenter implements Presenter {
 		cellTable.setColumnWidth(usernameColumn, 20, Unit.PCT);
 		columnMap.put(usernameColumn, "username");
 
-		// Spoj Username.
-		Column<CoderData, String> SPOJusernameColumn = new Column<CoderData, String>(
+		
+		Column<SubmissionData, String> problemTitleColumn = new Column<SubmissionData, String>(
 		        new TextCell()) {
 			@Override
-			public String getValue(CoderData object) {
-				return object.getSPOJUsername();
+			public String getValue(SubmissionData object) {
+				return object.getProblemTitle();
 			}
 		};
-		SPOJusernameColumn.setSortable(true);
-		cellTable.addColumn(SPOJusernameColumn, "SPOJ");
-		cellTable.setColumnWidth(SPOJusernameColumn, 20, Unit.PCT);
-		columnMap.put(SPOJusernameColumn, "SPOJUsername");
+		problemTitleColumn.setSortable(false);
+		cellTable.addColumn(problemTitleColumn, "Problem Title");
+		cellTable.setColumnWidth(problemTitleColumn, 20, Unit.PCT);
+		
+		
+		
+		Column<SubmissionData, String> judgeTypeColumn = new Column<SubmissionData, String>(
+				new TextCell()) {
+			@Override
+			public String getValue(SubmissionData object) {
+				return object.getJudgeType();
+			}
+		};
+		judgeTypeColumn.setSortable(true);
+		cellTable.addColumn(judgeTypeColumn, "Judge");
+		cellTable.setColumnWidth(judgeTypeColumn, 20, Unit.PCT);
+		columnMap.put(judgeTypeColumn, "judgeType");
+		
+		Column<SubmissionData, String> dateColumn = new Column<SubmissionData, String>(
+				new TextCell()) {
+			@Override
+			public String getValue(SubmissionData object) {
+				return object.getDate();
+			}
+		};
+		dateColumn.setSortable(true);
+		cellTable.addColumn(dateColumn, "Submission Date");
+		cellTable.setColumnWidth(dateColumn, 20, Unit.PCT);
+		columnMap.put(dateColumn, "date");
+		
+		Column<SubmissionData, String> judgeResultColumn = new Column<SubmissionData, String>(
+				new TextCell()) {
+			@Override
+			public String getValue(SubmissionData object) {
+				return object.getJudgeResult();
+			}
+		};
+		judgeResultColumn.setSortable(true);
+		cellTable.addColumn(judgeResultColumn, "Judge Result");
+		cellTable.setColumnWidth(judgeResultColumn, 20, Unit.PCT);
+		columnMap.put(judgeResultColumn, "judgeResult");
+		
+		Column<SubmissionData, String> memoryColumn = new Column<SubmissionData, String>(
+				new TextCell()) {
+			@Override
+			public String getValue(SubmissionData object) {
+				return object.getMemory();
+			}
+		};
+		memoryColumn.setSortable(true);
+		cellTable.addColumn(memoryColumn, "Memory");
+		cellTable.setColumnWidth(memoryColumn, 20, Unit.PCT);
+		columnMap.put(memoryColumn, "memory");
+		
+		Column<SubmissionData, String> timeColumn = new Column<SubmissionData, String>(
+				new TextCell()) {
+			@Override
+			public String getValue(SubmissionData object) {
+				return object.getTime();
+			}
+		};
+		timeColumn.setSortable(true);
+		cellTable.addColumn(timeColumn, "Time");
+		cellTable.setColumnWidth(timeColumn, 20, Unit.PCT);
+		columnMap.put(timeColumn, "time");
+		
 	}
 
 	String getSortingQuery() {

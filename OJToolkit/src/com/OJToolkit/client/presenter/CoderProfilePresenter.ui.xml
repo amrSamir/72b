@@ -1,0 +1,76 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		.cellTable {
+			border-bottom: 1px solid #ccc;
+			text-align: left;
+			margin-bottom: 4px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<table cellspacing='0' cellpadding='0' style='width:100%;'>
+			<tr>
+				<td valign='top'>
+					<g:Label ui:field="lblProfileTitle" />
+				</td>
+			</tr>
+			<tr>
+				<td valign='top'>
+					Number of Submissions
+				</td>
+				<td valign='top'>
+					<g:Label ui:field="lblNumberOfSubmission" />
+				</td>
+			</tr>
+			<tr>
+				<td valign='top'>
+					Number of Solved
+				</td>
+				<td valign='top'>
+					<g:Label ui:field="lblNumberOfSolved" />
+				</td>
+			</tr>
+			<tr>
+				<td valign='top'>
+					SPOJ Username
+				</td>
+				<td valign='top'>
+					<g:Label ui:field="lblSPOJUsername" />
+				</td>
+			</tr>
+			<tr>
+				<td valign='top'>
+					UVA Username
+				</td>
+				<td valign='top'>
+					<g:Label ui:field="lblUVAUsername" />
+				</td>
+			</tr>
+			<tr>
+				<td valign='top'>
+					Timus Username
+				</td>
+				<td valign='top'>
+					<g:Label ui:field="lblTimusUsername" />
+				</td>
+			</tr>
+			<tr>
+				<td valign='top'>
+					Last Submissions
+				</td>
+			</tr>
+			<tr>
+				<td valign='top'>
+					<c:CellTable  addStyleNames='{style.cellTable}'
+						pageSize='5' ui:field='cellTable' />
+				</td>
+			</tr>
+			<tr>
+				<td align='center'>
+					<c:SimplePager ui:field='pager' />
+				</td>
+			</tr>
+		</table>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -10,8 +10,10 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import com.OJToolkit.client.Services.SubmissionService;
+import com.OJToolkit.client.ValueObjects.CoderProfileData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.server.engine.Judge;
 import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Submission;
@@ -244,7 +246,6 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		try {
 			String select_query = "select from " + Problem.class.getName();
 			Query query = pm.newQuery(select_query);
-			// query.setFilter("probID == problemID");
 			query.setFilter("problemCode == probCode && ojType == OJType");
 			query.declareParameters("java.lang.String probCode, java.lang.String OJType");
 			List<Problem> problems = (List<Problem>) query.execute(problemCode,
@@ -299,6 +300,58 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			pm.close();
 		}
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.SubmissionService#getSubmissions()
+	 */
+	@Override
+	public ArrayList<SubmissionData> getSubmissions(Range range,
+	        String sortingQuery) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		ArrayList<SubmissionData> ret = new ArrayList<SubmissionData>();
+		SubmissionData submissionData;
+		try {
+			String select_query = "select from "
+			        + UserSubmission.class.getName();
+			Query query = pm.newQuery(select_query);
+			
+			if (!sortingQuery.equals("")){
+				query.setOrdering(sortingQuery);
+			}else
+				query.setOrdering("date desc");
+			query.setRange(range.getStart(),
+			        range.getStart() + range.getLength());
+			List<UserSubmission> submissions = (List<UserSubmission>) query
+			        .execute();
+
+			for (UserSubmission userSubmission : submissions) {
+				submissionData = new SubmissionData();
+				submissionData.setUsername(userSubmission.getUsername());
+				submissionData.setProblemCode(userSubmission.getProblemCode());
+				submissionData.setJudgeType(userSubmission.getJudgeType());
+				submissionData.setDate(userSubmission.getDate());
+				submissionData.setJudgeResult(userSubmission.getJudgeResult());
+				submissionData.setMemory(userSubmission.getMemory());
+				submissionData.setTime(userSubmission.getTime());
+				select_query = "select from " + Problem.class.getName();
+				query = pm.newQuery(select_query);
+				query.setFilter("problemCode == probCode && ojType == OJType");
+				query.declareParameters("java.lang.String probCode, java.lang.String OJType");
+				List<Problem> problems = (List<Problem>) query.execute(
+				        userSubmission.getProblemCode(),
+				        userSubmission.getJudgeType());
+				submissionData
+				        .setProblemTitle(problems.get(0).getProblemName());
+				ret.add(submissionData);
+			}
+
+		} finally {
+			pm.close();
+		}
+
+		return ret;
 	}
 
 }

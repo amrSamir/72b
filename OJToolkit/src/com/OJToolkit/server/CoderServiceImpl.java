@@ -13,6 +13,7 @@ import com.OJToolkit.client.Exceptions.NotLoggedInException;
 import com.OJToolkit.client.Services.CoderService;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.CoderProfileData;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.google.appengine.api.users.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.gwt.view.client.Range;
@@ -30,10 +31,10 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 	@SuppressWarnings("unchecked")
 	public ArrayList<CoderData> viewCoders(Range range, String sortingQuery) throws NotLoggedInException {
 		// DataStoreHandler.checkLoggedIn();
-		LOG.log(Level.SEVERE, "SPOJ_Username2");
+//		LOG.log(Level.SEVERE, "SPOJ_Username2");
 		// DataStoreHandler dsh = new DataStoreHandler();
-		LOG.log(Level.SEVERE, DataStoreHandler.getAllCoders().get(0)
-		        .getSPOJUsername());
+//		LOG.log(Level.SEVERE, DataStoreHandler.getAllCoders().get(0)
+//		        .getSPOJUsername());
 
 		// List<Coder> coders2 = DataStoreHandler.getAllCoders();
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
@@ -253,15 +254,17 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			ret.setSPOJUsername(coders.get(0).getSPOJUsername());
 			ret.setUVAUsername(coders.get(0).getUVAUsername());
 			ret.setTimusUsername(coders.get(0).getTimusUsername());
-
+			ret.setUsername(username);
+			
+			
 			select_query = "select from " + UserSubmission.class.getName();
 			query = pm.newQuery(select_query);
 			query.setFilter("username == userName");
 			query.declareParameters("java.lang.String userName");
-			List<UserSubmission> userSubmissions = (List<UserSubmission>) query
-			        .execute(username);
+			List<UserSubmission> userSubmissions = (List<UserSubmission>) query.execute(username);
 			ret.setNumberOfSubmission(userSubmissions.size());
-
+			
+			
 			select_query = "select from " + UserSubmission.class.getName();
 			query = pm.newQuery(select_query);
 			query.setFilter("username == userName && judgeResult == jResult");
@@ -269,6 +272,52 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			userSubmissions = (List<UserSubmission>) query.execute(username,
 			        "Accepted");
 			ret.setNumberOfSolved(userSubmissions.size());
+
+		} finally {
+			pm.close();
+		}
+		return ret;
+	}
+	
+	@Override
+	public ArrayList<SubmissionData> getCoderSubmissions(String username, Range range,
+	        String sortingQuery) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		ArrayList<SubmissionData> ret = new ArrayList<SubmissionData>();
+		SubmissionData submissionData;
+		try {
+			String select_query = "select from "
+			        + UserSubmission.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("username == userName");
+			query.declareParameters("java.lang.String userName");
+			if (!sortingQuery.equals("")){
+				query.setOrdering(sortingQuery);
+			}else
+				query.setOrdering("date desc");
+			query.setRange(range.getStart(),
+			        range.getStart() + range.getLength());
+			List<UserSubmission> submissions = (List<UserSubmission>) query
+			        .execute(username);
+
+			for (UserSubmission userSubmission : submissions) {
+				submissionData = new SubmissionData();
+				submissionData.setJudgeType(userSubmission.getJudgeType());
+				submissionData.setDate(userSubmission.getDate());
+				submissionData.setJudgeResult(userSubmission.getJudgeResult());
+				submissionData.setMemory(userSubmission.getMemory());
+				submissionData.setTime(userSubmission.getTime());
+				select_query = "select from " + Problem.class.getName();
+				query = pm.newQuery(select_query);
+				query.setFilter("problemCode == probCode && ojType == OJType");
+				query.declareParameters("java.lang.String probCode, java.lang.String OJType");
+				List<Problem> problems = (List<Problem>) query.execute(
+				        userSubmission.getProblemCode(),
+				        userSubmission.getJudgeType());
+				submissionData
+				        .setProblemTitle(problems.get(0).getProblemName());
+				ret.add(submissionData);
+			}
 
 		} finally {
 			pm.close();

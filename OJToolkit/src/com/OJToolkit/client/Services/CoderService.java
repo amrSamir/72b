@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.OJToolkit.client.Exceptions.NotLoggedInException;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.CoderProfileData;
+import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.google.gwt.view.client.Range;
@@ -70,5 +71,7 @@ public interface CoderService extends RemoteService {
 	public String getUsername(String accountType);
 	
 	public CoderProfileData getCoderDetails(String username);
+	
+	public ArrayList<SubmissionData> getCoderSubmissions(String username, Range range, String sortingQuery);
 
 }

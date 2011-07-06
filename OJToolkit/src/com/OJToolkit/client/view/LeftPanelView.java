@@ -4,6 +4,7 @@ import com.OJToolkit.client.Contents.MyResource;
 import com.OJToolkit.client.event.AddAccountEvent;
 import com.OJToolkit.client.event.AlreadyRegisteredEvent;
 import com.OJToolkit.client.event.ViewCodersEvent;
+import com.OJToolkit.client.event.ViewSubmissionsEvent;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -18,10 +19,11 @@ import com.google.gwt.user.client.ui.Widget;
 public class LeftPanelView extends Composite implements
 		LeftPanelPresenter.Display {
 	
-	enum Labels {ViewCoders,AddAccounts,ViewProblems};
+	enum Labels {ViewCoders,AddAccounts,ViewProblems, Status};
 	Label lblViewCoders;
 	Label lblAddAccount;
 	Label lblViewProblem;
+	Label lblStatus;
 
 	
 	// Hack to be fixed
@@ -41,13 +43,19 @@ public class LeftPanelView extends Composite implements
 				Labels.ViewCoders);
 		absolutePanel.add(lblViewCoders, 0, 140);
 
+		lblViewProblem = addLeftPanel_lable("View Problems", eventBus,
+				Labels.ViewProblems);
+		absolutePanel.add(lblViewProblem, 0, 180);
+		
 		 lblAddAccount = addLeftPanel_lable("Add Accounts", eventBus,
 				Labels.AddAccounts);
 		absolutePanel.add(lblAddAccount, 0, 220);
+		
+		lblStatus = addLeftPanel_lable("Status", eventBus,
+				Labels.Status);
+		absolutePanel.add(lblStatus, 0, 260);
 
-		 lblViewProblem = addLeftPanel_lable("View Problems", eventBus,
-				Labels.ViewProblems);
-		absolutePanel.add(lblViewProblem, 0, 180);
+		 
 	}
 
 	private Label addLeftPanel_lable(String LableName,
@@ -65,6 +73,8 @@ public class LeftPanelView extends Composite implements
 					eventBus.fireEvent(new AddAccountEvent());
 				else if (LinkType.equals(Labels.ViewProblems))
 					eventBus.fireEvent(new AlreadyRegisteredEvent());
+				else if (LinkType.equals(Labels.Status))
+					eventBus.fireEvent(new ViewSubmissionsEvent());
 			}
 		});
 		return lblLabel;
@@ -84,6 +94,7 @@ public class LeftPanelView extends Composite implements
     	 lblViewCoders.setVisible(isEnabled);
     	 lblAddAccount.setVisible(isEnabled);
     	 lblViewProblem.setVisible(isEnabled);
+    	 lblStatus.setVisible(isEnabled);
     }
 
 }

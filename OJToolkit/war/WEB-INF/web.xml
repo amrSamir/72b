@@ -4,75 +4,85 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-  
-  <!-- Servlets -->
- 
-   <servlet>
-    <servlet-name>loginService</servlet-name>
-    <servlet-class>com.OJToolkit.server.LoginServiceImpl</servlet-class>
-  </servlet>
 
-  <servlet-mapping>
-    <servlet-name>loginService</servlet-name>
-    <url-pattern>/ojtoolkit/login</url-pattern>
-  </servlet-mapping>
-  
-     <servlet>
-    <servlet-name>HintService</servlet-name>
-    <servlet-class>com.OJToolkit.server.HintServiceImp</servlet-class>
-  </servlet>
+	<!-- Servlets -->
 
-  <servlet-mapping>
-    <servlet-name>HintService</servlet-name>
-    <url-pattern>/ojtoolkit/Hint</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
-    <servlet-name>sourceCodeService</servlet-name>
-    <servlet-class>com.OJToolkit.server.SourceCodeServiceImpl</servlet-class>
-  </servlet>
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>com.OJToolkit.server.LoginServiceImpl</servlet-class>
+	</servlet>
 
-  <servlet-mapping>
-    <servlet-name>sourceCodeService</servlet-name>
-    <url-pattern>/ojtoolkit/sourceCodeService</url-pattern>
-  </servlet-mapping>
-  
-  
-      <servlet>
-    <servlet-name>CoderService</servlet-name>
-    <servlet-class>com.OJToolkit.server.CoderServiceImpl</servlet-class>
-  </servlet>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/ojtoolkit/login</url-pattern>
+	</servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>CoderService</servlet-name>
-    <url-pattern>/ojtoolkit/coder</url-pattern>
-  </servlet-mapping>
-  
-  
-        <servlet>
-    <servlet-name>LanguageService</servlet-name>
-    <servlet-class>com.OJToolkit.server.LanguageServiceImpl</servlet-class>
-  </servlet>
+	<servlet>
+		<servlet-name>HintService</servlet-name>
+		<servlet-class>com.OJToolkit.server.HintServiceImp</servlet-class>
+	</servlet>
 
-  <servlet-mapping>
-    <servlet-name>LanguageService</servlet-name>
-    <url-pattern>/ojtoolkit/language</url-pattern>
-  </servlet-mapping>
-  
-  
-        <servlet>
-    <servlet-name>SubmissionService</servlet-name>
-    <servlet-class>com.OJToolkit.server.SubmissionServiceImpl</servlet-class>
-  </servlet>
+	<servlet-mapping>
+		<servlet-name>HintService</servlet-name>
+		<url-pattern>/ojtoolkit/Hint</url-pattern>
+	</servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>SubmissionService</servlet-name>
-    <url-pattern>/ojtoolkit/submission</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>OJToolkit.html</welcome-file>
-  </welcome-file-list>
+	<servlet>
+		<servlet-name>sourceCodeService</servlet-name>
+		<servlet-class>com.OJToolkit.server.SourceCodeServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>sourceCodeService</servlet-name>
+		<url-pattern>/ojtoolkit/sourceCodeService</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>CoderService</servlet-name>
+		<servlet-class>com.OJToolkit.server.CoderServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CoderService</servlet-name>
+		<url-pattern>/ojtoolkit/coder</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>LanguageService</servlet-name>
+		<servlet-class>com.OJToolkit.server.LanguageServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LanguageService</servlet-name>
+		<url-pattern>/ojtoolkit/language</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>SubmissionService</servlet-name>
+		<servlet-class>com.OJToolkit.server.SubmissionServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SubmissionService</servlet-name>
+		<url-pattern>/ojtoolkit/submission</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ContestService</servlet-name>
+		<servlet-class>com.OJToolkit.server.ContestServicesImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ContestService</servlet-name>
+		<url-pattern>/ojtoolkit/contestadmin</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>OJToolkit.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>

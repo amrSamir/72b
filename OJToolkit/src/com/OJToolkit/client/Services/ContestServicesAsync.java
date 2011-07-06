@@ -7,7 +7,6 @@ import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.ContestData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
-import com.OJToolkit.server.Contest;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface ContestServicesAsync {

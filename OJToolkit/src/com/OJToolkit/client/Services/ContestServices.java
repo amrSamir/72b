@@ -9,7 +9,6 @@ import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.ContestData; 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
-import com.OJToolkit.server.Contest;
 
 @RemoteServiceRelativePath("contestadmin")
 public interface ContestServices extends RemoteService{

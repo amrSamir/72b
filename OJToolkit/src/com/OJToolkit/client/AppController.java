@@ -6,6 +6,7 @@ package com.OJToolkit.client;
 import java.util.Date;
 
 import com.OJToolkit.client.Services.CoderServiceAsync;
+import com.OJToolkit.client.Services.ContestServicesAsync;
 import com.OJToolkit.client.Services.HintServiceAsync;
 import com.OJToolkit.client.Services.LanguageServiceAsync;
 import com.OJToolkit.client.Services.LoginServiceAsync;
@@ -19,6 +20,12 @@ import com.OJToolkit.client.event.AlreadyRegisteredEvent;
 import com.OJToolkit.client.event.AlreadyRegisteredEventHandler;
 import com.OJToolkit.client.event.CheckCookiesEvent;
 import com.OJToolkit.client.event.CheckCookiesEventHandler;
+import com.OJToolkit.client.event.ContestAdminEvent;
+import com.OJToolkit.client.event.ContestAdminEventHandler;
+import com.OJToolkit.client.event.ContestProblemEvent;
+import com.OJToolkit.client.event.ContestProblemEventHandler;
+import com.OJToolkit.client.event.JoinContestEvent;
+import com.OJToolkit.client.event.JoinContestEventHandler;
 import com.OJToolkit.client.event.LeftPanelEvent;
 import com.OJToolkit.client.event.LeftPanelEventHandler;
 import com.OJToolkit.client.event.LoginEvent;
@@ -30,7 +37,11 @@ import com.OJToolkit.client.event.TopPanelEventHandler;
 import com.OJToolkit.client.event.ViewCoderProfileEvent;
 import com.OJToolkit.client.event.ViewCoderProfileEventHandler;
 import com.OJToolkit.client.event.ViewCodersEvent;
+import com.OJToolkit.client.presenter.ContestAdminPresenter;
+import com.OJToolkit.client.presenter.ContestProblemsPresenter;
 import com.OJToolkit.client.event.ViewCodersEventHandler;
+import com.OJToolkit.client.event.ViewContestEvent;
+import com.OJToolkit.client.event.ViewContestEventHandler;
 import com.OJToolkit.client.event.ViewProblemEvent;
 import com.OJToolkit.client.event.ViewProblemEventHandler;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
@@ -42,6 +53,7 @@ import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CoderListPresenter;
 import com.OJToolkit.client.presenter.CoderProfilePresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
+import com.OJToolkit.client.presenter.JoinContestPresenter;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.OJToolkit.client.presenter.LoginPresenter;
 import com.OJToolkit.client.presenter.Presenter;
@@ -51,14 +63,18 @@ import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
 import com.OJToolkit.client.presenter.SubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.TopPanelPresenter;
+import com.OJToolkit.client.presenter.ViewContestPresenter;
 import com.OJToolkit.client.view.AddAccountView;
 import com.OJToolkit.client.view.InvitationView;
+import com.OJToolkit.client.view.ContestAdminView;
+import com.OJToolkit.client.view.JoinContestView;
 import com.OJToolkit.client.view.LeftPanelView;
 import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
 import com.OJToolkit.client.view.ProblemView;
 import com.OJToolkit.client.view.RegistrationView;
 import com.OJToolkit.client.view.TopPanelView;
+import com.OJToolkit.client.view.ViewContestView;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -80,7 +96,8 @@ public class AppController implements ValueChangeHandler<String> {
 	private final CoderServiceAsync coderService;
 	private final SourceCodeServiceAsync sourceCodeService;
 	private final HintServiceAsync hintService;
-
+	private final ContestServicesAsync contestServices ;
+	
 	private String problemStr = "problem";
 
 	private boolean isAnonymousSubmission = false;
@@ -98,12 +115,11 @@ public class AppController implements ValueChangeHandler<String> {
 	private ProblemData problem;
 	private String OJType;
 	private String problemCode;
-
+	
 	private LoginInfo loginInfo;
 
 	/**
-	 * control the site and changes the pages
-	 * 
+	 * control the site and changes the pages 
 	 * @param eventBus
 	 * @param submissionService
 	 * @param languageService
@@ -117,7 +133,7 @@ public class AppController implements ValueChangeHandler<String> {
 	        LanguageServiceAsync languageService,
 	        LoginServiceAsync loginService, CoderServiceAsync coderService,
 	        SourceCodeServiceAsync sourceCodeService,
-	        HintServiceAsync hintService) {
+	        HintServiceAsync hintService,ContestServicesAsync contestService) {
 		this.languageService = languageService;
 		this.eventBus = eventBus;
 		this.submissionService = submissionService;
@@ -125,7 +141,7 @@ public class AppController implements ValueChangeHandler<String> {
 		this.coderService = coderService;
 		this.sourceCodeService = sourceCodeService;
 		this.hintService = hintService;
-
+		this.contestServices = contestService ;
 		// checkCookies();
 		bind();
 	}
@@ -145,7 +161,33 @@ public class AppController implements ValueChangeHandler<String> {
 				                event.isAnonymousSubmission);
 			        }
 		        });
+		eventBus.addHandler(ContestProblemEvent.TYPE, new ContestProblemEventHandler() {
+			
+			@Override
+			public void onContestProblems(ContestProblemEvent contestProblemEvent) {
+				doViewProblemContest();
+			}
 
+			
+		});
+		eventBus.addHandler(JoinContestEvent.TYPE, new JoinContestEventHandler() {
+			
+			@Override
+			public void onJoinContest(JoinContestEvent joinContestEvent) {
+				doJoinContest();
+				
+			}
+		});
+
+		eventBus.addHandler(ViewContestEvent.TYPE, new ViewContestEventHandler() {
+			
+			@Override
+			public void onViewContest(ViewContestEvent viewContestEvent) {
+				doViewContest() ;
+			}
+
+			
+		});
 		eventBus.addHandler(ViewProblemEvent.TYPE,
 		        new ViewProblemEventHandler() {
 
@@ -167,6 +209,16 @@ public class AppController implements ValueChangeHandler<String> {
 
 		        });
 
+		eventBus.addHandler(ContestAdminEvent.TYPE , new ContestAdminEventHandler() {
+			
+			@Override
+			public void onContestAdmin(ContestAdminEvent contestAdminEvent) {
+				doContestAdmin();
+			}
+
+			
+		});
+		
 		eventBus.addHandler(RegistrationEvent.TYPE,
 		        new RegisterationEventHandler() {
 
@@ -206,7 +258,7 @@ public class AppController implements ValueChangeHandler<String> {
 			}
 
 		});
-
+		
 		eventBus.addHandler(TopPanelEvent.TYPE, new TopPanelEventHandler() {
 
 			@Override
@@ -280,8 +332,11 @@ public class AppController implements ValueChangeHandler<String> {
 		Presenter presenter = new TopPanelPresenter(logoutURL,
 		        new TopPanelView());
 		presenter.go(this.topPanel);
-	}
+    }
 
+    private void doViewProblemContest() {
+		History.newItem("ProblemsContest");
+	}
 	/**
      * 
      */
@@ -291,6 +346,14 @@ public class AppController implements ValueChangeHandler<String> {
 		presenter.go(this.leftPanel);
 	}
 
+	private void doJoinContest() {
+		History.newItem("joinContest");
+		
+	}
+	private void doViewContest() {
+		History.newItem("ViewContest");
+		
+	}
 	/**
 	 * add cookies to history
 	 */
@@ -329,6 +392,9 @@ public class AppController implements ValueChangeHandler<String> {
 
 	}
 
+	private void doContestAdmin() {
+		History.newItem("contestAdmin");
+	}
 	/**
 	 * view coders even
 	 */
@@ -340,14 +406,14 @@ public class AppController implements ValueChangeHandler<String> {
 	/**
 	 * view problem
 	 * 
-	 * @param problem
-	 *            to be shown
+	 * @param problem to be shown
 	 */
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
 		problemStr = "problem" + problem.getProblemCode() + "-"
 		        + problem.getOjType();
 		History.newItem(problemStr);
+
 	}
 
 	/**
@@ -366,8 +432,7 @@ public class AppController implements ValueChangeHandler<String> {
 	}
 
 	/**
-	 * view problem submission
-	 * 
+	 * view problem submission 
 	 * @param isAnonymousSubmission2
 	 * @param problemCode
 	 */
@@ -428,6 +493,18 @@ public class AppController implements ValueChangeHandler<String> {
 			}
 
 			if (isInvitedCookie != null && isEnabledCookie != null) {
+				if(token.equals("contestAdmin")){
+					presenter = new ContestAdminPresenter(contestServices, eventBus, new ContestAdminView()) ;
+				}
+				if(token.equals("joinContest")){
+					presenter = new JoinContestPresenter(contestServices, eventBus, new JoinContestView()) ;
+				}
+				if(token.equals("ViewContest")){
+					presenter = new ViewContestPresenter(contestServices, eventBus, new ViewContestView());
+				}
+				if(token.equals("ProblemsContest")){
+					presenter = new ContestProblemsPresenter(submissionService, contestServices, eventBus);
+				}				
 				if (token.equals("invitation")) {
 					presenter = new CheckCookiesPresenter(coderService,
 					        loginService, eventBus);
@@ -479,17 +556,17 @@ public class AppController implements ValueChangeHandler<String> {
 				}
 			} else if (isInvitedCookie != null) {
 				if (token.equals("login")) {
-					presenter = new LoginPresenter(loginInfo, loginService,
-					        coderService, eventBus, new LoginView());
+					presenter = new LoginPresenter(loginInfo, loginService, coderService,
+					        eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
 					        eventBus, new RegistrationView());
 				} else if (token.equals("invitation")) {
-					presenter = new CheckCookiesPresenter(coderService,
-					        loginService, eventBus);
+					presenter = new CheckCookiesPresenter(coderService, loginService,
+					        eventBus);
 				} else {
-					presenter = new CheckCookiesPresenter(coderService,
-					        loginService, eventBus);
+					presenter = new CheckCookiesPresenter(coderService, loginService,
+					        eventBus);
 				}
 
 			}

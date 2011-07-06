@@ -22,7 +22,7 @@ public class SpojProblemsToDBAdder {
 	public SpojProblemsToDBAdder() {
 		System.out.println("ahmedazraq-SpojProblemsToDBAdder-Initializer");
 		addSPOJProblems();
-		addLanguages();
+//		addLanguages();
 	}
 	
 	private void addSPOJProblems(){

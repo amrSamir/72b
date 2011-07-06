@@ -2,6 +2,8 @@ package com.OJToolkit.client;
 
 import com.OJToolkit.client.Services.CoderService;
 import com.OJToolkit.client.Services.CoderServiceAsync;
+import com.OJToolkit.client.Services.ContestServices;
+import com.OJToolkit.client.Services.ContestServicesAsync;
 import com.OJToolkit.client.Services.HintService;
 import com.OJToolkit.client.Services.HintServiceAsync;
 import com.OJToolkit.client.Services.LanguageService;
@@ -79,14 +81,13 @@ public class OJToolkit implements EntryPoint {
 		SourceCodeServiceAsync sourceCodeService = GWT.create(SourceCodeService.class);
 		HintServiceAsync hintService = GWT.create(HintService.class);
 		HandlerManager eventBus = new HandlerManager(null);
+		ContestServicesAsync contestService = GWT.create(ContestServices.class);
+//		new SpojProblemsToDBAdder();
 		
-		//new SpojProblemsToDBAdder();
 		
-		///*
 		AppController appViewer = new AppController(eventBus,
-		        submissionService, languageService, loginService, coderService, sourceCodeService,hintService);
+		        submissionService, languageService, loginService, coderService, sourceCodeService,hintService,contestService);
 		appViewer.go(core, topPanel, leftPanel);
-		//*/
 
 	}
 }

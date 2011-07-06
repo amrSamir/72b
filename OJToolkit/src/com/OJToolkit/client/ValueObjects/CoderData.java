@@ -12,7 +12,11 @@ public class CoderData implements Serializable {
 	private String email;
 	private String SPOJUsername;
 	private String SPOJPassword;
-
+	private String TimusUsername;
+	private String TimusPassword;
+	private String UVAUsername;
+	private String UVAPassword;
+	
 	public CoderData() {
 
 	}
@@ -117,5 +121,61 @@ public class CoderData implements Serializable {
 	 */
 	public void setSPOJPassword(String sPOJPassword) {
 		SPOJPassword = sPOJPassword;
+	}
+
+	/**
+	 * @return the timusUsername
+	 */
+	public String getTimusUsername() {
+		return TimusUsername;
+	}
+
+	/**
+	 * @param timusUsername the timusUsername to set
+	 */
+	public void setTimusUsername(String timusUsername) {
+		TimusUsername = timusUsername;
+	}
+
+	/**
+	 * @return the timusPassword
+	 */
+	public String getTimusPassword() {
+		return TimusPassword;
+	}
+
+	/**
+	 * @param timusPassword the timusPassword to set
+	 */
+	public void setTimusPassword(String timusPassword) {
+		TimusPassword = timusPassword;
+	}
+
+	/**
+	 * @return the uVAUsername
+	 */
+	public String getUVAUsername() {
+		return UVAUsername;
+	}
+
+	/**
+	 * @param uVAUsername the uVAUsername to set
+	 */
+	public void setUVAUsername(String uVAUsername) {
+		UVAUsername = uVAUsername;
+	}
+
+	/**
+	 * @return the uVAPassword
+	 */
+	public String getUVAPassword() {
+		return UVAPassword;
+	}
+
+	/**
+	 * @param uVAPassword the uVAPassword to set
+	 */
+	public void setUVAPassword(String uVAPassword) {
+		UVAPassword = uVAPassword;
 	}
 }

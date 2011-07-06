@@ -1,6 +1,8 @@
 package com.OJToolkit.client.ValueObjects;
 
 import java.io.Serializable;
+import java.util.Date;
+
 
 /**
  * @author 72B
@@ -12,7 +14,7 @@ import java.io.Serializable;
  */
 public class ProblemStatusData implements Serializable {
 
-	String date;
+	Long date;
 	String problemLink;
 	String judgeResult;
 	String time;
@@ -37,9 +39,9 @@ public class ProblemStatusData implements Serializable {
 	 * @param mem
 	 *            The memory used by the solution
 	 */
-	public ProblemStatusData(String date, String problemLink,
+	public ProblemStatusData(Date date, String problemLink,
 	        String judgeResult, String time, String mem) {
-		this.date = date;
+		this.date = date.getTime();
 		this.problemLink = problemLink;
 		this.judgeResult = judgeResult;
 		this.time = time;
@@ -49,8 +51,8 @@ public class ProblemStatusData implements Serializable {
 	/**
 	 * @return Date and time for the submitted problem
 	 */
-	public String getDate() {
-		return date;
+	public Date getDate() {
+		return new Date(date) ;
 	}
 
 	/**

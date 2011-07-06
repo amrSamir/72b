@@ -12,6 +12,8 @@ import java.io.Serializable;
  */
 public class ProblemData implements Serializable {
 	private String url;
+	private Long problemID ;
+	
 
 	private String problemCode;
 	private String problemName;
@@ -43,7 +45,9 @@ public class ProblemData implements Serializable {
 	 */
 	public ProblemData() {
 	}
-
+	public void setProblemID(Long problemID) {
+		this.problemID = problemID;
+	}
 	/**
 	 * @return The code of the problem
 	 */
@@ -104,4 +108,8 @@ public class ProblemData implements Serializable {
     public String getOjType() {
 	    return ojType;
     }
+
+	public Long getProblemID() {
+		return problemID;
+	}
 }

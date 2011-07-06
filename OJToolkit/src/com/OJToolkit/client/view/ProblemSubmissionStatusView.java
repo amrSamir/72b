@@ -92,7 +92,7 @@ public class ProblemSubmissionStatusView extends Composite implements
 			txtMemory.setVisible(false);
 			txtTime.setVisible(false);
 		}
-		txtDate.setText(result.getDate());
+		txtDate.setText(result.getDate().toString());
 		txtJudgeResult.setText(result.getJudgeResult());
 		txtMemory.setText(result.getMem());
 		txtProblemLink.setText(result.getProblemLink());

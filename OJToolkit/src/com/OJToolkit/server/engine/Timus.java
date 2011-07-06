@@ -11,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -96,7 +97,7 @@ public class Timus implements Judge {
                             ret.setProblemId(temp.substring(0, temp.indexOf(".")));
                     }
                     else
-                            ret.setDate(temp);
+                            ret.setDate(new Date(TimeUtility.getTimeinLinux(temp)));
             }
             return ret;
     }

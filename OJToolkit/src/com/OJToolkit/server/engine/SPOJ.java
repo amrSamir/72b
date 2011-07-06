@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -179,7 +180,7 @@ public class SPOJ implements Judge{
         }
         in.close();
         conn.disconnect();
-                return new Submission(ret.get("PROBLEM"), ret.get("DATE"), ret.get("TIME"), ret.get("MEM"), ret.get("RESULT") , ret.get("LANG"));
+                return new Submission(ret.get("PROBLEM"), new Date(TimeUtility.getTimeinLinux(ret.get("DATE"))), ret.get("TIME"), ret.get("MEM"), ret.get("RESULT") , ret.get("LANG"));
         }
 
         @Override

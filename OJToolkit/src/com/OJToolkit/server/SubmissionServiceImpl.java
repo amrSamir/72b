@@ -160,7 +160,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		        s.getMemoryUsed());
 		addSubmissionResult(DataStoreHandler.getAllCoders().get(0)
 		        .getUsername(), judgeUsername, problemCode, ojType,
-		        s.getStatus(), s.getRuntime(), s.getMemoryUsed(), s.getDate());
+		        s.getStatus(), s.getRuntime(), s.getMemoryUsed(), s.getDate().toString());
 		return dpStatus;
 
 	}

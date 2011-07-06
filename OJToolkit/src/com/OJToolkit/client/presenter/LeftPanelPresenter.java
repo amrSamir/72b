@@ -17,7 +17,6 @@ public class LeftPanelPresenter implements Presenter {
 		String isEnabledCookie = Cookies.getCookie("isEnabledCookie");
 		if (isEnabledCookie != null) {
 			display.setEnabled(true);
-			
 		}
 		else{
 			display.setEnabled(false);

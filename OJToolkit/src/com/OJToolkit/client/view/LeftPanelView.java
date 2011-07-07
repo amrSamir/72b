@@ -3,7 +3,11 @@ package com.OJToolkit.client.view;
 import com.OJToolkit.client.Contents.MyResource;
 import com.OJToolkit.client.event.AddAccountEvent;
 import com.OJToolkit.client.event.AlreadyRegisteredEvent;
+import com.OJToolkit.client.event.ContestAdminEvent;
+import com.OJToolkit.client.event.ContestProblemEvent;
+import com.OJToolkit.client.event.JoinContestEvent;
 import com.OJToolkit.client.event.ViewCodersEvent;
+import com.OJToolkit.client.event.ViewContestEvent;
 import com.OJToolkit.client.event.ViewSubmissionsEvent;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -18,14 +22,20 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class LeftPanelView extends Composite implements
 		LeftPanelPresenter.Display {
-	
-	enum Labels {ViewCoders,AddAccounts,ViewProblems, Status};
+
+	enum Labels {
+		ViewCoders, AddAccounts, ViewProblems, ContestAdmin, JoinContest, ViewContest, AddProblemToContest, Status
+	};
+
+	Label lblStatus;
 	Label lblViewCoders;
 	Label lblAddAccount;
 	Label lblViewProblem;
-	Label lblStatus;
+	Label lblContestAdmin;
+	Label lblJoinContest;
+	Label lblViewContest;
+	Label lblAddProblemsToContest;
 
-	
 	// Hack to be fixed
 	public LeftPanelView(final HandlerManager eventBus) {
 		AbsolutePanel absolutePanel = new AbsolutePanel();
@@ -37,25 +47,38 @@ public class LeftPanelView extends Composite implements
 		Image widget = new Image(img.getURL());
 		widget.setSize("", "120px");
 		absolutePanel.add(widget, 30, 10);
-		
 
-		 lblViewCoders = addLeftPanel_lable("View Coders", eventBus,
+		lblViewCoders = addLeftPanel_lable("View Coders", eventBus,
 				Labels.ViewCoders);
 		absolutePanel.add(lblViewCoders, 0, 140);
+
+		lblAddAccount = addLeftPanel_lable("Add Accounts", eventBus,
+				Labels.AddAccounts);
+		absolutePanel.add(lblAddAccount, 0, 220);
+
+		lblStatus = addLeftPanel_lable("Status", eventBus, Labels.Status);
+		absolutePanel.add(lblStatus, 0, 420);
 
 		lblViewProblem = addLeftPanel_lable("View Problems", eventBus,
 				Labels.ViewProblems);
 		absolutePanel.add(lblViewProblem, 0, 180);
-		
-		 lblAddAccount = addLeftPanel_lable("Add Accounts", eventBus,
-				Labels.AddAccounts);
-		absolutePanel.add(lblAddAccount, 0, 220);
-		
-		lblStatus = addLeftPanel_lable("Status", eventBus,
-				Labels.Status);
-		absolutePanel.add(lblStatus, 0, 260);
 
-		 
+		lblContestAdmin = addLeftPanel_lable("Contest", eventBus,
+				Labels.ContestAdmin);
+		absolutePanel.add(lblContestAdmin, 0, 260);
+		lblJoinContest = addLeftPanel_lable("JoinContest", eventBus,
+				Labels.JoinContest);
+		absolutePanel.add(lblJoinContest, 0, 300);
+
+		lblViewContest = addLeftPanel_lable("ViewContest", eventBus,
+				Labels.ViewContest);
+		absolutePanel.add(lblViewContest, 0, 340);
+
+		// lblAddProblemsToContest
+		lblAddProblemsToContest = addLeftPanel_lable("AddProblemToContest",
+				eventBus, Labels.AddProblemToContest);
+		absolutePanel.add(lblAddProblemsToContest, 0, 380);
+
 	}
 
 	private Label addLeftPanel_lable(String LableName,
@@ -73,6 +96,14 @@ public class LeftPanelView extends Composite implements
 					eventBus.fireEvent(new AddAccountEvent());
 				else if (LinkType.equals(Labels.ViewProblems))
 					eventBus.fireEvent(new AlreadyRegisteredEvent());
+				else if (LinkType.equals(Labels.ContestAdmin))
+					eventBus.fireEvent(new ContestAdminEvent());
+				else if (LinkType.equals(Labels.JoinContest))
+					eventBus.fireEvent(new JoinContestEvent());
+				else if (LinkType.equals(Labels.ViewContest))
+					eventBus.fireEvent(new ViewContestEvent());
+				else if (LinkType.equals(Labels.AddProblemToContest))
+					eventBus.fireEvent(new ContestProblemEvent());
 				else if (LinkType.equals(Labels.Status))
 					eventBus.fireEvent(new ViewSubmissionsEvent());
 			}
@@ -86,15 +117,23 @@ public class LeftPanelView extends Composite implements
 		return this;
 	}
 
-	/* (non-Javadoc)
-     * @see com.OJToolkit.client.presenter.LeftPanelPresenter.Display#setEnabled(boolean)
-     */
-    @Override
-    public void setEnabled(boolean isEnabled) {
-    	 lblViewCoders.setVisible(isEnabled);
-    	 lblAddAccount.setVisible(isEnabled);
-    	 lblViewProblem.setVisible(isEnabled);
-    	 lblStatus.setVisible(isEnabled);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.OJToolkit.client.presenter.LeftPanelPresenter.Display#setEnabled(
+	 * boolean)
+	 */
+	@Override
+	public void setEnabled(boolean isEnabled) {
+		lblViewCoders.setVisible(isEnabled);
+		lblAddAccount.setVisible(isEnabled);
+		lblViewProblem.setVisible(isEnabled);
+		lblContestAdmin.setVisible(isEnabled);
+		lblJoinContest.setVisible(isEnabled);
+		lblViewContest.setVisible(isEnabled);
+		lblAddProblemsToContest.setVisible(isEnabled);
+		lblStatus.setVisible(isEnabled);
+	}
 
 }

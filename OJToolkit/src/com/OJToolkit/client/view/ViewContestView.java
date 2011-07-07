@@ -122,7 +122,7 @@ public class ViewContestView extends Composite implements ViewContestPresenter.D
 		this.submissions = submissions ;
 		listSubmissions.clear() ;
 		for(SubmissionData sd : submissions){
-			listSubmissions.addItem(sd.getJudgeResult()) ;
+			listSubmissions.addItem(sd.getUsername()+" "+sd.getProblemTitle()+" results:"+sd.getJudgeResult()) ;
 		}
 	}
 

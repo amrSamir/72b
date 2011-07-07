@@ -3,11 +3,14 @@
  */
 package com.OJToolkit.server;
 
+import java.util.Date;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+
 
 /**
  * @author 72B
@@ -34,7 +37,7 @@ public class UserSubmission {
 	@Persistent
 	private String memory;
 	@Persistent
-	private String date;
+	private Long date;
 	/**
      * @return the submissionID
      */
@@ -134,18 +137,18 @@ public class UserSubmission {
 	/**
      * @return the date
      */
-    public String getDate() {
-    	return date;
+    public Date getDate() {
+    	return new Date(this.date);
     }
 	/**
      * @param date the date to set
      */
-    public void setDate(String date) {
-    	this.date = date;
+    public void setDate(Date date) {
+    	this.date = date.getTime();
     }
 	public UserSubmission(String username, String judgeUsername,
             String problemCode, String judgeType, String judgeResult,
-            String time, String memory, String date) {
+            String time, String memory, Date date) {
 	    super();
 	    this.username = username;
 	    this.judgeUsername = judgeUsername;
@@ -154,16 +157,11 @@ public class UserSubmission {
 	    this.judgeResult = judgeResult;
 	    this.time = time;
 	    this.memory = memory;
-	    this.date = date;
+	    this.date = date.getTime();
     }
 	public UserSubmission() {
 	    super();
     }
-	
-	
-	
-	
-	
-	
+
 
 }

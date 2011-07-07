@@ -20,11 +20,10 @@ import com.google.gwt.view.client.Range;
 
 @SuppressWarnings("serial")
 public class CoderServiceImpl extends RemoteServiceServlet implements
-        CoderService {
+		CoderService {
 
-	@SuppressWarnings("unused")
 	private static final Logger LOG = Logger.getLogger(CoderServiceImpl.class
-	        .getName());
+			.getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
 	@Override
@@ -33,6 +32,8 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		// DataStoreHandler.checkLoggedIn();
 //		LOG.log(Level.SEVERE, "SPOJ_Username2");
 		// DataStoreHandler dsh = new DataStoreHandler();
+		LOG.log(Level.SEVERE, DataStoreHandler.getAllCoders().get(0)
+				.getSPOJUsername());
 //		LOG.log(Level.SEVERE, DataStoreHandler.getAllCoders().get(0)
 //		        .getSPOJUsername());
 
@@ -48,8 +49,8 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			List<Coder> codersDB = (List<Coder>) q.execute();
 			for (Coder coder : codersDB) {
 				coders.add(new CoderData(coder.getUserID(),
-				        coder.getUsername(), coder.getEmail(), coder
-				                .getSPOJUsername(), coder.getSPOJPassword()));
+						coder.getUsername(), coder.getEmail(), coder
+								.getSPOJUsername(), coder.getSPOJPassword()));
 			}
 
 		} finally {
@@ -57,6 +58,41 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		}
 
 		return coders;
+	}
+	
+	public static CoderData getCoder(Long coderID){
+		CoderData cd = new CoderData();
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			Query query = pm.newQuery(Coder.class);
+			query.setFilter("userID  == coderID");
+			query.declareParameters("java.lang.Long coderID");
+			@SuppressWarnings("unchecked")
+			List<Coder> codersDB = (List<Coder>) query.execute(coderID);
+			for (Coder coder : codersDB) {
+				cd = new CoderData(coder.getUserID(),coder.getUsername(),coder.getEmail(),coder.getSPOJUsername(),coder.getSPOJPassword()) ;
+			}
+		}finally{
+			pm.close() ;
+		}
+		return cd ;
+	}
+	
+	public static Long getCoderID(String Email){
+		Long l = 0L ;
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			Query query = pm.newQuery(Coder.class);
+			query.setFilter("email  == Email");
+			query.declareParameters("java.lang.String Email");
+			List<Coder> codersDB = (List<Coder>) query.execute(Email);
+			for (Coder coder : codersDB) {
+				l = coder.getUserID() ;
+			}
+		}finally{
+			pm.close() ;
+		}
+		return l ;
 	}
 
 	@Override
@@ -76,7 +112,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			query.setFilter("email == userEmail");
 			query.declareParameters("java.lang.String userEmail");
 			List<Coder> coders = (List<Coder>) query.execute(DataStoreHandler
-			        .getUser().getEmail());
+					.getUser().getEmail());
 			// List<Coder> coders = (List<Coder>)
 			// q.execute("e == getUser().getEmail()");
 			int size = coders.size();
@@ -93,6 +129,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.CoderService#addCoder(java.lang.String)
 	 */
@@ -136,13 +173,14 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.CoderService#addAccount(java.lang.String,
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
 	public void addAccount(String accountType, String username, String password)
-	        throws NotLoggedInException {
+			throws NotLoggedInException {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
 
@@ -150,8 +188,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			Query query = pm.newQuery(select_query);
 			query.setFilter("email == userEmail");
 			query.declareParameters("java.lang.String userEmail");
-			List<Coder> coders = (List<Coder>) query.execute(DataStoreHandler
-			        .getUser().getEmail());
+			List<Coder> coders = (List<Coder>) query.execute(DataStoreHandler.getUser().getEmail());
 
 			if (accountType.equals("SPOJ")) {
 				coders.get(0).setSPOJUsername(username);
@@ -174,6 +211,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.Services.CoderService#getAddedAccounts()
 	 */
 	@Override
@@ -187,7 +225,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			query.setFilter("email == userEmail");
 			query.declareParameters("java.lang.String userEmail");
 			List<Coder> coders = (List<Coder>) query.execute(DataStoreHandler
-			        .getUser().getEmail());
+					.getUser().getEmail());
 			if (coders.get(0).getSPOJUsername() != null) {
 				ret += "SPOJ-";
 			}
@@ -234,12 +272,6 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		return ret;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * com.OJToolkit.client.Services.CoderService#getCoderDetails(java.lang.
-	 * String)
-	 */
 	@Override
 	public CoderProfileData getCoderDetails(String username) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
@@ -303,7 +335,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			for (UserSubmission userSubmission : submissions) {
 				submissionData = new SubmissionData();
 				submissionData.setJudgeType(userSubmission.getJudgeType());
-				submissionData.setDate(userSubmission.getDate());
+				submissionData.setDate(userSubmission.getDate().toString());
 				submissionData.setJudgeResult(userSubmission.getJudgeResult());
 				submissionData.setMemory(userSubmission.getMemory());
 				submissionData.setTime(userSubmission.getTime());

@@ -1,7 +1,10 @@
 package com.OJToolkit.server;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -10,7 +13,6 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import com.OJToolkit.client.Services.SubmissionService;
-import com.OJToolkit.client.ValueObjects.CoderProfileData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
@@ -18,15 +20,16 @@ import com.OJToolkit.server.engine.Judge;
 import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Submission;
 import com.OJToolkit.server.engine.Timus;
+import com.google.appengine.repackaged.org.joda.time.DateTime;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.gwt.view.client.Range;
 
 public class SubmissionServiceImpl extends RemoteServiceServlet implements
-        SubmissionService {
+		SubmissionService {
 	// long DBStartIndex = 14680;
 	// long DBStartIndex =73670;
 	private static final Logger LOG = Logger
-	        .getLogger(SubmissionServiceImpl.class.getName());
+			.getLogger(SubmissionServiceImpl.class.getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
 	@Override
@@ -83,7 +86,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				System.out.println("Problem Code: " + problemCode);
 				System.out.println("Code: " + code);
 				judge.submitProblem(judgeUsername, judgePassword, problemCode,
-				        language, code);
+						language, code);
 				System.out.println("Submitted");
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -102,6 +105,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	//
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#getLastProblemStatus(
 	 * java.lang.String, java.lang.String)
@@ -155,12 +159,13 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		}
 
 		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
-		ProblemStatusData dpStatus = new ProblemStatusData(s.getDate(),
-		        s.getProblemId(), s.getStatus(), s.getRuntime(),
-		        s.getMemoryUsed());
+
+		ProblemStatusData dpStatus = new ProblemStatusData(new Date( TimeUtility.getTimeinLinux(s.getDate() )),
+				s.getProblemId(), s.getStatus(), s.getRuntime(),
+				s.getMemoryUsed());
 		addSubmissionResult(DataStoreHandler.getAllCoders().get(0)
-		        .getUsername(), judgeUsername, problemCode, ojType,
-		        s.getStatus(), s.getRuntime(), s.getMemoryUsed(), s.getDate().toString());
+				.getUsername(), judgeUsername, problemCode, ojType,
+				s.getStatus(), s.getRuntime(), s.getMemoryUsed(), new Date( TimeUtility.getTimeinLinux(s.getDate() )));
 		return dpStatus;
 
 	}
@@ -169,6 +174,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(com
 	 * .OJToolkit.client.ValueObjects.ProblemData)
@@ -182,8 +188,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			// (List<Problem>)qq.execute(); pm.deletePersistentAll(ae);
 
 			Problem problem = new Problem(problemData.getProblemCode(),
-			        problemData.getProblemName(), problemData.getUrl(),
-			        problemData.getOjType());
+					problemData.getProblemName(), problemData.getUrl(),
+					problemData.getOjType());
 
 			pm.makePersistent(problem);
 
@@ -198,6 +204,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.Services.SubmissionService#getProblems(long)
 	 */
 	@Override
@@ -233,8 +240,33 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		return ret;
 	}
 
+	public static ProblemData getProblem(Long problemID) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		ProblemData problemData = new ProblemData();
+		try {
+			String select_query = "select from " + Problem.class.getName();
+			Query query = pm.newQuery(select_query);
+			// query.setFilter("probID == problemID");
+			query.setFilter("probID == problemID");
+			query.declareParameters("java.lang.Long problemID");
+			List<Problem> execute = (List<Problem>) query.execute(problemID);
+			List<Problem> problems = execute;
+			problemData.setProblemCode(problems.get(0).getProblemCode());
+			problemData.setProblemName(problems.get(0).getProblemName());
+			problemData.setOjType(problems.get(0).getOjType());
+			problemData.setUrl(problems.get(0).getUrl());
+
+		} finally {
+
+			pm.close();
+		}
+		return problemData;
+
+	}
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#getProblem(java.lang.
 	 * String)
@@ -261,20 +293,42 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		return problemData;
 	}
 
-	public void addSubmissionResult(String username, String judgeUsername,
-	        String problemCode, String judgeType, String judgeResult,
-	        String time, String memory, String date) {
+	@SuppressWarnings("unchecked")
+	static public ArrayList<SubmissionData> getSubmissionByDate(Long startTime, Long endTime) {
+		ArrayList<SubmissionData> userSubmitions = new ArrayList<SubmissionData>();
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			String select_query = "select from " + UserSubmission.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("date >= startTime && date <= endTime");
+			query.declareParameters("java.lang.Long startTime,java.lang.Long endTime");
+			List<UserSubmission> submissions = (List<UserSubmission>) query.execute(startTime, endTime);
+			for(UserSubmission us : submissions){
+				
+				userSubmitions.add(new SubmissionData(us.getUsername(), us.getJudgeUsername(), us.getProblemCode(), us.getJudgeType(), us.getJudgeResult(), us.getTime(), us.getMemory(), us.getDate().toString() )) ;
+			}
+//			userSubmitions.addAll(submissions);
+		}finally{
+			pm.close() ;
+		}
+		return userSubmitions;
+	}
 
+	public void addSubmissionResult(String username, String judgeUsername,
+			String problemCode, String judgeType, String judgeResult,
+			String time, String memory, Date date) {
+		DateFormat df = new SimpleDateFormat("");
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
-
+			
+			Long d = date.getTime();
 			String select_query = "select from "
-			        + UserSubmission.class.getName();
+					+ UserSubmission.class.getName();
 			Query query = pm.newQuery(select_query);
 			query.setFilter("judgeUsername  == jUsername && date == jDate");
-			query.declareParameters("java.lang.String jUsername,java.lang.String jDate");
+			query.declareParameters("java.lang.String jUsername,java.lang.Long jDate");
 			List<UserSubmission> submissions = (List<UserSubmission>) query
-			        .execute(judgeUsername, date);
+					.execute(judgeUsername, d);
 			System.out.println("AE-SubmServImp-" + submissions.size());
 			if (submissions.size() > 0) {
 				submissions.get(0).setJudgeResult(judgeResult);
@@ -331,7 +385,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				submissionData.setUsername(userSubmission.getUsername());
 				submissionData.setProblemCode(userSubmission.getProblemCode());
 				submissionData.setJudgeType(userSubmission.getJudgeType());
-				submissionData.setDate(userSubmission.getDate());
+				submissionData.setDate(userSubmission.getDate().toString());
 				submissionData.setJudgeResult(userSubmission.getJudgeResult());
 				submissionData.setMemory(userSubmission.getMemory());
 				submissionData.setTime(userSubmission.getTime());
@@ -342,8 +396,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				List<Problem> problems = (List<Problem>) query.execute(
 				        userSubmission.getProblemCode(),
 				        userSubmission.getJudgeType());
-				submissionData
-				        .setProblemTitle(problems.get(0).getProblemName());
+				submissionData.setProblemTitle(problems.get(0).getProblemName());
 				ret.add(submissionData);
 			}
 

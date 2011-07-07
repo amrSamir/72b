@@ -97,7 +97,7 @@ public class Timus implements Judge {
                             ret.setProblemId(temp.substring(0, temp.indexOf(".")));
                     }
                     else
-                            ret.setDate(new Date(TimeUtility.getTimeinLinux(temp)));
+                            ret.setDate(temp);
             }
             return ret;
     }

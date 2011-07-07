@@ -11,16 +11,16 @@ import java.util.Date;
  */
 public class Submission {
     private String problemId;
-    private Long date;
+    private String date;
     private String runtime;
     private String memoryUsed;
     private String status;
     private String language;
     public Submission(){}
-    public Submission(String problemId ,Date date , String runtime , String memoryUsed , String status , String language)
+    public Submission(String problemId ,String date , String runtime , String memoryUsed , String status , String language)
     {
             this.problemId = problemId;
-            this.date = date.getTime() ;
+            this.date = date ;
             this.runtime = runtime;
             this.memoryUsed = memoryUsed;
             this.status = status;
@@ -32,11 +32,11 @@ public class Submission {
     public void setProblemId(String problemId) {
             this.problemId = problemId;
     }
-    public Date getDate() {
-            return new Date(date);
+    public String getDate() {
+            return date;
     }
-    public void setDate(Date date) {
-            this.date = date.getTime() ;
+    public void setDate(String date) {
+            this.date = date ;
     }
     public String getRuntime() {
             return runtime;

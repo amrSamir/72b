@@ -33,8 +33,8 @@ public class OJToolkit implements EntryPoint {
 	 * returns an error.
 	 */
 	private static final String SERVER_ERROR = "An error occurred while "
-	        + "attempting to contact the server. Please check your network "
-	        + "connection and try again.";
+			+ "attempting to contact the server. Please check your network "
+			+ "connection and try again.";
 
 	/**
 	 * This is the entry point method.
@@ -43,52 +43,30 @@ public class OJToolkit implements EntryPoint {
 	public void onModuleLoad() {
 		RootPanel rootPanel = RootPanel.get();
 		System.out.println("start");
-		DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);
-		dockLayoutPanel.setSize("100%", "100%");
-		rootPanel.add(dockLayoutPanel, 0, 0);
-
-		
-		/**
-		 * West panel
-		 */
-		AbsolutePanel leftPanel = new AbsolutePanel();
-		dockLayoutPanel.addWest(leftPanel, 12);
-		leftPanel.setSize("100%", "100%");
-
-		/**
-		 * North panel
-		 */
-		AbsolutePanel topPanel = new AbsolutePanel();
-		dockLayoutPanel.addNorth(topPanel, 5);
-		topPanel.setSize("100%", "100%");
-
-		/**
-		 * Center panel
-		 */
-		AbsolutePanel core = new AbsolutePanel();
-		core.setStylePrimaryName("CorePanel");
-		dockLayoutPanel.add(core);
 
 		SubmissionServiceAsync submissionService = GWT
-		        .create(SubmissionService.class);
+				.create(SubmissionService.class);
 
 		LanguageServiceAsync languageService = GWT
-		        .create(LanguageService.class);
+				.create(LanguageService.class);
 
 		CoderServiceAsync coderService = GWT.create(CoderService.class);
 
 		LoginServiceAsync loginService = GWT.create(LoginService.class);
-		SourceCodeServiceAsync sourceCodeService = GWT.create(SourceCodeService.class);
+		SourceCodeServiceAsync sourceCodeService = GWT
+				.create(SourceCodeService.class);
 		HintServiceAsync hintService = GWT.create(HintService.class);
 		HandlerManager eventBus = new HandlerManager(null);
 		ContestServicesAsync contestService = GWT.create(ContestServices.class);
-//		new SpojProblemsToDBAdder();
-		//tobe removed
-//		FackeSubmissions f = new FackeSubmissions() ;
-		//
+
+		// TODO(magdi): remove
+		// FackeSubmissions f = new FackeSubmissions() ;
+		// /*
 		AppController appViewer = new AppController(eventBus,
-		        submissionService, languageService, loginService, coderService, sourceCodeService,hintService,contestService);
-		appViewer.go(core, topPanel, leftPanel);
+				submissionService, languageService, loginService, coderService,
+				sourceCodeService, hintService, contestService);
+		appViewer.go(rootPanel);
+		// */
 
 	}
 }

@@ -51,7 +51,7 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 	public void addLanguages() {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
-/*			String[] languages = new String[] { "C++ (g++ 4.0.0-8)",
+			String[] languages = new String[] { "C++ (g++ 4.0.0-8)",
 			        "Pascal (gpc 20070904)", "Perl (perl 5.12.1)",
 			        "Python (python 2.5)", "Fortran 95 (gfortran 4.3.2)",
 			        "Whitespace (wspace 0.3)", "ADA 95 (gnat 4.3.2)",
@@ -99,9 +99,9 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 				l.setOJType("Timus");
 				pm.makePersistent(new Language(l.getLanguageName(), l
 				      .getLanguageValue(), l.getOJType()));
-			}*/
+			}
 
-			Language l = new Language();
+			l = new Language();
 			String[] languages_UVA = new String[] { "ANSI C" , "JAVA 1.6.0" , "C++ 4.1.2", "PASCAL 2.0.4" };
 			String[] values_UVA = new String[] { "1" , "2" , "3", "4" };
 			for(int i=0;i<languages_UVA.length;i++){

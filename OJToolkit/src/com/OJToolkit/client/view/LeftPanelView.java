@@ -1,6 +1,10 @@
 package com.OJToolkit.client.view;
 
-import com.OJToolkit.client.Contents.MyResource;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import com.OJToolkit.client.event.AddAccountEvent;
 import com.OJToolkit.client.event.AlreadyRegisteredEvent;
 import com.OJToolkit.client.event.ContestAdminEvent;
@@ -13,19 +17,20 @@ import com.OJToolkit.client.presenter.LeftPanelPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class LeftPanelView extends Composite implements
 		LeftPanelPresenter.Display {
 
-	enum Labels {
+	public enum Labels {
 		ViewCoders, AddAccounts, ViewProblems, ContestAdmin, JoinContest, ViewContest, AddProblemToContest, Status
 	};
+
+	HashMap<Labels, Label> allLabels;
 
 	Label lblStatus;
 	Label lblViewCoders;
@@ -38,47 +43,45 @@ public class LeftPanelView extends Composite implements
 
 	// Hack to be fixed
 	public LeftPanelView(final HandlerManager eventBus) {
-		AbsolutePanel absolutePanel = new AbsolutePanel();
-		absolutePanel.setStyleName("LeftPanel");
-		initWidget(absolutePanel);
-		absolutePanel.setSize("100%", "100%");
+		VerticalPanel verticalPanel = new VerticalPanel();
+		verticalPanel.setStyleName("LeftPanel");
+		initWidget(verticalPanel);
+		int Panel_height = 8 * 48;
+		verticalPanel.setSize("100%", Panel_height + "px");
+		verticalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
-		ImageResource img = MyResource.INSTANCE.imgLogo();
-		Image widget = new Image(img.getURL());
-		widget.setSize("", "120px");
-		absolutePanel.add(widget, 30, 10);
+		allLabels = new HashMap<LeftPanelView.Labels, Label>();
 
-		lblViewCoders = addLeftPanel_lable("View Coders", eventBus,
+		lblViewCoders = addLeftPanel_lable("Coders", eventBus,
 				Labels.ViewCoders);
-		absolutePanel.add(lblViewCoders, 0, 140);
+		verticalPanel.add(lblViewCoders);
 
-		lblAddAccount = addLeftPanel_lable("Add Accounts", eventBus,
+		lblAddAccount = addLeftPanel_lable("Accounts", eventBus,
 				Labels.AddAccounts);
-		absolutePanel.add(lblAddAccount, 0, 220);
+		verticalPanel.add(lblAddAccount);
 
-		lblStatus = addLeftPanel_lable("Status", eventBus, Labels.Status);
-		absolutePanel.add(lblStatus, 0, 420);
-
-		lblViewProblem = addLeftPanel_lable("View Problems", eventBus,
+		lblViewProblem = addLeftPanel_lable("Problems", eventBus,
 				Labels.ViewProblems);
-		absolutePanel.add(lblViewProblem, 0, 180);
+		verticalPanel.add(lblViewProblem);
 
 		lblContestAdmin = addLeftPanel_lable("Contest", eventBus,
 				Labels.ContestAdmin);
-		absolutePanel.add(lblContestAdmin, 0, 260);
+		verticalPanel.add(lblContestAdmin);
+
 		lblJoinContest = addLeftPanel_lable("JoinContest", eventBus,
 				Labels.JoinContest);
-		absolutePanel.add(lblJoinContest, 0, 300);
+		verticalPanel.add(lblJoinContest);
 
 		lblViewContest = addLeftPanel_lable("ViewContest", eventBus,
 				Labels.ViewContest);
-		absolutePanel.add(lblViewContest, 0, 340);
+		verticalPanel.add(lblViewContest);
 
-		// lblAddProblemsToContest
 		lblAddProblemsToContest = addLeftPanel_lable("AddProblemToContest",
 				eventBus, Labels.AddProblemToContest);
-		absolutePanel.add(lblAddProblemsToContest, 0, 380);
+		verticalPanel.add(lblAddProblemsToContest);
 
+		lblStatus = addLeftPanel_lable("Status", eventBus, Labels.Status);
+		verticalPanel.add(lblStatus);
 	}
 
 	private Label addLeftPanel_lable(String LableName,
@@ -87,6 +90,7 @@ public class LeftPanelView extends Composite implements
 		Label lblLabel = new Label(LableName);
 		lblLabel.setStylePrimaryName("LeftPanel-Label");
 		lblLabel.setSize("100%", "");
+		allLabels.put(LinkType, lblLabel);
 		lblLabel.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
@@ -126,14 +130,22 @@ public class LeftPanelView extends Composite implements
 	 */
 	@Override
 	public void setEnabled(boolean isEnabled) {
-		lblViewCoders.setVisible(isEnabled);
-		lblAddAccount.setVisible(isEnabled);
-		lblViewProblem.setVisible(isEnabled);
-		lblContestAdmin.setVisible(isEnabled);
-		lblJoinContest.setVisible(isEnabled);
-		lblViewContest.setVisible(isEnabled);
-		lblAddProblemsToContest.setVisible(isEnabled);
-		lblStatus.setVisible(isEnabled);
+		Iterator<Entry<Labels, Label>> it = allLabels.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry<Labels, Label> pairs = it.next();
+			pairs.getValue().setVisible(isEnabled);
+		}
 	}
 
+	@Override
+	public void setSelected(Labels LinkType) {
+		Iterator<Entry<Labels, Label>> it = allLabels.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry<Labels, Label> pairs = it.next();
+			if (pairs.getKey().equals(LinkType))
+				pairs.getValue().addStyleDependentName("selected");
+			else
+				pairs.getValue().removeStyleDependentName("selected");
+		}
+	}
 }

@@ -24,5 +24,12 @@ public interface MyResource extends ClientBundle {
 	@Source("Logo.png")
 	public ImageResource imgLogo();
 	
+	@Source("LogoText.png")
+	public ImageResource imgLogoText();
 
+	@Source("feedback.png")
+	public ImageResource imgFeedback();
+	
+	@Source("feedback2.png")
+	public ImageResource imgFeedback2();
 }

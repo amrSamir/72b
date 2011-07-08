@@ -1,5 +1,6 @@
 package com.OJToolkit.client.presenter;
 
+import com.OJToolkit.client.view.LeftPanelView;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -8,6 +9,7 @@ public class LeftPanelPresenter implements Presenter {
 	public interface Display {
 		Widget asWidget();
 		void setEnabled(boolean isEnabled);
+		void setSelected(LeftPanelView.Labels labelName);
 	}
 
 	private final Display display;
@@ -23,7 +25,11 @@ public class LeftPanelPresenter implements Presenter {
 		}
 		bind();
 	}
-
+	
+	public void setSelected(LeftPanelView.Labels labelName) {
+		this.display.setSelected(labelName);
+	}
+      
 	private void bind() {
 	}
 

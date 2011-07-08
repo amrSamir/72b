@@ -19,7 +19,7 @@ public class TopPanelPresenter implements Presenter {
 	
 	private final Display display;
 	
-	public TopPanelPresenter(String logoutURL, final Display display) {
+	public TopPanelPresenter(String logoutURL, String username, final Display display) {
 		this.display = display;
 		bind();
 		String isLoggedInCookie = Cookies.getCookie("isLoggedInCookie");

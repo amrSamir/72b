@@ -65,7 +65,7 @@ public class RegistrationPresenter implements Presenter {
 					        @Override
 					        public void onSuccess(Void result) {
 						     //   Window.alert("Added to datastore");
-						        Cookies.setCookie("isRegisteredCookie", "YES",
+						        Cookies.setCookie("isRegisteredCookie", display.getUsername().getValue(),
 						                AppController.COOKIES_EXPIRYDATE, null,
 						                "/", false);
 						        eventBus.fireEvent(new CheckCookiesEvent());

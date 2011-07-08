@@ -1,6 +1,7 @@
 package com.OJToolkit.client.Services;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
@@ -67,5 +68,9 @@ public interface SubmissionService extends RemoteService {
 	public ProblemData getProblem(String problemCode, String ojType);
 	
 	public ArrayList<SubmissionData> getSubmissions(Range range, String sortingQuery);
+
+	void addSubmissionResult(String string, String string2, String string3,
+			String string4, String string5, String string6, String string7,
+			Date d);
 
 }

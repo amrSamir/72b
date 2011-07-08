@@ -282,6 +282,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			query.declareParameters("java.lang.String probCode, java.lang.String OJType");
 			List<Problem> problems = (List<Problem>) query.execute(problemCode,
 			        ojType);
+			problemData.setProblemID(problems.get(0).getProbID());
 			problemData.setProblemCode(problems.get(0).getProblemCode());
 			problemData.setProblemName(problems.get(0).getProblemName());
 			problemData.setOjType(problems.get(0).getOjType());
@@ -313,48 +314,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		}
 		return userSubmitions;
 	}
-
-	public void addSubmissionResult(String username, String judgeUsername,
-			String problemCode, String judgeType, String judgeResult,
-			String time, String memory, Date date) {
-		DateFormat df = new SimpleDateFormat("");
-		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		try {
-			
-			Long d = date.getTime();
-			String select_query = "select from "
-					+ UserSubmission.class.getName();
-			Query query = pm.newQuery(select_query);
-			query.setFilter("judgeUsername  == jUsername && date == jDate");
-			query.declareParameters("java.lang.String jUsername,java.lang.Long jDate");
-			List<UserSubmission> submissions = (List<UserSubmission>) query
-					.execute(judgeUsername, d);
-			System.out.println("AE-SubmServImp-" + submissions.size());
-			if (submissions.size() > 0) {
-				submissions.get(0).setJudgeResult(judgeResult);
-				submissions.get(0).setJudgeType(judgeType);
-				submissions.get(0).setMemory(memory);
-				submissions.get(0).setProblemCode(problemCode);
-				submissions.get(0).setTime(time);
-				submissions.get(0).setUsername(username);
-				pm.makePersistent(submissions.get(0));
-			} else {
-				UserSubmission submission = new UserSubmission();
-				submission.setDate(date);
-				submission.setJudgeResult(judgeResult);
-				submission.setJudgeType(judgeType);
-				submission.setJudgeUsername(judgeUsername);
-				submission.setMemory(memory);
-				submission.setProblemCode(problemCode);
-				submission.setTime(time);
-				submission.setUsername(username);
-				pm.makePersistent(submission);
-			}
-		} finally {
-			pm.close();
-		}
-
-	}
+	
+	
 
 	/*
 	 * (non-Javadoc)
@@ -407,4 +368,86 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		return ret;
 	}
 
+	@Override
+	public void addSubmissionResult(String username, String judgeUsername,
+			String problemCode, String judgeType, String judgeResult,
+			String time, String memory, Date date) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try {
+			
+			Long d = date.getTime();
+			String select_query = "select from "
+					+ UserSubmission.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("judgeUsername  == jUsername && date == jDate");
+			query.declareParameters("java.lang.String jUsername,java.lang.Long jDate");
+			List<UserSubmission> submissions = (List<UserSubmission>) query
+					.execute(judgeUsername, d);
+			System.out.println("AE-SubmServImp-" + submissions.size());
+			if (submissions.size() > 0) {
+				submissions.get(0).setJudgeResult(judgeResult);
+				submissions.get(0).setJudgeType(judgeType);
+				submissions.get(0).setMemory(memory);
+				submissions.get(0).setProblemCode(problemCode);
+				submissions.get(0).setTime(time);
+				submissions.get(0).setUsername(username);
+				pm.makePersistent(submissions.get(0));
+			} else {
+				UserSubmission submission = new UserSubmission();
+				submission.setDate(date);
+				submission.setJudgeResult(judgeResult);
+				submission.setJudgeType(judgeType);
+				submission.setJudgeUsername(judgeUsername);
+				submission.setMemory(memory);
+				submission.setProblemCode(problemCode);
+				submission.setTime(time);
+				submission.setUsername(username);
+				pm.makePersistent(submission);
+			}
+		} finally {
+			pm.close();
+		}
+		
+	}
+//	@Override
+//	public void addSubmissionResult(String username, String judgeUsername,
+//			String problemCode, String judgeType, String judgeResult,
+//			String time, String memory, Date date) {
+//		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+//		try {
+//			
+//			Long d = date.getTime();
+//			String select_query = "select from "
+//					+ UserSubmission.class.getName();
+//			Query query = pm.newQuery(select_query);
+//			query.setFilter("judgeUsername  == jUsername && date == jDate");
+//			query.declareParameters("java.lang.String jUsername,java.lang.Long jDate");
+//			List<UserSubmission> submissions = (List<UserSubmission>) query
+//					.execute(judgeUsername, d);
+//			System.out.println("AE-SubmServImp-" + submissions.size());
+//			if (submissions.size() > 0) {
+//				submissions.get(0).setJudgeResult(judgeResult);
+//				submissions.get(0).setJudgeType(judgeType);
+//				submissions.get(0).setMemory(memory);
+//				submissions.get(0).setProblemCode(problemCode);
+//				submissions.get(0).setTime(time);
+//				submissions.get(0).setUsername(username);
+//				pm.makePersistent(submissions.get(0));
+//			} else {
+//				UserSubmission submission = new UserSubmission();
+//				submission.setDate(date);
+//				submission.setJudgeResult(judgeResult);
+//				submission.setJudgeType(judgeType);
+//				submission.setJudgeUsername(judgeUsername);
+//				submission.setMemory(memory);
+//				submission.setProblemCode(problemCode);
+//				submission.setTime(time);
+//				submission.setUsername(username);
+//				pm.makePersistent(submission);
+//			}
+//		} finally {
+//			pm.close();
+//		}
+//
+//	}
 }

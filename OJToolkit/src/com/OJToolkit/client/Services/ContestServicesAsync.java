@@ -39,4 +39,9 @@ public interface ContestServicesAsync {
 
 	void getContestForAdmin(AsyncCallback<ArrayList<ContestData>> callback);
 
+	void deleteProblemFromContest(String contestName, String problemCode,
+			String problemOJ, AsyncCallback<Void> callback);
+
+	void EditContest(ContestData contest, AsyncCallback<Boolean> callback);
+
 }

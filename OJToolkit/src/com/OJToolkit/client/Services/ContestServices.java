@@ -20,6 +20,7 @@ public interface ContestServices extends RemoteService{
 	public boolean addContest(String contestName,String contestAccessCode,Date startDate,Date endDate);
 	public boolean changeAccessCode(String contestName ,String newAccessCode) ;
 	public boolean changeContestName(String contestName, String newContestName);
+	public boolean EditContest(ContestData contest) ;
 	public ArrayList<ContestData> getContests();
 	public boolean addUserToContest(String contestName, String contestAccessCode);
 	public boolean addProblemToContest(String contestName, String prolemName , String OJ);
@@ -27,4 +28,5 @@ public interface ContestServices extends RemoteService{
 	public ArrayList<ProblemData> getProblemForContest(String contestName) ;
 	public ArrayList<SubmissionData> getContestSubmissions(String contestName) ;
 	public ArrayList<ContestData> getContestForAdmin();
+	void deleteProblemFromContest(String contestName, String  problemCode , String problemOJ);
 }

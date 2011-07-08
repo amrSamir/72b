@@ -26,12 +26,17 @@
 					<c:CellTable addStyleNames='{style.cellTable}'
 						pageSize='15' ui:field='cellTable' />
 				</td>
+				<td  valign='top'>
+					<c:CellList addStyleNames='{style.cellTable}'
+						 ui:field='chossedproblemsTable' />
+				</td>
 			</tr>
 			<tr>
 				<td align='center'>
 					<c:SimplePager ui:field='pager' />
 				</td>
 			</tr>
+		
 		</table>
 	</g:HTMLPanel>
 </ui:UiBinder> 

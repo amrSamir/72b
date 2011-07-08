@@ -1,4 +1,4 @@
-package com.OJToolkit.client.presenter;
+	package com.OJToolkit.client.presenter;
 
 import java.util.ArrayList;
 
@@ -6,12 +6,14 @@ import com.OJToolkit.client.Services.ContestServicesAsync;
 import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.ContestData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
+import com.OJToolkit.client.ValueObjects.ScoreBoardRow;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.client.presenter.JoinContestPresenter.Display;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasValue;
@@ -22,18 +24,12 @@ public class ViewContestPresenter implements Presenter {
 
 	public interface Display {
 		void setCoders(ArrayList<CoderData> coders);
-
 		void setProblems(ArrayList<ProblemData> problems);
-
 		void setContests(ArrayList<ContestData> contests);
-
 		void setSubmissions(ArrayList<SubmissionData> submissions) ;
-		
-
+		void setScoreboardTable() ;
 		HasClickHandlers getSubmitButton();
-
 		String getContestName();
-
 		Widget asWidget();
 	}
 
@@ -53,19 +49,20 @@ public class ViewContestPresenter implements Presenter {
 	private void bind() {
 		display.getSubmitButton().addClickHandler(new ClickHandler() {
 			@Override
-			public void onClick(ClickEvent event) {				
+			public void onClick(ClickEvent event) {		
+				display.setScoreboardTable();
 				String contestname = display.getContestName();
 				getCoders(contestname);
 				getProblems(contestname);
 				getSubmissions(contestname) ;
+				
 			}
 		});
 
 	}
 
 	private void getContests() {
-		contestServises
-				.getContestForAdmin(new AsyncCallback<ArrayList<ContestData>>() {
+		contestServises.getContests(new AsyncCallback<ArrayList<ContestData>>() {
 					ArrayList<ContestData> contests = new ArrayList<ContestData>();
 
 					@Override

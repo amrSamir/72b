@@ -1,6 +1,7 @@
 package com.OJToolkit.client.Services;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
@@ -35,5 +36,9 @@ public interface SubmissionServiceAsync {
 
 	void getSubmissions(Range range, String sortingQuery,
             AsyncCallback<ArrayList<SubmissionData>> callback);
+
+	void addSubmissionResult(String string, String string2, String string3,
+			String string4, String string5, String string6, String string7,
+			Date d, AsyncCallback<Void> asyncCallback);
 
 }

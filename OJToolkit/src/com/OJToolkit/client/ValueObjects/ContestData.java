@@ -20,7 +20,14 @@ public class ContestData implements Serializable {
 	public void setContestOwnerID(Long contestOwnerID) {
 		this.contestOwnerID = contestOwnerID;
 	}
-
+	public ContestData( String contestName,
+			String contestAccessCode, Date startTime, Date endTime){
+			this.contestName = contestName;
+			this.contestAccessCode = contestAccessCode;
+			this.startTime = startTime ;
+			this.endTime = endTime;
+	}
+	
 	public ContestData(Long contestID, String contestName,
 			String contestAccessCode, Date startTime, Date endTime,
 			Integer contestDuration) {

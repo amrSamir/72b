@@ -21,12 +21,12 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class ContestServicesImpl extends RemoteServiceServlet  implements ContestServices{
 
 	@SuppressWarnings("unused")
-	private static final Logger LOG = Logger.getLogger(ContestServices.class
-			.getName());
+	private static final Logger LOG = Logger.getLogger(ContestServices.class.getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
-	
 	@Override
 	public boolean addContest(String contestName, String contestAccessCode,Date startDate,Date endDate){
+		Contest con = getContest(contestName) ;
+		if(con==null)return false ;
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		Long UserID = DataStoreHandler.getAllCoders().get(0).getUserID() ;
 		try {
@@ -39,7 +39,40 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return true ;
 	}
-
+	@Override
+	public boolean addUserToContest(String contestName, String contestAccessCode) {
+		Contest con = getContest(contestName) ;
+		if(con==null)return false ;
+		if(!con.getContestAccessCode().equals(contestAccessCode))return false ;
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();		
+		Long UserID = DataStoreHandler.getAllCoders().get(0).getUserID() ;
+		if(isUserAlreadyExsist(con.getContestID(),UserID))return false ;
+		try{
+			ContestUsers contestUser = new ContestUsers(con.getContestID(), UserID);
+			pm.makePersistent(contestUser) ;
+		}finally{
+			pm.close() ;
+		}
+		return true ;
+	}
+	@Override
+	public boolean addProblemToContest(String contestName, String problemCode , String problemOJ) {
+		Contest con = getContest(contestName) ;
+		if(con==null)return false ;
+		SubmissionServiceImpl services = new SubmissionServiceImpl() ;
+		ProblemData pd = services.getProblem(problemCode, problemOJ) ;
+		Long problemID = pd.getProblemID() ;
+		if(isProblemAlreadyExsist(con.getContestID(),problemID))return false  ;
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			ContestProblems contestProblem = new ContestProblems(con.getContestID(),problemID);
+			pm.makePersistent(contestProblem);
+		}finally{
+			pm.close();
+		}
+		
+		return true ;
+	}
 	@Override
 	public boolean changeAccessCode(String contestName , String newAccessCode) {
 		System.out.println("Magdi-contestService-change accessCode !!!!!!");
@@ -59,10 +92,8 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return true ;
 	}
-
 	@Override
 	public boolean changeContestName(String contestName , String newContestName) {
-		System.out.println("Magdi-contestService-change contest name !!!!!!");
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try{
 			String select_query = "select from " + Contest.class.getName();
@@ -78,11 +109,27 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return true ;
 	}
-
-	
-
-	
-	
+	@Override
+	public boolean EditContest(ContestData contest) {
+		
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			String select_query = "select from " + Contest.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("ContestName  == contestName");
+			query.declareParameters("java.lang.String contestName");
+			@SuppressWarnings("unchecked")
+			List<Contest> co = (List<Contest>) query.execute(contest.getContestName()) ;
+			co.get(0).setContestName(contest.getContestName()) ;
+			co.get(0).setContestAccessCode(contest.getContestAccessCode()) ;
+			co.get(0).setStartDate(contest.getStartTime()) ;
+			co.get(0).setEndDate(contest.getEndTime()) ;
+			pm.makePersistent(co.get(0));
+		}finally{
+			pm.close();
+		}
+		return true;
+	}
 	@Override
 	public ArrayList<ContestData> getContestForAdmin() {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
@@ -103,7 +150,6 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return con ;
 	}
-	
 	@Override
 	@SuppressWarnings("unchecked")
 	public ArrayList<ContestData> getContests() {
@@ -116,6 +162,8 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 			System.out.println("Magdi-server-contest- Number of contests is" + allcontest.size() );
 			for(Contest c:allcontest){
 				ContestData curC = new ContestData(c.getContestID(),c.getContestName(), c.getContestAccessCode());
+				curC.setStartTime(c.getStartDate());
+				curC.setEndTime(c.getEndDate()) ;
 				con.add(curC);
 			}
 		}finally{
@@ -123,10 +171,6 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return con ;
 	}
-
-	
-	
-	
 	public Contest getContest(String contestName){
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		Long UserID = DataStoreHandler.getAllCoders().get(0).getUserID() ;
@@ -150,42 +194,6 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		return con ;
 	}
 	@Override
-	public boolean addUserToContest(String contestName, String contestAccessCode) {
-		Contest con = getContest(contestName) ;
-		if(con==null)
-			return false ;
-		if(!con.getContestAccessCode().equals(contestAccessCode))return false ;
-		PersistenceManager pm = DataStoreHandler.getPersistenceManager();		
-		Long UserID = DataStoreHandler.getAllCoders().get(0).getUserID() ;
-		try{
-			ContestUsers contestUser = new ContestUsers(con.getContestID(), UserID);
-			pm.makePersistent(contestUser) ;
-		}finally{
-			pm.close() ;
-		}
-		return true ;
-	}
-
-	@Override
-	public boolean addProblemToContest(String contestName, String problemCode , String problemOJ) {
-		Contest con = getContest(contestName) ;
-		if(con==null)
-			return false ;
-		SubmissionServiceImpl services = new SubmissionServiceImpl() ;
-		ProblemData pd = services.getProblem(problemCode, problemOJ) ;
-		Long problemID = pd.getProblemID() ;
-		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		try{
-			ContestProblems contestProblem = new ContestProblems(con.getContestID(),problemID);
-			pm.makePersistent(contestProblem);
-		}finally{
-			pm.close();
-		}
-		
-		return true ;
-	}
-
-	@Override
 	public ArrayList<CoderData> getCodersForContest(String contestName) {
 		Contest con = getContest(contestName) ;
 		ArrayList<CoderData> coders = new ArrayList<CoderData>();;
@@ -207,7 +215,6 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return coders;
 	}
-
 	@Override
 	public ArrayList<ProblemData> getProblemForContest(String contestName) {
 		Contest con = getContest(contestName) ;
@@ -230,7 +237,6 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return problems;
 	}
-	
 	@Override
 	public ArrayList<SubmissionData> getContestSubmissions(String contestName){
 		ArrayList<SubmissionData> submissions = new ArrayList<SubmissionData>();
@@ -238,7 +244,6 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		ArrayList<SubmissionData> subInContestTime = SubmissionServiceImpl.getSubmissionByDate(con.getStartDate().getTime(), con.getEndDate().getTime()) ;
 		ArrayList<CoderData> coders = getCodersForContest(contestName) ;
 		ArrayList<ProblemData> problems = getProblemForContest(contestName) ;
-		int i = 0 ;
 		for(SubmissionData sub: subInContestTime){
 			for(CoderData coder : coders){
 				for(ProblemData problem : problems){
@@ -250,5 +255,52 @@ public class ContestServicesImpl extends RemoteServiceServlet  implements Contes
 		}
 		return submissions ;
 	}
-	
+	@Override
+	public void deleteProblemFromContest(String contestName, String problemCode , String problemOJ) {
+		Contest con = getContest(contestName) ;
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		Long contestid = con.getContestID() ;
+		SubmissionServiceImpl services = new SubmissionServiceImpl() ;
+		ProblemData pd = services.getProblem(problemCode, problemOJ) ;
+		Long problemId = pd.getProblemID() ;
+		try{
+			String select_query = "select from " + ContestProblems.class.getName();
+			Query query = pm.newQuery(select_query);
+			
+			query.setFilter("contestID  == contestid && problemID == problemId");
+			query.declareParameters("java.lang.Long contestid,java.lang.Long problemId");
+			List<ContestProblems> pod = (List<ContestProblems>) query.execute(contestid,problemId);
+			pm.deletePersistentAll(pod);
+		}finally{
+			pm.close() ;
+		}
+	}
+	private boolean isProblemAlreadyExsist(Long contestid , Long problemId){
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			String select_query = "select from " + ContestProblems.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("contestID  == contestid && problemID == problemId");
+			query.declareParameters("java.lang.Long contestid,java.lang.Long problemId");
+			List<ContestProblems> pod = (List<ContestProblems>) query.execute(contestid,problemId);
+			if(pod.size() > 0 )return true ;
+		}finally{
+			pm.close() ;
+		}
+		return false ;
+	}
+	private boolean isUserAlreadyExsist(Long contestid , Long userID){
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try{
+			String select_query = "select from " + ContestUsers.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("ContestID  == contestid && UserID == userID");
+			query.declareParameters("java.lang.Long contestid,java.lang.Long userID");
+			List<ContestProblems> pod = (List<ContestProblems>) query.execute(contestid,userID);
+			if(pod.size() > 0 )return true ;
+		}finally{
+			pm.close() ;
+		}
+		return false ;
+	}
 }

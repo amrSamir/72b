@@ -77,9 +77,9 @@ public class JoinContestPresenter implements Presenter {
 					@Override
 					public void onSuccess(Boolean result) {
 						if(result == true)
-						System.out.println("Magdi-join contest-user added ");
+							System.out.println("Magdi-join contest-user added ");
 						else 
-							Window.alert("Wrong Contest Code or Wrong Name") ;
+							Window.alert("Wrong Contest Code or u r already rejesterd") ;
 					}
 				});
 				

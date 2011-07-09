@@ -35,15 +35,15 @@ public class AddAccountPresenter implements Presenter {
 		HasValue<String> getAccountUserName();
 
 		HasValue<String> getAccountPassword();
-		
+
 		HasValue<String> getAlreadyRegisteredMessage();
 
 		HasSelectionHandlers<Integer> getSelectionHandler();
 
-		void notifySave();
+		void notifyUser(String msg);
 
 		Widget asWidget();
-		 
+
 		void setVisible();
 
 	}
@@ -82,8 +82,7 @@ public class AddAccountPresenter implements Presenter {
 			@Override
 			public void onSuccess(String result) {
 				addedAccounts = result;
-				Cookies.setCookie("addedAccountsCookie", addedAccounts,
-				        AppController.COOKIES_EXPIRYDATE, null, "/", false);
+				Cookies.setCookie("addedAccountsCookie", addedAccounts);
 			}
 		});
 
@@ -99,10 +98,14 @@ public class AddAccountPresenter implements Presenter {
 			public void onSuccess(String result) {
 				if (result != null) {
 					display.getAccountUserName().setValue(result);
-					display.getAlreadyRegisteredMessage().setValue("You have already added this account. If you want to modify it, make the changes then save!");
+					display.getAlreadyRegisteredMessage()
+					        .setValue(
+					                "You have already added this account. If you want to modify it, make the changes then save!");
 					display.setVisible();
-				} else{
-					display.getAlreadyRegisteredMessage().setValue("You have already added this account, modify it or delete it by clearing the text fields then save");
+				} else {
+					display.getAlreadyRegisteredMessage()
+					        .setValue(
+					                "You have already added this account, modify it or delete it by clearing the text fields then save");
 				}
 
 			}
@@ -124,7 +127,7 @@ public class AddAccountPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				accountType = "SPOJ";
-				addAccount(accountType);
+				isValidAccount(accountType);
 				// display.setAccountType(accountType);
 			}
 		});
@@ -134,7 +137,7 @@ public class AddAccountPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				accountType = "Timus";
-				addAccount(accountType);
+				isValidAccount(accountType);
 				// display.setAccountType(accountType);
 				// eventBus.fireEvent(new AddAccountDetailsEvent("X"));
 
@@ -146,7 +149,7 @@ public class AddAccountPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				accountType = "UVA";
-				addAccount(accountType);
+				isValidAccount(accountType);
 				// display.setAccountType(accountType);
 				// eventBus.fireEvent(new AddAccountDetailsEvent("X"));
 			}
@@ -158,9 +161,9 @@ public class AddAccountPresenter implements Presenter {
 			        @Override
 			        public void onSelection(SelectionEvent<Integer> event) {
 				        if (event.getSelectedItem() == 1) {
-				        	setUsername("UVA");
+					        setUsername("UVA");
 				        } else if (event.getSelectedItem() == 2) {
-				        	setUsername("Timus");
+					        setUsername("Timus");
 				        }
 
 			        }
@@ -168,31 +171,51 @@ public class AddAccountPresenter implements Presenter {
 
 	}
 
-	private void addAccount(String ojType) {
-
-		// eventBus.fireEvent(new AddAccountDetailsEvent("SPOJ"));
-		coderService.addAccount(ojType,
-		        display.getAccountUserName().getValue(), display
-		                .getAccountPassword().getValue(),
-		        new AsyncCallback<Void>() {
+	private void isValidAccount(final String ojType) {
+		coderService.isValidAccount(display.getAccountUserName().getValue(),
+		        display.getAccountPassword().getValue(), ojType,
+		        new AsyncCallback<Boolean>() {
 
 			        @Override
-			        public void onSuccess(Void result) {
-				        // eventBus.fireEvent(new
-				        // AlreadyRegisteredEvent());
-				        addedAccounts += "-" + accountType;
-				        Cookies.setCookie("addedAccountsCookie", addedAccounts,
-				                AppController.COOKIES_EXPIRYDATE, null, "/",
-				                false);
-				        display.notifySave();
+			        public void onSuccess(Boolean result) {
+				        addAccount(ojType, result);
+
 			        }
 
 			        @Override
 			        public void onFailure(Throwable caught) {
-				        Window.alert("add account failer!!!");
+				        // TODO Auto-generated method stub
+
 			        }
 		        });
 
+	}
+
+	private void addAccount(String ojType, boolean isValidAccount) {
+
+		if (isValidAccount == false) {
+			display.notifyUser("Invalid Account. Please recheck the username and password");
+		} else {
+			coderService.addAccount(ojType, display.getAccountUserName()
+			        .getValue(), display.getAccountPassword().getValue(),
+			        new AsyncCallback<Void>() {
+
+				        @Override
+				        public void onSuccess(Void result) {
+					        // eventBus.fireEvent(new
+					        // AlreadyRegisteredEvent());
+					        addedAccounts += "-" + accountType;
+					        Cookies.setCookie("addedAccountsCookie",
+					                addedAccounts);
+					        display.notifyUser("Account is added/updated successfully");
+				        }
+
+				        @Override
+				        public void onFailure(Throwable caught) {
+					        Window.alert("add account failer!!!");
+				        }
+			        });
+		}
 	}
 
 	/*

@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
@@ -17,6 +18,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+
 import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -72,8 +74,7 @@ public class TopPanelView extends Composite implements
 		
 		horizontalPanel.add(verticalPanel);
 		horizontalPanel.setCellHorizontalAlignment(verticalPanel, HasHorizontalAlignment.ALIGN_RIGHT);
-		
-		
+			
 		
 	}
 
@@ -86,10 +87,10 @@ public class TopPanelView extends Composite implements
      * @see com.OJToolkit.client.presenter.TopPanelPresenter.Display#setLogoutURL(java.lang.String)
      */
     @Override
-    public void setLogoutURL(String logoutURL) {
-    	String username = Cookies.getCookie("isRegisteredCookie");
+    public void setLogoutURL(String logoutURL, String username) {
     	hprlnkSignout.setVisible(true);
     	hprlnkSignout.setHref(logoutURL);
+    	
     	hprlnkUserProfile.setVisible(true);
     	hprlnkUserProfile.setText(username);
     	hprlnkUserProfile.setTargetHistoryToken("profile="+username);

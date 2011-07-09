@@ -63,8 +63,7 @@ public class InvitationPresenter implements Presenter {
 				if (display.getInvitationString().getValue()
 				        .equals(invitationString)) {
 					System.out.println("correct");
-					Cookies.setCookie("isInvitedCookie", "YESAAA",
-					        AppController.COOKIES_EXPIRYDATE);
+					Cookies.setCookie("isInvitedCookie", "YESAAA");
 					eventBus.fireEvent(new CheckCookiesEvent());
 				}
 

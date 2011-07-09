@@ -7,15 +7,16 @@ import java.util.ArrayList;
 
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
+import com.OJToolkit.client.ValueObjects.ProblemTextData;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Cookies;
-import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Frame;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -41,6 +42,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	Frame problemStatementFrame;
 	private boolean isAnonymousSubmission = false;
 	Anchor problemLink;
+	VerticalPanel problemStatementPanel;
 
 	public ProblemView() {
 		masterPanel = new VerticalPanel();
@@ -82,20 +84,22 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		masterPanel.add(splitPanel);
 		masterPanel.setCellHeight(splitPanel, "100%");
 		
-		AbsolutePanel problemStatementPanel = new AbsolutePanel();
+		 problemStatementPanel = new VerticalPanel();
 		problemStatementPanel.setSize("100%", "100%");
-		problemStatementFrame = new Frame();
-		problemStatementFrame.setSize("100%", "100%");
-		problemStatementPanel.add(problemStatementFrame, 0, 0);
-		splitPanel.add(problemStatementPanel, "Problem Statement", 2);
+		ScrollPanel problemStatementScrollPanel = new ScrollPanel();
+		problemStatementScrollPanel.setSize("100%", "100%");
+		problemStatementScrollPanel.add(problemStatementPanel);
+		splitPanel.add(problemStatementScrollPanel, "Problem Statement", 2);
 
 		VerticalPanel verticalPanel2 = new VerticalPanel();
 		verticalPanel2.setSize("100%", "100%");
 		ScrollPanel scrollPanel = new ScrollPanel();
 		scrollPanel.setSize("100%", "100%");
 		scrollPanel.add(verticalPanel2);
-
 		splitPanel.add(scrollPanel, "Submit Code", 2);
+
+		
+		
 
 		txtCode = new TextArea();
 		verticalPanel2.add(txtCode);
@@ -134,7 +138,7 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 	 */
 	@Override
 	public void setProblem(ProblemData problem) {
-		problemStatementFrame.setUrl(problem.getUrl());
+	//	problemStatementFrame.setUrl(problem.getUrl());
 		lblPrblmTitle.setText(problem.getProblemName());
 		problemLink.setText("Open the problem in " + problem.getOjType());
 		problemLink.setHref(problem.getUrl());
@@ -214,6 +218,40 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
     @Override
     public boolean isAnonymousSubmission() {
 	    return isAnonymousSubmission;
+    }
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.ProblemPresenter.Display#setProblemText(com.OJToolkit.client.ValueObjects.ProblemTextData)
+     */
+    @Override
+    public void setProblemText(ProblemTextData problemText) {
+    	HTML HTMLFullText;
+    	HTML HTMLProblemStatement;
+    	HTML HTMLInputConstraints;
+    	HTML HTMLOutputConstraints;
+    	HTML HTMLIOTestCases;
+    	if(problemText.getIsDividable().equals("false")){
+    		HTMLFullText= new HTML(problemText.getFullText());
+    		problemStatementPanel.add(HTMLFullText);
+    	} else{
+    		HTMLProblemStatement = new HTML(problemText.getProblemStatement());
+    		problemStatementPanel.add(new Label("-------Problem Statement-------"));
+    		problemStatementPanel.add(HTMLProblemStatement);
+    		
+    		HTMLInputConstraints = new HTML(problemText.getInputConstraints());
+     		problemStatementPanel.add(new Label("-------Input Constraints-------"));
+    		problemStatementPanel.add(HTMLInputConstraints);
+    		
+    		
+    		HTMLOutputConstraints = new HTML(problemText.getOutputConstraints());
+     		problemStatementPanel.add(new Label("-------Output Constraints-------"));
+    		problemStatementPanel.add(HTMLOutputConstraints);
+    		
+    		HTMLIOTestCases = new HTML(problemText.getIOTestCases());
+     		problemStatementPanel.add(new Label("-------IO Test Cases-------"));
+    		problemStatementPanel.add(HTMLIOTestCases);
+    		
+    	}
     }
 
 }

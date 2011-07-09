@@ -55,15 +55,14 @@ public class CheckCookiesPresenter implements Presenter {
 
 				        if (!result.isLoggedIn()) {
 					        eventBus.fireEvent(new LoginEvent(result));
-					        
+
 				        } else {
 					        // create logged in cookie
-					        Cookies.setCookie("isLoggedInCookie", "YES",
-					                AppController.COOKIES_EXPIRYDATE, null,
-					                "/", false);
-				        	Cookies.setCookie("logoutURL",result.getLogoutUrl(),
-							        AppController.COOKIES_EXPIRYDATE, null, "/", false);
-				        	eventBus.fireEvent(new TopPanelEvent(result.getLogoutUrl()));
+					        Cookies.setCookie("isLoggedInCookie", "YES");
+					        Cookies.setCookie("logoutURL",
+					                result.getLogoutUrl());
+					        eventBus.fireEvent(new TopPanelEvent(result
+					                .getLogoutUrl()));
 
 					        eventBus.fireEvent(new CheckCookiesEvent());
 
@@ -93,12 +92,11 @@ public class CheckCookiesPresenter implements Presenter {
 	}
 
 	public void callPresenters() {
-		
+
 		String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
 		String isRegisteredCookie = Cookies.getCookie("isRegisteredCookie");
 		if (isRegisteredCookie != null) {
-			Cookies.setCookie("isEnabledCookie", "YES",
-			        AppController.COOKIES_EXPIRYDATE, null, "/", false);
+			Cookies.setCookie("isEnabledCookie", "YES");
 			System.out.println("AE-CheckCookiesPresenter-Enableeeeeed");
 
 			eventBus.fireEvent(new LeftPanelEvent());
@@ -109,7 +107,6 @@ public class CheckCookiesPresenter implements Presenter {
 			} else
 				eventBus.fireEvent(new AlreadyRegisteredEvent());
 		} else {
-			// History.newItem("Registration"); //RegistrationEvent
 			System.out
 			        .println("AE-CheckCookiesPresenter-I am calling the registration event");
 			eventBus.fireEvent(new RegistrationEvent());
@@ -129,11 +126,9 @@ public class CheckCookiesPresenter implements Presenter {
 				if (result == true) {
 					System.out
 					        .println("AE-CheckCookiesPresenter-I am registered");
-					Cookies.setCookie("isRegisteredCookie", "YES",
-					        AppController.COOKIES_EXPIRYDATE, null, "/", false);
+					Cookies.setCookie("isRegisteredCookie", "YES");
 				} else {
-					System.out
-					        .println("AE-CheckCookiesPresenter-I am NOT registered");
+					System.out.println("AE-CheckCookiesPresenter-I am NOT registered");
 				}
 				callPresenters();
 			}

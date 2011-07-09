@@ -8,6 +8,7 @@ import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.LanguageData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
+import com.OJToolkit.client.ValueObjects.ProblemTextData;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -34,6 +35,8 @@ public class ProblemPresenter implements Presenter {
 		Widget asWidget();
 
 		boolean isAnonymousSubmission();
+		
+		void setProblemText(ProblemTextData problemText);
 	}
 
 	private final Display display;
@@ -65,12 +68,18 @@ public class ProblemPresenter implements Presenter {
 		// this.display.setProblem(problemCode);
 		bind();
 
+		getProblem();
+		getLanguages();
+		getProblemText();
+
+	}
+	
+	private void getProblem(){
 		this.submssionService.getProblem(problemCode, ojType,
 		        new AsyncCallback<ProblemData>() {
 			        @Override
 			        public void onSuccess(ProblemData result) {
 				        problem = result;
-				        getLanguages();
 				        display.setProblem(problem);
 			        }
 
@@ -79,11 +88,10 @@ public class ProblemPresenter implements Presenter {
 				        System.out.println("Failed to load problem");
 			        }
 		        });
-
 	}
 
 	private void getLanguages() {
-		this.languageService.getLanguages(problem.getOjType(),
+		this.languageService.getLanguages(ojType,
 		        new AsyncCallback<ArrayList<LanguageData>>() {
 
 			        @Override
@@ -102,6 +110,25 @@ public class ProblemPresenter implements Presenter {
 				        Window.alert("Failed to get list of languages!!");
 			        }
 		        });
+	}
+	
+	protected void getProblemText() {
+		this.submssionService.getProblemText(problemCode, ojType,
+		        new AsyncCallback<ProblemTextData>() {
+
+			        @Override
+			        public void onSuccess(ProblemTextData result) {
+				        display.setProblemText(result);
+
+			        }
+
+			        @Override
+			        public void onFailure(Throwable caught) {
+				        System.out.println("ae-probpres-getprobtext-failure");
+
+			        }
+		        });
+
 	}
 
 	private void bind() {
@@ -125,6 +152,7 @@ public class ProblemPresenter implements Presenter {
 					        @Override
 					        public void onFailure(Throwable caught) {
 						        Window.alert("Failed to submit!!");
+						        caught.printStackTrace();
 					        }
 				        });
 

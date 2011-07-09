@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
+import com.OJToolkit.client.ValueObjects.ProblemTextData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.Range;
@@ -37,6 +38,11 @@ public interface SubmissionServiceAsync {
 	void getSubmissions(Range range, String sortingQuery,
             AsyncCallback<ArrayList<SubmissionData>> callback);
 
+	void addProblemTextToDB(ProblemTextData problemTextData,
+            AsyncCallback<Void> callback);
+
+	void getProblemText(String problemCode, String judgeType,
+            AsyncCallback<ProblemTextData> callback);
 	void addSubmissionResult(String string, String string2, String string3,
 			String string4, String string5, String string6, String string7,
 			Date d, AsyncCallback<Void> asyncCallback);

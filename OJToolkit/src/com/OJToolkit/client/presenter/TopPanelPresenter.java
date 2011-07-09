@@ -1,34 +1,59 @@
 package com.OJToolkit.client.presenter;
 
 import java.util.Collection;
-import java.util.List;
 
+import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TopPanelPresenter implements Presenter {
 	public interface Display {
 		Widget asWidget();
-		void setLogoutURL(String logoutURL);
+		void setLogoutURL(String logoutURL, String username);
 		HasClickHandlers getLogoutButton();
 	}
 	
 	private final Display display;
+	private final CoderServiceAsync coderService;
 	
-	public TopPanelPresenter(String logoutURL, String username, final Display display) {
+	public TopPanelPresenter(final String logoutURL,CoderServiceAsync coderService, final Display display) {
 		this.display = display;
+		this.coderService = coderService;
 		bind();
 		String isLoggedInCookie = Cookies.getCookie("isLoggedInCookie");
 		if(isLoggedInCookie!=null){
-			display.setLogoutURL(logoutURL);
+			callGetUsername(logoutURL);
+			//display.setLogoutURL(logoutURL, "ffsdfds");
+			
 		}
 		
 	}
 	
+	/**
+     * 
+     */
+    private void callGetUsername(final String logoutURL) {
+	   coderService.getUsername(new AsyncCallback<String>() {
+		
+		@Override
+		public void onSuccess(String result) {
+			display.setLogoutURL(logoutURL, result);
+			
+		}
+		
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			
+		}
+	});
+    }
+
 	private void bind() {
 		display.getLogoutButton().addClickHandler(new ClickHandler() {
 			

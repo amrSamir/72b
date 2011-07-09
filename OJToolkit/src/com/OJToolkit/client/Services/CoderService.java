@@ -73,5 +73,11 @@ public interface CoderService extends RemoteService {
 	public CoderProfileData getCoderDetails(String username);
 	
 	public ArrayList<SubmissionData> getCoderSubmissions(String username, Range range, String sortingQuery);
+	
+	public String getUsername();
+	
+	boolean isValidAccount(String username, String password, String judgeType) throws Exception;
+	
+	
 
 }

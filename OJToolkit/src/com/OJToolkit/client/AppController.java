@@ -3,8 +3,6 @@
  */
 package com.OJToolkit.client;
 
-import java.util.Date;
-
 import com.OJToolkit.client.Contents.MyResource;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.Services.ContestServicesAsync;
@@ -38,8 +36,6 @@ import com.OJToolkit.client.event.TopPanelEventHandler;
 import com.OJToolkit.client.event.ViewCoderProfileEvent;
 import com.OJToolkit.client.event.ViewCoderProfileEventHandler;
 import com.OJToolkit.client.event.ViewCodersEvent;
-import com.OJToolkit.client.presenter.ContestAdminPresenter;
-import com.OJToolkit.client.presenter.ContestProblemsPresenter;
 import com.OJToolkit.client.event.ViewCodersEventHandler;
 import com.OJToolkit.client.event.ViewContestEvent;
 import com.OJToolkit.client.event.ViewContestEventHandler;
@@ -53,6 +49,8 @@ import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CoderListPresenter;
 import com.OJToolkit.client.presenter.CoderProfilePresenter;
+import com.OJToolkit.client.presenter.ContestAdminPresenter;
+import com.OJToolkit.client.presenter.ContestProblemsPresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
 import com.OJToolkit.client.presenter.JoinContestPresenter;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
@@ -67,8 +65,8 @@ import com.OJToolkit.client.presenter.TopPanelPresenter;
 import com.OJToolkit.client.presenter.ViewContestPresenter;
 import com.OJToolkit.client.presenter.WelcomePresenter;
 import com.OJToolkit.client.view.AddAccountView;
-import com.OJToolkit.client.view.InvitationView;
 import com.OJToolkit.client.view.ContestAdminView;
+import com.OJToolkit.client.view.InvitationView;
 import com.OJToolkit.client.view.JoinContestView;
 import com.OJToolkit.client.view.LeftPanelView;
 import com.OJToolkit.client.view.LoginView;
@@ -88,7 +86,6 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.uibinder.elementparsers.TabLayoutPanelParser;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
@@ -130,8 +127,8 @@ public class AppController implements ValueChangeHandler<String> {
 	/**
 	 * remembers cookie for 2 weeks.
 	 */
-	public static final Date COOKIES_EXPIRYDATE = new Date(
-			System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 14);
+	/*public static final Date COOKIES_EXPIRYDATE = new Date(
+	        System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 14);*/
 
 	private RootPanel rootPanel;
 	private Panel dockPanel;
@@ -359,8 +356,7 @@ public class AppController implements ValueChangeHandler<String> {
 	 * @param logoutURL2
 	 */
 	protected void doOnTopPanel(String logoutURL) {
-		Presenter presenter = new TopPanelPresenter(logoutURL,
-				(loginInfo == null) ? "test" : loginInfo.getNickname(),
+		Presenter presenter = new TopPanelPresenter(logoutURL, coderService,
 				new TopPanelView());
 		presenter.go(this.topPanel);
 	}
@@ -545,8 +541,7 @@ public class AppController implements ValueChangeHandler<String> {
 		String logoutURLCookie = Cookies.getCookie("logoutURL");
 
 		presenter = new TopPanelPresenter(logoutURLCookie == null ? ""
-				: logoutURLCookie, (loginInfo == null) ? "test"
-				: loginInfo.getNickname(), new TopPanelView());
+		        : logoutURLCookie,coderService, new TopPanelView());
 		presenter.go(this.topPanel);
 
 		presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));

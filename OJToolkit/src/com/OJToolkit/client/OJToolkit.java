@@ -18,6 +18,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
@@ -62,6 +63,7 @@ public class OJToolkit implements EntryPoint {
 		// TODO(magdi): remove
 		// FackeSubmissions f = new FackeSubmissions() ;
 		// /*
+
 		AppController appViewer = new AppController(eventBus,
 				submissionService, languageService, loginService, coderService,
 				sourceCodeService, hintService, contestService);

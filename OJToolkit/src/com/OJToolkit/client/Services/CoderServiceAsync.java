@@ -38,4 +38,9 @@ public interface CoderServiceAsync {
 	void getCoderSubmissions(String username, Range range, String sortingQuery,
             AsyncCallback<ArrayList<SubmissionData>> callback);
 
+	void getUsername(AsyncCallback<String> callback);
+
+	void isValidAccount(String username, String password, String judgeType,
+            AsyncCallback<Boolean> callback);
+
 }

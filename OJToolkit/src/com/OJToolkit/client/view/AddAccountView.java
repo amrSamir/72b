@@ -142,11 +142,11 @@ public class AddAccountView extends Composite implements
     }
 
 	@Override
-	public void notifySave() {
+	public void notifyUser(String msg) {
 	    DecoratedPopupPanel simplePopup = new DecoratedPopupPanel(true);
 	    simplePopup.setAnimationEnabled(true);
 	    simplePopup.setWidth("150px");
-	    simplePopup.setWidget(new Label("Saved"));
+	    simplePopup.setWidget(new Label(msg));
 	    simplePopup.setPopupPosition(200, 200);
 	    simplePopup.show();
 	}

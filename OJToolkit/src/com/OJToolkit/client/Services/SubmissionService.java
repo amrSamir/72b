@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
+import com.OJToolkit.client.ValueObjects.ProblemTextData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -25,8 +26,9 @@ public interface SubmissionService extends RemoteService {
 	 *            The submitted code
 	 * @param language
 	 *            The language of the code
+	 * @throws Exception 
 	 */
-	public void submitCode(boolean isAnonymousSubmission, String problemCode, String ojType, String code, String language);
+	public void submitCode(boolean isAnonymousSubmission, String problemCode, String ojType, String code, String language) throws Exception;
 
 	/**
 	 * Gets the result of judging the problem
@@ -68,6 +70,10 @@ public interface SubmissionService extends RemoteService {
 	public ProblemData getProblem(String problemCode, String ojType);
 	
 	public ArrayList<SubmissionData> getSubmissions(Range range, String sortingQuery);
+	
+	public void addProblemTextToDB(ProblemTextData problemTextData);
+	
+	public ProblemTextData getProblemText(String problemCode, String judgeType);
 
 	void addSubmissionResult(String string, String string2, String string3,
 			String string4, String string5, String string6, String string7,

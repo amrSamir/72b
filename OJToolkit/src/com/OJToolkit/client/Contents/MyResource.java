@@ -14,6 +14,10 @@ public interface MyResource extends ClientBundle {
 
 	@Source("problemsSPOJ.txt")
 	public TextResource defaultText();
+	
+	@Source("SPOJProblemText.txt")
+	public TextResource SPOJProblemText();
+	
 
 	@Source("Banner.jpg")
 	public ImageResource imgBanner();

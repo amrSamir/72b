@@ -41,7 +41,6 @@ public class CoderData implements Serializable {
 		this.username = username;
 		this.email = email;
 		SPOJUsername = sPOJUsername;
-
 		SPOJPassword = sPOJPassword;
 	}
 

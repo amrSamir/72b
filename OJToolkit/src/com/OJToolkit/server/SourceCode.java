@@ -9,99 +9,96 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Text;
 
 
-
+/**
+ * @author 72B July 9, 2011
+ */
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class SourceCode {
 	
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long codeID;
+	private Long sourceCodeID;
+
+	@Persistent
+	private Long submissionID;
+	
+
+	@Persistent
+	private Text sourceCode;
 	
 	@Persistent
-	private Long userID;
-	@Persistent
-	private String problemCode;
-	@Persistent
-	private String problemName;
-	@Persistent
-	private String url;
-	@Persistent
-	private Text code;
-	@Persistent
-	private String note;
-	@Persistent
-	private String judgeResult;
-	@Persistent
-	private Long date;
-	public SourceCode(Long codeID, Long userID, String problemCode,
-			String problemName, String url, String code, String note,
-			String judgeResult, Long date) {
-		super();
-		this.codeID = codeID;
-		this.userID = userID;
-		this.problemCode = problemCode;
-		this.problemName = problemName;
-		this.url = url;
-		this.code = new Text(code);
-		this.note = note;
-		this.judgeResult = judgeResult;
-		this.date = date;
+	private boolean isVisible;
+
+	
+		public SourceCode(){}
+
+
+	public SourceCode(Long submissionID, String sourceCode, boolean isVisible) {
+	        super();
+	        this.submissionID = submissionID;
+	        this.sourceCode = new Text(sourceCode);
+	        this.isVisible = isVisible;
+        }
+
+
+	/**
+     * @return the sourceCodeID
+     */
+    public Long getSourceCodeID() {
+    	return sourceCodeID;
+    }
+
+
+	/**
+     * @param sourceCodeID the sourceCodeID to set
+     */
+    public void setSourceCodeID(Long sourceCodeID) {
+    	this.sourceCodeID = sourceCodeID;
+    }
+
+
+	/**
+     * @return the submissionID
+     */
+    public Long getSubmissionID() {
+    	return submissionID;
+    }
+
+
+	/**
+     * @param submissionID the submissionID to set
+     */
+    public void setSubmissionID(Long submissionID) {
+    	this.submissionID = submissionID;
+    }
+
+
+	/**
+     * @return the isVisible
+     */
+    public boolean isVisible() {
+    	return isVisible;
+    }
+
+
+	/**
+     * @param isVisible the isVisible to set
+     */
+    public void setVisible(boolean isVisible) {
+    	this.isVisible = isVisible;
+    }
+
+
+
+
+
+	public String getSourceCode() {
+		return sourceCode.getValue();
 	}
-	public SourceCode(){}
-	public Long getCodeID() {
-		return codeID;
+	public void setSourceCode(String sourceCode) {
+		this.sourceCode = new Text(sourceCode);
 	}
-	public void setCodeID(Long codeID) {
-		this.codeID = codeID;
-	}
-	public Long getUserID() {
-		return userID;
-	}
-	public void setUserID(Long userID) {
-		this.userID = userID;
-	}
-	public String getProblemCode() {
-		return problemCode;
-	}
-	public void setProblemCode(String problemCode) {
-		this.problemCode = problemCode;
-	}
-	public String getProblemName() {
-		return problemName;
-	}
-	public void setProblemName(String problemName) {
-		this.problemName = problemName;
-	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	public String getCode() {
-		return code.getValue();
-	}
-	public void setCode(String code) {
-		this.code = new Text(code);
-	}
-	public String getNote() {
-		return note;
-	}
-	public void setNote(String note) {
-		this.note = note;
-	}
-	public String getJudgeResult() {
-		return judgeResult;
-	}
-	public void setJudgeResult(String judgeResult) {
-		this.judgeResult = judgeResult;
-	}
-	public Long getDate() {
-		return date;
-	}
-	public void setDate(Long date) {
-		this.date = date;
-	}
+
 	
 	 
 }

@@ -10,81 +10,144 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import com.OJToolkit.client.Services.SourceCodeService;
+import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.SourceCodeData;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-
-// Not reviewed 
-public class SourceCodeServiceImpl  extends RemoteServiceServlet implements SourceCodeService 
-{
+// Not reviewed
+public class SourceCodeServiceImpl extends RemoteServiceServlet implements
+        SourceCodeService {
 	@SuppressWarnings("unused")
-	private static final Logger LOG = Logger.getLogger(SourceCodeServiceImpl.class
-	        .getName());
+	private static final Logger LOG = Logger
+	        .getLogger(SourceCodeServiceImpl.class.getName());
 
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.SourceCodeService#isCodeVisible(long)
+	 */
 	@Override
-	@SuppressWarnings("unchecked")
-	public 	void addCode (String code, String problemCode, String problemName,String url ) {
+	public boolean isCodeVisible(long submissionID) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
-			   LOG.log(Level.WARNING,"Z" );
-			Long myUserID = DataStoreHandler.getAllCoders().get(0).getUserID();
-		 	
-			SourceCode sc = new SourceCode();
-			log(myUserID.toString());
-			sc.setUserID(myUserID);
-			sc.setCode(code);
-			sc.setProblemCode(problemCode);
-			sc.setProblemName(problemName);
-			sc.setUrl(url);
-			
-			java.util.Date date = new java.util.Date();
-			Long dateLong = date.getTime();
-			sc.setDate(dateLong);
-		//	sc.setJudgeResult(judgeResult)
-			pm.makePersistent(sc);
-			} finally {
+			String select_query = "select from " + SourceCode.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("submissionID == sID");
+			query.declareParameters("java.lang.Long sID");
+			List<SourceCode> sourceCodes = (List<SourceCode>) query
+			        .execute(submissionID);
+			if (sourceCodes.get(0).isVisible() == true) {
+				return true;
+			} else {
+				String select_query2 = "select from "
+				        + UserSubmission.class.getName();
+				Query query2 = pm.newQuery(select_query2);
+				query2.setFilter("submissionID == sID");
+				query2.declareParameters("java.lang.Long sID");
+				List<UserSubmission> userSubmissons = (List<UserSubmission>) query2
+				        .execute(submissionID);
+				if (userSubmissons
+				        .get(0)
+				        .getUsername()
+				        .equals(DataStoreHandler.getAllCoders().get(0)
+				                .getUsername())) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+		} finally {
+
 			pm.close();
 		}
-		
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.OJToolkit.client.Services.SourceCodeService#getSourceCode(long)
+	 */
+	@Override
+	public SourceCodeData getSourceCode(long submissionID) {
+		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		SourceCodeData sourceCodeData;
+		try {
+			String select_query = "select from " + SourceCode.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("submissionID == sID");
+			query.declareParameters("java.lang.Long sID");
+			List<SourceCode> sourceCodes = (List<SourceCode>) query
+			        .execute(submissionID);
+
+			String select_query2 = "select from "
+			        + UserSubmission.class.getName();
+			Query query2 = pm.newQuery(select_query2);
+			query2.setFilter("submissionID == sID");
+			query2.declareParameters("java.lang.Long sID");
+			List<UserSubmission> userSubmissons = (List<UserSubmission>) query2
+			        .execute(submissionID);
+			UserSubmission userSubmission = userSubmissons.get(0);
+
+			sourceCodeData = new SourceCodeData(
+			        userSubmission.getProblemCode(),
+			        userSubmission.getProblemCode(),
+			        userSubmission.getUsername(),
+			        userSubmission.getJudgeResult(),
+			        userSubmission.getJudgeType(), userSubmission.getDate()
+			                .toString(), userSubmission.getMemory(),
+			        userSubmission.getTime(), sourceCodes.get(0)
+			                .getSourceCode());
+
+		} finally {
+			pm.close();
+		}
+		return sourceCodeData;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.OJToolkit.client.Services.SourceCodeService#getCodes(java.lang.Long, java.lang.String)
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public  ArrayList<SourceCodeData> getCodes(Long myuserID, String myproblemID) {
-		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		 ArrayList<SourceCodeData> sourceCodes = new  ArrayList<SourceCodeData>(); 
-		 
-			try {
-			 
-				String select_query = "select from " + SourceCode.class.getName();
-				Query query = pm.newQuery(select_query);
-				query.setFilter("userID  == myuserID && problemID == myproblemID");
-				query.declareParameters("java.lang.Long myuserID");
-				query.declareParameters("java.lang.String myproblemID");
-				List<SourceCode> sc = (List<SourceCode>) query.execute(myuserID);
-				
-				for(SourceCode sc_ob : sc )
-				{
-					SourceCodeData scd = new SourceCodeData(sc_ob.getCodeID(),
-							sc_ob.getUserID(), sc_ob.getProblemCode()
-							, sc_ob.getProblemName(),
-							sc_ob.getUrl(), sc_ob.getCode(), sc_ob.getNote(), sc_ob.getJudgeResult()
-							, sc_ob.getDate());
-					sourceCodes.add(scd);
-				}
-
-			} finally {
-				pm.close();
+     * @see com.OJToolkit.client.Services.SourceCodeService#addCategories(java.lang.String, java.lang.String, java.util.ArrayList)
+     */
+    @Override
+    public void addCategories(String problemCode, String judgeType,
+            ArrayList<String> categoriesList) {
+    	PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		try {
+			Category cat;
+			for(int i=0;i<categoriesList.size();i++){
+				cat= new Category(problemCode, judgeType, categoriesList.get(i));
+				pm.makePersistent(cat);
 			}
-			
-		return sourceCodes;
-	}
 
- 
+		} finally {
+			pm.close();
+		}
+	    
+    }
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.Services.SourceCodeService#getCategories(java.lang.String, java.lang.String)
+     */
+    @Override
+    public ArrayList<String> getCategories(String problemCode, String judgeType) {
+    	PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		ArrayList<String> ret = new ArrayList<String>();
+		try {
+			String select_query = "select from " + Category.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("problemCode == probCode && judgeType == OJType");
+			query.declareParameters("java.lang.String probCode, java.lang.String OJType");
+			List<Category> categories = (List<Category>) query.execute(problemCode,
+			        judgeType);
+			for(int i=0;i<categories.size();i++){
+				ret.add(categories.get(i).getCategory());
+			}
+		} finally {
+			pm.close();
+		}
+
+	    return ret;
+    }
 
 }

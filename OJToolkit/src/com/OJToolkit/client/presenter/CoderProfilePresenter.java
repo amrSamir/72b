@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.OJToolkit.client.Services.CoderServiceAsync;
+import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.ValueObjects.CoderProfileData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
-import com.OJToolkit.client.event.ViewCoderProfileEvent;
+import com.OJToolkit.client.event.ViewSourceCodeEvent;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -18,10 +19,11 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.cellview.client.ColumnSortEvent.AsyncHandler;
 import com.google.gwt.user.cellview.client.ColumnSortList;
 import com.google.gwt.user.cellview.client.SimplePager;
-import com.google.gwt.user.cellview.client.ColumnSortEvent.AsyncHandler;
 import com.google.gwt.user.cellview.client.SimplePager.TextLocation;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
@@ -49,13 +51,13 @@ public class CoderProfilePresenter implements Presenter {
 
 	@UiField(provided = true)
 	Label lblNumberOfSolved;
-	
+
 	@UiField(provided = true)
 	Label lblSPOJUsername;
-	
+
 	@UiField(provided = true)
 	Label lblUVAUsername;
-	
+
 	@UiField(provided = true)
 	Label lblTimusUsername;
 
@@ -70,11 +72,11 @@ public class CoderProfilePresenter implements Presenter {
 	 */
 	@UiField(provided = true)
 	SimplePager pager;
-	
+
 	private final String username;
 	private final CoderServiceAsync coderService;
 	private final HandlerManager eventBus;
-	
+
 	/**
 	 * The map from column to its name, used in sending sorted column to RPC
 	 */
@@ -85,6 +87,8 @@ public class CoderProfilePresenter implements Presenter {
 	 */
 	private String previousSortingQuery;
 
+	private final SourceCodeServiceAsync sourceCodeService;
+
 	/**
 	 * Call registration page
 	 * 
@@ -93,8 +97,9 @@ public class CoderProfilePresenter implements Presenter {
 	 * @param display
 	 */
 	public CoderProfilePresenter(CoderServiceAsync coderService,
-	        String username, HandlerManager eventBus) {
-
+	        SourceCodeServiceAsync sourceCodeService, String username,
+	        HandlerManager eventBus) {
+		this.sourceCodeService = sourceCodeService;
 		this.coderService = coderService;
 		this.eventBus = eventBus;
 		this.username = username;
@@ -141,9 +146,12 @@ public class CoderProfilePresenter implements Presenter {
 		lblNumberOfSolved.setText(String.valueOf(result.getNumberOfSolved()));
 		lblNumberOfSubmission.setText(String.valueOf(result
 		        .getNumberOfSubmission()));
-		lblSPOJUsername.setText(result.getSPOJUsername()==null?"-":result.getSPOJUsername());
-		lblUVAUsername.setText(result.getUVAUsername()==null?"-":result.getUVAUsername());
-		lblTimusUsername.setText(result.getTimusUsername()==null?"-":result.getTimusUsername());
+		lblSPOJUsername.setText(result.getSPOJUsername() == null ? "-" : result
+		        .getSPOJUsername());
+		lblUVAUsername.setText(result.getUVAUsername() == null ? "-" : result
+		        .getUVAUsername());
+		lblTimusUsername.setText(result.getTimusUsername() == null ? "-"
+		        : result.getTimusUsername());
 
 	}
 
@@ -186,10 +194,9 @@ public class CoderProfilePresenter implements Presenter {
 
 			        @Override
 			        public void onSelectionChange(SelectionChangeEvent event) {
-				        SubmissionData SubmissionData = selectionModel
+				        SubmissionData submissionData = selectionModel
 				                .getSelectedObject();
-				        eventBus.fireEvent(new ViewCoderProfileEvent(SubmissionData
-				                .getUsername()));
+				        callIsCodeVisible(submissionData.getSubmissionID());
 			        }
 		        });
 		cellTable.setSelectionModel(selectionModel);
@@ -211,22 +218,22 @@ public class CoderProfilePresenter implements Presenter {
 					pager.setPage(0);
 					previousSortingQuery = sortingQuery;
 				}
-				
-				coderService.getCoderSubmissions(username, range, sortingQuery, new AsyncCallback<ArrayList<SubmissionData>>() {
-					
-					@Override
-					public void onSuccess(ArrayList<SubmissionData> result) {
-						cellTable.setRowData(range.getStart(), result);						
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						// TODO Auto-generated method stub
-						
-					}
-				});
 
-			
+				coderService.getCoderSubmissions(username, range, sortingQuery,
+				        new AsyncCallback<ArrayList<SubmissionData>>() {
+
+					        @Override
+					        public void onSuccess(
+					                ArrayList<SubmissionData> result) {
+						        cellTable.setRowData(range.getStart(), result);
+					        }
+
+					        @Override
+					        public void onFailure(Throwable caught) {
+						        // TODO Auto-generated method stub
+
+					        }
+				        });
 
 			}
 		};
@@ -240,7 +247,33 @@ public class CoderProfilePresenter implements Presenter {
 		container.clear();
 		container.add(widget);
 	}
-	
+
+	/**
+	 * @param submissionID
+	 */
+	protected void callIsCodeVisible(final Long submissionID) {
+		sourceCodeService.isCodeVisible(submissionID,
+		        new AsyncCallback<Boolean>() {
+
+			        @Override
+			        public void onSuccess(Boolean result) {
+				        if (result == true) {
+					        eventBus.fireEvent(new ViewSourceCodeEvent(
+					                submissionID));
+				        } else {
+					        Window.alert("Sorry, This code is private to its writer");
+				        }
+			        }
+
+			        @Override
+			        public void onFailure(Throwable caught) {
+				        // TODO Auto-generated method stub
+
+			        }
+		        });
+
+	}
+
 	/**
 	 * Add the columns to the table.
 	 */
@@ -249,9 +282,6 @@ public class CoderProfilePresenter implements Presenter {
 	        AsyncHandler sortHandler) {
 		columnMap = new HashMap<Column<SubmissionData, String>, String>();
 
-		
-
-		
 		Column<SubmissionData, String> problemTitleColumn = new Column<SubmissionData, String>(
 		        new TextCell()) {
 			@Override
@@ -262,11 +292,9 @@ public class CoderProfilePresenter implements Presenter {
 		problemTitleColumn.setSortable(false);
 		cellTable.addColumn(problemTitleColumn, "Problem Title");
 		cellTable.setColumnWidth(problemTitleColumn, 20, Unit.PCT);
-		
-		
-		
+
 		Column<SubmissionData, String> judgeTypeColumn = new Column<SubmissionData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(SubmissionData object) {
 				return object.getJudgeType();
@@ -276,9 +304,9 @@ public class CoderProfilePresenter implements Presenter {
 		cellTable.addColumn(judgeTypeColumn, "Judge");
 		cellTable.setColumnWidth(judgeTypeColumn, 20, Unit.PCT);
 		columnMap.put(judgeTypeColumn, "judgeType");
-		
+
 		Column<SubmissionData, String> dateColumn = new Column<SubmissionData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(SubmissionData object) {
 				return object.getDate();
@@ -288,9 +316,9 @@ public class CoderProfilePresenter implements Presenter {
 		cellTable.addColumn(dateColumn, "Submission Date");
 		cellTable.setColumnWidth(dateColumn, 20, Unit.PCT);
 		columnMap.put(dateColumn, "date");
-		
+
 		Column<SubmissionData, String> judgeResultColumn = new Column<SubmissionData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(SubmissionData object) {
 				return object.getJudgeResult();
@@ -300,9 +328,9 @@ public class CoderProfilePresenter implements Presenter {
 		cellTable.addColumn(judgeResultColumn, "Judge Result");
 		cellTable.setColumnWidth(judgeResultColumn, 20, Unit.PCT);
 		columnMap.put(judgeResultColumn, "judgeResult");
-		
+
 		Column<SubmissionData, String> memoryColumn = new Column<SubmissionData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(SubmissionData object) {
 				return object.getMemory();
@@ -312,9 +340,9 @@ public class CoderProfilePresenter implements Presenter {
 		cellTable.addColumn(memoryColumn, "Memory");
 		cellTable.setColumnWidth(memoryColumn, 20, Unit.PCT);
 		columnMap.put(memoryColumn, "memory");
-		
+
 		Column<SubmissionData, String> timeColumn = new Column<SubmissionData, String>(
-				new TextCell()) {
+		        new TextCell()) {
 			@Override
 			public String getValue(SubmissionData object) {
 				return object.getTime();
@@ -324,7 +352,7 @@ public class CoderProfilePresenter implements Presenter {
 		cellTable.addColumn(timeColumn, "Time");
 		cellTable.setColumnWidth(timeColumn, 20, Unit.PCT);
 		columnMap.put(timeColumn, "time");
-		
+
 	}
 
 	String getSortingQuery() {

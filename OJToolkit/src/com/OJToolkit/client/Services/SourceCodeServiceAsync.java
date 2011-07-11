@@ -7,15 +7,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface SourceCodeServiceAsync {
 
-	/**
-	 * @see com.OJToolkit.client.Services.SourceCodeService#addCode(String, String, String, String)
-	 */
-	void addCode(String code, String problemCode, String problemName,
-			String url, AsyncCallback<Void> callback);
-	/**
-	 * @see com.OJToolkit.client.Services.SourceCodeService#getCodes(Long, String)
-	 */
-	void getCodes(Long userID, String problemID,
-			AsyncCallback<ArrayList<SourceCodeData>> callback);
+	void isCodeVisible(long submissionID, AsyncCallback<Boolean> callback);
 
+	void getSourceCode(long submissionID, AsyncCallback<SourceCodeData> callback);
+
+	void addCategories(String problemCode, String judgeType,
+            ArrayList<String> categoriesList, AsyncCallback<Void> callback);
+
+	void getCategories(String problemCode, String judgeType,
+            AsyncCallback<ArrayList<String>> callback);
+ 
 }

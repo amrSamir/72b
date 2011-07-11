@@ -8,22 +8,13 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("sourceCodeService")
 public interface SourceCodeService  extends RemoteService {
+	boolean isCodeVisible(long submissionID);
 	
-	/**
-	 * add code for a problem 
-	 * @param code
-	 * @param problemCode
-	 * @param problemName
-	 * @param url
-	 */
-	void addCode (String code, String problemCode, String problemName,String url ); 
+	SourceCodeData getSourceCode(long submissionID);
 	
-	/**
-	 * get codes for a problem 
-	 * @param userID
-	 * @param problemID
-	 * @return
-	 */
-	ArrayList<SourceCodeData> getCodes (Long userID, String problemID);
+	void addCategories(String problemCode, String judgeType, ArrayList<String> categoriesList);
+	
+	ArrayList<String> getCategories(String problemCode, String judgeType);
+	
 	
 }

@@ -3,6 +3,8 @@
  */
 package com.OJToolkit.client;
 
+import java.util.ArrayList;
+
 import com.OJToolkit.client.Contents.MyResource;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.Services.ContestServicesAsync;
@@ -43,6 +45,8 @@ import com.OJToolkit.client.event.ViewProblemEvent;
 import com.OJToolkit.client.event.ViewProblemEventHandler;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEvent;
 import com.OJToolkit.client.event.ViewProblemSubmissionStatusEventHandler;
+import com.OJToolkit.client.event.ViewSourceCodeEvent;
+import com.OJToolkit.client.event.ViewSourceCodeEventHandler;
 import com.OJToolkit.client.event.ViewSubmissionsEvent;
 import com.OJToolkit.client.event.ViewSubmissionsEventHandler;
 import com.OJToolkit.client.presenter.AddAccountPresenter;
@@ -60,6 +64,7 @@ import com.OJToolkit.client.presenter.ProblemList2Presenter;
 import com.OJToolkit.client.presenter.ProblemPresenter;
 import com.OJToolkit.client.presenter.ProblemSubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.RegistrationPresenter;
+import com.OJToolkit.client.presenter.SourceCodePresenter;
 import com.OJToolkit.client.presenter.SubmissionStatusPresenter;
 import com.OJToolkit.client.presenter.TopPanelPresenter;
 import com.OJToolkit.client.presenter.ViewContestPresenter;
@@ -73,6 +78,7 @@ import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
 import com.OJToolkit.client.view.ProblemView;
 import com.OJToolkit.client.view.RegistrationView;
+import com.OJToolkit.client.view.SourceCodeView;
 import com.OJToolkit.client.view.TopPanelView;
 import com.OJToolkit.client.view.ViewContestView;
 import com.google.gwt.dom.client.Style.Unit;
@@ -120,6 +126,8 @@ public class AppController implements ValueChangeHandler<String> {
 	private final ContestServicesAsync contestServices;
 
 	private String problemStr = "problem";
+	
+	 private ArrayList<String> categoriesList;
 
 	private boolean isAnonymousSubmission = false;
 	// public static boolean isEnabled;
@@ -139,6 +147,10 @@ public class AppController implements ValueChangeHandler<String> {
 	private ProblemData problem;
 	private String OJType;
 	private String problemCode;
+	
+	private boolean isVisible;
+	
+	private String sourceCode;
 
 	private LoginInfo loginInfo;
 
@@ -183,7 +195,7 @@ public class AppController implements ValueChangeHandler<String> {
 					public void onSubmitProblem(
 							ViewProblemSubmissionStatusEvent event) {
 						doViewProblemSubmissionStatus(event.problem,
-								event.isAnonymousSubmission);
+								event.isAnonymousSubmission, event.sourceCode, event.isVisible, event.categoriesList);
 					}
 				});
 		eventBus.addHandler(ContestProblemEvent.TYPE,
@@ -331,12 +343,28 @@ public class AppController implements ValueChangeHandler<String> {
 
 					@Override
 					public void onViewSubmissions(ViewSubmissionsEvent event) {
-						doOnViewCoderProfileEvent();
+						doOnViewCoderProfileEvent(); //TODO: sounds weird!!
 					}
 
 				});
+		eventBus.addHandler(ViewSourceCodeEvent.TYPE, new ViewSourceCodeEventHandler() {
+			
+			@Override
+			public void onViewSourceCode(ViewSourceCodeEvent event) {
+				doOnViewSourceCode(event.submissionID);
+				
+			}
+		});
 
 	}
+
+	/**
+     * @param submissionID
+     */
+    protected void doOnViewSourceCode(long submissionID) {
+	    History.newItem("sourceCode_"+submissionID);
+	    
+    }
 
 	/**
      * 
@@ -466,12 +494,18 @@ public class AppController implements ValueChangeHandler<String> {
 	 * view problem submission
 	 * 
 	 * @param isAnonymousSubmission2
+	 * @param isVisible2 
+	 * @param sourceCode2 
+	 * @param categoriesList2 
 	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem,
-			boolean isAnonymousSubmission2) {
+			boolean isAnonymousSubmission2, String sourceCode2, boolean isVisible2, ArrayList<String> categoriesList2) {
 		this.problem = problem;
 		this.isAnonymousSubmission = isAnonymousSubmission2;
+		this.sourceCode = sourceCode2;
+		this.isVisible = isVisible2;
+		this.categoriesList = categoriesList2;
 		History.newItem("problemSubmissionStatus");
 	}
 
@@ -629,8 +663,8 @@ public class AppController implements ValueChangeHandler<String> {
 					// TODO(ahmedazraq): leeh yakhod problem ya man?
 					if (problem != null) {
 						presenter = new ProblemSubmissionStatusPresenter(
-								problem, isAnonymousSubmission,
-								submissionService, eventBus,
+								problem, isAnonymousSubmission, sourceCode, isVisible, categoriesList,
+								submissionService, sourceCodeService, eventBus,
 								new ProblemSubmissionStatusView());
 						leftPanelPresenter
 								.setSelected(LeftPanelView.Labels.ViewProblems);
@@ -687,15 +721,18 @@ public class AppController implements ValueChangeHandler<String> {
 					leftPanelPresenter
 							.setSelected(LeftPanelView.Labels.AddProblemToContest);
 				} else if (token.startsWith("profile")) {
-					presenter = new CoderProfilePresenter(coderService,
+					presenter = new CoderProfilePresenter(coderService, sourceCodeService,
 							token.substring(8), eventBus);
 					leftPanelPresenter
 							.setSelected(LeftPanelView.Labels.ViewCoders);
 				} else if (token.equals("status")) {
 					presenter = new SubmissionStatusPresenter(
-							submissionService, eventBus);
+							submissionService, sourceCodeService, eventBus);
 					leftPanelPresenter.setSelected(LeftPanelView.Labels.Status);
-				} else {
+				} else if(token.startsWith("sourceCode_")){
+					presenter = new SourceCodePresenter(Long.valueOf(token.substring(11)), sourceCodeService, eventBus, new SourceCodeView());
+				}
+				else {
 					presenter = new CheckCookiesPresenter(coderService,
 							loginService, eventBus);
 				}

@@ -3,11 +3,11 @@ package com.OJToolkit.client.presenter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.OJToolkit.client.Services.CoderServiceAsync;
+import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
-import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.client.event.ViewCoderProfileEvent;
+import com.OJToolkit.client.event.ViewSourceCodeEvent;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -20,6 +20,7 @@ import com.google.gwt.user.cellview.client.ColumnSortEvent.AsyncHandler;
 import com.google.gwt.user.cellview.client.ColumnSortList;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.SimplePager.TextLocation;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -65,11 +66,34 @@ public class SubmissionStatusPresenter implements Presenter {
 	 * Previous sorting and search Query
 	 */
 	private String previousSortingQuery;
+	
+	private final SourceCodeServiceAsync sourceCodeService;
 
-	public SubmissionStatusPresenter(SubmissionServiceAsync submissionService,
+	public SubmissionStatusPresenter(SubmissionServiceAsync submissionService, SourceCodeServiceAsync sourceCodeService,
 	        HandlerManager eventBus) {
 		this.submissionService = submissionService;
+		this.sourceCodeService = sourceCodeService;
 		this.eventBus = eventBus;
+	}
+	
+	void callIsCodeVisible(final long submissionID){
+		sourceCodeService.isCodeVisible(submissionID, new AsyncCallback<Boolean>() {
+			
+			@Override
+			public void onSuccess(Boolean result) {
+				if(result==true){
+					eventBus.fireEvent(new ViewSourceCodeEvent(submissionID));
+				} else{
+					Window.alert("Sorry, This code is private to its writer");
+				}
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	@Override
@@ -99,10 +123,9 @@ public class SubmissionStatusPresenter implements Presenter {
 
 			        @Override
 			        public void onSelectionChange(SelectionChangeEvent event) {
-				        SubmissionData SubmissionData = selectionModel
+				        SubmissionData submissionData = selectionModel
 				                .getSelectedObject();
-				        eventBus.fireEvent(new ViewCoderProfileEvent(SubmissionData
-				                .getUsername()));
+				        callIsCodeVisible(submissionData.getSubmissionID());
 			        }
 		        });
 		cellTable.setSelectionModel(selectionModel);

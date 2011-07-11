@@ -3,6 +3,8 @@
  */
 package com.OJToolkit.client.event;
 
+import java.util.ArrayList;
+
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.google.gwt.event.shared.GwtEvent;
 
@@ -18,13 +20,24 @@ public class ViewProblemSubmissionStatusEvent extends
 	public ProblemData problem;
 
 	public boolean isAnonymousSubmission;
+	public boolean isVisible;
+	public String sourceCode;
+	 public ArrayList<String> categoriesList;
+	
+	
 	/**
-     * @param problemCode The problemcode of the submitted problem
+     * @param categoriesList 
+	 * @param b 
+	 * @param string 
+	 * @param problemCode The problemcode of the submitted problem
      */
-    public ViewProblemSubmissionStatusEvent(ProblemData problem, boolean isAnonymousSubmission) {
+    public ViewProblemSubmissionStatusEvent(ProblemData problem, boolean isAnonymousSubmission, String sourceCode, boolean isVisible, ArrayList<String> categoriesList) {
 	    super();
     	this.problem = problem;
     	this.isAnonymousSubmission = isAnonymousSubmission;
+    	this.isVisible = isVisible;
+    	this.sourceCode = sourceCode;
+    	this.categoriesList = categoriesList;
     }
 
 	/*

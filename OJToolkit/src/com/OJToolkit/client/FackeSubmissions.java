@@ -12,7 +12,7 @@ public class FackeSubmissions {
 			.create(SubmissionService.class);
 
 	public FackeSubmissions() {
-
+/*
 		System.out.println("Facke Start");
 
 		Date d = new Date(1309514500000L);
@@ -61,6 +61,6 @@ public class FackeSubmissions {
 						System.out.println("Fail 2");
 					}
 				});
-		System.out.println("Facke end");
+		System.out.println("Facke end");*/
 	}
 }

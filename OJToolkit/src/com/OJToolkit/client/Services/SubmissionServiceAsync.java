@@ -16,8 +16,8 @@ public interface SubmissionServiceAsync {
 	        AsyncCallback<Void> callback);
 
 	void getLastProblemStatus(boolean isAnonymousSubmission,
-	        String problemCode, String ojType,
-	        AsyncCallback<ProblemStatusData> callback);
+            String problemCode, String judgeType, String sourceCode,
+            boolean isVisible, AsyncCallback<ProblemStatusData> callback);
 
 	/**
 	 * @see com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(ProblemData)
@@ -43,8 +43,6 @@ public interface SubmissionServiceAsync {
 
 	void getProblemText(String problemCode, String judgeType,
             AsyncCallback<ProblemTextData> callback);
-	void addSubmissionResult(String string, String string2, String string3,
-			String string4, String string5, String string6, String string7,
-			Date d, AsyncCallback<Void> asyncCallback);
+	
 
 }

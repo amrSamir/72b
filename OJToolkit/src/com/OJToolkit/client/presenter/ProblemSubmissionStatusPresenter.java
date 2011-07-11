@@ -3,6 +3,9 @@
  */
 package com.OJToolkit.client.presenter;
 
+import java.util.ArrayList;
+
+import com.OJToolkit.client.Services.SourceCodeServiceAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
@@ -34,35 +37,77 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	//private final String problemCode;
 	private final ProblemData problem;
 	
+	private final boolean isVisible;
+	
+	private final String sourceCode;
+	
+	private final SourceCodeServiceAsync sourceCodeService;
+	
+	private final ArrayList<String> categoriesList;
+	
 	private  boolean isAnonymousSubmission = false;
 	/**
 	 * Generate Problem statue page
+	 * @param categoriesList 
 	 * @param submssionService
 	 * @param eventBus
 	 * @param display
 	 */
-	public ProblemSubmissionStatusPresenter(ProblemData problem, boolean isAnonymousSubmission,
-	        SubmissionServiceAsync submssionService, HandlerManager eventBus,
+	public ProblemSubmissionStatusPresenter(ProblemData problem, boolean isAnonymousSubmission, String sourceCode, boolean isVisible,
+	        ArrayList<String> categoriesList, SubmissionServiceAsync submssionService, SourceCodeServiceAsync sourceCodeService, HandlerManager eventBus,
 	        final Display display) {
 		this.submssionService = submssionService;
+		this.sourceCodeService = sourceCodeService;
 		this.eventBus = eventBus;
 		this.problemStatus = new ProblemStatusData();
 		this.problem = problem;
 		this.isAnonymousSubmission = isAnonymousSubmission;
 		this.display = display;
+		this.sourceCode = sourceCode;
+		this.isVisible = isVisible;
+		this.categoriesList = categoriesList;
 		
 
 		bind();
+		addCategoriesToDB(problem.getProblemCode(),problem.getOjType(), categoriesList);
 		callGetLastProblemStatusService();
 
 	}
 	
+
+	
+	/**
+     * @param problemCode
+     * @param ojType
+     * @param categoriesList2
+     */
+    private void addCategoriesToDB(String problemCode, String ojType,
+            ArrayList<String> categoriesList2) {
+	   sourceCodeService.addCategories(problemCode, ojType, categoriesList2, new AsyncCallback<Void>() {
+		
+		@Override
+		public void onSuccess(Void result) {
+			System.out.println("submstatuspres-categoriesadded");
+			
+		}
+		
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			
+		}
+	});
+	    
+    }
+
+
+
 	/**
 	 * get last problem statue 
 	 */
 	void callGetLastProblemStatusService() {
 		submssionService
-		        .getLastProblemStatus(isAnonymousSubmission, problem.getProblemCode(),problem.getOjType(),new AsyncCallback<ProblemStatusData>() {
+		        .getLastProblemStatus(isAnonymousSubmission, problem.getProblemCode(),problem.getOjType(),sourceCode, isVisible, new AsyncCallback<ProblemStatusData>() {
 
 			        @Override
 			        public void onSuccess(ProblemStatusData result) {

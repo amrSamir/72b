@@ -30,13 +30,9 @@ public interface SubmissionService extends RemoteService {
 	 */
 	public void submitCode(boolean isAnonymousSubmission, String problemCode, String ojType, String code, String language) throws Exception;
 
-	/**
-	 * Gets the result of judging the problem
-	 * @param problemCode the code of the last submitted problem
-	 * @return the result of judging the problem
-	 * @throws Exception
-	 */
-	public ProblemStatusData getLastProblemStatus(boolean isAnonymousSubmission,String problemCode, String ojType) throws Exception;
+	ProblemStatusData getLastProblemStatus(boolean isAnonymousSubmission,
+            String problemCode, String judgeType, String sourceCode,
+            boolean isVisible) throws Exception;
 
 	/**
 	 * Save a problem to the datastore
@@ -75,8 +71,6 @@ public interface SubmissionService extends RemoteService {
 	
 	public ProblemTextData getProblemText(String problemCode, String judgeType);
 
-	void addSubmissionResult(String string, String string2, String string3,
-			String string4, String string5, String string6, String string7,
-			Date d);
+
 
 }

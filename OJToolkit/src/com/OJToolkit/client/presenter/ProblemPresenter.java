@@ -35,8 +35,14 @@ public class ProblemPresenter implements Presenter {
 		Widget asWidget();
 
 		boolean isAnonymousSubmission();
-		
+
+		boolean isVisible();
+
 		void setProblemText(ProblemTextData problemText);
+		
+		ArrayList<String> getCheckedCategories();
+		
+		void setCategories(ArrayList<String> categoriesList);
 	}
 
 	private final Display display;
@@ -68,13 +74,35 @@ public class ProblemPresenter implements Presenter {
 		// this.display.setProblem(problemCode);
 		bind();
 
+		getCategories();
 		getProblem();
 		getLanguages();
 		getProblemText();
 
 	}
-	
-	private void getProblem(){
+
+	/**
+     * 
+     */
+    private void getCategories() {
+	    this.sourceCodeService.getCategories(problemCode, ojType, new AsyncCallback<ArrayList<String>>() {
+			
+			@Override
+			public void onSuccess(ArrayList<String> result) {
+				display.setCategories(result);
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	    
+    }
+
+	private void getProblem() {
 		this.submssionService.getProblem(problemCode, ojType,
 		        new AsyncCallback<ProblemData>() {
 			        @Override
@@ -111,7 +139,7 @@ public class ProblemPresenter implements Presenter {
 			        }
 		        });
 	}
-	
+
 	protected void getProblemText() {
 		this.submssionService.getProblemText(problemCode, ojType,
 		        new AsyncCallback<ProblemTextData>() {
@@ -144,9 +172,11 @@ public class ProblemPresenter implements Presenter {
 				        new AsyncCallback<Void>() {
 					        @Override
 					        public void onSuccess(Void result) {
-						        eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(
+					        	
+						       eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(
 						                problem, display
-						                        .isAnonymousSubmission()));
+						                        .isAnonymousSubmission(),
+						                display.getCode(), display.isVisible(), display.getCheckedCategories()));
 					        }
 
 					        @Override
@@ -158,41 +188,6 @@ public class ProblemPresenter implements Presenter {
 
 				// String sourceCodeString = ;
 				java.util.Date date = new java.util.Date();
-
-				// / Delete this >>>>> Just for testing
-				hintService.addHint("X", "eshtaaaaaaa3aaaal",
-				        new AsyncCallback<Void>() {
-
-					        @Override
-					        public void onSuccess(Void result) {
-						        Window.alert("Good!");
-
-					        }
-
-					        @Override
-					        public void onFailure(Throwable caught) {
-						        Window.alert("NO");
-					        }
-				        });
-
-				// Review your code data paramters again
-				sourceCodeService.addCode(display.getCode(),
-				        problem.getProblemCode(), problem.getProblemName(),
-				        problem.getUrl(), new AsyncCallback<Void>() {
-
-					        @Override
-					        public void onFailure(Throwable caught) {
-						        // Window.alert("Oh! Failed to save code!");
-
-					        }
-
-					        @Override
-					        public void onSuccess(Void result) {
-						        // Window.alert("your code has been saved!");
-
-					        }
-
-				        });
 
 			}
 		});

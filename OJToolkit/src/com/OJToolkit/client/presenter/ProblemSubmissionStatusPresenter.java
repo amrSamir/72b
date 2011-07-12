@@ -45,6 +45,8 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	
 	private final ArrayList<String> categoriesList;
 	
+	private final Long judgeSubmissionID;
+	
 	private  boolean isAnonymousSubmission = false;
 	/**
 	 * Generate Problem statue page
@@ -54,7 +56,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	 * @param display
 	 */
 	public ProblemSubmissionStatusPresenter(ProblemData problem, boolean isAnonymousSubmission, String sourceCode, boolean isVisible,
-	        ArrayList<String> categoriesList, SubmissionServiceAsync submssionService, SourceCodeServiceAsync sourceCodeService, HandlerManager eventBus,
+	        ArrayList<String> categoriesList, Long judgeSubmissionID, SubmissionServiceAsync submssionService, SourceCodeServiceAsync sourceCodeService, HandlerManager eventBus,
 	        final Display display) {
 		this.submssionService = submssionService;
 		this.sourceCodeService = sourceCodeService;
@@ -66,7 +68,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 		this.sourceCode = sourceCode;
 		this.isVisible = isVisible;
 		this.categoriesList = categoriesList;
-		
+		this.judgeSubmissionID = judgeSubmissionID;
 
 		bind();
 		addCategoriesToDB(problem.getProblemCode(),problem.getOjType(), categoriesList);
@@ -107,7 +109,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	 */
 	void callGetLastProblemStatusService() {
 		submssionService
-		        .getLastProblemStatus(isAnonymousSubmission, problem.getProblemCode(),problem.getOjType(),sourceCode, isVisible, new AsyncCallback<ProblemStatusData>() {
+		        .getLastProblemStatus(isAnonymousSubmission, problem.getProblemCode(),problem.getOjType(),sourceCode, isVisible, judgeSubmissionID, new AsyncCallback<ProblemStatusData>() {
 
 			        @Override
 			        public void onSuccess(ProblemStatusData result) {

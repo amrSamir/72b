@@ -169,14 +169,15 @@ public class ProblemPresenter implements Presenter {
 				submssionService.submitCode(display.isAnonymousSubmission(),
 				        problem.getProblemCode(), problem.getOjType(),
 				        display.getCode(), display.getSelectedLanguageValue(),
-				        new AsyncCallback<Void>() {
+				        
+				        new AsyncCallback<Long>() {
 					        @Override
-					        public void onSuccess(Void result) {
+					        public void onSuccess(Long result) {
 					        	
 						       eventBus.fireEvent(new ViewProblemSubmissionStatusEvent(
 						                problem, display
 						                        .isAnonymousSubmission(),
-						                display.getCode(), display.isVisible(), display.getCheckedCategories()));
+						                display.getCode(), display.isVisible(), display.getCheckedCategories(), result));
 					        }
 
 					        @Override

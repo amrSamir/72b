@@ -153,6 +153,7 @@ public class AppController implements ValueChangeHandler<String> {
 	private String sourceCode;
 
 	private LoginInfo loginInfo;
+	private Long judgeSubmissionID;
 
 	/**
 	 * control the site and changes the pages
@@ -195,7 +196,7 @@ public class AppController implements ValueChangeHandler<String> {
 					public void onSubmitProblem(
 							ViewProblemSubmissionStatusEvent event) {
 						doViewProblemSubmissionStatus(event.problem,
-								event.isAnonymousSubmission, event.sourceCode, event.isVisible, event.categoriesList);
+								event.isAnonymousSubmission, event.sourceCode, event.isVisible, event.categoriesList, event.judgeSubmissionID);
 					}
 				});
 		eventBus.addHandler(ContestProblemEvent.TYPE,
@@ -343,7 +344,7 @@ public class AppController implements ValueChangeHandler<String> {
 
 					@Override
 					public void onViewSubmissions(ViewSubmissionsEvent event) {
-						doOnViewCoderProfileEvent(); //TODO: sounds weird!!
+						doOnViewCoderProfileEvent(); //TODO:(azraq) sounds weird!!
 					}
 
 				});
@@ -497,15 +498,17 @@ public class AppController implements ValueChangeHandler<String> {
 	 * @param isVisible2 
 	 * @param sourceCode2 
 	 * @param categoriesList2 
+	 * @param judgeSubmissionID 
 	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem,
-			boolean isAnonymousSubmission2, String sourceCode2, boolean isVisible2, ArrayList<String> categoriesList2) {
+			boolean isAnonymousSubmission2, String sourceCode2, boolean isVisible2, ArrayList<String> categoriesList2, Long judgeSubmissionID) {
 		this.problem = problem;
 		this.isAnonymousSubmission = isAnonymousSubmission2;
 		this.sourceCode = sourceCode2;
 		this.isVisible = isVisible2;
 		this.categoriesList = categoriesList2;
+		this.judgeSubmissionID = judgeSubmissionID;
 		History.newItem("problemSubmissionStatus");
 	}
 
@@ -663,7 +666,7 @@ public class AppController implements ValueChangeHandler<String> {
 					// TODO(ahmedazraq): leeh yakhod problem ya man?
 					if (problem != null) {
 						presenter = new ProblemSubmissionStatusPresenter(
-								problem, isAnonymousSubmission, sourceCode, isVisible, categoriesList,
+								problem, isAnonymousSubmission, sourceCode, isVisible, categoriesList, judgeSubmissionID,
 								submissionService, sourceCodeService, eventBus,
 								new ProblemSubmissionStatusView());
 						leftPanelPresenter

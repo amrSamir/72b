@@ -1,7 +1,6 @@
 package com.OJToolkit.client.Services;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.OJToolkit.client.ValueObjects.ProblemData;
 import com.OJToolkit.client.ValueObjects.ProblemStatusData;
@@ -28,11 +27,11 @@ public interface SubmissionService extends RemoteService {
 	 *            The language of the code
 	 * @throws Exception 
 	 */
-	public void submitCode(boolean isAnonymousSubmission, String problemCode, String ojType, String code, String language) throws Exception;
+	public Long submitCode(boolean isAnonymousSubmission, String problemCode, String ojType, String code, String language) throws Exception;
 
 	ProblemStatusData getLastProblemStatus(boolean isAnonymousSubmission,
             String problemCode, String judgeType, String sourceCode,
-            boolean isVisible) throws Exception;
+            boolean isVisible, Long submissionID) throws Exception;
 
 	/**
 	 * Save a problem to the datastore

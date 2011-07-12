@@ -12,12 +12,13 @@ import com.google.gwt.view.client.Range;
 
 public interface SubmissionServiceAsync {
 	void submitCode(boolean isAnonymousSubmission, String problemCode,
-	        String ojType, String code, String language,
-	        AsyncCallback<Void> callback);
+            String ojType, String code, String language,
+            AsyncCallback<Long> callback);
 
 	void getLastProblemStatus(boolean isAnonymousSubmission,
             String problemCode, String judgeType, String sourceCode,
-            boolean isVisible, AsyncCallback<ProblemStatusData> callback);
+            boolean isVisible, Long submissionID,
+            AsyncCallback<ProblemStatusData> callback);
 
 	/**
 	 * @see com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(ProblemData)

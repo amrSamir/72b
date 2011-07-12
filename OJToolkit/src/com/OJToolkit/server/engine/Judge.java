@@ -1,6 +1,7 @@
 package com.OJToolkit.server.engine;
 
 
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -12,13 +13,13 @@ import java.util.ArrayList;
 public interface Judge {
 
     /**
-     * @param filePath : The filePath that contains all the urls of the problems.
-     * @return : All the problems texts
-     * @throws Exception
+     * 
+     * @return : All the problems texts 
+     * @throws Exception 
      */
-    public ArrayList<ProblemText> getProblemTexts(String filePath)throws Exception;
+    public ArrayList<ProblemText> getProblemTexts()throws Exception;
     /**
-     *
+     * 
      * @param username : Username of the coder.
      * @param password : Password of the coder.
      * @return boolean : <b>True<b> if signed in successfully , <n>False<n> if not.
@@ -26,31 +27,32 @@ public interface Judge {
     public boolean signIn(String username, String password) throws Exception;
 
     /**
-     *
+     * 
      * @param username : Username of the coder.
      * @return <b>True<b> if signed in successfully , <n>False<n> if not.
      */
     public boolean signOut(String username);
 
     /**
-     *
+     * 
      * @param coderId :  The ID of the coder.
      * @param password : The password of the coder.
      * @param problemId :The ID of the problem .
      * @param language : The ID of the language in this online judge.
      * @param code :     The submitted code.
      * @throws IOException
-     * @throws Exception
+     * @throws Exception 
      */
-    public void submitProblem(String coderId, String password, String problemId, String languageId, String code) throws IOException, Exception;
+    public Long submitProblem(String coderId, String password, String problemId, String languageId, String code) throws IOException, Exception;
 
     /**
      * @param coderId : The ID of the coder.
      * @param password : The password of the user.
+     * @param submissionId: The submission id.
      * @return Instance of type Submission of the last submitted problem.
      * @throws Exception
      */
-    public Submission getLastSubmission(String coderId, String password) throws Exception;
+    public Submission getLastSubmission(String coderId, String password , String submissionId) throws Exception;
 
     /**
      *
@@ -75,4 +77,3 @@ public interface Judge {
      */
     public Problem getProblemInfo(String problemId) throws Exception;
 }
-

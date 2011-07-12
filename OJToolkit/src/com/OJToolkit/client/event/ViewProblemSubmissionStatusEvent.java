@@ -23,21 +23,24 @@ public class ViewProblemSubmissionStatusEvent extends
 	public boolean isVisible;
 	public String sourceCode;
 	 public ArrayList<String> categoriesList;
+	 public Long judgeSubmissionID;
 	
 	
 	/**
      * @param categoriesList 
+	 * @param result 
 	 * @param b 
 	 * @param string 
 	 * @param problemCode The problemcode of the submitted problem
      */
-    public ViewProblemSubmissionStatusEvent(ProblemData problem, boolean isAnonymousSubmission, String sourceCode, boolean isVisible, ArrayList<String> categoriesList) {
+    public ViewProblemSubmissionStatusEvent(ProblemData problem, boolean isAnonymousSubmission, String sourceCode, boolean isVisible, ArrayList<String> categoriesList, Long judgeSubmissionID) {
 	    super();
     	this.problem = problem;
     	this.isAnonymousSubmission = isAnonymousSubmission;
     	this.isVisible = isVisible;
     	this.sourceCode = sourceCode;
     	this.categoriesList = categoriesList;
+    	this.judgeSubmissionID = judgeSubmissionID;
     }
 
 	/*

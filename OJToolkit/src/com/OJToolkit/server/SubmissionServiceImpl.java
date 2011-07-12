@@ -29,11 +29,12 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
 
 	@Override
-	public void submitCode(boolean isAnonymousSubmission, String problemCode,
+	public Long submitCode(boolean isAnonymousSubmission, String problemCode,
 	        String ojType, String code, String language) throws Exception {
 		Judge judge = null;
 		String judgeUsername = "";
 		String judgePassword = "";
+		Long submissionID = 0L;
 
 		if (isAnonymousSubmission) {
 			if (ojType.equals("SPOJ")) {
@@ -83,11 +84,12 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			System.out.println("Password" + judgePassword);
 			System.out.println("Problem Code: " + problemCode);
 			System.out.println("Code: " + code);
-			judge.submitProblem(judgeUsername, judgePassword, problemCode,
+			 submissionID = judge.submitProblem(judgeUsername, judgePassword, problemCode,
 			        language, code);
 			System.out.println("Submitted");
 
 		}
+		return submissionID;
 
 	}
 
@@ -106,9 +108,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public ProblemStatusData getLastProblemStatus(
-	        boolean isAnonymousSubmission, String problemCode, String ojType,
-	        String sourceCode, boolean isVisible) throws Exception {
+	public ProblemStatusData getLastProblemStatus(boolean isAnonymousSubmission,
+            String problemCode, String ojType, String sourceCode,
+            boolean isVisible, Long submissionID) throws Exception {
 		Judge judge = null;
 		String judgeUsername = "";
 		String judgePassword = "";
@@ -154,7 +156,8 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		}
 		System.out.println(judgeUsername);
 		System.out.println(judgePassword);
-		Submission s = judge.getLastSubmission(judgeUsername, judgePassword);
+
+		Submission s = judge.getLastSubmission(judgeUsername, judgePassword, submissionID==null?"":submissionID.toString());
 		System.out.println(s.getProblemId());
 		System.out.println(s.getStatus());
 		ProblemStatusData dpStatus = new ProblemStatusData(new Date(

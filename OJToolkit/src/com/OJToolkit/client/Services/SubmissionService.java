@@ -49,11 +49,20 @@ public interface SubmissionService extends RemoteService {
 	 * @param sortingQuery
 	 *            to sort ascending or descending different columns
 	 * @param searchQuery
-	 *            filters for values in a certaing column
+	 *            filters for values in a certain column
 	 * @return
 	 */
 	public ArrayList<ProblemData> getProblems(Range range, String sortingQuery,
 			String searchQuery);
+	
+	/**
+	 * Get Problems count from the Datastore
+	 * 
+	 * @param searchQuery
+	 *            filters for values in a certain column
+	 * @return
+	 */
+	public Integer getProblemsCount(String searchQuery);
 
 	/**
 	 * Fetch Problem from database
@@ -69,7 +78,4 @@ public interface SubmissionService extends RemoteService {
 	public void addProblemTextToDB(ProblemTextData problemTextData);
 	
 	public ProblemTextData getProblemText(String problemCode, String judgeType);
-
-
-
 }

@@ -44,6 +44,7 @@ public interface SubmissionServiceAsync {
 
 	void getProblemText(String problemCode, String judgeType,
             AsyncCallback<ProblemTextData> callback);
-	
+
+	void getProblemsCount(String searchQuery, AsyncCallback<Integer> callback);
 
 }

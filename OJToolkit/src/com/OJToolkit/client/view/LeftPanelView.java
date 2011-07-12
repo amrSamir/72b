@@ -18,6 +18,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -41,54 +42,71 @@ public class LeftPanelView extends Composite implements
 	Label lblViewContest;
 	Label lblAddProblemsToContest;
 
+	DisclosurePanel Contest;
+
 	// Hack to be fixed
 	public LeftPanelView(final HandlerManager eventBus) {
 		VerticalPanel verticalPanel = new VerticalPanel();
 		verticalPanel.setStyleName("LeftPanel");
 		initWidget(verticalPanel);
-		int Panel_height = 8 * 48;
-		verticalPanel.setSize("100%", Panel_height + "px");
+		verticalPanel.setSize("100%", "");
 		verticalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
 		allLabels = new HashMap<LeftPanelView.Labels, Label>();
 
 		lblViewCoders = addLeftPanel_lable("Coders", eventBus,
-				Labels.ViewCoders);
+				Labels.ViewCoders, "LeftPanel-Label");
 		verticalPanel.add(lblViewCoders);
 
 		lblAddAccount = addLeftPanel_lable("Accounts", eventBus,
-				Labels.AddAccounts);
+				Labels.AddAccounts, "LeftPanel-Label");
 		verticalPanel.add(lblAddAccount);
 
 		lblViewProblem = addLeftPanel_lable("Problems", eventBus,
-				Labels.ViewProblems);
+				Labels.ViewProblems, "LeftPanel-Label");
 		verticalPanel.add(lblViewProblem);
-
-		lblContestAdmin = addLeftPanel_lable("Contest", eventBus,
-				Labels.ContestAdmin);
-		verticalPanel.add(lblContestAdmin);
-
-		lblJoinContest = addLeftPanel_lable("JoinContest", eventBus,
-				Labels.JoinContest);
-		verticalPanel.add(lblJoinContest);
-
-		lblViewContest = addLeftPanel_lable("ViewContest", eventBus,
-				Labels.ViewContest);
-		verticalPanel.add(lblViewContest);
-
-		lblAddProblemsToContest = addLeftPanel_lable("AddProblemToContest",
-				eventBus, Labels.AddProblemToContest);
-		verticalPanel.add(lblAddProblemsToContest);
-
-		lblStatus = addLeftPanel_lable("Status", eventBus, Labels.Status);
+		
+		lblStatus = addLeftPanel_lable("Status", eventBus, Labels.Status,
+				"LeftPanel-Label");
 		verticalPanel.add(lblStatus);
+
+		// Contests
+		Label header = new Label("Contest");
+		header.setStylePrimaryName("LeftPanel-Label");
+		header.setSize("100%", "");
+		Contest = new DisclosurePanel(header);
+		Contest.setAnimationEnabled(true);
+		Contest.setVisible(false);
+
+		VerticalPanel verticalPanelContest = new VerticalPanel();
+
+		lblContestAdmin = addLeftPanel_lable("Create", eventBus,
+				Labels.ContestAdmin, "LeftPanel-Label2");
+		verticalPanelContest.add(lblContestAdmin);
+
+		lblAddProblemsToContest = addLeftPanel_lable("Manage", eventBus,
+				Labels.AddProblemToContest, "LeftPanel-Label2");
+		verticalPanelContest.add(lblAddProblemsToContest);
+
+		lblJoinContest = addLeftPanel_lable("Join", eventBus,
+				Labels.JoinContest, "LeftPanel-Label2");
+		verticalPanelContest.add(lblJoinContest);
+
+		lblViewContest = addLeftPanel_lable("Watch", eventBus,
+				Labels.ViewContest, "LeftPanel-Label2");
+		verticalPanelContest.add(lblViewContest);
+
+		Contest.add(verticalPanelContest);
+		Contest.setSize("100%", "");
+		verticalPanel.add(Contest);
 	}
 
 	private Label addLeftPanel_lable(String LableName,
-			final HandlerManager eventBus, final Labels LinkType) {
+			final HandlerManager eventBus, final Labels LinkType,
+			String styleName) {
 
 		Label lblLabel = new Label(LableName);
-		lblLabel.setStylePrimaryName("LeftPanel-Label");
+		lblLabel.setStylePrimaryName(styleName);
 		lblLabel.setSize("100%", "");
 		allLabels.put(LinkType, lblLabel);
 		lblLabel.addClickHandler(new ClickHandler() {
@@ -135,6 +153,7 @@ public class LeftPanelView extends Composite implements
 			Map.Entry<Labels, Label> pairs = it.next();
 			pairs.getValue().setVisible(isEnabled);
 		}
+		Contest.setVisible(isEnabled);
 	}
 
 	@Override
@@ -147,5 +166,12 @@ public class LeftPanelView extends Composite implements
 			else
 				pairs.getValue().removeStyleDependentName("selected");
 		}
+		if (LinkType.equals(Labels.ContestAdmin)
+				|| LinkType.equals(Labels.JoinContest)
+				|| LinkType.equals(Labels.ViewContest)
+				|| LinkType.equals(Labels.AddProblemToContest))
+			Contest.setOpen(true);
+		else
+			Contest.setOpen(false);
 	}
 }

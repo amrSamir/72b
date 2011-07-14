@@ -307,25 +307,25 @@ public class ProblemView extends Composite implements ProblemPresenter.Display {
 		HTML HTMLOutputConstraints;
 		HTML HTMLIOTestCases;
 		if (problemText.getIsDividable().equals("false")) {
-			HTMLFullText = new HTML(problemText.getFullText());
+			HTMLFullText = new HTML(problemText.getFullText().replaceAll("�", "'"));
 			problemStatementPanel.add(HTMLFullText);
 		} else {
-			HTMLProblemStatement = new HTML(problemText.getProblemStatement());
+			HTMLProblemStatement = new HTML(problemText.getProblemStatement().replaceAll("�", "'"));
 			problemStatementPanel.add(new Label(
 			        "-------Problem Statement-------"));
 			problemStatementPanel.add(HTMLProblemStatement);
 
-			HTMLInputConstraints = new HTML(problemText.getInputConstraints());
+			HTMLInputConstraints = new HTML(problemText.getInputConstraints().replaceAll("�", "'"));
 			problemStatementPanel.add(new Label(
 			        "-------Input Constraints-------"));
 			problemStatementPanel.add(HTMLInputConstraints);
 
-			HTMLOutputConstraints = new HTML(problemText.getOutputConstraints());
+			HTMLOutputConstraints = new HTML(problemText.getOutputConstraints().replaceAll("�", "'"));
 			problemStatementPanel.add(new Label(
 			        "-------Output Constraints-------"));
 			problemStatementPanel.add(HTMLOutputConstraints);
 
-			HTMLIOTestCases = new HTML(problemText.getIOTestCases());
+			HTMLIOTestCases = new HTML(problemText.getIOTestCases().replaceAll("�", "'"));
 			problemStatementPanel.add(new Label("-------IO Test Cases-------"));
 			problemStatementPanel.add(HTMLIOTestCases);
 

@@ -13,6 +13,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -25,7 +26,6 @@ import com.google.gwt.user.client.ui.Widget;
 public class ProblemSubmissionStatusPresenter implements Presenter {
 
 	public interface Display {
-		HasClickHandlers getRefreshButton();
 		void setSubmissionResult(ProblemStatusData problemStatus);
 		Widget asWidget();
 	}
@@ -48,6 +48,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	private final Long judgeSubmissionID;
 	
 	private  boolean isAnonymousSubmission = false;
+	
 	/**
 	 * Generate Problem statue page
 	 * @param categoriesList 
@@ -69,8 +70,6 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 		this.isVisible = isVisible;
 		this.categoriesList = categoriesList;
 		this.judgeSubmissionID = judgeSubmissionID;
-
-		bind();
 		addCategoriesToDB(problem.getProblemCode(),problem.getOjType(), categoriesList);
 		callGetLastProblemStatusService();
 
@@ -108,6 +107,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 	 * get last problem statue 
 	 */
 	void callGetLastProblemStatusService() {
+		
 		submssionService
 		        .getLastProblemStatus(isAnonymousSubmission, problem.getProblemCode(),problem.getOjType(),sourceCode, isVisible, judgeSubmissionID, new AsyncCallback<ProblemStatusData>() {
 
@@ -115,6 +115,14 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 			        public void onSuccess(ProblemStatusData result) {
 				        problemStatus = result;
 				        display.setSubmissionResult(result);
+				        if(result.getJudgeResult()==null||result.getJudgeResult().equals("")){
+				        	new Timer() {
+				  		      public void run() {
+				  		       callGetLastProblemStatusService(); 
+				  		      }
+				  		     
+				  		    }.schedule(3000);
+				        }
 				        
 			        }
 
@@ -125,18 +133,7 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 		        });
 	}
 
-	/**
-     * 
-     */
-	private void bind() {
-		display.getRefreshButton().addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				callGetLastProblemStatusService();
-			}
-		});
-	}
 
 	/*
 	 * (non-Javadoc)

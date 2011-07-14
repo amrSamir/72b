@@ -15,7 +15,7 @@ public class ProblemText {
 	private Long probID;
 
 	@Persistent
-	private String judgeType;
+	private String judgeType; 
 
 	@Persistent
 	private String problemCode;

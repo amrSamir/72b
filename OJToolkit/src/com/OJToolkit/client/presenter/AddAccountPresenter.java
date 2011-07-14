@@ -3,7 +3,6 @@
  */
 package com.OJToolkit.client.presenter;
 
-import com.OJToolkit.client.AppController;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -31,6 +30,9 @@ public class AddAccountPresenter implements Presenter {
 		HasClickHandlers getAddTimusAccountButton();
 
 		HasClickHandlers getAddUVAAccountButton();
+		
+		
+		HasClickHandlers getAddLiveArchiveAccountButton();
 
 		HasValue<String> getAccountUserName();
 
@@ -150,8 +152,15 @@ public class AddAccountPresenter implements Presenter {
 			public void onClick(ClickEvent event) {
 				accountType = "UVA";
 				isValidAccount(accountType);
-				// display.setAccountType(accountType);
-				// eventBus.fireEvent(new AddAccountDetailsEvent("X"));
+			}
+		});
+		
+		display.getAddLiveArchiveAccountButton().addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				accountType = "Live Archive";
+				isValidAccount(accountType);
 			}
 		});
 
@@ -164,7 +173,10 @@ public class AddAccountPresenter implements Presenter {
 					        setUsername("UVA");
 				        } else if (event.getSelectedItem() == 2) {
 					        setUsername("Timus");
-				        }
+				        
+			        } else if (event.getSelectedItem() == 3) {
+			        	setUsername("Live Archive");
+			        }
 
 			        }
 		        });

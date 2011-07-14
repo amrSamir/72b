@@ -111,6 +111,18 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 				pm.makePersistent(new Language(l.getLanguageName(), l
 				      .getLanguageValue(), l.getOJType()));
 			}
+			
+			
+			l = new Language();
+			String[] languages_LA = new String[] { "ANSI C" , "JAVA 1.6.0" , "C++ 4.1.2", "PASCAL 2.0.4" };
+			String[] values_LA = new String[] { "1" , "2" , "3", "4" };
+			for(int i=0;i<languages_LA.length;i++){
+				l.setLanguageName(languages_LA[i]);
+				l.setLanguageValue(values_LA[i]);
+				l.setOJType("LiveArchive");
+				pm.makePersistent(new Language(l.getLanguageName(), l
+						.getLanguageValue(), l.getOJType()));
+			}
 
 		} finally {
 			pm.close();

@@ -31,10 +31,10 @@ public class AddAccountView extends Composite implements
 	TextBox [] txtAlreadyRegisteredMessage;
 	PasswordTextBox [] txtAccountPassword;
 	TabLayoutPanel tabPanel;
-	final String [] ojs = {"SPOJ","UVA","Timus"};
+	final String [] ojs = {"SPOJ","UVA","Timus", "Live Archive"};
 	final String [] registrationLinks = { "http://www.spoj.pl/register/" , 
 			"http://uva.onlinejudge.org/index.php?option=com_comprofiler&task=registers",
-			"http://acm.timus.ru/register.aspx" };
+			"http://acm.timus.ru/register.aspx", "http://acm.uva.es/archive/nuevoportal/" };
 	
 
 	/**
@@ -174,6 +174,14 @@ public class AddAccountView extends Composite implements
     @Override
     public void setVisible() {
     	txtAlreadyRegisteredMessage[tabPanel.getSelectedIndex()].setVisible(true);    
+    }
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.presenter.AddAccountPresenter.Display#getAddLiveArchiveAccountButton()
+     */
+    @Override
+    public HasClickHandlers getAddLiveArchiveAccountButton() {
+	   return btnAddAccount[3]; 
     }
     
 

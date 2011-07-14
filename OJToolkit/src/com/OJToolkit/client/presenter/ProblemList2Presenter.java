@@ -90,14 +90,10 @@ public class ProblemList2Presenter implements Presenter {
 	 */
 	private HashMap<Column<ProblemData, String>, String> columnMap;
 
-	public ProblemList2Presenter(SubmissionServiceAsync submissionService,
-	        HandlerManager eventBus) {
+	public ProblemList2Presenter(final SubmissionServiceAsync submissionService,
+	        final HandlerManager eventBus) {
 		this.submissionService = submissionService;
 		this.eventBus = eventBus;
-	}
-
-	@Override
-	public void go(HasWidgets container) {
 		// Initialize previous Queries
 		previousSearchQuery = "";
 		previousSortingQuery = "";
@@ -185,21 +181,6 @@ public class ProblemList2Presenter implements Presenter {
 					previousSortingQuery = sortingQuery;
 					previousSearchQuery = searchQuery;
 				}
-				
-				// Fetch problem count from server
-				submissionService.getProblemsCount(searchQuery, new AsyncCallback<Integer>() {
-					
-					@Override
-					public void onSuccess(Integer size) {
-						cellTable.setRowCount(size, true);
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						// TODO Auto-generated method stub
-						
-					}
-				});
 
 				// Fetch problem from server
 				submissionService.getProblems(range, sortingQuery, searchQuery,
@@ -221,6 +202,11 @@ public class ProblemList2Presenter implements Presenter {
 		// Add the CellTable to the adapter dataProvider.
 		dataProvider.addDataDisplay(cellTable);
 
+
+	}
+
+	@Override
+	public void go(HasWidgets container) {
 		// Create the UiBinder.
 		Binder uiBinder = GWT.create(Binder.class);
 		Widget widget = uiBinder.createAndBindUi(this);

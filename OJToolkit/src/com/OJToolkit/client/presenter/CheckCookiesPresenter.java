@@ -78,7 +78,7 @@ public class CheckCookiesPresenter implements Presenter {
 	public void checkCookies(LoginServiceAsync loginService) {
 		String isLoggedInCookie = Cookies.getCookie("isLoggedInCookie");
 		String isRegisteredCookie = Cookies.getCookie("isRegisteredCookie");
-
+		
 		// System.out.println(AppController.isEnabled);
 		if (isLoggedInCookie == null) {
 			login(loginService);

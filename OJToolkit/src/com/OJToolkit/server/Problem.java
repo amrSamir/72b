@@ -13,7 +13,7 @@ public class Problem {
 	private Long probID;
 
 	@Persistent
-	private String url;
+	private String url; 
 
 	@Persistent
 	private String problemCode;

@@ -62,8 +62,9 @@ public class OJToolkit implements EntryPoint {
 
 		// TODO(magdi): remove
 		// FackeSubmissions f = new FackeSubmissions() ;
-		// /*
-
+		
+		//new SpojProblemsToDBAdder();
+		///*
 		AppController appViewer = new AppController(eventBus,
 				submissionService, languageService, loginService, coderService,
 				sourceCodeService, hintService, contestService);

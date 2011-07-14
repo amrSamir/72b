@@ -11,7 +11,7 @@ import javax.jdo.annotations.PrimaryKey;
 public class ContestProblems {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long contestproblemID ;
+	private Long contestproblemID ; 
 	
 	@Persistent
 	private Long contestID ;

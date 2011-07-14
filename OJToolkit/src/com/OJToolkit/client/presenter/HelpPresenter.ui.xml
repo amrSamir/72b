@@ -1,0 +1,331 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		.centered {
+			text-align: center;
+			vertical-align: center;
+			font-family: Rabio, sans-serif;
+		}
+		
+		.Enter {
+			font-size: 2em;
+		}
+	</ui:style>
+	<g:ScrollPanel width="100%" height="100%">
+		<g:Tree animationEnabled="true">
+			<g:TreeItem text="Login/Registration/User Profile/Logout">
+				<g:TreeItem text="Login using Google Account">
+					<g:HTML>
+						• You are asked to login using your Google account.
+						<br />
+						• The website will redirect to Google to login.
+						<br />
+						• Once you are logged in, you will be redirected back to the
+						website.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="Registration">
+					<g:HTML>
+						• Once logged in with your Google account; if it is the first time
+						to you to use the system, you need to register with a new user
+						name
+						in the system.
+						<br />
+						• In the registration form, enter a username then click register.
+						If the username was already taken by another user, you will be
+						asked to enter another username.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="Adding/Modifying Online Judges' accounts">
+					<g:HTML>
+						• Codemashup.com requires your login information of different
+						online judges to be able to automatically submit solutions using
+						your account.
+						<br />
+						• If you don't have accounts in any of the online judges, you can
+						still use the features of Codemashup.com by submitting
+						anonymously.
+						<br />
+						• You can modify your login information as well.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="Sign out">
+					<g:HTML>
+						• If you want to sign out, simply click the sign out button.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+			</g:TreeItem>
+
+
+			<g:TreeItem text="Dealing with problems">
+
+
+
+
+				<g:TreeItem text="View Problems List">
+					<g:HTML>
+						• A list of all problems is showed.
+						<br />
+						• The list contains problems aggregated from the different OJs.
+						<br />
+						• You can sort the Problem List by clicking on the list columns
+						header.
+						<br />
+						• You can search in the problems list on any prefix in a
+						particular
+						column. (To be enhanced soon).
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="View A Problem">
+					<g:HTML>
+						• To view a problem, select it from the problem list or enter the
+						URL directly.
+						<br />
+						• The problem information contains:
+						o Problem statement.
+						<br />
+						o Suggested problem categories (contributed from users)
+						<br />
+						o Submission area.
+						<br />
+						• You can also view the original problem page in the Online Judge.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="Submit A Solution for A Problem">
+					<g:HTML>
+						• In the "view a problem", you have wrote a solution code for the
+						problem and put it in the "submission area".
+						<br />
+						• Choose the language you used in the code.
+						<br />
+						• Select tags for the category of the problem.
+						<br />
+						• Choose whether you want your code publicly available or not.
+						<br />
+						• Click "submit".
+						<br />
+						• You will be redirected to the Submission result page.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="View a submission result">
+					<g:HTML>
+						• You have just submitted a solution code, and got redirected to
+						the “Submission results” page.
+						<br />
+						• The “Submission results” page contains: Submission date, Problem
+						code, Judge Results (“AC”, “WA”, etc), The Execution Time, and The
+						Memory Used By The executed code.
+						<br />
+					</g:HTML>
+				</g:TreeItem>
+
+
+			</g:TreeItem>
+
+
+
+			<g:TreeItem text="Contests">
+
+
+				<g:TreeItem text="Manage Contests">
+					<g:HTML>
+						• The Contest is locked by an access code. The Contest creator
+						gives the access code to the contestants who will compete in the
+						contest.
+						<br />
+						• Enter the contest information to create it.
+						<br />
+						• Select the problems to be added to the contest.
+						<br />
+						• Send the Contest name and the access code to the contestants who
+						want to compete in the contest.
+						<br />
+						• The needed contest information:
+
+						<pre> o Contest Name </pre>
+
+						<pre> o Access Code</pre>
+
+						<pre> o Start Date and Time</pre>
+
+						<pre> o End Date and Time</pre>
+
+						<pre> o Problem List (to choose contest problems from)</pre>
+
+						• You can edit a contest, if you are the owner of it (created the
+						contest).
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="Join Contest">
+					<g:HTML>
+						• You can join a contest, if you know its access code.
+						<br />
+						• Choose a contest to join.The system then will ask you for the
+						access code.
+						<br />
+						• Enter the access code, then, you will get into the contest (Good
+						luck!)
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="View Score Board">
+					<g:HTML>
+						• The score board is a table. The table columns stands for the
+						problems. The table rows stands for the contestants The cells
+						stands for the state of the problem to the contestant.
+						<br />
+						• The score board will be saved in the system after the contest
+						has
+						finished.
+						<br />
+						• The scoring system is similar to the ACM ICPC contest style.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="View Contest Problems List">
+					<g:HTML>
+						• After joining a contest, in the score board, the columns headers
+						are the problem list.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="View A Problem in A Contest">
+					<g:HTML>
+						• Click on a problem in the problems list, the system will show
+						you
+						the problem page that contains "Problem Statement" and "Submission
+						Area"
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="Submit A Solution for A Problem in a Contest">
+					<g:HTML>
+						• After selecting a problem from the problem list, you can submit
+						a
+						solution for the problem (in the problem page submission area).
+						<br />
+						• The judge result will be updated in the score board.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="View Contest History">
+					<g:HTML>
+						• The saved "score board" can be viewed.
+						<br />
+						• You can view an ended contest.
+						<br />
+						• You can now see the saved "score board".
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+			</g:TreeItem>
+
+
+			<g:TreeItem text="View Coders">
+
+				<g:TreeItem text="View Coders List">
+					<g:HTML>
+						• You want to view the other coders that use this site.
+						<br />
+						• Open "View Coders".
+						<br />
+						• You get a list of all coders.The list contains: The coder
+						Codemashup.com username, and each OJ user name (in a separate
+						column).
+						<br />
+						• You can view a coder profile by clicking on his record in the
+						list.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+
+
+				<g:TreeItem text="View A Coder Profile">
+					<g:HTML>
+						• You want to view a coder's profile!
+						<br />
+						• Click on the coder's record in the list.
+						<br />
+						• The coder's profile has opened. The profile contains:
+						<br />
+						o The coder's Total number of submissions.
+						<br />
+						o The coder's number of AC submissions, WA submissions, and so on.
+						<br />
+						o The coder's last submissions and their results.
+						<br />
+
+					</g:HTML>
+				</g:TreeItem>
+
+			</g:TreeItem>
+		</g:Tree>
+	</g:ScrollPanel>
+
+</ui:UiBinder> 

@@ -13,7 +13,7 @@ public class ContestUsers {
 	private Long contestUserID ;
 	
 	@Persistent
-	private Long ContestID ;
+	private Long ContestID ; 
 	
 	@Persistent
 	private Long UserID ;

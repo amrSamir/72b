@@ -2,7 +2,6 @@ package com.OJToolkit.server;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -15,6 +14,7 @@ import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.CoderProfileData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.server.engine.Judge;
+import com.OJToolkit.server.engine.LiveArchive;
 import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Timus;
 import com.OJToolkit.server.engine.UVA;
@@ -62,40 +62,42 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 
 		return coders;
 	}
-	
-	public static CoderData getCoder(Long coderID){
+
+	public static CoderData getCoder(Long coderID) {
 		CoderData cd = new CoderData();
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		try{
+		try {
 			Query query = pm.newQuery(Coder.class);
 			query.setFilter("userID  == coderID");
 			query.declareParameters("java.lang.Long coderID");
 			@SuppressWarnings("unchecked")
 			List<Coder> codersDB = (List<Coder>) query.execute(coderID);
 			for (Coder coder : codersDB) {
-				cd = new CoderData(coder.getUserID(),coder.getUsername(),coder.getEmail(),coder.getSPOJUsername(),coder.getSPOJPassword()) ;
+				cd = new CoderData(coder.getUserID(), coder.getUsername(),
+				        coder.getEmail(), coder.getSPOJUsername(),
+				        coder.getSPOJPassword());
 			}
-		}finally{
-			pm.close() ;
+		} finally {
+			pm.close();
 		}
-		return cd ;
+		return cd;
 	}
-	
-	public static Long getCoderID(String Email){
-		Long l = 0L ;
+
+	public static Long getCoderID(String Email) {
+		Long l = 0L;
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
-		try{
+		try {
 			Query query = pm.newQuery(Coder.class);
 			query.setFilter("email  == Email");
 			query.declareParameters("java.lang.String Email");
 			List<Coder> codersDB = (List<Coder>) query.execute(Email);
 			for (Coder coder : codersDB) {
-				l = coder.getUserID() ;
+				l = coder.getUserID();
 			}
-		}finally{
-			pm.close() ;
+		} finally {
+			pm.close();
 		}
-		return l ;
+		return l;
 	}
 
 	@Override
@@ -204,6 +206,10 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				coders.get(0).setUVAUsername(username);
 				coders.get(0).setUVAPassword(password);
 				pm.makePersistent(coders.get(0));
+			} else if (accountType.equals("LiveArchive")) {
+				coders.get(0).setLiveArchiveUsername(username);
+				coders.get(0).setLiveArchivePassword(password);
+				pm.makePersistent(coders.get(0));
 			}
 			System.out.println("5alstoo");
 		} finally {
@@ -236,6 +242,9 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			if (coders.get(0).getUVAUsername() != null) {
 				ret += "UVA-";
 			}
+			if (coders.get(0).getLiveArchiveUsername() != null) {
+				ret += "LiveArchive-";
+			}
 		} finally {
 			pm.close();
 		}
@@ -265,6 +274,8 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				ret = coders.get(0).getTimusUsername();
 			} else if (accountType.equals("UVA")) {
 				ret = coders.get(0).getUVAUsername();
+			} else if (accountType.equals("LiveArchive")) {
+				ret = coders.get(0).getLiveArchiveUsername();
 			}
 		} finally {
 			pm.close();
@@ -293,6 +304,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			ret.setSPOJUsername(coders.get(0).getSPOJUsername());
 			ret.setUVAUsername(coders.get(0).getUVAUsername());
 			ret.setTimusUsername(coders.get(0).getTimusUsername());
+			ret.setLiveArchiveUsername(coders.get(0).getLiveArchiveUsername());
 			ret.setUsername(username);
 
 			select_query = "select from " + UserSubmission.class.getName();
@@ -390,6 +402,9 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			judge = new Timus();
 		} else if (judgeType.equals("UVA")) {
 			judge = new UVA();
+
+		} else if (judgeType.equals("LiveArchive")) {
+			judge = new LiveArchive();
 		}
 
 		if (judge != null) {

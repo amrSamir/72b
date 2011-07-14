@@ -23,7 +23,7 @@ public interface SubmissionServiceAsync {
 	/**
 	 * @see com.OJToolkit.client.Services.SubmissionService#saveSpojProblemtoDB(ProblemData)
 	 */
-	void saveSpojProblemtoDB(ProblemData problemData,
+	void saveProblemstoDB(ProblemData problemData,
 	        AsyncCallback<Void> callback);
 
 	void getProblems(Range range, String sortingQuery, String searchQuery,

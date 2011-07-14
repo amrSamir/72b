@@ -39,7 +39,7 @@ public interface SubmissionService extends RemoteService {
 	 * @param problemData
 	 *            the problem to be saved to the datastore
 	 */
-	public void saveSpojProblemtoDB(ProblemData problemData);
+	public void saveProblemstoDB(ProblemData problemData);
 
 	/**
 	 * Get Problems from the datastore

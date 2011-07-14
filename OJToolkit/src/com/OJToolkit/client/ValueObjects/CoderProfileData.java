@@ -68,8 +68,16 @@ public class CoderProfileData implements Serializable {
 	private String SPOJUsername;
 	private String UVAUsername;
 	private String TimusUsername;
+	private String LiveArchiveUsername;
 	private int numberOfSubmission;
 	private int numberOfSolved;
+
+	/**
+     * @return the liveArchiveUsername
+     */
+    public String getLiveArchiveUsername() {
+    	return LiveArchiveUsername;
+    }
 
 	public CoderProfileData() {
 
@@ -147,5 +155,13 @@ public class CoderProfileData implements Serializable {
 	public void setSPOJUsername(String sPOJUsername) {
 		SPOJUsername = sPOJUsername;
 	}
+
+	/**
+     * @param liveArchiveUsername
+     */
+    public void setLiveArchiveUsername(String liveArchiveUsername) {
+	    this.LiveArchiveUsername = liveArchiveUsername;
+	    
+    }
 
 	}

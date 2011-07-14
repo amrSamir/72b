@@ -55,6 +55,7 @@ import com.OJToolkit.client.presenter.CoderListPresenter;
 import com.OJToolkit.client.presenter.CoderProfilePresenter;
 import com.OJToolkit.client.presenter.ContestAdminPresenter;
 import com.OJToolkit.client.presenter.ContestProblemsPresenter;
+import com.OJToolkit.client.presenter.HelpPresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
 import com.OJToolkit.client.presenter.JoinContestPresenter;
 import com.OJToolkit.client.presenter.LeftPanelPresenter;
@@ -170,11 +171,11 @@ public class AppController implements ValueChangeHandler<String> {
 	 * @param hintService
 	 */
 	public AppController(HandlerManager eventBus,
-			SubmissionServiceAsync submissionService,
-			LanguageServiceAsync languageService,
-			LoginServiceAsync loginService, CoderServiceAsync coderService,
-			SourceCodeServiceAsync sourceCodeService,
-			HintServiceAsync hintService, ContestServicesAsync contestService) {
+	        SubmissionServiceAsync submissionService,
+	        LanguageServiceAsync languageService,
+	        LoginServiceAsync loginService, CoderServiceAsync coderService,
+	        SourceCodeServiceAsync sourceCodeService,
+	        HintServiceAsync hintService, ContestServicesAsync contestService) {
 		this.languageService = languageService;
 		this.eventBus = eventBus;
 		this.submissionService = submissionService;
@@ -193,87 +194,87 @@ public class AppController implements ValueChangeHandler<String> {
 	private void bind() {
 		History.addValueChangeHandler(this);
 		eventBus.addHandler(ViewProblemSubmissionStatusEvent.TYPE,
-				new ViewProblemSubmissionStatusEventHandler() {
+		        new ViewProblemSubmissionStatusEventHandler() {
 
-					@Override
-					public void onSubmitProblem(
-							ViewProblemSubmissionStatusEvent event) {
-						doViewProblemSubmissionStatus(event.problem,
-								event.isAnonymousSubmission, event.sourceCode,
-								event.isVisible, event.categoriesList,
-								event.judgeSubmissionID);
-					}
-				});
+			        @Override
+			        public void onSubmitProblem(
+			                ViewProblemSubmissionStatusEvent event) {
+				        doViewProblemSubmissionStatus(event.problem,
+				                event.isAnonymousSubmission, event.sourceCode,
+				                event.isVisible, event.categoriesList,
+				                event.judgeSubmissionID);
+			        }
+		        });
 		eventBus.addHandler(ContestProblemEvent.TYPE,
-				new ContestProblemEventHandler() {
+		        new ContestProblemEventHandler() {
 
-					@Override
-					public void onContestProblems(
-							ContestProblemEvent contestProblemEvent) {
-						doViewProblemContest();
-					}
+			        @Override
+			        public void onContestProblems(
+			                ContestProblemEvent contestProblemEvent) {
+				        doViewProblemContest();
+			        }
 
-				});
+		        });
 		eventBus.addHandler(JoinContestEvent.TYPE,
-				new JoinContestEventHandler() {
+		        new JoinContestEventHandler() {
 
-					@Override
-					public void onJoinContest(JoinContestEvent joinContestEvent) {
-						doJoinContest();
+			        @Override
+			        public void onJoinContest(JoinContestEvent joinContestEvent) {
+				        doJoinContest();
 
-					}
-				});
+			        }
+		        });
 
 		eventBus.addHandler(ViewContestEvent.TYPE,
-				new ViewContestEventHandler() {
+		        new ViewContestEventHandler() {
 
-					@Override
-					public void onViewContest(ViewContestEvent viewContestEvent) {
-						doViewContest();
-					}
+			        @Override
+			        public void onViewContest(ViewContestEvent viewContestEvent) {
+				        doViewContest();
+			        }
 
-				});
+		        });
 		eventBus.addHandler(ViewProblemEvent.TYPE,
-				new ViewProblemEventHandler() {
+		        new ViewProblemEventHandler() {
 
-					@Override
-					public void onViewProblem(ViewProblemEvent event) {
-						doViewProblem(event.problem);
+			        @Override
+			        public void onViewProblem(ViewProblemEvent event) {
+				        doViewProblem(event.problem);
 
-					}
-				});
+			        }
+		        });
 
 		eventBus.addHandler(AlreadyRegisteredEvent.TYPE,
-				new AlreadyRegisteredEventHandler() {
+		        new AlreadyRegisteredEventHandler() {
 
-					@Override
-					public void ifRegistered(AlreadyRegisteredEvent event) {
-						doIfRegistered();
+			        @Override
+			        public void ifRegistered(AlreadyRegisteredEvent event) {
+				        doIfRegistered();
 
-					}
+			        }
 
-				});
+		        });
 
 		eventBus.addHandler(ContestAdminEvent.TYPE,
-				new ContestAdminEventHandler() {
+		        new ContestAdminEventHandler() {
 
-					@Override
-					public void onContestAdmin(
-							ContestAdminEvent contestAdminEvent) {
-						doContestAdmin();
-					}
+			        @Override
+			        public void onContestAdmin(
+			                ContestAdminEvent contestAdminEvent) {
+				        doContestAdmin();
+			        }
 
-				});
+		        });
 
 		eventBus.addHandler(RegistrationEvent.TYPE,
-				new RegisterationEventHandler() {
+		        new RegisterationEventHandler() {
 
-					@Override
-					public void onRegistration(RegistrationEvent event) {
-						doOnRegistration();
+			        @Override
+			        public void onRegistration(RegistrationEvent event) {
+				        doOnRegistration();
 
-					}
-				});
+			        }
+		        });
 
 		eventBus.addHandler(LoginEvent.TYPE, new LoginEventHandler() {
 
@@ -285,15 +286,15 @@ public class AppController implements ValueChangeHandler<String> {
 		});
 
 		eventBus.addHandler(CheckCookiesEvent.TYPE,
-				new CheckCookiesEventHandler() {
+		        new CheckCookiesEventHandler() {
 
-					@Override
-					public void onCheckCookies(CheckCookiesEvent event) {
-						doOnCheckCookies();
+			        @Override
+			        public void onCheckCookies(CheckCookiesEvent event) {
+				        doOnCheckCookies();
 
-					}
+			        }
 
-				});
+		        });
 
 		eventBus.addHandler(LeftPanelEvent.TYPE, new LeftPanelEventHandler() {
 
@@ -335,34 +336,34 @@ public class AppController implements ValueChangeHandler<String> {
 		});
 
 		eventBus.addHandler(ViewCoderProfileEvent.TYPE,
-				new ViewCoderProfileEventHandler() {
+		        new ViewCoderProfileEventHandler() {
 
-					@Override
-					public void onViewCoderProfile(ViewCoderProfileEvent event) {
-						doOnViewCoderProfileEvent(event.username);
-					}
+			        @Override
+			        public void onViewCoderProfile(ViewCoderProfileEvent event) {
+				        doOnViewCoderProfileEvent(event.username);
+			        }
 
-				});
+		        });
 
 		eventBus.addHandler(ViewSubmissionsEvent.TYPE,
-				new ViewSubmissionsEventHandler() {
+		        new ViewSubmissionsEventHandler() {
 
-					@Override
-					public void onViewSubmissions(ViewSubmissionsEvent event) {
-						doOnViewCoderProfileEvent(); // TODO:(azraq) sounds
-														// weird!!
-					}
+			        @Override
+			        public void onViewSubmissions(ViewSubmissionsEvent event) {
+				        doOnViewCoderProfileEvent(); // TODO:(azraq) sounds
+													 // weird!!
+			        }
 
-				});
+		        });
 		eventBus.addHandler(ViewSourceCodeEvent.TYPE,
-				new ViewSourceCodeEventHandler() {
+		        new ViewSourceCodeEventHandler() {
 
-					@Override
-					public void onViewSourceCode(ViewSourceCodeEvent event) {
-						doOnViewSourceCode(event.submissionID);
+			        @Override
+			        public void onViewSourceCode(ViewSourceCodeEvent event) {
+				        doOnViewSourceCode(event.submissionID);
 
-					}
-				});
+			        }
+		        });
 
 	}
 
@@ -393,7 +394,7 @@ public class AppController implements ValueChangeHandler<String> {
 	 */
 	protected void doOnTopPanel(String logoutURL) {
 		Presenter presenter = new TopPanelPresenter(logoutURL, coderService,
-				new TopPanelView());
+		        new TopPanelView());
 		presenter.go(this.topPanel);
 	}
 
@@ -478,7 +479,7 @@ public class AppController implements ValueChangeHandler<String> {
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
 		problemStr = "problem" + problem.getProblemCode() + "-"
-				+ problem.getOjType();
+		        + problem.getOjType();
 		History.newItem(problemStr);
 
 	}
@@ -509,9 +510,9 @@ public class AppController implements ValueChangeHandler<String> {
 	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem,
-			boolean isAnonymousSubmission2, String sourceCode2,
-			boolean isVisible2, ArrayList<String> categoriesList2,
-			Long judgeSubmissionID) {
+	        boolean isAnonymousSubmission2, String sourceCode2,
+	        boolean isVisible2, ArrayList<String> categoriesList2,
+	        Long judgeSubmissionID) {
 		this.problem = problem;
 		this.isAnonymousSubmission = isAnonymousSubmission2;
 		this.sourceCode = sourceCode2;
@@ -587,7 +588,7 @@ public class AppController implements ValueChangeHandler<String> {
 		String logoutURLCookie = Cookies.getCookie("logoutURL");
 
 		presenter = new TopPanelPresenter(logoutURLCookie == null ? ""
-				: logoutURLCookie, coderService, new TopPanelView());
+		        : logoutURLCookie, coderService, new TopPanelView());
 		presenter.go(this.topPanel);
 
 		presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));
@@ -616,10 +617,10 @@ public class AppController implements ValueChangeHandler<String> {
 		}));
 		TabLayoutPanel tp = new TabLayoutPanel(2, Unit.EM);
 		HTML html = new HTML(
-				"<iframe src=\"https://spreadsheets.google.com/spreadsheet/embeddedform?formkey=dDBzWW5PNkZ6RlJIZ2lGcHlUek5fS0E6MQ\" width=\"760\" height=\"1214\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\">Loading...</iframe>");
+		        "<iframe src=\"https://spreadsheets.google.com/spreadsheet/embeddedform?formkey=dDBzWW5PNkZ6RlJIZ2lGcHlUek5fS0E6MQ\" width=\"760\" height=\"1214\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\">Loading...</iframe>");
 		tp.add(new ScrollPanel(html), "Feedback");
 		html = new HTML(
-				"<iframe src=\"https://spreadsheets0.google.com/spreadsheet/embeddedform?formkey=dEU2SEtsSXg4ZE5xaUJ5LWlIaDdsRlE6MQ\" width=\"760\" height=\"623\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\">Loading...</iframe>");
+		        "<iframe src=\"https://spreadsheets0.google.com/spreadsheet/embeddedform?formkey=dEU2SEtsSXg4ZE5xaUJ5LWlIaDdsRlE6MQ\" width=\"760\" height=\"623\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\">Loading...</iframe>");
 		tp.add(new ScrollPanel(html), "Bug Report");
 		tp.setSize("750px", "500px");
 		tp.setAnimationDuration(500);
@@ -632,7 +633,6 @@ public class AppController implements ValueChangeHandler<String> {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.google.gwt.event.logical.shared.ValueChangeHandler#onValueChange(
 	 * com.google.gwt.event.logical.shared.ValueChangeEvent)
@@ -643,15 +643,15 @@ public class AppController implements ValueChangeHandler<String> {
 		String isEnabledCookie = Cookies.getCookie("isEnabledCookie");
 		String isInvitedCookie = Cookies.getCookie("isInvitedCookie");
 		System.out.println("AE-AppController-Status:token=" + token
-				+ "&isEnabled=" + (isEnabledCookie != null) + "&isInvited="
-				+ (isInvitedCookie != null ? isInvitedCookie : "NO"));
+		        + "&isEnabled=" + (isEnabledCookie != null) + "&isInvited="
+		        + (isInvitedCookie != null ? isInvitedCookie : "NO"));
 		if (token != null) {
 			Presenter presenter = null;
 			if (isInvitedCookie == null) {
 				// Not invited
 				if (token.equals("invitation")) {
 					presenter = new InvitationPresenter(eventBus,
-							new InvitationView());
+					        new InvitationView());
 				} else if (token.equals("welcome")) {
 					presenter = new WelcomePresenter(eventBus);
 				} else {
@@ -661,13 +661,13 @@ public class AppController implements ValueChangeHandler<String> {
 				// Invited but not enabled
 				if (token.equals("login")) {
 					presenter = new LoginPresenter(loginInfo, loginService,
-							coderService, eventBus, new LoginView());
+					        coderService, eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
-							eventBus, new RegistrationView());
+					        eventBus, new RegistrationView());
 				} else {
 					presenter = new CheckCookiesPresenter(coderService,
-							loginService, eventBus);
+					        loginService, eventBus);
 				}
 			} else if (isInvitedCookie != null && isEnabledCookie != null) {
 				// Invited & Enabled
@@ -675,79 +675,82 @@ public class AppController implements ValueChangeHandler<String> {
 					// TODO(ahmedazraq): leeh yakhod problem ya man?
 					if (problem != null) {
 						presenter = new ProblemSubmissionStatusPresenter(
-								problem, isAnonymousSubmission, sourceCode,
-								isVisible, categoriesList, judgeSubmissionID,
-								submissionService, sourceCodeService, eventBus,
-								new ProblemSubmissionStatusView());
+						        problem, isAnonymousSubmission, sourceCode,
+						        isVisible, categoriesList, judgeSubmissionID,
+						        submissionService, sourceCodeService, eventBus,
+						        new ProblemSubmissionStatusView());
 						leftPanelPresenter
-								.setSelected(LeftPanelView.Labels.ViewProblems);
+						        .setSelected(LeftPanelView.Labels.ViewProblems);
 					}
 				} else if (token.equals("problemList")) {
 					presenter = new ProblemList2Presenter(submissionService,
-							eventBus);
+					        eventBus);
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.ViewProblems);
+					        .setSelected(LeftPanelView.Labels.ViewProblems);
 				} else if (token.startsWith("problem")) {
 					if (problem == null) {
 						presenter = new ProblemPresenter(token.substring(7),
-								submissionService, languageService, eventBus,
-								sourceCodeService, new ProblemView(),
-								hintService);
+						        submissionService, languageService, eventBus,
+						        sourceCodeService, new ProblemView(),
+						        hintService);
 					} else {
 						// TODO(ahmedazraq): why use 2 calls when you use 1 call
 						presenter = new ProblemPresenter(
-								problem.getProblemCode() + "-"
-										+ problem.getOjType(),
-								submissionService, languageService, eventBus,
-								sourceCodeService, new ProblemView(),
-								hintService);
+						        problem.getProblemCode() + "-"
+						                + problem.getOjType(),
+						        submissionService, languageService, eventBus,
+						        sourceCodeService, new ProblemView(),
+						        hintService);
 					}
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.ViewProblems);
+					        .setSelected(LeftPanelView.Labels.ViewProblems);
 				} else if (token.equals("viewCoders")) {
 					presenter = new CoderListPresenter(coderService, eventBus);
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.ViewCoders);
+					        .setSelected(LeftPanelView.Labels.ViewCoders);
 				} else if (token.equals("addAccount")) {
 					presenter = new AddAccountPresenter(coderService, eventBus,
-							new AddAccountView());
+					        new AddAccountView());
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.AddAccounts);
+					        .setSelected(LeftPanelView.Labels.AddAccounts);
 				} else if (token.equals("contestAdmin")) {
 					presenter = new ContestAdminPresenter(contestServices,
-							eventBus, new ContestAdminView());
+					        eventBus, new ContestAdminView());
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.ContestAdmin);
+					        .setSelected(LeftPanelView.Labels.ContestAdmin);
 				} else if (token.equals("joinContest")) {
 					presenter = new JoinContestPresenter(contestServices,
-							eventBus, new JoinContestView());
+					        eventBus, new JoinContestView());
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.JoinContest);
+					        .setSelected(LeftPanelView.Labels.JoinContest);
 				} else if (token.equals("ViewContest")) {
 					presenter = new ViewContestPresenter(contestServices,
-							eventBus, new ViewContestView());
+					        eventBus, new ViewContestView());
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.ViewContest);
+					        .setSelected(LeftPanelView.Labels.ViewContest);
 				} else if (token.equals("ProblemsContest")) {
 					presenter = new ContestProblemsPresenter(submissionService,
-							contestServices, eventBus);
+					        contestServices, eventBus);
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.AddProblemToContest);
+					        .setSelected(LeftPanelView.Labels.AddProblemToContest);
 				} else if (token.startsWith("profile")) {
 					presenter = new CoderProfilePresenter(coderService,
-							sourceCodeService, token.substring(8), eventBus);
+					        sourceCodeService, token.substring(8), eventBus);
 					leftPanelPresenter
-							.setSelected(LeftPanelView.Labels.ViewCoders);
+					        .setSelected(LeftPanelView.Labels.ViewCoders);
 				} else if (token.equals("status")) {
 					presenter = new SubmissionStatusPresenter(
-							submissionService, sourceCodeService, eventBus);
+					        submissionService, sourceCodeService, eventBus);
 					leftPanelPresenter.setSelected(LeftPanelView.Labels.Status);
 				} else if (token.startsWith("sourceCode_")) {
 					presenter = new SourceCodePresenter(Long.valueOf(token
-							.substring(11)), sourceCodeService);
+					        .substring(11)), sourceCodeService);
+
+				} else if (token.startsWith("help")) {
+					presenter = new HelpPresenter(eventBus);
 				} else {
 					presenter = new CheckCookiesPresenter(coderService,
-							loginService, eventBus);
+					        loginService, eventBus);
 				}
 			}
 			if (presenter != null) {
@@ -772,7 +775,7 @@ public class AppController implements ValueChangeHandler<String> {
 						@Override
 						public void onClick(ClickEvent event) {
 							lblfeedback.setUrl(MyResource.INSTANCE
-									.imgFeedback().getURL());
+							        .imgFeedback().getURL());
 							dlgfeedback.center();
 							dlgfeedback.show();
 						}
@@ -782,7 +785,7 @@ public class AppController implements ValueChangeHandler<String> {
 						@Override
 						public void onMouseOver(MouseOverEvent event) {
 							lblfeedback.setUrl(MyResource.INSTANCE
-									.imgFeedback2().getURL());
+							        .imgFeedback2().getURL());
 						}
 					});
 					lblfeedback.addMouseOutHandler(new MouseOutHandler() {
@@ -790,9 +793,11 @@ public class AppController implements ValueChangeHandler<String> {
 						@Override
 						public void onMouseOut(MouseOutEvent event) {
 							lblfeedback.setUrl(MyResource.INSTANCE
-									.imgFeedback().getURL());
+							        .imgFeedback().getURL());
 						}
 					});
+					rootPanel.add(lblfeedback, Window.getClientWidth() - 30,
+					        (Window.getClientHeight() / 2 - 113 / 2));
 					Window.addResizeHandler(new ResizeHandler() {
 
 						 public void onResize(ResizeEvent event) {

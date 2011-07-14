@@ -6,10 +6,39 @@ h1 {
 	text-align: center;
 }
 
-/*************** TOP PANEL *****************/
-.logo {
-	font-family: 'Jura', serif;
-	font-size: 80px;
+.bold {
+	font-weight: bold;
+}
+
+.centered {
+	margin: auto;
+}
+
+/************* WELCOME PAGE ****************/
+.welcomePage {
+	text-align: center;
+	vertical-align: center;
+	background: #FCFCFC url(lightgray.png);
+	margin: auto;
+	padding-bottom: 40px;
+}
+
+.welcomePage2 {
+	text-align: center;
+	vertical-align: center;
+	background: #FCFCFC url(leftPanel.jpg);
+	margin: auto;
+	padding-bottom: 40px;
+	padding-top: 40px;
+}
+
+.arrows {
+	background: url(pitch_arrow.png) no-repeat center top;
+}
+
+.welcomeLogo a {
+	font-family: 'Architects Daughter', cursive;
+	font-size: 110px;
 	font-style: normal;
 	font-weight: 400;
 	text-shadow: 2px 2px 2px #aaa;
@@ -17,12 +46,16 @@ h1 {
 	text-transform: none;
 	letter-spacing: 0em;
 	word-spacing: 0em;
-	line-height: 0.79;
+	line-height: 1;
 	text-align: center;
-	padding-top: 5px;
+	color: black;
 }
 
-.welcometitle {
+.welcomeLogo a:hover {
+	color: black;
+}
+
+.welcomeTitle a {
 	font-family: 'Jura', serif;
 	font-size: 110px;
 	font-style: normal;
@@ -34,11 +67,40 @@ h1 {
 	word-spacing: 0em;
 	line-height: 0.79;
 	text-align: center;
+	color: black;
 }
 
-.title {
-	font-family: 'Jura', serif;
-	font-size: 40px;
+.welcomeTitle a:hover {
+	color: black;
+}
+
+.welcomeEnter {
+	background: #FCFCFC url(youtube.png);
+	width: ;
+	padding: 10px;
+}
+
+.welcomeEnter a {
+	font-family: 'Bangers', cursive;
+	font-size: 80px;
+	font-style: normal;
+	font-weight: 400;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.79;
+	text-align: center;
+	color: #d6d6d5;
+}
+
+.welcomeEnter a:hover {
+	color: #f6f6f5;
+}
+
+.welcomeSubTitle {
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 38px;
 	font-style: normal;
 	font-weight: 400;
 	text-shadow: 2px 2px 2px #aaa;
@@ -48,10 +110,110 @@ h1 {
 	word-spacing: 0em;
 	line-height: 0.79;
 	text-align: center;
+	margin-top: 37px;
 }
 
-.TitlePanel {
-	background-color: #2d2d2d;
+.welcomeFeatureHeader {
+	font-family: 'Nova Slim', cursive;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 400;
+	text-shadow: 2px 2px 2px #AAA;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.79;
+	text-align: center;
+	padding-bottom: 11px;
+}
+
+.welcomeFeatureSubHeader {
+	font-family: 'Nova Square', cursive;
+	font-size: 23px;
+	font-style: normal;
+	font-weight: 400;
+	text-shadow: 2px 2px 2px #AAA;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.99;
+	text-align: left;
+	padding-bottom: 8px;
+	padding-top: 23px;
+}
+
+.welcomeFeatureBody {
+	font-family: 'Nova Square', cursive;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	text-align: left;
+}
+
+.welcomeOJName {
+	font-family: 'Carter One', sans-serif;
+	color: black;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 400;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.9;
+	text-align: center;
+}
+
+.welcomeOJName:hover {
+	font-family: 'Carter One', sans-serif;
+	color: black;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 400;
+	text-shadow: 4px 4px 4px #aaa;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.9;
+	text-align: center;
+}
+
+/************* END WELCOME PAGE ************/
+/*************** TOP PANEL *****************/
+.logo {
+	font-family: 'Architects Daughter', cursive;
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 400;
+	text-decoration: none;
+	text-transform: none;
+	line-height: 1.1;
+	text-align: center;
+}
+
+.title {
+	font-family: 'Jura', serif;
+	font-size: 35px;
+	font-style: normal;
+	font-weight: 400;
+	text-shadow: 1px 1px 1px #AAA;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.70;
+	text-align: left;
+}
+
+.TitlePanel { /*background-color: #2d2d2d;*/
+	background-image: url('youtube.png');
 	color: #d6d6d5;
 }
 
@@ -81,6 +243,22 @@ h1 {
 	line-height: 1;
 	padding-right: 10px;
 	color: #d6d6d5;
+	text-shadow: 2px 2px 2px #aaa;
+}
+
+.topPanel-Label:hover {
+	font-family: 'Ubuntu', serif;
+	/*font-size: 1.7em;*/
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 1;
+	padding-right: 10px;
+	color: #d6d6d5;
+	text-shadow: 2px 2px 2px #aaa;
 }
 
 .topPanel-Label {
@@ -98,16 +276,16 @@ h1 {
 }
 /************* END TOP PANEL ***************/
 /************** LEFT PANEL *****************/
-.LeftPanel {
-	background-color: #d6d6d5;
-	color: #2d2d2d;
+.LeftPanel { /*background-color: #d6d6d5;*/
 	vertical-align: center;
 	padding-top: 4px;
 	padding-left: 4px;
 	padding-right: 4px;
+	background-image: url('leftPanel.jpg');
 }
 
 .LeftPanel-Label {
+	color: #2d2d2d;
 	font-size: 1.7em;
 	font-style: normal;
 	text-decoration: none;
@@ -119,9 +297,35 @@ h1 {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	vertical-align: center;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 
 .LeftPanel-Label:hover {
+	cursor: pointer;
+	/*background-color: #66B3FF;*/
+	background-color: #5b5b5b;
+	color: #d6d6d5;
+}
+
+.LeftPanel-Label2 {
+	color: #2d2d2d;
+	font-size: 1.5em;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.79;
+	padding-left: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	vertical-align: center;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.LeftPanel-Label2:hover {
 	cursor: pointer;
 	/*background-color: #66B3FF;*/
 	background-color: #5b5b5b;
@@ -133,12 +337,17 @@ h1 {
 	color: #d6d6d5;
 }
 /************ END LEFT PANEL ***************/
+.CodeEditor {
+	margin-top: 10px;
+}
+
 .footer {
 	background-color: #2d2d2d;
 	color: #d6d6d5;
 }
 
 .CorePanel { /* border-top-style: solid;*/
+	background-image: url('lightgray.png');
 	border-left-style: solid;
 	/*border-color: #6666FF;*/
 	border-color: #2d2d2d;
@@ -180,7 +389,7 @@ h1 {
 	margin: auto;
 	top: 100px;
 	width: 80%;
-	border-style: groove;
+	/*border-style: groove;*/
 }
 
 .TableRow {

@@ -185,6 +185,21 @@ public class ProblemList2Presenter implements Presenter {
 					previousSortingQuery = sortingQuery;
 					previousSearchQuery = searchQuery;
 				}
+				
+				// Fetch problem count from server
+				submissionService.getProblemsCount(searchQuery, new AsyncCallback<Integer>() {
+					
+					@Override
+					public void onSuccess(Integer size) {
+						cellTable.setRowCount(size, true);
+					}
+					
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
 
 				// Fetch problem from server
 				submissionService.getProblems(range, sortingQuery, searchQuery,

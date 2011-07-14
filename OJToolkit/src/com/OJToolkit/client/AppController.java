@@ -78,7 +78,6 @@ import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
 import com.OJToolkit.client.view.ProblemView;
 import com.OJToolkit.client.view.RegistrationView;
-import com.OJToolkit.client.view.SourceCodeView;
 import com.OJToolkit.client.view.TopPanelView;
 import com.OJToolkit.client.view.ViewContestView;
 import com.google.gwt.dom.client.Style.Unit;
@@ -88,6 +87,8 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -126,8 +127,8 @@ public class AppController implements ValueChangeHandler<String> {
 	private final ContestServicesAsync contestServices;
 
 	private String problemStr = "problem";
-	
-	 private ArrayList<String> categoriesList;
+
+	private ArrayList<String> categoriesList;
 
 	private boolean isAnonymousSubmission = false;
 	// public static boolean isEnabled;
@@ -135,8 +136,10 @@ public class AppController implements ValueChangeHandler<String> {
 	/**
 	 * remembers cookie for 2 weeks.
 	 */
-	/*public static final Date COOKIES_EXPIRYDATE = new Date(
-	        System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 14);*/
+	/*
+	 * public static final Date COOKIES_EXPIRYDATE = new Date(
+	 * System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 14);
+	 */
 
 	private RootPanel rootPanel;
 	private Panel dockPanel;
@@ -147,9 +150,9 @@ public class AppController implements ValueChangeHandler<String> {
 	private ProblemData problem;
 	private String OJType;
 	private String problemCode;
-	
+
 	private boolean isVisible;
-	
+
 	private String sourceCode;
 
 	private LoginInfo loginInfo;
@@ -196,7 +199,9 @@ public class AppController implements ValueChangeHandler<String> {
 					public void onSubmitProblem(
 							ViewProblemSubmissionStatusEvent event) {
 						doViewProblemSubmissionStatus(event.problem,
-								event.isAnonymousSubmission, event.sourceCode, event.isVisible, event.categoriesList, event.judgeSubmissionID);
+								event.isAnonymousSubmission, event.sourceCode,
+								event.isVisible, event.categoriesList,
+								event.judgeSubmissionID);
 					}
 				});
 		eventBus.addHandler(ContestProblemEvent.TYPE,
@@ -344,28 +349,30 @@ public class AppController implements ValueChangeHandler<String> {
 
 					@Override
 					public void onViewSubmissions(ViewSubmissionsEvent event) {
-						doOnViewCoderProfileEvent(); //TODO:(azraq) sounds weird!!
+						doOnViewCoderProfileEvent(); // TODO:(azraq) sounds
+														// weird!!
 					}
 
 				});
-		eventBus.addHandler(ViewSourceCodeEvent.TYPE, new ViewSourceCodeEventHandler() {
-			
-			@Override
-			public void onViewSourceCode(ViewSourceCodeEvent event) {
-				doOnViewSourceCode(event.submissionID);
-				
-			}
-		});
+		eventBus.addHandler(ViewSourceCodeEvent.TYPE,
+				new ViewSourceCodeEventHandler() {
+
+					@Override
+					public void onViewSourceCode(ViewSourceCodeEvent event) {
+						doOnViewSourceCode(event.submissionID);
+
+					}
+				});
 
 	}
 
 	/**
-     * @param submissionID
-     */
-    protected void doOnViewSourceCode(long submissionID) {
-	    History.newItem("sourceCode_"+submissionID);
-	    
-    }
+	 * @param submissionID
+	 */
+	protected void doOnViewSourceCode(long submissionID) {
+		History.newItem("sourceCode_" + submissionID);
+
+	}
 
 	/**
      * 
@@ -495,14 +502,16 @@ public class AppController implements ValueChangeHandler<String> {
 	 * view problem submission
 	 * 
 	 * @param isAnonymousSubmission2
-	 * @param isVisible2 
-	 * @param sourceCode2 
-	 * @param categoriesList2 
-	 * @param judgeSubmissionID 
+	 * @param isVisible2
+	 * @param sourceCode2
+	 * @param categoriesList2
+	 * @param judgeSubmissionID
 	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem,
-			boolean isAnonymousSubmission2, String sourceCode2, boolean isVisible2, ArrayList<String> categoriesList2, Long judgeSubmissionID) {
+			boolean isAnonymousSubmission2, String sourceCode2,
+			boolean isVisible2, ArrayList<String> categoriesList2,
+			Long judgeSubmissionID) {
 		this.problem = problem;
 		this.isAnonymousSubmission = isAnonymousSubmission2;
 		this.sourceCode = sourceCode2;
@@ -522,7 +531,7 @@ public class AppController implements ValueChangeHandler<String> {
 		 * North panel
 		 */
 		AbsolutePanel topPanel = new AbsolutePanel();
-		dockLayoutPanel.addNorth(topPanel, 7);
+		dockLayoutPanel.addNorth(topPanel, 5);
 		topPanel.setSize("100%", "100%");
 
 		/**
@@ -578,7 +587,7 @@ public class AppController implements ValueChangeHandler<String> {
 		String logoutURLCookie = Cookies.getCookie("logoutURL");
 
 		presenter = new TopPanelPresenter(logoutURLCookie == null ? ""
-		        : logoutURLCookie,coderService, new TopPanelView());
+				: logoutURLCookie, coderService, new TopPanelView());
 		presenter.go(this.topPanel);
 
 		presenter = new LeftPanelPresenter(new LeftPanelView(eventBus));
@@ -666,7 +675,8 @@ public class AppController implements ValueChangeHandler<String> {
 					// TODO(ahmedazraq): leeh yakhod problem ya man?
 					if (problem != null) {
 						presenter = new ProblemSubmissionStatusPresenter(
-								problem, isAnonymousSubmission, sourceCode, isVisible, categoriesList, judgeSubmissionID,
+								problem, isAnonymousSubmission, sourceCode,
+								isVisible, categoriesList, judgeSubmissionID,
 								submissionService, sourceCodeService, eventBus,
 								new ProblemSubmissionStatusView());
 						leftPanelPresenter
@@ -724,18 +734,18 @@ public class AppController implements ValueChangeHandler<String> {
 					leftPanelPresenter
 							.setSelected(LeftPanelView.Labels.AddProblemToContest);
 				} else if (token.startsWith("profile")) {
-					presenter = new CoderProfilePresenter(coderService, sourceCodeService,
-							token.substring(8), eventBus);
+					presenter = new CoderProfilePresenter(coderService,
+							sourceCodeService, token.substring(8), eventBus);
 					leftPanelPresenter
 							.setSelected(LeftPanelView.Labels.ViewCoders);
 				} else if (token.equals("status")) {
 					presenter = new SubmissionStatusPresenter(
 							submissionService, sourceCodeService, eventBus);
 					leftPanelPresenter.setSelected(LeftPanelView.Labels.Status);
-				} else if(token.startsWith("sourceCode_")){
-					presenter = new SourceCodePresenter(Long.valueOf(token.substring(11)), sourceCodeService, eventBus, new SourceCodeView());
-				}
-				else {
+				} else if (token.startsWith("sourceCode_")) {
+					presenter = new SourceCodePresenter(Long.valueOf(token
+							.substring(11)), sourceCodeService);
+				} else {
 					presenter = new CheckCookiesPresenter(coderService,
 							loginService, eventBus);
 				}
@@ -783,12 +793,17 @@ public class AppController implements ValueChangeHandler<String> {
 									.imgFeedback().getURL());
 						}
 					});
-					rootPanel.add(lblfeedback, Window.getClientWidth() - 30,
-							(Window.getClientHeight() / 2 - 113 / 2));
+					Window.addResizeHandler(new ResizeHandler() {
+
+						 public void onResize(ResizeEvent event) {
+							 rootPanel.add(lblfeedback, event.getWidth() - 30,
+										(event.getHeight() / 2 - 113 / 2));
+						 }
+						});
+					
 					presenter.go(container);
 				}
 			}
-
 		}
 	}
 }

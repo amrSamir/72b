@@ -1,0 +1,63 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.weborient.codemirror.client">
+	<ui:style>
+		
+	</ui:style>
+	<g:VerticalPanel horizontalAlignment="CENTER"
+		styleName="center">
+		<g:HTMLPanel width="100%">
+			<table width="100%">
+				<tr>
+					<td>
+						<g:Label styleName="bold">Problem Code: </g:Label>
+					</td>
+					<td>
+						<g:Label ui:field="lblProblemCode" />
+					</td>
+					<td>
+						<g:Label styleName="bold">Judge Type: </g:Label>
+					</td>
+					<td>
+						<g:Label ui:field="lblJudgeType" />
+					</td>
+					<td>
+						<g:Label styleName="bold">Solved by: </g:Label>
+					</td>
+					<td>
+						<g:Label ui:field="lblUsername" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<g:Label styleName="bold">Judge Result: </g:Label>
+					</td>
+					<td>
+						<g:Label ui:field="lblJudgeResult" />
+					</td>
+					<td>
+						<g:Label styleName="bold">Submission Date: </g:Label>
+					</td>
+					<td>
+						<g:Label ui:field="lblDate" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<g:Label styleName="bold">Execution time: </g:Label>
+					</td>
+					<td>
+						<g:Label ui:field="lblTime" />
+					</td>
+					<td>
+						<g:Label styleName="bold">Memory: </g:Label>
+					</td>
+					<td>
+						<g:Label ui:field="lblMemory" />
+					</td>
+				</tr>
+			</table>
+		</g:HTMLPanel>
+		<c:CodeMirrorEditorWidget styleName="CodeEditor" ui:field="txtSourceCode" />
+	</g:VerticalPanel>
+</ui:UiBinder> 

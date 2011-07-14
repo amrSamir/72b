@@ -16,13 +16,6 @@ public class WelcomePresenter implements Presenter {
 	}
 
 	/**
-	 * The pager used to change the range of data.
-	 */
-	@UiField(provided = true)
-	Hyperlink hyperlinkEnter;
-	
-
-	/**
 	 * The event bus to notify event changes
 	 */
 	private final HandlerManager eventBus;
@@ -33,8 +26,6 @@ public class WelcomePresenter implements Presenter {
 
 	@Override
 	public void go(HasWidgets container) {		
-		hyperlinkEnter = new Hyperlink();
-		hyperlinkEnter.setTargetHistoryToken("invitation");
 		
 		// Create the UiBinder.
 		Binder uiBinder = GWT.create(Binder.class);

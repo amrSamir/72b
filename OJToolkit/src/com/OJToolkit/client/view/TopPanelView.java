@@ -36,20 +36,20 @@ public class TopPanelView extends Composite implements
 		horizontalPanel.setSize("100%", "100%");
 		horizontalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
-		Label logo = new Label("{}");
+		Label logo = new Label("('}");
 		logo.setStylePrimaryName("logo");
 //		ImageResource img = MyResource.INSTANCE.imgLogo();
 //		Image widget = new Image(img.getURL());
-		logo.setSize("", "70px");
+		logo.setSize("", "40px");
 		horizontalPanel.add(logo);//, 30, 10);
 		horizontalPanel.setCellHorizontalAlignment(logo, HasHorizontalAlignment.ALIGN_CENTER);
-		horizontalPanel.setCellWidth(logo, "70px");
+		horizontalPanel.setCellWidth(logo, "60px");
 		
-		HTML title = new HTML(new SafeHtmlBuilder().appendEscapedLines("code\nmashup").toSafeHtml());
+		Label title = new Label("code mashup");
 		title.setStylePrimaryName("title");
 		horizontalPanel.add(title);//, 100, 10);
 		horizontalPanel.setCellHorizontalAlignment(title, HasHorizontalAlignment.ALIGN_CENTER);
-		horizontalPanel.setCellWidth(title, "130px");
+		horizontalPanel.setCellWidth(title, "240px");
 		
 		/*
 		Anchor hprlnkFeedback = new Anchor("Feedback", false, "http://goo.gl/ZsQxt");
@@ -60,7 +60,7 @@ public class TopPanelView extends Composite implements
 		absolutePanel.add(hprlnkReportABug, 718, 25);
 		hprlnkReportABug.setSize("93px", "27px");
 		*/
-		VerticalPanel verticalPanel = new VerticalPanel();
+		HorizontalPanel verticalPanel = new HorizontalPanel();
 		
 		hprlnkUserProfile = new Hyperlink();
 		hprlnkUserProfile.setStyleName("topPanel-Label");

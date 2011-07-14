@@ -2,6 +2,7 @@ package com.OJToolkit.client.Contents;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.ExternalTextResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 
@@ -12,15 +13,64 @@ import com.google.gwt.resources.client.TextResource;
 public interface MyResource extends ClientBundle {
 	MyResource INSTANCE = GWT.create(MyResource.class);
 
-	@Source("problemsSPOJ.txt")
-	public TextResource defaultText();
 	
-	@Source("SPOJProblemText.txt")
-	public TextResource SPOJProblemText();
+	@Source("TimusProblems.txt")
+	public ExternalTextResource TimusProblems();
+	@Source("SPOJProblems.txt")
+	public ExternalTextResource SPOJProblems();
+	@Source("UVAProblems.txt")
+	public ExternalTextResource UVAProblems();
+	@Source("LiveArchiveProblems.txt")
+	public ExternalTextResource LiveArchiveProblems();
+	
+	@Source("TimusProblemsText.txt")
+	public ExternalTextResource TimusProblemText();
+	
+	@Source("SPOJ1.txt")
+	public ExternalTextResource SPOJProblemText1();
+	
+	@Source("SPOJ2.txt")
+	public ExternalTextResource SPOJProblemText2();
+
+	@Source("uva1.txt")
+	public ExternalTextResource UVAProblemText1();
+
+	
+	@Source("uva2.txt")
+	public ExternalTextResource UVAProblemText2();
+	
+	
+	@Source("uva3.txt")
+	public ExternalTextResource UVAProblemText3();
+	
+	
+	@Source("uva4.txt")
+	public ExternalTextResource UVAProblemText4();
+	
+	
+	@Source("uva5.txt")
+	public ExternalTextResource UVAProblemText5();
+	
+	
+	@Source("uva6.txt")
+	public ExternalTextResource UVAProblemText6();
+	
+	
+	@Source("uva7.txt")
+	public ExternalTextResource UVAProblemText7();
+	
+	
+	@Source("uva8.txt")
+	public ExternalTextResource UVAProblemText8();
+	
 	
 
 	@Source("Banner.jpg")
 	public ImageResource imgBanner();
+	
+	
+	@Source("loading.gif")
+	public ImageResource imgLoading();
 
 	@Source("Banner_Vertical.jpg")
 	public ImageResource imgVertical();

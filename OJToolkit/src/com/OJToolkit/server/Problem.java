@@ -13,28 +13,26 @@ public class Problem {
 	private Long probID;
 
 	@Persistent
-	private String url; 
+	private String url;
 
 	@Persistent
 	private String problemCode;
 
 	@Persistent
 	private String problemName;
-	
+
 	@Persistent
 	private String ojType;
 
-
-
-	public Problem(String problemCode,
-	        String problemName,String url, String ojType) {
+	public Problem(String problemCode, String problemName, String url,
+			String ojType) {
 		super();
 		this.url = url;
-		this.problemCode = problemCode;
+		this.problemCode = problemCode; 
 		this.problemName = problemName;
 		this.ojType = ojType;
 	}
-	
+
 	public String getProblemCode() {
 		return problemCode;
 	}
@@ -66,35 +64,34 @@ public class Problem {
 	public Problem() {
 	}
 
-
+	/**
+	 * @param ojType
+	 *            the ojType to set
+	 */
+	public void setOjType(String ojType) {
+		this.ojType = ojType;
+	}
 
 	/**
-     * @param ojType the ojType to set
-     */
-    public void setOjType(String ojType) {
-	    this.ojType = ojType;
-    }
+	 * @return the ojType
+	 */
+	public String getOjType() {
+		return ojType;
+	}
 
 	/**
-     * @return the ojType
-     */
-    public String getOjType() {
-	    return ojType;
-    }
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
 
 	/**
-     * @return the url
-     */
-    public String getUrl() {
-    	return url;
-    }
-
-	/**
-     * @param url the url to set
-     */
-    public void setUrl(String url) {
-    	this.url = url;
-    }
-
+	 * @param url
+	 *            the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 }

@@ -20,7 +20,7 @@ public class Contest {
 	private String ContestName;
 
 	@Persistent
-	private String ContestAccessCode;
+	private String ContestAccessCode; 
 
 	@Persistent
 	private Long startDate ;

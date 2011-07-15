@@ -48,11 +48,11 @@ public class ContestServicesImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
-	public boolean addUserToContest(String contestName, String contestAccessCode) {
-		Contest con = getContest(contestName);
+	public boolean addUserToContest(String contestName , String contestAccessCode) {
+		Contest con = getContest(contestName.substring(1));
 		if (con == null)
 			return false;
-		if (!con.getContestAccessCode().equals(contestAccessCode))
+		if (contestName.charAt(0) == '-' && !con.getContestAccessCode().equals(contestAccessCode))
 			return false;
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		Long UserID = DataStoreHandler.getAllCoders().get(0).getUserID();

@@ -7,6 +7,7 @@ import com.OJToolkit.client.Services.ContestServicesAsync;
 import com.OJToolkit.client.Services.SubmissionServiceAsync;
 import com.OJToolkit.client.ValueObjects.ContestData;
 import com.OJToolkit.client.ValueObjects.ProblemData;
+import com.OJToolkit.client.event.ViewProblemEvent;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.cell.client.Cell.Context;
@@ -61,30 +62,6 @@ public class ContestProblemsPresenter implements Presenter {
 	@UiField(provided = true)
 	SimplePager pager;
 
-	/**
-	 * The secoundry CellTable.
-	 */
-	@UiField(provided = true)
-	CellList<ProblemData> chossedproblemsTable;
-
-	/**
-	 * The search textbox.
-	 */
-	@UiField(provided = true)
-	TextBox searchBox;
-
-	/**
-	 * The search button.
-	 */
-	@UiField(provided = true)
-	Button searchButton;
-
-	/**
-	 * The search type.
-	 */
-	@UiField(provided = true)
-	ListBox searchType;
-
 	@UiField(provided = true)
 	Label contestName;
 
@@ -136,85 +113,35 @@ public class ContestProblemsPresenter implements Presenter {
 		contestsList.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
-				// TODO load all problems
+				
+				int selected = contestsList.getSelectedIndex() ;
+				// on change load problems for this contest
+				if (selected == -1 || selected == 0 ) {
+					Window.alert("Please Chosse Contest First");
+					return;
+				}
 				contestService.getProblemForContest(
-						contestList.get(contestsList.getSelectedIndex() - 1)
-								.getContestName(),
+						contestList.get(contestsList.getSelectedIndex()-1).getContestName(),
 						new AsyncCallback<ArrayList<ProblemData>>() {
+
 							@Override
 							public void onSuccess(ArrayList<ProblemData> result) {
-								chossenproblems.clear();
-								chossenproblems.addAll(result);
-								problemsprovider.setList(chossenproblems);
+								cellTable.setRowData(result);
 							}
 
 							@Override
 							public void onFailure(Throwable caught) {
 								System.out
-										.println("Magdi-can't load problems for contest");
+										.println("Failure-to load problems for contest");
 							}
 						});
-			}
-		});
-		// add contests
 
-		searchBox = new TextBox();
-		searchType = new ListBox();
-		searchType.addItem("Problem Code", "problemCode");
-		searchType.addItem("Problem Name", "problemName");
-		searchType.addItem("Online Judge", "ojType");
-		searchButton = new Button();
-		searchButton.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				cellTable.setVisibleRangeAndClearData(
-						cellTable.getVisibleRange(), true);
 			}
 		});
 
 		// Create a CellTable.
 		cellTable = new CellTable<ProblemData>();
 		cellTable.setWidth("100%", true);
-
-		problemsprovider = new ListDataProvider<ProblemData>();
-		AbstractCell<ProblemData> chossenproblemList = new AbstractCell<ProblemData>() {
-
-			@Override
-			public void render(Context context, ProblemData value,
-					SafeHtmlBuilder sb) {
-				if (value == null)
-					return;
-				sb.appendHtmlConstant("<table>");
-				sb.appendHtmlConstant("<tr><td>");
-				sb.appendHtmlConstant(value.getProblemName() + "-"
-						+ value.getOjType());
-				sb.appendHtmlConstant("</td><tr>");
-				sb.appendHtmlConstant("</table>");
-			}
-		};
-		chossenproblems = new ArrayList<ProblemData>();
-		chossedproblemsTable = new CellList<ProblemData>(chossenproblemList);
-		makeSelectionModel() ;
-		problemsprovider.addDataDisplay(chossedproblemsTable);
-		problemsprovider.setList(chossenproblems);
-		// Attach a Async sort handler to cellTable.
-		AsyncHandler sortHandler = new AsyncHandler(cellTable);
-		cellTable.addColumnSortHandler(new Handler() {
-			@Override
-			public void onColumnSort(ColumnSortEvent event) {
-				if (event.getColumn() == null)
-					return;
-
-				String columnName = columnMap.get(event.getColumn());
-				if (columnName.equals("problemCode"))
-					searchType.setSelectedIndex(0);
-				else if (columnName.equals("problemName"))
-					searchType.setSelectedIndex(1);
-				else
-					searchType.setSelectedIndex(2);
-			}
-		});
-		cellTable.addColumnSortHandler(sortHandler);
 
 		// Create a Pager to control the table.
 		SimplePager.Resources pagerResources = GWT
@@ -232,38 +159,13 @@ public class ContestProblemsPresenter implements Presenter {
 					public void onSelectionChange(SelectionChangeEvent event) {
 						final ProblemData problemData = selectionModel
 								.getSelectedObject();
-						System.out.println(contestList.get(
-								contestsList.getSelectedIndex() - 1)
-								.getContestName());
-						contestService.addProblemToContest(contestList.get(contestsList.getSelectedIndex() - 1)
-										.getContestName(), problemData
-										.getProblemCode(), problemData
-										.getOjType(),
-								new AsyncCallback<Boolean>() {
-
-									@Override
-									public void onSuccess(Boolean result) {
-										if(result){
-											chossenproblems.add(problemData);
-											problemsprovider.setList(chossenproblems);
-											System.out.println("Magdi-Problem Added");
-										}else{
-											Window.alert("problem already exsist") ;
-										}
-									}
-
-									@Override
-									public void onFailure(Throwable caught) {
-										System.out
-												.println("Magdi-Problem failed to add");
-									}
-								});
+						eventBus.fireEvent(new ViewProblemEvent(problemData));
 					}
 				});
 		cellTable.setSelectionModel(selectionModel);
 
 		// Initialize the columns.
-		initTableColumns(selectionModel, sortHandler);
+		initTableColumns(selectionModel);
 
 		// Create a AsyncData Provider to get Data from server
 		AsyncDataProvider<ProblemData> dataProvider = new AsyncDataProvider<ProblemData>() {
@@ -274,31 +176,31 @@ public class ContestProblemsPresenter implements Presenter {
 				// Columns currently sorted
 				String sortingQuery = getSortingQuery();
 
-				// Current search string
-				String searchQuery = getSearchQuery();
-
 				// If searching or sorting Queries changed, the range is reset
-				if (!sortingQuery.equals(previousSortingQuery)
-						|| !searchQuery.equals(previousSearchQuery)) {
+				if (!sortingQuery.equals(previousSortingQuery)) {
 					pager.setPage(0);
 					previousSortingQuery = sortingQuery;
-					previousSearchQuery = searchQuery;
+
 				}
 
-				// Fetch problem from server
-				submissionService.getProblems(range, sortingQuery, searchQuery,
-						new AsyncCallback<ArrayList<ProblemData>>() {
+				if (contestsList.getSelectedIndex() != -1)
+					contestService.getProblemForContest(
+							contestList.get(contestsList.getSelectedIndex()-1)
+									.getContestName(),
+							new AsyncCallback<ArrayList<ProblemData>>() {
 
-							@Override
-							public void onSuccess(ArrayList<ProblemData> result) {
-								cellTable.setRowData(range.getStart(), result);
-							}
+								@Override
+								public void onSuccess(
+										ArrayList<ProblemData> result) {
+									cellTable.setRowData(result);
+								}
 
-							@Override
-							public void onFailure(Throwable caught) {
-								System.out.println("Failure");
-							}
-						});
+								@Override
+								public void onFailure(Throwable caught) {
+									System.out
+											.println("Failure-to load problems for contest");
+								}
+							});
 			}
 		};
 
@@ -314,37 +216,9 @@ public class ContestProblemsPresenter implements Presenter {
 		container.add(widget);
 	}
 
-	private void makeSelectionModel() {
-		final SingleSelectionModel<ProblemData> selectionModel = new SingleSelectionModel<ProblemData>();
-		chossedproblemsTable.setSelectionModel(selectionModel) ;
-		selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
-			@Override
-			public void onSelectionChange(SelectionChangeEvent event) {
-				chossenproblems.remove(selectionModel.getSelectedObject()) ;
-				problemsprovider.setList(chossenproblems);
-				deleteProblem(selectionModel.getSelectedObject()) ;
-			}		
-		});
-	}
-	private void deleteProblem(ProblemData selectedObject) {
-		contestService.deleteProblemFromContest(contestList.get(contestsList.getSelectedIndex() - 1)
-				.getContestName(), selectedObject.getProblemCode(), selectedObject.getOjType(), new AsyncCallback<Void>() {
-					
-					@Override
-					public void onSuccess(Void result) {
-						System.out.println("deleted from problem");
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						System.out.println("Failed to remove !!!");
-					}
-				});
-	}
 	private ArrayList<ContestData> getcontests() {
 		final ArrayList<ContestData> contests = new ArrayList<ContestData>();
 		contestService.getContests(new AsyncCallback<ArrayList<ContestData>>() {
-
 			@Override
 			public void onSuccess(ArrayList<ContestData> result) {
 				contests.addAll(result);
@@ -366,8 +240,7 @@ public class ContestProblemsPresenter implements Presenter {
 	 * Add the columns to the table.
 	 */
 	private void initTableColumns(
-			final SelectionModel<ProblemData> selectionModel,
-			AsyncHandler sortHandler) {
+			final SelectionModel<ProblemData> selectionModel) {
 		columnMap = new HashMap<Column<ProblemData, String>, String>();
 
 		// Problem Code.
@@ -418,9 +291,7 @@ public class ContestProblemsPresenter implements Presenter {
 		String sortingQuery = "";
 
 		// If different sorting than searching, disable sorting
-		if (sortList.size() == 0
-				|| !columnMap.get(sortList.get(0).getColumn()).equals(
-						searchType.getValue(searchType.getSelectedIndex())))
+		if (sortList.size() == 0)
 			return sortingQuery;
 
 		for (int i = 0; i < sortList.size(); i++) {
@@ -431,12 +302,6 @@ public class ContestProblemsPresenter implements Presenter {
 			sortingQuery += sortList.get(i).isAscending() ? "asc" : "desc";
 		}
 		return sortingQuery;
-	}
-
-	String getSearchQuery() {
-		String type = searchType.getValue(searchType.getSelectedIndex());
-		return type + " >= \"" + searchBox.getText() + "\" && " + type
-				+ " < \"" + searchBox.getText() + "\ufffd\"";
 	}
 
 }

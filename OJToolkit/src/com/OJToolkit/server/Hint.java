@@ -14,13 +14,13 @@ public class Hint {
 	private Long hintCode;
 	
 	@Persistent
-	private String problemCode; 
+	private String problemCode;
 	
 	@Persistent
 	private String hintString;
 
 	@Persistent
-	private Long userID;
+	private Long userID; 
 
 	
 	/**

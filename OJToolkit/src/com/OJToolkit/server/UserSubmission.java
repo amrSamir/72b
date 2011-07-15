@@ -23,8 +23,8 @@ public class UserSubmission {
 	private Long submissionID;
 
 	@Persistent
-	private String username;  
-	@Persistent
+	private String username;
+	@Persistent 
 	private String judgeUsername;
 	@Persistent
 	private String problemCode;

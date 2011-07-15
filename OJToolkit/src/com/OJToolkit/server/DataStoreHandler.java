@@ -26,12 +26,13 @@ public class DataStoreHandler {
 	/**
 	 * @return list of coders 
 	 */
-	public static List<Coder> getAllCoders() {
+	public static List<Coder> getAllCoders() { 
 		pm = getPersistenceManager();
 		String select_query = "select from " + Coder.class.getName();
 		Query query = pm.newQuery(select_query);
 		query.setFilter("email == userEmail");
 		query.declareParameters("java.lang.String userEmail");
+		System.out.println(getUser().getEmail());
 		List<Coder> coders = (List<Coder>) query.execute(getUser().getEmail());
 		return coders;
 	}
@@ -50,7 +51,8 @@ public class DataStoreHandler {
 	 */
 	static User getUser() {
 		UserService userService = UserServiceFactory.getUserService();
-		return userService.getCurrentUser();
+		User u = userService.getCurrentUser() ;  
+		return u ;
 	}
 
 	static PersistenceManager getPersistenceManager() {

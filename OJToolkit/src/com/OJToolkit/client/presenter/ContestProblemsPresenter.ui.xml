@@ -12,11 +12,6 @@
 		<table cellspacing='0' cellpadding='0' style='width:100%;'>
 			<tr>
 				<td valign='top'>
-					<g:ListBox ui:field='searchType'/>
-					<g:TextBox ui:field='searchBox'/>
-					<g:Button ui:field='searchButton'>Search</g:Button>
-				</td>
-				<td valign='top'>
 					<g:Label ui:field='contestName'/>
 					<g:ListBox ui:field='contestsList'/>
 				</td>
@@ -25,10 +20,6 @@
 				<td valign='top'>
 					<c:CellTable addStyleNames='{style.cellTable}'
 						pageSize='15' ui:field='cellTable' />
-				</td>
-				<td  valign='top'>
-					<c:CellList addStyleNames='{style.cellTable}'
-						 ui:field='chossedproblemsTable' />
 				</td>
 			</tr>
 			<tr>

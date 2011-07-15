@@ -10,6 +10,7 @@ import com.OJToolkit.client.event.AlreadyRegisteredEvent;
 import com.OJToolkit.client.event.ContestAdminEvent;
 import com.OJToolkit.client.event.ContestProblemEvent;
 import com.OJToolkit.client.event.JoinContestEvent;
+import com.OJToolkit.client.event.ManageContestEvent;
 import com.OJToolkit.client.event.ViewCodersEvent;
 import com.OJToolkit.client.event.ViewContestEvent;
 import com.OJToolkit.client.event.ViewSubmissionsEvent;
@@ -80,11 +81,11 @@ public class LeftPanelView extends Composite implements
 
 		VerticalPanel verticalPanelContest = new VerticalPanel();
 
-		lblContestAdmin = addLeftPanel_lable("Create", eventBus,
+		lblContestAdmin = addLeftPanel_lable("Manage", eventBus,
 				Labels.ContestAdmin, "LeftPanel-Label2");
 		verticalPanelContest.add(lblContestAdmin);
 
-		lblAddProblemsToContest = addLeftPanel_lable("Manage", eventBus,
+		lblAddProblemsToContest = addLeftPanel_lable("Problems", eventBus,
 				Labels.AddProblemToContest, "LeftPanel-Label2");
 		verticalPanelContest.add(lblAddProblemsToContest);
 
@@ -119,7 +120,7 @@ public class LeftPanelView extends Composite implements
 				else if (LinkType.equals(Labels.ViewProblems))
 					eventBus.fireEvent(new AlreadyRegisteredEvent());
 				else if (LinkType.equals(Labels.ContestAdmin))
-					eventBus.fireEvent(new ContestAdminEvent());
+					eventBus.fireEvent(new ManageContestEvent());//TODO
 				else if (LinkType.equals(Labels.JoinContest))
 					eventBus.fireEvent(new JoinContestEvent());
 				else if (LinkType.equals(Labels.ViewContest))

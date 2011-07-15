@@ -11,9 +11,11 @@ import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.client.presenter.JoinContestPresenter.Display;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasValue;
@@ -36,7 +38,7 @@ public class ViewContestPresenter implements Presenter {
 	private final Display display;
 	private final ContestServicesAsync contestServises;
 	private final HandlerManager eventBus;
-
+	int timer = 5000; 
 	public ViewContestPresenter(ContestServicesAsync contestServices,
 			HandlerManager eventBus, Display display) {
 		this.contestServises = contestServices;
@@ -51,10 +53,15 @@ public class ViewContestPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {		
 				display.setScoreboardTable();
-				String contestname = display.getContestName();
+				final String contestname = display.getContestName();
 				getCoders(contestname);
 				getProblems(contestname);
-				getSubmissions(contestname) ;
+				new Timer() {
+					@Override
+					public void run() {
+						getSubmissions(contestname) ;
+					}
+				}.scheduleRepeating(timer);
 				
 			}
 		});
@@ -64,7 +71,6 @@ public class ViewContestPresenter implements Presenter {
 	private void getContests() {
 		contestServises.getContests(new AsyncCallback<ArrayList<ContestData>>() {
 					ArrayList<ContestData> contests = new ArrayList<ContestData>();
-
 					@Override
 					public void onSuccess(ArrayList<ContestData> result) {
 						contests.addAll(result);

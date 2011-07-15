@@ -12,6 +12,7 @@ import com.OJToolkit.client.presenter.ViewContestPresenter;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.TextColumn;
+
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -36,7 +37,6 @@ public class ViewContestView extends Composite implements
 	ListDataProvider<ScoreBoardRow> scoreBoardProvider;
 	ScoreboardData scoreBoard;
 	ArrayList<ScoreBoardRow> scoreboardRows;
-
 	
 
 	public ViewContestView() {
@@ -73,6 +73,7 @@ public class ViewContestView extends Composite implements
 				HasHorizontalAlignment.ALIGN_CENTER);
 
 		verticalPanel.add(scoreBoardTable);
+		
 	}
 
 	@Override
@@ -104,27 +105,30 @@ public class ViewContestView extends Composite implements
 		scoreBoardTable.addColumn(new TextColumn<ScoreBoardRow>() {
 			@Override
 			public String getValue(ScoreBoardRow scoreboardrow) {
-				return String.valueOf(scoreboardrow.getAC()) ;
+				return String.valueOf(scoreboardrow.getAC());
 			}
 		}, coulmnName);
 		coulmnName = "totalTime";
 		scoreBoardTable.addColumn(new TextColumn<ScoreBoardRow>() {
 			@Override
 			public String getValue(ScoreBoardRow scoreboardrow) {
-				return scoreboardrow.getTotaltime() ;
+				return scoreboardrow.getTotaltime();
 			}
 		}, coulmnName);
 	}
 
 	private void addColumn(final String problemcode, final String problemOJ) {
-		String AC = scoreBoard.get(problemcode, problemOJ, true) ;
-		String WA = scoreBoard.get(problemcode, problemOJ, false) ;
-		String coulmnName = problemcode + "-" + problemOJ +"(" + AC + "-" + WA + ")";
+		String AC = scoreBoard.get(problemcode, problemOJ, true);
+		String WA = scoreBoard.get(problemcode, problemOJ, false);
+		String coulmnName = problemcode + "-" + problemOJ + "(" + AC + "-" + WA
+				+ ")";
 		scoreBoardTable.addColumn(new TextColumn<ScoreBoardRow>() {
 			@Override
 			public String getValue(ScoreBoardRow scoreboardrow) {
-//				System.out.println(contests.get(listContests.getSelectedIndex()).getContestName());
-				return scoreboardrow.getSubmission(problemcode, problemOJ,contests.get(listContests.getSelectedIndex()).getStartTime());
+				// System.out.println(contests.get(listContests.getSelectedIndex()).getContestName());
+				return scoreboardrow.getSubmission(problemcode, problemOJ,
+						contests.get(listContests.getSelectedIndex())
+								.getStartTime());
 			}
 		}, coulmnName);
 	}
@@ -143,14 +147,12 @@ public class ViewContestView extends Composite implements
 	@Override
 	public void setSubmissions(ArrayList<SubmissionData> submissions) {
 		this.submissions = submissions;
-		scoreBoard.setContest(contests.get(listContests.getSelectedIndex())) ;
+		scoreBoard.setContest(contests.get(listContests.getSelectedIndex()));
 		scoreBoard.setSubmissions(submissions);
 		scoreboardRows = scoreBoard.loadScoreboardRows();
-		
-		 //TODO update
 		updateScoreboardTable();
 		scoreBoardProvider.setList(scoreboardRows);
-//		scoreBoardTable.redraw();
+		// scoreBoardTable.redraw();
 	}
 
 	@Override
@@ -165,17 +167,19 @@ public class ViewContestView extends Composite implements
 
 	@Override
 	public void setScoreboardTable() {
-		int k = scoreBoardTable.getColumnCount()  ;
-		for(int i = 0 ; i < k ; i++){
+		int k = scoreBoardTable.getColumnCount();
+		for (int i = 0; i < k; i++) {
 			scoreBoardTable.removeColumn(scoreBoardTable.getColumn(0));
 		}
 	}
-	@SuppressWarnings("rawtypes")
+
 	public void updateScoreboardTable() {
-		int k = scoreBoardTable.getColumnCount()  ;
-		for(int i = 0 ; i < k ; i++){
+
+		int k = scoreBoardTable.getColumnCount();
+		for (int i = 0; i < k; i++) {
 			scoreBoardTable.removeColumn(scoreBoardTable.getColumn(0));
 		}
-		viewProblems() ;
+		viewProblems();
+
 	}
 }

@@ -10,12 +10,12 @@ import com.google.appengine.api.datastore.Text;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class ProblemText {
-	@PrimaryKey
+	@PrimaryKey 
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long probID;
 
 	@Persistent
-	private String judgeType; 
+	private String judgeType;
 
 	@Persistent
 	private String problemCode;
@@ -28,9 +28,9 @@ public class ProblemText {
 	
 	@Persistent
 	private Text problemStatement;
-	
+	 
 	@Persistent
-	private Text inputConstraints;
+	private Text inputConstraints; 
 	
 	@Persistent
 	private Text outputConstraints;

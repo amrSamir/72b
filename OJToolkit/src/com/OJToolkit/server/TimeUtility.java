@@ -8,6 +8,7 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 
 public class TimeUtility {
 	public static Long getTimeinLinux(String date) {
+		if(date=="")return 0L ;
 		Date d = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -22,14 +23,13 @@ public class TimeUtility {
 
 	public static String getTimeAsString(Long date) {
 		Date d = new Date(date);
-		SimpleDateFormat dateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String s = dateFormat.format(d.getTime());
 		return s;
 	}
 
 	public static String FormatDate(Date date) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 		return dateFormat.format(date.getTime());
 	}
 

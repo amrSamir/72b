@@ -25,11 +25,17 @@ public class SpojProblemsToDBAdder {
 	public SpojProblemsToDBAdder() {
 		System.out.println("ahmedazraq-SpojProblemsToDBAdder-Initializer");
 	addLanguages();
+	try {
+		addProblems("SPOJ");
+	} catch (ResourceException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		/*try {
 			addProblems("Timus");
 			addProblemsTextFromTextResource("Timus");
 			
-			//addProblems("SPOJ");
+			addProblems("SPOJ");
 			//addProblemsTextFromTextResource("SPOJ");
 		//	addProblems("UVA");
 	//		addProblemsTextFromTextResource("UVA");
@@ -135,20 +141,20 @@ public class SpojProblemsToDBAdder {
 			problem.setProblemName(splitted[1]);
 			problem.setUrl(splitted[2].replaceAll("https", "http"));
 			problem.setOjType(judgeType);
-			submissionService.saveProblemstoDB(problem,
-			        new AsyncCallback<Void>() {
-				        @Override
-				        public void onSuccess(Void result) {
-					        // TODO Auto-generated method stub
-					        success += 1;
-				        }
-
-				        @Override
-				        public void onFailure(Throwable caught) {
-					        failures = failures + 1;
-					        // TODO Auto-generated method stub
-				        }
-			        });
+//			submissionService.saveSpojProblemtoDB(problem,
+//			        new AsyncCallback<Void>() {
+//				        @Override
+//				        public void onSuccess(Void result) {
+//					        // TODO Auto-generated method stub
+//					        success += 1;
+//				        }
+//
+//				        @Override
+//				        public void onFailure(Throwable caught) {
+//					        failures = failures + 1;
+//					        // TODO Auto-generated method stub
+//				        }
+//			        });
 		}
 		System.out.println(" Failures " + String.valueOf(failures)
 		        + " Success " + String.valueOf(success));

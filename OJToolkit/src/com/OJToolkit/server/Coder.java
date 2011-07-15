@@ -16,7 +16,7 @@ public class Coder {
 	private String username;
 
 	@Persistent
-	private String email;
+	private String email; 
 
 	@Persistent
 	private String SPOJUsername;
@@ -35,40 +35,6 @@ public class Coder {
 
 	@Persistent
 	private String UVAPassword;
-	
-	@Persistent
-	private String liveArchiveUsername;
-	
-	@Persistent
-	private String liveArchivePassword;
-
-	/**
-     * @return the liveArchiveUsername
-     */
-    public String getLiveArchiveUsername() {
-    	return liveArchiveUsername;
-    }
-
-	/**
-     * @param liveArchiveUsername the liveArchiveUsername to set
-     */
-    public void setLiveArchiveUsername(String liveArchiveUsername) {
-    	this.liveArchiveUsername = liveArchiveUsername;
-    }
-
-	/**
-     * @return the liveArchivePassword
-     */
-    public String getLiveArchivePassword() {
-    	return liveArchivePassword;
-    }
-
-	/**
-     * @param liveArchivePassword the liveArchivePassword to set
-     */
-    public void setLiveArchivePassword(String liveArchivePassword) {
-    	this.liveArchivePassword = liveArchivePassword;
-    }
 
 	public Long getUserID() {
 		return userID;

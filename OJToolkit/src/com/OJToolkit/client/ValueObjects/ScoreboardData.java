@@ -10,9 +10,9 @@ public class ScoreboardData {
 	ArrayList<CoderData> coders;
 	ArrayList<ProblemData> problems;
 	ArrayList<SubmissionData> submissions;
-
-	ArrayList<Integer> problemAC;
-	ArrayList<Integer> problemWA;
+	
+	ArrayList<Integer> problemAC ;
+	ArrayList<Integer> problemWA ;
 
 	@SuppressWarnings("unchecked")
 	public ArrayList<ScoreBoardRow> loadScoreboardRows() {
@@ -31,9 +31,7 @@ public class ScoreboardData {
 	}
 
 	public String get(String problemCode,String problemOJ,boolean b){
-		
-		int i =0 ;
-		
+		int i = 0 ;		
 		for(ProblemData pd : problems){
 			if(pd.getOjType().equals(problemOJ)&&pd.getProblemCode().equals(problemCode))
 				if(b)
@@ -59,6 +57,7 @@ public class ScoreboardData {
 	}
 
 	public void setCoders(ArrayList<CoderData> coders) {
+		
 		this.coders = coders;
 	}
 
@@ -87,6 +86,12 @@ public class ScoreboardData {
 	}
 
 	private void loadproblemStat() {
+		problemAC.clear() ;
+		problemWA.clear() ;
+		for(int i = 0 ; i < problems.size() ; i++){
+			problemAC.add(0) ;
+			problemWA.add(0) ;
+		}
 		int i = 0;
 		for (ProblemData problem : problems) {
 			for (SubmissionData sd : submissions) {

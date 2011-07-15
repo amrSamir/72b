@@ -12,7 +12,7 @@ public class Language {
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long languageID;
 
-	@Persistent 
+	@Persistent
 	private String languageName;
 
 
@@ -29,7 +29,7 @@ public class Language {
 		this.languageName = languageName;
 		this.languageValue = languageValue;
 		this.OJType = oJType;
-	}
+	} 
 
 	public Long getLanguageID() {
 		return languageID;

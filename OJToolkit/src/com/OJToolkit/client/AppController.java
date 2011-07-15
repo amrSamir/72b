@@ -31,6 +31,8 @@ import com.OJToolkit.client.event.LeftPanelEvent;
 import com.OJToolkit.client.event.LeftPanelEventHandler;
 import com.OJToolkit.client.event.LoginEvent;
 import com.OJToolkit.client.event.LoginEventHandler;
+import com.OJToolkit.client.event.ManageContestEvent;
+import com.OJToolkit.client.event.ManageContestEventHandler;
 import com.OJToolkit.client.event.RegisterationEventHandler;
 import com.OJToolkit.client.event.RegistrationEvent;
 import com.OJToolkit.client.event.TopPanelEvent;
@@ -54,6 +56,7 @@ import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CoderListPresenter;
 import com.OJToolkit.client.presenter.CoderProfilePresenter;
 import com.OJToolkit.client.presenter.ContestAdminPresenter;
+import com.OJToolkit.client.presenter.ContestManagerPresenter;
 import com.OJToolkit.client.presenter.ContestProblemsPresenter;
 import com.OJToolkit.client.presenter.HelpPresenter;
 import com.OJToolkit.client.presenter.InvitationPresenter;
@@ -72,6 +75,7 @@ import com.OJToolkit.client.presenter.ViewContestPresenter;
 import com.OJToolkit.client.presenter.WelcomePresenter;
 import com.OJToolkit.client.view.AddAccountView;
 import com.OJToolkit.client.view.ContestAdminView;
+import com.OJToolkit.client.view.ContestMangerView;
 import com.OJToolkit.client.view.InvitationView;
 import com.OJToolkit.client.view.JoinContestView;
 import com.OJToolkit.client.view.LeftPanelView;
@@ -222,59 +226,59 @@ public class AppController implements ValueChangeHandler<String> {
 			        public void onJoinContest(JoinContestEvent joinContestEvent) {
 				        doJoinContest();
 
-			        }
-		        });
+					}
+				});
 
 		eventBus.addHandler(ViewContestEvent.TYPE,
-		        new ViewContestEventHandler() {
+				new ViewContestEventHandler() {
 
-			        @Override
-			        public void onViewContest(ViewContestEvent viewContestEvent) {
-				        doViewContest();
-			        }
+					@Override
+					public void onViewContest(ViewContestEvent viewContestEvent) {
+						doViewContest();
+					}
 
-		        });
+				});
 		eventBus.addHandler(ViewProblemEvent.TYPE,
-		        new ViewProblemEventHandler() {
+				new ViewProblemEventHandler() {
 
-			        @Override
-			        public void onViewProblem(ViewProblemEvent event) {
-				        doViewProblem(event.problem);
+					@Override
+					public void onViewProblem(ViewProblemEvent event) {
+						doViewProblem(event.problem);
 
-			        }
-		        });
+					}
+				});
 
 		eventBus.addHandler(AlreadyRegisteredEvent.TYPE,
-		        new AlreadyRegisteredEventHandler() {
+				new AlreadyRegisteredEventHandler() {
 
-			        @Override
-			        public void ifRegistered(AlreadyRegisteredEvent event) {
-				        doIfRegistered();
+					@Override
+					public void ifRegistered(AlreadyRegisteredEvent event) {
+						doIfRegistered();
 
-			        }
+					}
 
-		        });
+				});
 
 		eventBus.addHandler(ContestAdminEvent.TYPE,
-		        new ContestAdminEventHandler() {
+				new ContestAdminEventHandler() {
 
-			        @Override
-			        public void onContestAdmin(
-			                ContestAdminEvent contestAdminEvent) {
-				        doContestAdmin();
-			        }
+					@Override
+					public void onContestAdmin(
+							ContestAdminEvent contestAdminEvent) {
+						doContestAdmin();
+					}
 
-		        });
+				});
 
 		eventBus.addHandler(RegistrationEvent.TYPE,
-		        new RegisterationEventHandler() {
+				new RegisterationEventHandler() {
 
-			        @Override
-			        public void onRegistration(RegistrationEvent event) {
-				        doOnRegistration();
+					@Override
+					public void onRegistration(RegistrationEvent event) {
+						doOnRegistration();
 
-			        }
-		        });
+					}
+				});
 
 		eventBus.addHandler(LoginEvent.TYPE, new LoginEventHandler() {
 
@@ -286,15 +290,15 @@ public class AppController implements ValueChangeHandler<String> {
 		});
 
 		eventBus.addHandler(CheckCookiesEvent.TYPE,
-		        new CheckCookiesEventHandler() {
+				new CheckCookiesEventHandler() {
 
-			        @Override
-			        public void onCheckCookies(CheckCookiesEvent event) {
-				        doOnCheckCookies();
+					@Override
+					public void onCheckCookies(CheckCookiesEvent event) {
+						doOnCheckCookies();
 
-			        }
+					}
 
-		        });
+				});
 
 		eventBus.addHandler(LeftPanelEvent.TYPE, new LeftPanelEventHandler() {
 
@@ -325,6 +329,14 @@ public class AppController implements ValueChangeHandler<String> {
 			}
 
 		});
+		
+		eventBus.addHandler(ManageContestEvent.TYPE, new ManageContestEventHandler() {
+			
+			@Override
+			public void onManageContest(ManageContestEvent event) {
+				doOnManageContest() ;
+			}
+		});
 
 		eventBus.addHandler(AddAccountEvent.TYPE, new AddAccountEventHandler() {
 
@@ -336,44 +348,42 @@ public class AppController implements ValueChangeHandler<String> {
 		});
 
 		eventBus.addHandler(ViewCoderProfileEvent.TYPE,
-		        new ViewCoderProfileEventHandler() {
+				new ViewCoderProfileEventHandler() {
 
-			        @Override
-			        public void onViewCoderProfile(ViewCoderProfileEvent event) {
-				        doOnViewCoderProfileEvent(event.username);
-			        }
+					@Override
+					public void onViewCoderProfile(ViewCoderProfileEvent event) {
+						doOnViewCoderProfileEvent(event.username);
+					}
 
-		        });
+				});
 
 		eventBus.addHandler(ViewSubmissionsEvent.TYPE,
-		        new ViewSubmissionsEventHandler() {
+				new ViewSubmissionsEventHandler() {
 
-			        @Override
-			        public void onViewSubmissions(ViewSubmissionsEvent event) {
-				        doOnViewCoderProfileEvent(); // TODO:(azraq) sounds
-													 // weird!!
-			        }
+					@Override
+					public void onViewSubmissions(ViewSubmissionsEvent event) {
+						doOnViewCoderProfileEvent(); //TODO:(azraq) sounds weird!!
+					}
 
-		        });
-		eventBus.addHandler(ViewSourceCodeEvent.TYPE,
-		        new ViewSourceCodeEventHandler() {
-
-			        @Override
-			        public void onViewSourceCode(ViewSourceCodeEvent event) {
-				        doOnViewSourceCode(event.submissionID);
-
-			        }
-		        });
+				});
+		eventBus.addHandler(ViewSourceCodeEvent.TYPE, new ViewSourceCodeEventHandler() {
+			
+			@Override
+			public void onViewSourceCode(ViewSourceCodeEvent event) {
+				doOnViewSourceCode(event.submissionID);
+				
+			}
+		});
 
 	}
 
 	/**
-	 * @param submissionID
-	 */
-	protected void doOnViewSourceCode(long submissionID) {
-		History.newItem("sourceCode_" + submissionID);
-
-	}
+     * @param submissionID
+     */
+    protected void doOnViewSourceCode(long submissionID) {
+	    History.newItem("sourceCode_"+submissionID);
+	    
+    }
 
 	/**
      * 
@@ -394,7 +404,7 @@ public class AppController implements ValueChangeHandler<String> {
 	 */
 	protected void doOnTopPanel(String logoutURL) {
 		Presenter presenter = new TopPanelPresenter(logoutURL, coderService,
-		        new TopPanelView());
+				new TopPanelView());
 		presenter.go(this.topPanel);
 	}
 
@@ -469,6 +479,9 @@ public class AppController implements ValueChangeHandler<String> {
 		History.newItem("viewCoders");
 
 	}
+	protected void doOnManageContest() {
+		History.newItem("ContestManger");
+	}
 
 	/**
 	 * view problem
@@ -479,7 +492,7 @@ public class AppController implements ValueChangeHandler<String> {
 	protected void doViewProblem(ProblemData problem) {
 		this.problem = problem;
 		problemStr = "problem" + problem.getProblemCode() + "-"
-		        + problem.getOjType();
+				+ problem.getOjType();
 		History.newItem(problemStr);
 
 	}
@@ -503,10 +516,10 @@ public class AppController implements ValueChangeHandler<String> {
 	 * view problem submission
 	 * 
 	 * @param isAnonymousSubmission2
-	 * @param isVisible2
-	 * @param sourceCode2
-	 * @param categoriesList2
-	 * @param judgeSubmissionID
+	 * @param isVisible2 
+	 * @param sourceCode2 
+	 * @param categoriesList2 
+	 * @param judgeSubmissionID 
 	 * @param problemCode
 	 */
 	private void doViewProblemSubmissionStatus(ProblemData problem,
@@ -661,13 +674,13 @@ public class AppController implements ValueChangeHandler<String> {
 				// Invited but not enabled
 				if (token.equals("login")) {
 					presenter = new LoginPresenter(loginInfo, loginService,
-					        coderService, eventBus, new LoginView());
+							coderService, eventBus, new LoginView());
 				} else if (token.equals("Registration")) {
 					presenter = new RegistrationPresenter(coderService,
-					        eventBus, new RegistrationView());
+							eventBus, new RegistrationView());
 				} else {
 					presenter = new CheckCookiesPresenter(coderService,
-					        loginService, eventBus);
+							loginService, eventBus);
 				}
 			} else if (isInvitedCookie != null && isEnabledCookie != null) {
 				// Invited & Enabled
@@ -713,31 +726,31 @@ public class AppController implements ValueChangeHandler<String> {
 					        new AddAccountView());
 					leftPanelPresenter
 					        .setSelected(LeftPanelView.Labels.AddAccounts);
-				} else if (token.equals("contestAdmin")) {
-					presenter = new ContestAdminPresenter(contestServices,
-					        eventBus, new ContestAdminView());
-					leftPanelPresenter
-					        .setSelected(LeftPanelView.Labels.ContestAdmin);
-				} else if (token.equals("joinContest")) {
+				} 
+				else if (token.equals("ContestManger")){
+					presenter = new ContestManagerPresenter(contestServices,submissionService, eventBus, new ContestMangerView()) ;
+					leftPanelPresenter.setSelected(LeftPanelView.Labels.ContestAdmin);
+				}
+				else if (token.equals("joinContest")) {
 					presenter = new JoinContestPresenter(contestServices,
 					        eventBus, new JoinContestView());
 					leftPanelPresenter
-					        .setSelected(LeftPanelView.Labels.JoinContest);
+							.setSelected(LeftPanelView.Labels.JoinContest);
 				} else if (token.equals("ViewContest")) {
 					presenter = new ViewContestPresenter(contestServices,
-					        eventBus, new ViewContestView());
+							eventBus, new ViewContestView());
 					leftPanelPresenter
-					        .setSelected(LeftPanelView.Labels.ViewContest);
+							.setSelected(LeftPanelView.Labels.ViewContest);
 				} else if (token.equals("ProblemsContest")) {
 					presenter = new ContestProblemsPresenter(submissionService,
-					        contestServices, eventBus);
+							contestServices, eventBus);
 					leftPanelPresenter
-					        .setSelected(LeftPanelView.Labels.AddProblemToContest);
+							.setSelected(LeftPanelView.Labels.AddProblemToContest);
 				} else if (token.startsWith("profile")) {
-					presenter = new CoderProfilePresenter(coderService,
-					        sourceCodeService, token.substring(8), eventBus);
+					presenter = new CoderProfilePresenter(coderService, sourceCodeService,
+							token.substring(8), eventBus);
 					leftPanelPresenter
-					        .setSelected(LeftPanelView.Labels.ViewCoders);
+							.setSelected(LeftPanelView.Labels.ViewCoders);
 				} else if (token.equals("status")) {
 					presenter = new SubmissionStatusPresenter(
 					        submissionService, sourceCodeService, eventBus);
@@ -775,7 +788,7 @@ public class AppController implements ValueChangeHandler<String> {
 						@Override
 						public void onClick(ClickEvent event) {
 							lblfeedback.setUrl(MyResource.INSTANCE
-							        .imgFeedback().getURL());
+									.imgFeedback().getURL());
 							dlgfeedback.center();
 							dlgfeedback.show();
 						}
@@ -785,7 +798,7 @@ public class AppController implements ValueChangeHandler<String> {
 						@Override
 						public void onMouseOver(MouseOverEvent event) {
 							lblfeedback.setUrl(MyResource.INSTANCE
-							        .imgFeedback2().getURL());
+									.imgFeedback2().getURL());
 						}
 					});
 					lblfeedback.addMouseOutHandler(new MouseOutHandler() {

@@ -11,7 +11,7 @@ import com.google.appengine.api.datastore.Text;
 
 /**
  * @author 72B July 9, 2011
- */
+ */ 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class SourceCode {
 	
@@ -20,14 +20,14 @@ public class SourceCode {
 	private Long sourceCodeID;
 
 	@Persistent
-	private Long submissionID; 
+	private Long submissionID;
 	
 
-	@Persistent
+	@Persistent 
 	private Text sourceCode;
 	
 	@Persistent
-	private boolean isVisible;
+	private boolean isVisible; 
 
 	
 		public SourceCode(){}

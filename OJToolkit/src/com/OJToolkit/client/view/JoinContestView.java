@@ -16,47 +16,49 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class JoinContestView extends Composite implements JoinContestPresenter.Display {
+public class JoinContestView extends Composite implements
+		JoinContestPresenter.Display {
 
-	TextBox txtContestAccessCode ;
-	ListBox listContests ;
-	Button btnJoinContest ;
-	int contestsSize ;
-	ArrayList<ContestData> contests ;
+	TextBox txtContestAccessCode;
+	ListBox listContests;
+	Button btnJoinContest;
+	int contestsSize;
+	ArrayList<ContestData> contests;
+
 	public JoinContestView() {
 		contests = new ArrayList<ContestData>();
 		VerticalPanel verticalPanel = new VerticalPanel();
 		verticalPanel
 				.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		verticalPanel.setStyleName("center");
-		initWidget(verticalPanel); 
-		
+		initWidget(verticalPanel);
+
 		HorizontalPanel pnlJoinContest = new HorizontalPanel();
 		Label lblContestName = new Label("choose contest");
-		listContests = new ListBox() ;
-		System.out.println("Magdi-view-joincontest-number of contest =" + contests.size() );
-		
+		listContests = new ListBox();
+		System.out.println("Magdi-view-joincontest-number of contest ="
+				+ contests.size());
+
 		pnlJoinContest.add(lblContestName);
-		pnlJoinContest.add(listContests) ;
-		
+		pnlJoinContest.add(listContests);
+
 		verticalPanel.add(pnlJoinContest);
-		
-		
+
 		HorizontalPanel pnlAccessCodeContest = new HorizontalPanel();
 		Label lblAccessCode = new Label("Contest Access code");
-		txtContestAccessCode = new TextBox() ;
-		pnlAccessCodeContest.add(lblAccessCode) ;
-		pnlAccessCodeContest.add(txtContestAccessCode) ;
+		txtContestAccessCode = new TextBox();
+		pnlAccessCodeContest.add(lblAccessCode);
+		pnlAccessCodeContest.add(txtContestAccessCode);
 		verticalPanel.add(pnlAccessCodeContest);
-		
+
 		btnJoinContest = new Button("join Contest");
 		btnJoinContest.setSize("100px", "28px");
-		verticalPanel.add(btnJoinContest) ;
+		verticalPanel.add(btnJoinContest);
 		verticalPanel.setCellHorizontalAlignment(btnJoinContest,
 				HasHorizontalAlignment.ALIGN_CENTER);
-		
+
 	}
-	
+
 	@Override
 	public HasClickHandlers getSubmitButton() {
 		return btnJoinContest;
@@ -74,18 +76,22 @@ public class JoinContestView extends Composite implements JoinContestPresenter.D
 
 	@Override
 	public void setContests(ArrayList<ContestData> contests) {
-		this.contests = contests ;
-		System.out.println("Magdi-presnter-join- Number of contests = " + contests.size());
-		for(int i = 0 ; i < contests.size() ; i++){
-			listContests.addItem(contests.get(i).getContestName());
+		this.contests = contests;
+		System.out.println("Magdi-presnter-join- Number of contests = "
+				+ contests.size());
+		for (int i = 0; i < contests.size(); i++) {
+			String s = "-";
+			if (contests.get(i).getContestAccessCode().equalsIgnoreCase(""))
+				s = "+";
+			listContests.addItem(s + contests.get(i).getContestName());
 		}
-		
+
 	}
 
 	@Override
 	public void setContestSize(int size) {
-		contestsSize = size ;
-		
+		contestsSize = size;
+
 	}
 
 	@Override
@@ -93,5 +99,4 @@ public class JoinContestView extends Composite implements JoinContestPresenter.D
 		return this;
 	}
 
-	
 }

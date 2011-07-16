@@ -27,11 +27,11 @@ public class AboutPresenter implements Presenter {
 	private final HandlerManager eventBus;
 
 	@UiField(provided = true)
-	Image imgFCI;
+	Image imgFCI = new Image(MyResource.INSTANCE.imgFCILogo());
 	
 	
 	@UiField(provided = true)
-	Image imgCU;
+	Image imgCU = new Image(MyResource.INSTANCE.imgCULogo());
 	
 	public AboutPresenter(HandlerManager eventBus) {
 		super();

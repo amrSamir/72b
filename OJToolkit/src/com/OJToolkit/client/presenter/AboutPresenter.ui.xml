@@ -18,8 +18,8 @@
 			<g:Label> Codemashup.com was originally developed as a graduation
 				project for class 2007 in</g:Label>
 			<g:HorizontalPanel>
-				<g:Image resource='{res.imgFCILogo}' altText="Faculty of Computers and Information" ui:field="imgFCI"></g:Image>
-				<g:Image resource='{res.imgCULogo}' altText="Cairo University" ui:field="imgCU"></g:Image>
+				<g:Image  altText="Faculty of Computers and Information" ui:field="imgFCI"></g:Image>
+				<g:Image  altText="Cairo University" ui:field="imgCU"></g:Image>
 			</g:HorizontalPanel>
 			<g:Label>Project Members</g:Label> 
 			<g:HorizontalPanel>

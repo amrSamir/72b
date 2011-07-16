@@ -86,4 +86,28 @@ public interface MyResource extends ClientBundle {
 	
 	@Source("feedback2.png")
 	public ImageResource imgFeedback2();
+	
+	@Source("cu_logo.jpg")
+	public ImageResource imgCULogo();
+	
+	@Source("fci_logo.gif")
+	public ImageResource imgFCILogo();
+
+	
+	@Source("amr.jpg")
+	public ImageResource imgAmr();
+	
+	@Source("azraq.jpg")
+	public ImageResource imgAzraq();
+	
+	@Source("magdi.jpg")
+	public ImageResource imgMagdi();
+	
+	@Source("nasser.jpg")
+	public ImageResource imgNasser();
+	
+	
+	@Source("omar.jpg")
+	public ImageResource imgOmar();
+	
 }

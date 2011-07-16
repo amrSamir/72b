@@ -2,7 +2,6 @@ package com.OJToolkit.server;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -15,6 +14,7 @@ import com.OJToolkit.client.ValueObjects.CoderData;
 import com.OJToolkit.client.ValueObjects.CoderProfileData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.server.engine.Judge;
+import com.OJToolkit.server.engine.LiveArchive;
 import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Timus;
 import com.OJToolkit.server.engine.UVA;
@@ -212,6 +212,11 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				coders.get(0).setUVAUsername(username);
 				coders.get(0).setUVAPassword(password);
 				pm.makePersistent(coders.get(0));
+			} else if (accountType.equals("LiveArchive")) {
+				System.out.println("LIVE ARCHIVE SAVE USERNAME" + username);
+				coders.get(0).setLiveArchiveUsername(username);
+				coders.get(0).setLiveArchivePassword(password);
+				pm.makePersistent(coders.get(0));
 			}
 			System.out.println("5alstoo");
 		} finally {
@@ -274,6 +279,10 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				ret = coders.get(0).getTimusUsername();
 			} else if (accountType.equals("UVA")) {
 				ret = coders.get(0).getUVAUsername();
+			} else if (accountType.equals("LiveArchive")) {
+				System.out.println("LIVE ARCHIVE username");
+				ret = coders.get(0).getLiveArchiveUsername();
+				System.out.println(ret);
 			}
 		} finally {
 			pm.close();
@@ -402,11 +411,14 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			judge = new Timus();
 		} else if (judgeType.equals("UVA")) {
 			judge = new UVA();
+		} else if (judgeType.equals("LiveArchive")) {
+			judge = new LiveArchive();
 		}
-
+		System.out.println(judge.getClass().getName().toString());
 		if (judge != null) {
 			ret = judge.signIn(username, password);
 		}
+		System.out.println(ret);
 		return ret;
 	}
 }

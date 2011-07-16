@@ -30,8 +30,7 @@ public class AddAccountPresenter implements Presenter {
 		HasClickHandlers getAddTimusAccountButton();
 
 		HasClickHandlers getAddUVAAccountButton();
-		
-		
+
 		HasClickHandlers getAddLiveArchiveAccountButton();
 
 		HasValue<String> getAccountUserName();
@@ -154,15 +153,16 @@ public class AddAccountPresenter implements Presenter {
 				isValidAccount(accountType);
 			}
 		});
-		
-		display.getAddLiveArchiveAccountButton().addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				accountType = "Live Archive";
-				isValidAccount(accountType);
-			}
-		});
+
+		display.getAddLiveArchiveAccountButton().addClickHandler(
+		        new ClickHandler() {
+
+			        @Override
+			        public void onClick(ClickEvent event) {
+				        accountType = "LiveArchive";
+				        isValidAccount(accountType);
+			        }
+		        });
 
 		display.getSelectionHandler().addSelectionHandler(
 		        new SelectionHandler<Integer>() {
@@ -173,10 +173,9 @@ public class AddAccountPresenter implements Presenter {
 					        setUsername("UVA");
 				        } else if (event.getSelectedItem() == 2) {
 					        setUsername("Timus");
-				        
-			        } else if (event.getSelectedItem() == 3) {
-			        	setUsername("Live Archive");
-			        }
+				        } else if (event.getSelectedItem() == 3) {
+					        setUsername("LiveArchive");
+				        }
 
 			        }
 		        });

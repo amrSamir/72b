@@ -113,22 +113,25 @@ public class ProblemSubmissionStatusPresenter implements Presenter {
 
 			        @Override
 			        public void onSuccess(ProblemStatusData result) {
+			        	System.out.println("Get Problem Status success");
 				        problemStatus = result;
-				        display.setSubmissionResult(result);
-				        if(result.getJudgeResult()==null||result.getJudgeResult().equals("")){
+				        
+				        if(result==null||(result.getJudgeResult())==null||result.getJudgeResult().equals("")){
 				        	new Timer() {
 				  		      public void run() {
 				  		       callGetLastProblemStatusService(); 
 				  		      }
 				  		     
 				  		    }.schedule(3000);
+				        } else{
+				        	display.setSubmissionResult(result);
 				        }
 				        
 			        }
 
 			        @Override
 			        public void onFailure(Throwable caught) {
-			        	Window.alert("Failed to get last problem results!!");
+			        	caught.printStackTrace();
 			        }
 		        });
 	}

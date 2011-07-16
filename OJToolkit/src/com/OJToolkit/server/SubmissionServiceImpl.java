@@ -15,6 +15,7 @@ import com.OJToolkit.client.ValueObjects.ProblemStatusData;
 import com.OJToolkit.client.ValueObjects.ProblemTextData;
 import com.OJToolkit.client.ValueObjects.SubmissionData;
 import com.OJToolkit.server.engine.Judge;
+import com.OJToolkit.server.engine.LiveArchive;
 import com.OJToolkit.server.engine.SPOJ;
 import com.OJToolkit.server.engine.Submission;
 import com.OJToolkit.server.engine.Timus;
@@ -50,6 +51,12 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				judgeUsername = "uvatest72";
 				judgePassword = "123456";
 				judge = new UVA();
+
+			} else if (ojType.equals("LiveArchive")) {
+				System.out.println("Submit in Live Archive");
+				judgeUsername = "ojtest72";
+				judgePassword = "123456";
+				judge = new LiveArchive();
 			}
 
 		} else {
@@ -74,6 +81,15 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				        .getUVAPassword();
 				judge = new UVA();
 
+			} else if (ojType.equals("LiveArchive")) {
+				System.out.println("submit in live archive");
+				 judgeUsername = DataStoreHandler.getAllCoders().get(0)
+				 .getLiveArchiveUsername();
+				 judgePassword = DataStoreHandler.getAllCoders().get(0)
+				 .getLiveArchivePassword();
+				 judge = new LiveArchive();
+				
+
 			}
 		}
 
@@ -86,7 +102,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			System.out.println("Code: " + code);
 			 submissionID = judge.submitProblem(judgeUsername, judgePassword, problemCode,
 			        language, code);
+			
 			System.out.println("Submitted");
+			System.out.println(submissionID);
 
 		}
 		return submissionID;
@@ -162,15 +180,25 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		
 		System.out.println(s.getProblemId());
 		System.out.println(s.getStatus());
-		ProblemStatusData dpStatus = new ProblemStatusData(new Date(
-				TimeUtility.getTimeinLinux(s.getDate())), s.getProblemId(),
-				s.getStatus(), s.getRuntime(), s.getMemoryUsed());
+		ProblemStatusData dpStatus = null;
+		if(s.getProblemId()==null){
+			dpStatus = new ProblemStatusData();
+			
+		}
+		else{
+			dpStatus = new ProblemStatusData(new Date(
+			        TimeUtility.getTimeinLinux(s.getDate())), s.getProblemId(),
+			        s.getStatus(), s.getRuntime(), s.getMemoryUsed());
+			addSubmissionResult(DataStoreHandler.getAllCoders().get(0)
+			        .getUsername(), judgeUsername, problemCode, ojType,
+			        s.getStatus(), s.getRuntime(), s.getMemoryUsed(), new Date(
+			                TimeUtility.getTimeinLinux(s.getDate())), sourceCode,
+			        isVisible);
+		}
+		
 		System.out.println("notime");
-		addSubmissionResult(DataStoreHandler.getAllCoders().get(0)
-				.getUsername(), judgeUsername, problemCode, ojType,
-				s.getStatus(), s.getRuntime(), s.getMemoryUsed(), new Date(
-						TimeUtility.getTimeinLinux(s.getDate())), sourceCode,
-				        isVisible);
+	
+		
 		return dpStatus;
 
 	}

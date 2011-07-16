@@ -26,6 +26,7 @@ public class SourceCode {
 	@Persistent 
 	private Text sourceCode;
 	
+	
 	@Persistent
 	private boolean isVisible; 
 

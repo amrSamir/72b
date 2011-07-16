@@ -51,6 +51,7 @@ import com.OJToolkit.client.event.ViewSourceCodeEvent;
 import com.OJToolkit.client.event.ViewSourceCodeEventHandler;
 import com.OJToolkit.client.event.ViewSubmissionsEvent;
 import com.OJToolkit.client.event.ViewSubmissionsEventHandler;
+import com.OJToolkit.client.presenter.AboutPresenter;
 import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CoderListPresenter;
@@ -761,6 +762,8 @@ public class AppController implements ValueChangeHandler<String> {
 
 				} else if (token.startsWith("help")) {
 					presenter = new HelpPresenter(eventBus);
+				}else if (token.startsWith("about")) {
+					presenter = new AboutPresenter(eventBus);
 				} else {
 					presenter = new CheckCookiesPresenter(coderService,
 					        loginService, eventBus);

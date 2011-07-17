@@ -29,7 +29,7 @@ public class ScoreBoardRow implements Comparable {
 	}
 
 	public ScoreBoardRow() {
-		plenty = 20L * 60000L;
+		plenty = 20L ;
 		AC = 0;
 		totaltime = 0L;
 		coder = new CoderData();
@@ -64,12 +64,12 @@ public class ScoreBoardRow implements Comparable {
 			if (!findProblem(new ProblemData(sd.getProblemCode(), "", "",sd.getJudgeType())))
 				solved.add(new ProblemData(sd.getProblemCode(), "", "", sd.getJudgeType()));
 			AC++;
-			String s = sd.getDate();
+			/*String s = sd.getDate();
 			Date d = new Date(s);
 			Long time = d.getTime()
 					- ScoreboardData.contest.getStartTime().getTime();
 			time /= 1000L;
-			totaltime += time;
+			totaltime += time;*/
 		}
 		coderSubmission.add(sd);
 	}
@@ -106,13 +106,11 @@ public class ScoreBoardRow implements Comparable {
 					break;
 				} else {
 					numberWA++;
-					WrongTime += plenty ;
 				}
 			}
 		}
 		if (t) {
-			time += WrongTime;
-			totaltime += time;
+			totaltime += time + (numberWA*20*60);
 			Long min = time / 60L;
 			Long sec = time % 60L;
 			SubmissionTime += String.valueOf(min) + ":" + String.valueOf(sec);
@@ -130,7 +128,7 @@ public class ScoreBoardRow implements Comparable {
 	@Override
 	public int compareTo(Object o) {
 		ScoreBoardRow r = (ScoreBoardRow) o;
-		int d = AC - r.AC;
+		int d = -(AC - r.AC);
 		if (d != 0)
 			return d;
 		Long l = totaltime - r.totaltime;

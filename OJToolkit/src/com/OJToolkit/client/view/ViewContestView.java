@@ -37,9 +37,11 @@ public class ViewContestView extends Composite implements
 	ListDataProvider<ScoreBoardRow> scoreBoardProvider;
 	ScoreboardData scoreBoard;
 	ArrayList<ScoreBoardRow> scoreboardRows;
-	
+	Label timeRemaining ;
 
 	public ViewContestView() {
+		timeRemaining = new Label() ;
+		timeRemaining.setVisible(false);
 		scoreBoard = new ScoreboardData();
 		scoreBoardTable = new CellTable<ScoreBoardRow>();
 		scoreboardRows = new ArrayList<ScoreBoardRow>();
@@ -60,7 +62,8 @@ public class ViewContestView extends Composite implements
 		listContests = new ListBox();
 		pnlJoinContest.add(lblContestName);
 		pnlJoinContest.add(listContests);
-
+		pnlJoinContest.add(timeRemaining) ;
+		
 		verticalPanel.add(pnlJoinContest);
 		HorizontalPanel pnlAccessCodeContest = new HorizontalPanel();
 
@@ -181,5 +184,25 @@ public class ViewContestView extends Composite implements
 		}
 		viewProblems();
 
+	}
+
+	@Override
+	public Label getTimeRemaining() {
+		return timeRemaining;
+	}
+	
+	@Override
+	public ContestData getContest() {
+		return contests.get(listContests.getSelectedIndex());
+	}
+
+	@Override
+	public void setTimeRemaining(String timeRemaining) {
+		this.timeRemaining.setText(timeRemaining) ;
+	}
+
+	@Override
+	public void setTimeVisible() {
+		this.timeRemaining.setVisible(true);
 	}
 }

@@ -383,7 +383,6 @@ public class AppController implements ValueChangeHandler<String> {
      */
     protected void doOnViewSourceCode(long submissionID) {
 	    History.newItem("sourceCode_"+submissionID);
-	    
     }
 
 	/**
@@ -537,7 +536,7 @@ public class AppController implements ValueChangeHandler<String> {
 	}
 
 	public void go(RootPanel rootPanel) {
-		this.rootPanel = rootPanel;
+		this.rootPanel = rootPanel ;
 		DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);
 		this.dockPanel = dockLayoutPanel;
 		dockLayoutPanel.setSize("100%", "100%");
@@ -772,7 +771,7 @@ public class AppController implements ValueChangeHandler<String> {
 			if (presenter != null) {
 				// Make sure its split view
 				// TODO: check the speed issue here
-				if (token.equals("welcome")) {
+				if (token.equals("welcome") && isInvitedCookie == null && isEnabledCookie == null ) {
 					rootPanel.clear();
 					presenter.go(rootPanel);
 				} else {

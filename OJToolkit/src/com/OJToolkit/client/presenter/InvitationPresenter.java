@@ -60,13 +60,14 @@ public class InvitationPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				System.out.println("checking the status of the invitation string");
-				if (display.getInvitationString().getValue()
-				        .equals(invitationString)) {
+				if (display.getInvitationString().getValue().equals(invitationString)) {
 					System.out.println("correct");
 					Cookies.setCookie("isInvitedCookie", "YESAAA");
 					eventBus.fireEvent(new CheckCookiesEvent());
 				}
-
+				else {
+					Window.alert("Wrong invitation String!!!") ;
+				}
 			}
 		});
 	}

@@ -109,6 +109,7 @@ public class ContestMangerView extends Composite implements Display {
 
 	VerticalPanel Hpanal2() {
 		VerticalPanel MainPanel = new VerticalPanel();
+		MainPanel.setSize("100%", "100%") ;
 		HorizontalPanel searchPanel = new HorizontalPanel();
 		searchPanel.add(searchType);
 		searchPanel.add(searchBox);
@@ -140,6 +141,8 @@ public class ContestMangerView extends Composite implements Display {
 
 	private VerticalPanel getAllproblemsPanel() {
 		VerticalPanel allproblemsPanel = new VerticalPanel();
+		allproblemsPanel.setSize("100%", "100%"	);
+		cellTable.setSize("100%", "100%");
 		allproblemsPanel.add(cellTable);
 		// Create a Pager to control the table.
 		SimplePager.Resources pagerResources = GWT

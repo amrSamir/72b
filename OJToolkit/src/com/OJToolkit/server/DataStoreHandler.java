@@ -32,7 +32,6 @@ public class DataStoreHandler {
 		Query query = pm.newQuery(select_query);
 		query.setFilter("email == userEmail");
 		query.declareParameters("java.lang.String userEmail");
-		System.out.println(getUser().getEmail());
 		List<Coder> coders = (List<Coder>) query.execute(getUser().getEmail());
 		return coders;
 	}

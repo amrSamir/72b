@@ -1,6 +1,7 @@
 	package com.OJToolkit.client.presenter;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.OJToolkit.client.Services.ContestServicesAsync;
 import com.OJToolkit.client.ValueObjects.CoderData;
@@ -20,7 +21,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.datepicker.client.DateBox;
 
 public class ViewContestPresenter implements Presenter {
 
@@ -32,6 +35,10 @@ public class ViewContestPresenter implements Presenter {
 		void setScoreboardTable() ;
 		HasClickHandlers getSubmitButton();
 		String getContestName();
+		ContestData getContest() ;
+		Label getTimeRemaining();
+		void setTimeRemaining(String timeRemaining) ;
+		void setTimeVisible();
 		Widget asWidget();
 	}
 
@@ -51,18 +58,38 @@ public class ViewContestPresenter implements Presenter {
 	private void bind() {
 		display.getSubmitButton().addClickHandler(new ClickHandler() {
 			@Override
-			public void onClick(ClickEvent event) {		
+			public void onClick(ClickEvent event) {	
+				display.setTimeVisible();
 				display.setScoreboardTable();
-				final String contestname = display.getContestName();
+				final String contestname = display.getContestName() ;
 				getCoders(contestname);
 				getProblems(contestname);
-				new Timer() {
-					@Override
-					public void run() {
-						getSubmissions(contestname) ;
-					}
-				}.scheduleRepeating(timer);
-				
+				ContestData curContest = display.getContest() ;
+				Date curDate = new Date();
+				if(curDate.getTime() > curContest.getEndTime().getTime()){
+					getSubmissions(contestname) ;
+					display.setTimeRemaining("ContestEnded");
+				}else{
+					new Timer() {
+						@Override
+						public void run() {
+							getSubmissions(contestname) ;
+							
+						}
+					}.scheduleRepeating(timer);
+					final Long dif = curContest.getEndTime().getTime()/1000 ;
+					new Timer() {
+						@Override
+						public void run() {
+							Date curd = new Date();
+							Long cur = dif-(curd.getTime()/1000) ;
+							Long min = cur/60 ;
+							Long sec = cur%60 ;
+							String rem = "remaining( " + String.valueOf(min) + ":" + String.valueOf(sec) + ")" ;
+							display.setTimeRemaining(rem);
+						}
+					}.scheduleRepeating(1000);
+				}
 			}
 		});
 
@@ -117,8 +144,7 @@ public class ViewContestPresenter implements Presenter {
 
 					@Override
 					public void onFailure(Throwable caught) {
-						System.out
-								.println("Magdi-viewContest- canot load problems");
+						System.out.println("Magdi-viewContest- canot load problems");
 					}
 
 					@Override

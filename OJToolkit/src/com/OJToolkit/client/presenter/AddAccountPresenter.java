@@ -218,6 +218,7 @@ public class AddAccountPresenter implements Presenter {
 					        addedAccounts += "-" + accountType;
 					        Cookies.setCookie("addedAccountsCookie",
 					                addedAccounts);
+					        System.out.println("addedAccountsCookie" + addedAccounts);
 					        display.notifyUser("Account is added/updated successfully");
 				        }
 

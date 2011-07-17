@@ -90,8 +90,9 @@ public class ProblemList2Presenter implements Presenter {
 	 */
 	private HashMap<Column<ProblemData, String>, String> columnMap;
 
-	public ProblemList2Presenter(final SubmissionServiceAsync submissionService,
-	        final HandlerManager eventBus) {
+	public ProblemList2Presenter(
+			final SubmissionServiceAsync submissionService,
+			final HandlerManager eventBus) {
 		this.submissionService = submissionService;
 		this.eventBus = eventBus;
 		// Initialize previous Queries
@@ -110,7 +111,7 @@ public class ProblemList2Presenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				cellTable.setVisibleRangeAndClearData(
-				        cellTable.getVisibleRange(), true);
+						cellTable.getVisibleRange(), true);
 			}
 		});
 
@@ -140,23 +141,23 @@ public class ProblemList2Presenter implements Presenter {
 
 		// Create a Pager to control the table.
 		SimplePager.Resources pagerResources = GWT
-		        .create(SimplePager.Resources.class);
+				.create(SimplePager.Resources.class);
 		pager = new SimplePager(TextLocation.CENTER, pagerResources, false, 0,
-		        true);
+				true);
 		pager.setDisplay(cellTable);
 
 		// Add a selection model so we can select cells.
 		final SingleSelectionModel<ProblemData> selectionModel = new SingleSelectionModel<ProblemData>();
 		selectionModel
-		        .addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+				.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
 
-			        @Override
-			        public void onSelectionChange(SelectionChangeEvent event) {
-				        ProblemData problemData = selectionModel
-				                .getSelectedObject();
-				        eventBus.fireEvent(new ViewProblemEvent(problemData));
-			        }
-		        });
+					@Override
+					public void onSelectionChange(SelectionChangeEvent event) {
+						ProblemData problemData = selectionModel
+								.getSelectedObject();
+						eventBus.fireEvent(new ViewProblemEvent(problemData));
+					}
+				});
 		cellTable.setSelectionModel(selectionModel);
 
 		// Initialize the columns.
@@ -176,7 +177,7 @@ public class ProblemList2Presenter implements Presenter {
 
 				// If searching or sorting Queries changed, the range is reset
 				if (!sortingQuery.equals(previousSortingQuery)
-				        || !searchQuery.equals(previousSearchQuery)) {
+						|| !searchQuery.equals(previousSearchQuery)) {
 					pager.setPage(0);
 					previousSortingQuery = sortingQuery;
 					previousSearchQuery = searchQuery;
@@ -184,24 +185,38 @@ public class ProblemList2Presenter implements Presenter {
 
 				// Fetch problem from server
 				submissionService.getProblems(range, sortingQuery, searchQuery,
-				        new AsyncCallback<ArrayList<ProblemData>>() {
+						new AsyncCallback<ArrayList<ProblemData>>() {
 
-					        @Override
-					        public void onSuccess(ArrayList<ProblemData> result) {
-						        cellTable.setRowData(range.getStart(), result);
-					        }
+							@Override
+							public void onSuccess(ArrayList<ProblemData> result) {
+								cellTable.setRowData(range.getStart(), result);
+							}
 
-					        @Override
-					        public void onFailure(Throwable caught) {
-						        System.out.println("Failure");
-					        }
-				        });
+							@Override
+							public void onFailure(Throwable caught) {
+								System.out.println("Failure");
+							}
+						});
+				// Fetch problem count from server
+				submissionService.getProblemsCount(searchQuery,
+						new AsyncCallback<Integer>() {
+
+							@Override
+							public void onSuccess(Integer size) {
+								cellTable.setRowCount(size, true);
+							}
+
+							@Override
+							public void onFailure(Throwable caught) {
+								// TODO Auto-generated method stub
+
+							}
+						});
 			}
 		};
 
 		// Add the CellTable to the adapter dataProvider.
 		dataProvider.addDataDisplay(cellTable);
-
 
 	}
 
@@ -220,13 +235,13 @@ public class ProblemList2Presenter implements Presenter {
 	 * Add the columns to the table.
 	 */
 	private void initTableColumns(
-	        final SelectionModel<ProblemData> selectionModel,
-	        AsyncHandler sortHandler) {
+			final SelectionModel<ProblemData> selectionModel,
+			AsyncHandler sortHandler) {
 		columnMap = new HashMap<Column<ProblemData, String>, String>();
 
 		// Problem Code.
 		Column<ProblemData, String> problemCodeColumn = new Column<ProblemData, String>(
-		        new TextCell()) {
+				new TextCell()) {
 			@Override
 			public String getValue(ProblemData object) {
 				return object.getProblemCode();
@@ -239,7 +254,7 @@ public class ProblemList2Presenter implements Presenter {
 
 		// Problem Name.
 		Column<ProblemData, String> problemNameColumn = new Column<ProblemData, String>(
-		        new TextCell()) {
+				new TextCell()) {
 			@Override
 			public String getValue(ProblemData object) {
 				return object.getProblemName();
@@ -252,7 +267,7 @@ public class ProblemList2Presenter implements Presenter {
 
 		// Online Judge.
 		Column<ProblemData, String> onlineJudgeColumn = new Column<ProblemData, String>(
-		        new TextCell()) {
+				new TextCell()) {
 			@Override
 			public String getValue(ProblemData object) {
 				return object.getOjType();
@@ -273,8 +288,8 @@ public class ProblemList2Presenter implements Presenter {
 
 		// If different sorting than searching, disable sorting
 		if (sortList.size() == 0
-		        || !columnMap.get(sortList.get(0).getColumn()).equals(
-		                searchType.getValue(searchType.getSelectedIndex())))
+				|| !columnMap.get(sortList.get(0).getColumn()).equals(
+						searchType.getValue(searchType.getSelectedIndex())))
 			return sortingQuery;
 
 		for (int i = 0; i < sortList.size(); i++) {
@@ -290,6 +305,6 @@ public class ProblemList2Presenter implements Presenter {
 	String getSearchQuery() {
 		String type = searchType.getValue(searchType.getSelectedIndex());
 		return type + " >= \"" + searchBox.getText() + "\" && " + type
-		        + " < \"" + searchBox.getText() + "\ufffd\"";
+				+ " < \"" + searchBox.getText() + "\ufffd\"";
 	}
 }

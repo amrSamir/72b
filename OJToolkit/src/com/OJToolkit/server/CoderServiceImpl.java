@@ -421,4 +421,50 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 		System.out.println(ret);
 		return ret;
 	}
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.Services.CoderService#viewCodersCount()
+     */
+    @Override
+    public Integer viewCodersCount() {
+    	PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		int size = 0;
+		try {
+			Query q = pm.newQuery(Coder.class);
+			List<Coder> codersDB = (List<Coder>) q.execute();
+			size = codersDB.size();
+		} finally {
+			pm.close();
+		}
+
+		return size;
+
+    }
+
+	/* (non-Javadoc)
+     * @see com.OJToolkit.client.Services.CoderService#getCoderSubmissionsCount(java.lang.String)
+     */
+    @Override
+    public Integer getCoderSubmissionsCount(String username) {
+    	PersistenceManager pm = DataStoreHandler.getPersistenceManager();
+		ArrayList<SubmissionData> ret = new ArrayList<SubmissionData>();
+		SubmissionData submissionData;
+		int size = 0;
+		try {
+			String select_query = "select from "
+					+ UserSubmission.class.getName();
+			Query query = pm.newQuery(select_query);
+			query.setFilter("username == userName");
+			query.declareParameters("java.lang.String userName");
+     		List<UserSubmission> submissions = (List<UserSubmission>) query
+					.execute(username);
+
+			size = submissions.size();
+
+		} finally {
+			pm.close();
+		}
+
+		return size;
+    }
 }

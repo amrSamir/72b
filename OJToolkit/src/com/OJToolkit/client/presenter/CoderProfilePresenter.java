@@ -234,9 +234,27 @@ public class CoderProfilePresenter implements Presenter {
 
 					        }
 				        });
+				
+
+
 
 			}
 		};
+		// Fetch problem count from server
+		coderService.getCoderSubmissionsCount(username,
+				new AsyncCallback<Integer>() {
+
+					@Override
+					public void onSuccess(Integer size) {
+						cellTable.setRowCount(size, true);
+					}
+
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+
+					}
+				});
 
 		// Add the CellTable to the adapter dataProvider.
 		dataProvider.addDataDisplay(cellTable);

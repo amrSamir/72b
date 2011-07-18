@@ -47,6 +47,9 @@ public interface CoderService extends RemoteService {
 	 */
 	public ArrayList<CoderData> viewCoders(Range range, String sortingQuery) throws NotLoggedInException;
 
+	
+	public Integer viewCodersCount();
+ 
 	/**
 	 * Checks whether the user is registered or not
 	 * 
@@ -73,6 +76,9 @@ public interface CoderService extends RemoteService {
 	public CoderProfileData getCoderDetails(String username);
 	
 	public ArrayList<SubmissionData> getCoderSubmissions(String username, Range range, String sortingQuery);
+	
+	public Integer getCoderSubmissionsCount(String username);
+
 	
 	public String getUsername();
 	

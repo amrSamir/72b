@@ -12,7 +12,7 @@ import com.google.gwt.resources.client.TextResource;
  */
 public interface MyResource extends ClientBundle {
 	MyResource INSTANCE = GWT.create(MyResource.class);
-
+/*
 	
 	@Source("TimusProblems.txt")
 	public ExternalTextResource TimusProblems();
@@ -63,7 +63,19 @@ public interface MyResource extends ClientBundle {
 	@Source("uva8.txt")
 	public ExternalTextResource UVAProblemText8();
 	
-	
+*/	
+	@Source("LiveArchive1.txt")
+	public ExternalTextResource LAProblemText1();
+	@Source("LiveArchive2.txt")
+	public ExternalTextResource LAProblemText2();
+	@Source("LiveArchive3.txt")
+	public ExternalTextResource LAProblemText3();
+	@Source("LiveArchive4.txt")
+	public ExternalTextResource LAProblemText4();
+	@Source("LiveArchive5.txt")
+	public ExternalTextResource LAProblemText5();
+	@Source("LiveArchive6.txt")
+	public ExternalTextResource LAProblemText6();
 
 	@Source("Banner.jpg")
 	public ImageResource imgBanner();

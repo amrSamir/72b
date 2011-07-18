@@ -75,6 +75,8 @@ public interface SubmissionService extends RemoteService {
 	
 	public ArrayList<SubmissionData> getSubmissions(Range range, String sortingQuery);
 	
+	public Integer getSubmissionsCount();
+	
 	public void addProblemTextToDB(ProblemTextData problemTextData);
 	
 	public ProblemTextData getProblemText(String problemCode, String judgeType);

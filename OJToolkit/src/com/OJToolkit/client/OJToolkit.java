@@ -18,6 +18,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.resources.client.ResourceException;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -64,8 +65,13 @@ public class OJToolkit implements EntryPoint {
 		// FackeSubmissions f = new FackeSubmissions() ;
 		// /*
 
-		// new SpojProblemsToDBAdder();
-		// /*
+	/*	try {
+	        new SpojProblemsToDBAdder();
+        } catch (ResourceException e) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+        }*/
+		 //*
 		AppController appViewer = new AppController(eventBus,
 				submissionService, languageService, loginService, coderService,
 				sourceCodeService, hintService, contestService);

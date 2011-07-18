@@ -3,11 +3,6 @@
  */
 package com.OJToolkit.server.engine;
 
-/**
- * @author 72B
- * Jul 14, 2011
- */
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -21,9 +16,12 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 
 public class LiveArchive implements Judge {
 
@@ -59,47 +57,84 @@ public class LiveArchive implements Judge {
         }
 
         @Override
-        public boolean signIn(String username, String password) throws Exception {
+        public int signIn(String username, String password) throws Exception {
                 ArrayList<String> ret = getResponse(
                                 "http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
                                 "username=" + username + "&password=" + password
-                                                + "&ID=1&JID=LIVEARCHIVE");
-                return Boolean.parseBoolean(ret.get(0));
+                                                + "&ID=1&JID=LiveArchive");
+                return Integer.parseInt(ret.get(0));
         }
 
         private ArrayList<String> getVolumes() throws HttpException, IOException {
-                throw new UnsupportedOperationException(
-                                "This function not implemented yet!");
-
+        ArrayList<String> ret = new ArrayList<String>();
+        HttpClient h = new HttpClient();
+        for (Integer i = 1; i < 3; i++) {
+            GetMethod g = new GetMethod("http://livearchive.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=" + i.toString());
+            g.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler());
+            h.getParams().setParameter(HttpMethodParams.USER_AGENT, "Linux-Omar");
+            h.executeMethod(g);
+            String regex = "<td><a href=\"(index[.]php\\?option=com_onlinejudge&)amp;(Itemid=8&)amp;(category=[\\d]+)\">Volume [\\S]+</a></td>";
+            Matcher m = Pattern.compile(regex).matcher(g.getResponseBodyAsString());
+            while (m.find()) {
+                ret.add("http://livearchive.onlinejudge.org/" + m.group(1) + m.group(2) + m.group(3));
+            }
+        }
+        for(int i = 0 ; i < ret.size() ; i ++)
+                System.out.println(ret.get(i));
+        
+        return ret;
         }
 
         @Override
         public ArrayList<Problem> getAllProblems() throws HttpException,
                         IOException {
-                throw new UnsupportedOperationException(
-                                "This function not implemented yet!");
+                 ArrayList<Problem> ret = new ArrayList<Problem>();
+                ArrayList<String> volumes = getVolumes();
+                System.out.println("Processing " + volumes.size() + " Volumes ...");
+                HttpClient h = new HttpClient();
+                PrintWriter p = new PrintWriter(new File("/home/workspace/JudgesEngine/src/ProblemsFiles/LiveArchive.txt"));
+                for (int i = 0; i < volumes.size(); i++) {
+                    System.out.println("Parsing Volume " + i + " ... ");
+                    String regex = "<td><a href=\"(index[.]php\\?option=com_onlinejudge&)amp;(Itemid=8&)amp;(category=\\d+&)amp;(page=show_problem&)amp;(problem=\\d+)\">(\\d+)&nbsp;-&nbsp;([^<]+)</a></td>";
+                    GetMethod g = new GetMethod(volumes.get(i));
+                    g.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler());
+                    h.getParams().setParameter(HttpMethodParams.USER_AGENT, "Linux-Omar");
+                    h.executeMethod(g);
+                    Matcher m = Pattern.compile(regex).matcher(g.getResponseBodyAsString());
+                    while (m.find()) {
+                        ret.add(new Problem(m.group(6), "http://livearchive.onlinejudge.org/" + m.group(1) + m.group(2) + m.group(3) + m.group(4) + m.group(5), m.group(7), null, null));
+                        p.write(ret.get(ret.size()-1).getId() + " | " + ret.get(ret.size()-1).getName() + " | " + ret.get(ret.size()-1).getUrl()+"\n");
+                    }
+                    p.flush();
+                }
+                p.close();
+                return ret;
 
         }
-
+        /* (non-Javadoc)
+         * @see Engine.Judge#getLastSubmission(java.lang.String, java.lang.String)
+         */
         @Override
         public Submission getLastSubmission(String coderId, String password,
                         String ids) throws Exception {
                 ArrayList<String> a = getResponse(
                                 "http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
                                 "username=" + coderId + "&password=" + password
-                                                + "&ID=4&JID=LIVEARCHIVE&idl=" + ids);
+                                                + "&ID=4&JID=LiveArchive&idl=" + ids);
                 if (a.size() != 6)
                         return new Submission();
                 return new Submission(a.get(3), a.get(0), a.get(4), "", a.get(5),
                                 a.get(1));
         }
-
+        /* (non-Javadoc)
+         * @see Engine.Judge#getProblemInfo(java.lang.String)
+         */
         @Override
         public Problem getProblemInfo(String problemId) {
                 // TODO Auto-generated method stub
                 return null;
         }
-
+        
         @Override
         public ArrayList<String> getProblemsSolved(String coderId) {
 
@@ -111,7 +146,7 @@ public class LiveArchive implements Judge {
          * -lcrypt -O2 -pipe -ansi -DONLINE_JUDGE 2 --> JAVA 1.6.0 - Java Sun JDK 3
          * --> C++ 4.1.2 - GNU C++ Compiler with options: -lm -lcrypt -O2 -pipe
          * -DONLINE_JUDGE 4 --> PASCAL 2.0.4 - Free Pascal Compiler (non-Javadoc)
-         *
+         * 
          * @see Engine.Judge#submitProblem(java.lang.String, java.lang.String,
          * java.lang.String, java.lang.String, java.lang.String)
          */
@@ -137,7 +172,7 @@ public class LiveArchive implements Judge {
                                 "http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
                                 "username=" + coderId + "&password=" + password + "&problemId="
                                                 + problemId + "&languageId=" + language + "&code="
-                                                + code + "&ID=3&JID=LIVEARCHIVE").get(0);
+                                                + code + "&ID=3&JID=LiveArchive").get(0);
                 return Long.parseLong(ret);
         }
 
@@ -152,58 +187,68 @@ public class LiveArchive implements Judge {
                 GetMethod g = new GetMethod();
                 HttpClient h = new HttpClient();
                 Scanner s = new Scanner(new File(
-                                "/home/workspace/JudgesEngine/src/ProblemsFiles/LIVEARCHIVE.txt"));
+                                "/home/workspace/JudgesEngine/src/ProblemsFiles/LiveArchive.txt"));
                 String line;
                 s.nextLine();
                 PrintWriter p = new PrintWriter(new File(
-                                "/home/workspace/JudgesEngine/src/ProblemsTextFiles/LIVEARCHIVE.txt"));
+                                "/home/workspace/JudgesEngine/src/ProblemsTextFiles/LiveArchive/LiveArchive1.txt"));
                 int f = 0;
-                Integer folder = 0;
+                Integer folder = 19 , ID = 2;
+                // 3221225472
+                Long sz = 0L;
+                String dim = "______________________________________________________\n";
                 while (s.hasNext()) {
                         line = s.nextLine();
                         Integer id = Integer.parseInt(line.substring(0,
                                         line.indexOf("|") - 1));
-                        f++;
+                        f ++;
                         if (f % 10 == 0)
                                 p.flush();
-                        if (id % 100 == 0) {
+                        if (id % 100 == 0) 
                                 folder++;
-                                if (folder == 10)
-                                        folder = 100;
-                        }
-                        g = new GetMethod("http://uva.onlinejudge.org/external/"
+                        g = new GetMethod("http://livearchive.onlinejudge.org/external/"
                                         + folder.toString() + "/" + id.toString()+".html");
-                        System.out.println("http://uva.onlinejudge.org/external/"
-                                        + folder.toString() + "/" + id.toString()+".html");
+                        System.out.println("http://livearchive.onlinejudge.org/external/"
+                                        + folder.toString() + "/" + id.toString()+".html" +" ------- " + (ID-1));
                         h.executeMethod(g);
-                        String gg = g.getResponseBodyAsString();
-                        p.write(line.substring(0, line.indexOf("|") - 1)
-                                        + "||||||false||||||\n");
+                        String gg = g.getResponseBodyAsString() , ff = line.substring(0, line.indexOf("|") - 1)
+                        + "||||||false||||||\n";
+                        p.write(ff);
                         gg = fixURL(gg,
-                                        "http://uva.onlinejudge.org/external/" + folder.toString()
+                                        "http://livearchive.onlinejudge.org/external/" + folder.toString()
                                                         + "/");
-                        ret.add(new ProblemText("", "", "", "", false, gg));
                         p.write(gg + "\n");
+                        p.write(dim);
+                        sz += gg.length()+dim.length()+ff.length()+1;
+                        System.err.print(sz + " " );
+                        System.out.println(3145728L);
+                        if(sz >= 3145728L){
+                                sz = 0L;
+                                p.flush();
+                                p.close();
+                                p = new PrintWriter(new File("/home/workspace/JudgesEngine/src/ProblemsTextFiles/LiveArchive/LiveArchive" + ID.toString() + ".txt"));
+                                ID ++;
+                                System.err.println(dim);
+                        }
+                        ret.add(new ProblemText("", "", "", "", false, gg));
                         System.out
                                         .println("______________________________________________________");
-                        p.write("______________________________________________________\n");
                 }
                 p.flush();
                 p.close();
-                return null;
+                return ret;
         }
 
         private String fixURL(String r, String url) {
                 int i = 0;
-                String regex = "(SRC|src)=\"([^\"]+)";
+                String regex = "(SRC|src)=\"([^\"]+)\"";
                 Matcher m = Pattern.compile(regex).matcher(r);
                 if (m.find()) {
                         r = r.replaceAll(regex,
-                                        m.group(1)+"=\""+ url + m.group(2) +"\"");
+                                        m.group(1)+"=\""+ url + m.group(2));
 //                      System.out.println(r);
                 }
                 r = r.replace("https", "http");
                 return r;
         }
 }
-

@@ -82,7 +82,7 @@ public interface CoderService extends RemoteService {
 	
 	public String getUsername();
 	
-	boolean isValidAccount(String username, String password, String judgeType) throws Exception;
+	Integer isValidAccount(String username, String password, String judgeType) throws Exception;
 	
 	
 

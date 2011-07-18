@@ -27,6 +27,26 @@ import org.apache.commons.httpclient.methods.GetMethod;
  */
 public class Timus implements Judge {
 
+        public String getMaxSubmissionId(String id) throws IOException
+        {
+                URL siteUrl = new URL("http://acm.timus.ru/status.aspx?author=" + id.substring(0 , id.length()-2));
+                HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+                DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+                out.writeBytes("");
+                out.flush();
+                out.close();            
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String a = "" , tem;
+                while((tem = in.readLine()) != null)
+                        a += tem + "\n";
+                conn.disconnect();
+                Matcher m = Pattern.compile("<A HREF=\"getsubmit.aspx/([\\d]+).txt\">").matcher(a);
+                m.find();
+                return m.group(1);
+        }
         /* (non-Javadoc)
          * @see Engine.Judge#submitProblem(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
                         3 --> Pascal    
@@ -60,7 +80,7 @@ public class Timus implements Judge {
                 out.close();
                 conn.getInputStream();
                 conn.disconnect();
-                return null;
+                return Long.parseLong(getMaxSubmissionId(coderId));
         }
 
         /* (non-Javadoc)
@@ -69,10 +89,11 @@ public class Timus implements Judge {
         @Override
         public Submission getLastSubmission(String coderId, String password, String ids)
                         throws Exception {
-                Submission ret = new Submission();
+                Submission ret = new Submission("" , "" , "" , "" , "" , "");
+                Submission sub = new Submission("" , "" , "" , "" , "" , "");
                 URL siteUrl = new URL("http://acm.timus.ru/status.aspx?author="+coderId.substring(0 , coderId.length()-2));
                 HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
-                conn.setRequestMethod("POST");
+                conn.setRequestMethod("GET");
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
                 DataOutputStream out = new DataOutputStream(conn.getOutputStream());
@@ -80,33 +101,38 @@ public class Timus implements Judge {
                 out.flush();
                 out.close();
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String tem = in.readLine();
-                String arr[]= {"verdict" , "language" , "runtime" , "memory" , "problem" ,"date"};
-                int [] num1 = {1 , 2 , 2 , 2 , 3 , 3};
-                int [] num2 = {1 , 1 , 1 , 1 , 3 , 9};
-                for(int i = 0 ; i < arr.length ; i ++)
-                {
-                        String temp = "";
-                        int ind = -1;
-                        for(int k = 0 ; k < num1[i] ; k ++)
-                                ind = tem.indexOf(arr[i], ++ ind) ;
-                        for(int c = 0 ; c != num2[i] ; c += (tem.charAt(ind) == '>'||tem.charAt(ind)== '<') ? 1 : 0 , ind ++);
-                        for( ; tem.charAt(ind) != '>' && tem.charAt(ind) != '<' ; ind ++)
-                                temp += tem.charAt(ind);
-                        if(i == 0)
-                                ret.setStatus(temp.equals("") ? "compilation error":temp);
-                        else if(i == 1)
-                                ret.setLanguage(temp);
-                        else if(i == 2)
-                                ret.setRuntime(temp);
-                        else if(i == 3)
-                                ret.setMemoryUsed(temp);
-                        else if(i == 4){
-                                ret.setProblemId(temp.substring(0, temp.indexOf(".")));
-                        }
-                        else 
-                                ret.setDate(temp);
-                }
+                String s = in.readLine();
+                int ind = s.indexOf(ids);
+                String statusR = "<TD class=\"verdict_[\\S]+\">([^<]+)";
+                String dateR = "<TD class=\"date\"><NOBR>([^<]+)</NOBR><BR><NOBR>([^<]+)";
+                String idR = "<TD class=\"problem\"><A HREF=\"problem\\.aspx\\?space=1\\&amp\\;num=([\\d]+)";
+                String memR = "<TD class=\"memory\">([^<]*)";
+                String langR = "<TD class=\"language\">([^<]+)";
+                String runR = "<TD class=\"runtime\">([^<]*)";
+                Matcher m1 = Pattern.compile(statusR).matcher(s);
+                if(!m1.find(ind))
+                        return sub;
+                ret.setStatus(m1.group(1));
+                m1 = Pattern.compile(dateR).matcher(s);
+                if (!m1.find(ind))
+                        return sub;
+                ret.setDate(m1.group(2) + " " + m1.group(1));
+                m1 = Pattern.compile(runR).matcher(s);
+                if (!m1.find(ind))
+                        return sub;
+                ret.setRuntime(m1.group(1));
+                m1 = Pattern.compile(memR).matcher(s);
+                if (!m1.find(ind))
+                        return sub;
+                ret.setMemoryUsed(m1.group(1));
+                m1 = Pattern.compile(langR).matcher(s);
+                if (!m1.find(ind))
+                        return sub;
+                ret.setLanguage(m1.group(1));
+                m1 = Pattern.compile(idR).matcher(s);
+                if (!m1.find(ind))
+                        return sub;
+                ret.setProblemId(m1.group(1));
                 return ret;
         }
 
@@ -157,7 +183,7 @@ public class Timus implements Judge {
         }
 
     @Override
-    public boolean signIn(String username, String password) throws Exception { 
+    public int signIn(String username, String password) throws Exception { 
                 URL siteUrl = new URL("http://acm.timus.ru/authedit.aspx");
                 HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
                 conn.setRequestMethod("POST");
@@ -172,9 +198,9 @@ public class Timus implements Judge {
                 String regex = "<FONT COLOR=\"Red\">Invalid JUDGE_ID</FONT>";
                 while((tem = in.readLine()) != null){
                         if(tem.indexOf(regex) != -1)
-                                return false;
+                                return 0;
                 }
-        return true;
+        return 1;
     }
 
     @Override
@@ -188,13 +214,14 @@ public class Timus implements Judge {
                 ArrayList<ProblemText> ret = new ArrayList<ProblemText>();
                 String ps = "<H3 CLASS=\"problem_subtitle\">";
                 String dis = "<DIV ID=\"problem_text\">([\\s\\S]+)"+ps+"Input</H3>";
+                String all = "<DIV ID=\"problem_text\">([\\s\\S]+)<DIV CLASS=\"problem_source\">" ;
                 String input = ps + "Input</H3>([\\s\\S]+)"+ps+"Output</H3>";
-                String output = ps + "Output</H3>([\\s\\S]+)("+ps+"Samples?</H3>)?(<DIV CLASS=\"problem_source\">)?";
+                String output = ps + "Output</H3>([\\s\\S]+)"+ps+"Samples?</H3>";
                 String sampleT = ps + "Samples?</H3>([\\s\\S]+)"+ "<DIV CLASS=\"problem_source\">";
                 
                 GetMethod g = new GetMethod();
                 HttpClient h = new HttpClient();
-                Scanner s = new Scanner(new File(""));
+                Scanner s = new Scanner(new File("/home/workspace/JudgesEngine/src/ProblemsFiles/Timus.txt"));
                 String line;
                 s.nextLine();
                 PrintWriter p = new PrintWriter(new File(
@@ -209,16 +236,18 @@ public class Timus implements Judge {
                                         +  line.substring(0, line.indexOf("|") - 1));
                         h.executeMethod(g);
                         String gg = g.getResponseBodyAsString();
+                        gg = fixURL(gg, "http://acm.timus.ru");
                         String d = match(gg , dis, 1);
                         String i = match(gg , input, 1);
                         String o = match(gg , output, 1);
                         String ss= match(gg , sampleT, 1);
+                        String a = match(gg , all , 1);
 //                      System.out.println(i + " \n" + ss);
-                        if (i.equals("la2a") || o.equals("la2a") ) {
+                        if (i.equals("la2a") || o.equals("la2a") || ss.equals("la2a")) {
                                 p.write(line.substring(0, line.indexOf("|") - 1) + "||||||false||||||\n");
                                 System.err.println(line.substring(0, line.indexOf("|") - 1) + "||||||false||||||\n");
-                                ret.add(new ProblemText("", "", "", "", false, d));
-                                p.write(d + "\n");
+                                ret.add(new ProblemText("", "", "", "", false, a));
+                                p.write(a + "\n");
                         } else {
                                 p.write(line.substring(0, line.indexOf("|") - 1) + "||||||true||||||\n");;
                                 System.out.println(line.substring(0, line.indexOf("|") - 1) + "||||||true||||||");
@@ -245,5 +274,17 @@ public class Timus implements Judge {
                 if (m.find())
                         return m.group(g);
                 return "la2a";
+        }
+        private String fixURL(String r, String url) {
+                int i = 0;
+                String regex = "(SRC|src)=\"([^\"]+)\"";
+                Matcher m = Pattern.compile(regex).matcher(r);
+                if (m.find()) {
+                        r = r.replaceAll(regex,
+                                        m.group(1)+"=\""+ url + m.group(2) +"\"");
+//                      System.out.println(r);
+                }
+                r = r.replace("https", "http");
+                return r;
         }
 }

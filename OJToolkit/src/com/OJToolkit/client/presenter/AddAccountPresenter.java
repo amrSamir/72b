@@ -12,6 +12,7 @@ import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasValue;
@@ -185,11 +186,21 @@ public class AddAccountPresenter implements Presenter {
 	private void isValidAccount(final String ojType) {
 		coderService.isValidAccount(display.getAccountUserName().getValue(),
 		        display.getAccountPassword().getValue(), ojType,
-		        new AsyncCallback<Boolean>() {
+		        new AsyncCallback<Integer>() {
 
 			        @Override
-			        public void onSuccess(Boolean result) {
-				        addAccount(ojType, result);
+			        public void onSuccess(Integer result) {
+				        System.out.println("Sign in");
+				        if (result == -1) {
+					        new Timer() {
+						        public void run() {
+							        isValidAccount(ojType);
+						        }
+
+					        }.schedule(3000);
+				        } else {
+					        addAccount(ojType, result == 1 ? true : false);
+				        }
 
 			        }
 
@@ -218,7 +229,8 @@ public class AddAccountPresenter implements Presenter {
 					        addedAccounts += "-" + accountType;
 					        Cookies.setCookie("addedAccountsCookie",
 					                addedAccounts);
-					        System.out.println("addedAccountsCookie" + addedAccounts);
+					        System.out.println("addedAccountsCookie"
+					                + addedAccounts);
 					        display.notifyUser("Account is added/updated successfully");
 				        }
 

@@ -114,38 +114,37 @@ public class SPOJ implements Judge {
                 }
                 conn.disconnect();
                 in.close();
-                String maxR = "<input type=\"hidden\" id=\"max_id\" value=\"(\\d+)\" />";
+                int ind = s.indexOf(ids);
+                System.out.println("Omar " + ind);
                 String dateR = "<td class=\"status_sm\">\\s*([\\d|\\:|\\-|\\s]+)\\s*</td>"; // href=\"/problems/";
                 String resultR = "<td><a href=\"[\\s\\S]+>\\s*(compilation error|accepted|runtime error    (NZEC)|time limit exceeded|wrong answer)[\\s\\S]*<td class=\"statustext\" id=\"statustime_";
-                String timeR = "<td class=\"statustext\" id=\"statustime_\\d+\">\\s+<a href=\"/ranks/[A-Z]+/\" title=\"See the best solutions\">\\s+([\\-|\\d|\\.]+)\\s+</a>";
+                String timeR = "<td class=\"statustext\" id=\"statustime_\\d+\">\\s+<a href=\"/ranks/[A-Z0-9]+/\" title=\"See the best solutions\">\\s+([\\-|\\d|\\.]+)\\s+</a>";
                 String memoryR = "<td class=\"statustext\" id=\"statusmem_\\d+\">\\s+([\\-|\\.|M|\\d|k]+)\\s+</td>";
                 String langR = "<td class=\"slang\">\\s*<p>([\\+|A-Z]+)</p>";
                 String problemidR = "<td><a href=\"/problems/(\\w+)/\"";
-                Submission sub = new Submission("", "", "", "", "", "");
-                Matcher m1 = Pattern.compile(maxR).matcher(s);
-                m1.find();
-                m1 = Pattern.compile(resultR+m1.group(1)).matcher(s);
-                if (!m1.find())
+                Submission sub = new Submission();
+                Matcher m1 = Pattern.compile(resultR+ids).matcher(s);
+                if (!m1.find(ind))
                         return sub;
                 ret.setStatus(m1.group(1));
                 m1 = Pattern.compile(dateR).matcher(s);
-                if (!m1.find())
+                if (!m1.find(ind))
                         return sub;
                 ret.setDate(m1.group(1));
                 m1 = Pattern.compile(timeR).matcher(s);
-                if (!m1.find())
+                if (!m1.find(ind))
                         return sub;
                 ret.setRuntime(m1.group(1));
                 m1 = Pattern.compile(memoryR).matcher(s);
-                if (!m1.find())
+                if (!m1.find(ind))
                         return sub;
                 ret.setMemoryUsed(m1.group(1));
                 m1 = Pattern.compile(langR).matcher(s);
-                if (!m1.find())
+                if (!m1.find(ind))
                         return sub;
                 ret.setLanguage(m1.group(1));
                 m1 = Pattern.compile(problemidR).matcher(s);
-                if (!m1.find())
+                if (!m1.find(ind))
                         return sub;
                 ret.setProblemId(m1.group(1));
                 return ret;
@@ -205,7 +204,6 @@ public class SPOJ implements Judge {
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
                 DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-                ;
                 out.writeBytes("");
                 out.flush();
                 out.close();
@@ -250,7 +248,26 @@ public class SPOJ implements Judge {
                 }
                 return ret;
         }
-
+        private String getMaxSubmissionId(String id) throws IOException
+        {
+                URL siteUrl = new URL("http://www.spoj.pl/status/" + id);
+                HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+                DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+                out.writeBytes("");
+                out.flush();
+                out.close();            
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String a = "" , tem;
+                while((tem = in.readLine()) != null)
+                        a += tem + "\n";
+                conn.disconnect();
+                Matcher m = Pattern.compile("<td class=\"statustext\">\\s*([\\d]+)").matcher(a);
+                m.find();
+                return m.group(1);
+        }
         @Override
         public Long submitProblem(String coderId, String password,
                         String problemId, String languageId, String code)
@@ -298,16 +315,16 @@ public class SPOJ implements Judge {
                 out.close();
                 conn.getInputStream();
                 conn.disconnect();
-                return null;
+                return Long.parseLong(getMaxSubmissionId(coderId));
         }
 
         @Override
-        public boolean signIn(String username, String password) throws Exception {
+        public int signIn(String username, String password) throws Exception {
                 ArrayList<String> ret = getResponse(
                                 "http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
                                 "username=" + username + "&password=" + password
                                                 + "&ID=1&JID=SPOJ");
-                return Boolean.parseBoolean(ret.get(0));
+                return Integer.parseInt(ret.get(0));
         }
 
         @Override
@@ -413,4 +430,5 @@ public class SPOJ implements Judge {
                         ret.add(s.nextToken());
                 return ret;
         }
-}
+} // 108077
+// 109053

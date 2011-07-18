@@ -68,12 +68,8 @@ public interface CoderServiceAsync {
 	 */
 	void getUsername(AsyncCallback<String> callback);
 
-	/**
-	 * 
-	 * @see com.OJToolkit.client.Services.CoderService#isValidAccount(java.lang.String, java.lang.String, java.lang.String)
-	 */
 	void isValidAccount(String username, String password, String judgeType,
-	        AsyncCallback<Boolean> callback);
+            AsyncCallback<Integer> callback);
 
 	/**
 	 * 

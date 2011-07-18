@@ -22,14 +22,14 @@ public interface Judge {
      * 
      * @param username : Username of the coder.
      * @param password : Password of the coder.
-     * @return boolean : <b>True<b> if signed in successfully , <n>False<n> if not.
+     * @return int : <b>1<b> if signed in successfully , <b>0<b> if not signed in , <b>-1<b> if the operation didn't completed yet.
      */
-    public boolean signIn(String username, String password) throws Exception;
+    public int signIn(String username, String password) throws Exception;
 
     /**
      * 
      * @param username : Username of the coder.
-     * @return <b>True<b> if signed in successfully , <n>False<n> if not.
+     * @return <b>True<b> if signed in successfully , <b>False<b> if not.
      */
     public boolean signOut(String username);
 

@@ -30,7 +30,7 @@ public class InvitationPresenter implements Presenter {
 
 	private final Display display;
 	private final HandlerManager eventBus;
-	private final String invitationString = "x";
+	private final String invitationString = "I promise I'll send feedback, and not be be very upset if something goes wrong at codemashup.com :)";
 
 	/**
 	 * Call registration page

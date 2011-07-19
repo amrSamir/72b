@@ -16,7 +16,7 @@ h1 {
 
 /************* WELCOME PAGE ****************/
 .welcomePage {
-	text-align: center;
+	text-align: center;" horizontalAlignment="center"
 	vertical-align: center;
 	background: #FCFCFC url(lightgray.png);
 	margin: auto;
@@ -55,6 +55,10 @@ h1 {
 	color: black;
 }
 
+.welcomeLogo a:visited {
+	color: black;
+}
+
 .welcomeTitle a {
 	font-family: 'Jura', serif;
 	font-size: 110px;
@@ -71,6 +75,10 @@ h1 {
 }
 
 .welcomeTitle a:hover {
+	color: black;
+}
+
+.welcomeTitle a:visited {
 	color: black;
 }
 
@@ -96,6 +104,10 @@ h1 {
 
 .welcomeEnter a:hover {
 	color: #f6f6f5;
+}
+
+.welcomeEnter a:visited {
+	color: #d6d6d5;
 }
 
 .welcomeSubTitle {
@@ -177,6 +189,20 @@ h1 {
 	font-style: normal;
 	font-weight: 400;
 	text-shadow: 4px 4px 4px #aaa;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	line-height: 0.9;
+	text-align: center;
+}
+
+.welcomeOJName:visited {
+	font-family: 'Carter One', sans-serif;
+	color: black;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 400;
 	text-decoration: none;
 	text-transform: none;
 	letter-spacing: 0em;
@@ -336,7 +362,81 @@ h1 {
 	background-color: #2d2d2d;
 	color: #d6d6d5;
 }
+
+.LeftPanel-Label2-selected {
+	background-color: #2d2d2d;
+	color: #d6d6d5;
+}
 /************ END LEFT PANEL ***************/
+.PageHeader {
+	font-family: 'Ubuntu', serif;
+	color: black;
+	font-size: 1.5em;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	vertical-align: middle;
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+.PageHeader2 {
+	font-family: 'Ubuntu', serif;
+	color: black;
+	font-size: 2.9em;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	vertical-align: middle;
+	text-align: center;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.SubHeader2 {
+	font-family: 'Ubuntu', serif;
+	color: black;
+	font-size: 1.5em;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	vertical-align: center;
+}
+
+.SubHeader3 {
+	font-family: 'Ubuntu', serif;
+	color: black;
+	font-size: 1.5em;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	vertical-align: center;
+}
+
+
+.SubHeader {
+	font-family: 'Ubuntu', serif;
+	color: black;
+	font-size: 1.6em;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	vertical-align: center;
+}
+
 .CodeEditor {
 	margin-top: 10px;
 }
@@ -385,6 +485,21 @@ h1 {
 	padding: 10px;
 }
 
+.ProblemSection {
+	font-family: 'Ubuntu', serif;
+	color: black;
+	font-size: 1.2em;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	vertical-align: middle;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
 .center {
 	margin: auto;
 	top: 100px;
@@ -401,10 +516,56 @@ h1 {
 	text-align: center;
 }
 
-.gwt-Anchor {
+/* .gwt-Anchor {
 	font-size: 200%;
 	color: #d6d6d5;
 	font-weight: bolder;
+} */
+
+.right {
+	margin:1em 0;
+}
+
+
+.boxed {
+	width: 100%;
+	border-style:solid;
+	border-width:1px;
+	margin: 11px;
+	padding: 16px;
+	background-image: url('leftPanel.jpg');
+	border-radius:25px;
+	-moz-border-radius:25px; /* Firefox 3.6 and earlier */
+	box-shadow: 10px 10px 5px #888888;
+	-webkit-box-shadow: 10px 10px 5px #888888; /* Safari */
+}
+
+.boxed2 {
+	width: 100%;
+	border-style:solid;
+	border-width:1px;
+	margin: 11px;
+	padding: 16px;
+	background-color: white;
+	border-radius:25px;
+	-moz-border-radius:25px; /* Firefox 3.6 and earlier */
+	box-shadow: 10px 10px 5px #888888;
+	-webkit-box-shadow: 10px 10px 5px #888888; /* Safari */
+}
+
+.footerlbl a  {
+	color: white;
+	text-decoration: none;
+}
+
+.footerlbl a:hover  {
+	color: white;
+	text-decoration: none;
+}
+
+.footerlbl a:visited  {
+	color: white;
+	text-decoration: none;
 }
 
 /************* TabLayout Panel ***************/

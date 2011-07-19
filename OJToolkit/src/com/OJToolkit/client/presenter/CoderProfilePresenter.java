@@ -142,7 +142,7 @@ public class CoderProfilePresenter implements Presenter {
 	 * @param result
 	 */
 	protected void setCoderDetails(CoderProfileData result) {
-		lblProfileTitle.setText(result.getUsername());
+		lblProfileTitle.setText(result.getUsername()+"'s Profile");
 		lblNumberOfSolved.setText(String.valueOf(result.getNumberOfSolved()));
 		lblNumberOfSubmission.setText(String.valueOf(result
 		        .getNumberOfSubmission()));
@@ -234,9 +234,6 @@ public class CoderProfilePresenter implements Presenter {
 
 					        }
 				        });
-				
-
-
 
 			}
 		};

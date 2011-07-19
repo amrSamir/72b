@@ -8,69 +8,54 @@
 			margin-bottom: 4px;
 		}
 	</ui:style>
-	<g:HTMLPanel>
-		<table cellspacing='0' cellpadding='0' style='width:100%;'>
-			<tr>
-				<td valign='top'>
-					<g:Label ui:field="lblProfileTitle" />
-				</td>
-			</tr>
-			<tr>
-				<td valign='top'>
-					Number of Submissions
-				</td>
-				<td valign='top'>
-					<g:Label ui:field="lblNumberOfSubmission" />
-				</td>
-			</tr>
-			<tr>
-				<td valign='top'>
-					Number of Solved
-				</td>
-				<td valign='top'>
-					<g:Label ui:field="lblNumberOfSolved" />
-				</td>
-			</tr>
-			<tr>
-				<td valign='top'>
-					SPOJ Username
-				</td>
-				<td valign='top'>
-					<g:Label ui:field="lblSPOJUsername" />
-				</td>
-			</tr>
-			<tr>
-				<td valign='top'>
-					UVA Username
-				</td>
-				<td valign='top'>
-					<g:Label ui:field="lblUVAUsername" />
-				</td>
-			</tr>
-			<tr>
-				<td valign='top'>
-					Timus Username
-				</td>
-				<td valign='top'>
-					<g:Label ui:field="lblTimusUsername" />
-				</td>
-			</tr>
-			<tr>
-				<td valign='top'>
-					Last Submissions
-				</td>
-			</tr>
-			<tr>
-				<td valign='top'>
-					<c:CellTable  addStyleNames='{style.cellTable}'
-						pageSize='5' ui:field='cellTable' />
-				</td>
-			</tr>
-			<tr>
-				<td align='center'>
-					<c:SimplePager ui:field='pager' />
-				</td>
-			</tr>
-		</table>
-	</g:HTMLPanel>
+	<g:ScrollPanel height="100%" width="100%">
+		<g:VerticalPanel horizontalAlignment="CENTER"
+			styleName="center">
+			<g:Label styleName="PageHeader" ui:field="lblProfileTitle"/>
+			<g:HTMLPanel>
+				<table cellspacing='0' cellpadding='0' style='width:100%;'>
+					<tr>
+						<td valign='top'>
+							<g:Label styleName="bold">Number of Submissions</g:Label>
+						</td>
+						<td valign='top'>
+							<g:Label ui:field="lblNumberOfSubmission" />
+						</td>
+						<td valign='top'>
+							<g:Label styleName="bold">Number of Solved</g:Label>
+						</td>
+						<td valign='top'>
+							<g:Label ui:field="lblNumberOfSolved" />
+						</td>
+					</tr>
+					<tr>
+						<td valign='top'>
+							<g:Label styleName="bold">SPOJ Username</g:Label>
+						</td>
+						<td valign='top'>
+							<g:Label ui:field="lblSPOJUsername" />
+						</td>
+						<td valign='top'>
+							<g:Label styleName="bold">UVA Username</g:Label>
+						</td>
+						<td valign='top'>
+							<g:Label ui:field="lblUVAUsername" />
+						</td>
+					</tr>
+					<tr>
+						<td valign='top'>
+							<g:Label styleName="bold">Timus Username</g:Label>
+						</td>
+						<td valign='top'>
+							<g:Label ui:field="lblTimusUsername" />
+						</td>
+					</tr>
+				</table>
+			</g:HTMLPanel>
+			<g:Label styleName="bold" height="30px">Last Submissions</g:Label>
+			<c:CellTable addStyleNames='{style.cellTable}' pageSize='5'
+				ui:field='cellTable' />
+			<c:SimplePager ui:field='pager' />
+		</g:VerticalPanel>
+	</g:ScrollPanel>
 </ui:UiBinder> 

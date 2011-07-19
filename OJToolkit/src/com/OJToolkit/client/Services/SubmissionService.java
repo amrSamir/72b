@@ -16,6 +16,8 @@ import com.google.gwt.view.client.Range;
 @RemoteServiceRelativePath("submission")
 public interface SubmissionService extends RemoteService {
 
+	public void deleteAll();
+	
 	/**
 	 * Submit Problem to SPOJ
 	 * 

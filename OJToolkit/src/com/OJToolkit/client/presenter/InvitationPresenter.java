@@ -3,8 +3,6 @@
  */
 package com.OJToolkit.client.presenter;
 
-import com.OJToolkit.client.AppController;
-import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.OJToolkit.client.event.CheckCookiesEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -12,7 +10,6 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -60,7 +57,8 @@ public class InvitationPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				System.out.println("checking the status of the invitation string");
-				if (display.getInvitationString().getValue().equals(invitationString)) {
+				if (display.getInvitationString().getValue()
+				        .equals(invitationString)) {
 					System.out.println("correct");
 					Cookies.setCookie("isInvitedCookie", "YESAAA");
 					eventBus.fireEvent(new CheckCookiesEvent());

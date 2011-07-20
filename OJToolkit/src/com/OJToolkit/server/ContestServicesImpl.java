@@ -165,7 +165,7 @@ public class ContestServicesImpl extends RemoteServiceServlet implements
 			List<Contest> allcontest = (List<Contest>) query.execute(UserID);
 			for (Contest c : allcontest) {
 				ContestData curC = new ContestData(c.getContestID(),
-						c.getContestName(), c.getContestAccessCode());
+						c.getContestName(), c.getContestAccessCode(),c.getStartDate(),c.getEndDate(),0);
 				con.add(curC);
 			}
 		} finally {

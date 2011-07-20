@@ -69,8 +69,12 @@ public class ContestMangerView extends Composite implements Display {
 
 		initWidget(masterPanel);
 
+		ScrollPanel contestMange = new ScrollPanel();
+		
+		contestMange.setSize("100%", "100%");
 		VerticalPanel MainPanel = new VerticalPanel();
 		MainPanel.setSize("100%", "100%");
+		contestMange.add(MainPanel) ;
 		// Label lblManageContest = new Label("Manage Contest");
 		// MainPanel.add(lblManageContest) ;
 		// MainPanel.setCellHeight(lblManageContest, "5%");
@@ -79,7 +83,7 @@ public class ContestMangerView extends Composite implements Display {
 		VerticalPanel chosseproblemPanel = new VerticalPanel();
 		chosseproblemPanel.setSize("100%", "100%");
 
-		splitPanel.add(MainPanel, "Manage Contest", 2);
+		splitPanel.add(contestMange, "Manage Contest", 2);
 		// *************second panel(chossen problem)***********
 		AbstractCell<ProblemData> chossenproblemList = new AbstractCell<ProblemData>() {
 			@Override

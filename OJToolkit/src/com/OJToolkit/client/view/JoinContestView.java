@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -19,7 +20,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class JoinContestView extends Composite implements
 		JoinContestPresenter.Display {
 
-	TextBox txtContestAccessCode;
+	PasswordTextBox txtContestAccessCode;
 	ListBox listContests;
 	Button btnJoinContest;
 	int contestsSize;
@@ -46,7 +47,7 @@ public class JoinContestView extends Composite implements
 
 		HorizontalPanel pnlAccessCodeContest = new HorizontalPanel();
 		Label lblAccessCode = new Label("Contest Access code");
-		txtContestAccessCode = new TextBox();
+		txtContestAccessCode = new PasswordTextBox();
 		pnlAccessCodeContest.add(lblAccessCode);
 		pnlAccessCodeContest.add(txtContestAccessCode);
 		verticalPanel.add(pnlAccessCodeContest);

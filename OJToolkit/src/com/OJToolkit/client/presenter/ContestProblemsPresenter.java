@@ -222,7 +222,7 @@ public class ContestProblemsPresenter implements Presenter {
 			@Override
 			public void onSuccess(ArrayList<ContestData> result) {
 				contests.addAll(result);
-				contestsList.addItem("No chontest");
+				contestsList.addItem("No Contest");
 				for (ContestData contest : contests) {
 					contestsList.addItem(contest.getContestName());
 				}

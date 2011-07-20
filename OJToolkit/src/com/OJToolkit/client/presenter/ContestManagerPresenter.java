@@ -359,6 +359,10 @@ public class ContestManagerPresenter implements Presenter {
 			}
 
 			private void editContest(ContestData currentContest) {
+				if(currentContest.equals(display.getContestName())){
+					Window.alert("You can't Change Contest Name") ;
+					return ;
+				}
 				String contestAccessCode = display.getContestAccessCode()
 						.getValue();
 				Date contestStartDate = display.getStartDate().getValue();
@@ -370,14 +374,13 @@ public class ContestManagerPresenter implements Presenter {
 						new AsyncCallback<Boolean>() {
 							@Override
 							public void onSuccess(Boolean result) {
-								System.out
-										.println("Magdi-edit contest has done successfuly");
+//								System.out.println("Magdi-edit contest has done successfuly");
+								Window.alert("Contest Edited Succsefully.") ;
 							}
 
 							@Override
 							public void onFailure(Throwable caught) {
-								System.out
-										.println("Magdi-edit contest has failed :( ");
+								Window.alert("Sorry , Can't Edit contest, try again later.") ;
 							}
 						});
 			}
@@ -399,19 +402,20 @@ public class ContestManagerPresenter implements Presenter {
 							public void onSuccess(Boolean result) {
 								if (result) {
 									// alert in alert part
-									System.out
-											.println("Contest Add succsefuly ");
+									Window.alert("Contest Created Succsefully.") ;
 									getContests() ;
 								} else {
 									// alert in alert part
-									System.out.println("Contest Name Already Exsist");
+//									System.out.println("Contest Name Already Exsist");
+									Window.alert("this Name Is Already Exsist!") ;
 								}
 							}
 
 							@Override
 							public void onFailure(Throwable caught) {
 								// alert in alert part
-								System.out.println("Sorry :( My bad Can't Load Contests");
+//								System.out.println("Sorry :( My bad Can't Load Contests");
+								Window.alert("Sorry , Can't save contest, try again later.") ;
 							}
 						});
 			}
@@ -462,6 +466,7 @@ public class ContestManagerPresenter implements Presenter {
 			@Override
 			public void onChange(ChangeEvent event) {
 				int selected = listContests.getSelectedIndex();
+				System.out.println(selected);
 				String name = "", Accesscode = "";
 				Date start = new Date(), end = new Date();
 				if (selected == 0) {
@@ -480,7 +485,8 @@ public class ContestManagerPresenter implements Presenter {
 				display.getContestName().setText(name);
 				display.getContestAccessCode().setText(Accesscode);
 				display.getStartDate().setValue(start);
-				display.getEndDate().setValue(end);
+//				display.getStartDate().getTextBox().setValue(start.tost) ;
+				display.getEndDate().setValue(end,true);
 			}
 
 			private void LoadproblemsForcontest(int selected) {

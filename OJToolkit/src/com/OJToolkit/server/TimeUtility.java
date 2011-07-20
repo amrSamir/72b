@@ -1,10 +1,11 @@
 package com.OJToolkit.server;
 
+
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.google.gwt.i18n.client.DateTimeFormat;
 
 public class TimeUtility {
 	public static Long getTimeinLinux(String date) {
@@ -14,9 +15,15 @@ public class TimeUtility {
 		try {
 			d = dateFormat.parse(date);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			try{
+				DateFormat dateFormat2 = new SimpleDateFormat("dd MMM YYYY HH:mm:ss");
+				d = dateFormat2.parse(date);
+			}catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+			
 		}
-
+		System.out.println(d);
 		Long r = d.getTime();
 		return r;
 	}
@@ -34,7 +41,19 @@ public class TimeUtility {
 	}
 
 	public static String FormatDate(String date) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		return dateFormat.format(date);
+		String s = "" ;
+		try {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		    s = dateFormat.format(date);
+		} catch (Exception e) {
+			try{
+				DateFormat dateFormat2 = new SimpleDateFormat("dd MMM YYYY HH:mm:ss");
+				s = dateFormat2.format(date);
+			}catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		
+		return s ;
 	}
 }

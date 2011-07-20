@@ -67,14 +67,14 @@ public class ContestAdminPresenter implements Presenter{
 					contestServises.addContest(display.getContestName().getValue(), display.getContestAccessCode().getValue(), display.getStartDate(),display.getEndDate() ,new AsyncCallback<Boolean>() {
 						@Override
 						public void onFailure(Throwable caught) {
-							System.out.println("magdi-contestAdmin-Falid to save data");
+							Window.alert("Sorry , Can't save contest, try again later.") ;
 						}
 						@Override
 						public void onSuccess(Boolean result) {
 							if(result){
-								System.out.println("magdi-contestAdmin-data saved");
+								Window.alert("Contest Created Succsefully.") ;
 							}else{
-								Window.alert("thisNameIsAlreadyExsist") ;
+								Window.alert("this Name Is Already Exsist!") ;
 							}
 						}
 					});
@@ -83,12 +83,13 @@ public class ContestAdminPresenter implements Presenter{
 						contestServises.changeAccessCode(display.getContestNameDropList(), display.getContestAccessCode().getValue() , new AsyncCallback<Boolean>() {
 							@Override
 							public void onSuccess(Boolean result) {
-								System.out.println("Magdi-contestAdmin-contest edited scussuly ");
+//								System.out.println("Magdi-contestAdmin-contest edited scussuly ");
+								Window.alert("Contest Edited Succsefully.") ;
 							}
 							
 							@Override
 							public void onFailure(Throwable caught) {
-								Window.alert("Magdi-contestAdmin-sorryCant't change the contest data ! :(") ;
+								Window.alert("Sorry , Can't Edit contest, try again later.") ;
 							}
 						});
 						
@@ -96,11 +97,13 @@ public class ContestAdminPresenter implements Presenter{
 						contestServises.changeContestName(display.getContestNameDropList(), display.getContestName().getValue(), new AsyncCallback<Boolean>() {
 							@Override
 							public void onSuccess(Boolean result) {
-								System.out.println("Magdi-contestAdmin-contest edited scussuly ");
+//								System.out.println("Magdi-contestAdmin-contest edited scussuly ");
+								Window.alert("Contest Edited Succsefully.") ;
 							}
 							@Override
 							public void onFailure(Throwable caught) {
-								Window.alert("Magdi-contestAdmin-sorryCant't change the contest data ! :(") ;
+//								Window.alert("Magdi-contestAdmin-sorryCant't change the contest data ! :(") ;
+								Window.alert("Sorry , Can't Edit contest, try again later.") ;
 							}
 						});
 					}

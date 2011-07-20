@@ -16,7 +16,7 @@ h1 {
 
 /************* WELCOME PAGE ****************/
 .welcomePage {
-	text-align: center;" horizontalAlignment="center"
+	text-align: center;
 	vertical-align: center;
 	background: #FCFCFC url(lightgray.png);
 	margin: auto;
@@ -501,10 +501,14 @@ h1 {
 }
 
 .center {
+   /*position: fixed;
+   top: 50%;
+   left: 50%;
+   */
 	margin: auto;
 	top: 100px;
 	width: 80%;
-	/*border-style: groove;*/
+	*/border-style: groove;*/
 }
 
 .TableRow {

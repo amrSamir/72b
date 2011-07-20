@@ -69,7 +69,10 @@ public class ViewContestPresenter implements Presenter {
 				if(curDate.getTime() > curContest.getEndTime().getTime()){
 					getSubmissions(contestname) ;
 					display.setTimeRemaining("ContestEnded");
-				}else{
+				}else if(curDate.getTime() < curContest.getStartTime().getTime()){
+					display.setTimeRemaining("Contest not start yet");
+				}
+				else{
 					new Timer() {
 						@Override
 						public void run() {
@@ -83,9 +86,11 @@ public class ViewContestPresenter implements Presenter {
 						public void run() {
 							Date curd = new Date();
 							Long cur = dif-(curd.getTime()/1000) ;
-							Long min = cur/60 ;
 							Long sec = cur%60 ;
-							String rem = "remaining( " + String.valueOf(min) + ":" + String.valueOf(sec) + ")" ;
+							Long min = (cur/60);
+							Long hours = min/60 ;
+							min %= 60 ;							
+							String rem = "remaining( " + String.valueOf(hours) + ":"  + String.valueOf(min) + ":" + String.valueOf(sec) + ")" ;
 							display.setTimeRemaining(rem);
 						}
 					}.scheduleRepeating(1000);

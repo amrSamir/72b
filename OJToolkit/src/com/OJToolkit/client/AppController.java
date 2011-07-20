@@ -56,7 +56,6 @@ import com.OJToolkit.client.presenter.AddAccountPresenter;
 import com.OJToolkit.client.presenter.CheckCookiesPresenter;
 import com.OJToolkit.client.presenter.CoderListPresenter;
 import com.OJToolkit.client.presenter.CoderProfilePresenter;
-import com.OJToolkit.client.presenter.ContestAdminPresenter;
 import com.OJToolkit.client.presenter.ContestManagerPresenter;
 import com.OJToolkit.client.presenter.ContestProblemsPresenter;
 import com.OJToolkit.client.presenter.HelpPresenter;
@@ -75,14 +74,12 @@ import com.OJToolkit.client.presenter.TopPanelPresenter;
 import com.OJToolkit.client.presenter.ViewContestPresenter;
 import com.OJToolkit.client.presenter.WelcomePresenter;
 import com.OJToolkit.client.view.AddAccountView;
-import com.OJToolkit.client.view.ContestAdminView;
 import com.OJToolkit.client.view.ContestMangerView;
 import com.OJToolkit.client.view.InvitationView;
 import com.OJToolkit.client.view.JoinContestView;
 import com.OJToolkit.client.view.LeftPanelView;
 import com.OJToolkit.client.view.LoginView;
 import com.OJToolkit.client.view.ProblemSubmissionStatusView;
-import com.OJToolkit.client.view.ProblemView;
 import com.OJToolkit.client.view.RegistrationView;
 import com.OJToolkit.client.view.TopPanelView;
 import com.OJToolkit.client.view.ViewContestView;
@@ -704,15 +701,14 @@ public class AppController implements ValueChangeHandler<String> {
 					if (problem == null) {
 						presenter = new ProblemPresenter(token.substring(7),
 						        submissionService, languageService, eventBus,
-						        sourceCodeService, new ProblemView(),
+						        sourceCodeService,
 						        hintService);
-					} else {
 						// TODO(ahmedazraq): why use 2 calls when you use 1 call
 						presenter = new ProblemPresenter(
 						        problem.getProblemCode() + "-"
 						                + problem.getOjType(),
 						        submissionService, languageService, eventBus,
-						        sourceCodeService, new ProblemView(),
+						        sourceCodeService,
 						        hintService);
 					}
 					leftPanelPresenter

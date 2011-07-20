@@ -61,7 +61,7 @@ public class OJToolkit implements EntryPoint {
 		HandlerManager eventBus = new HandlerManager(null);
 		ContestServicesAsync contestService = GWT.create(ContestServices.class);
 
-		///*
+		/*
 		try {
 	        new SpojProblemsToDBAdder();
         } catch (ResourceException e) {

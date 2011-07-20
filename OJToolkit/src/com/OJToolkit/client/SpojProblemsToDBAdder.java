@@ -24,7 +24,7 @@ public class SpojProblemsToDBAdder {
 
 	public SpojProblemsToDBAdder() throws ResourceException {
 		System.out.println("ahmedazraq-SpojProblemsToDBAdder-Initializer");
-		// addLanguages();
+		addLanguages();
 		//deleteAllDatastore();
 		//addProblems("Timus");
 		 //addProblems("SPOJ");

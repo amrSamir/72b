@@ -46,7 +46,7 @@ public interface Judge {
     public Long submitProblem(String coderId, String password, String problemId, String languageId, String code) throws IOException, Exception;
 
     /**
-     * @param coderId : The ID of the coder.
+     * @param coderId : The ID of the coder
      * @param password : The password of the user.
      * @param submissionId: The submission id.
      * @return Instance of type Submission of the last submitted problem.

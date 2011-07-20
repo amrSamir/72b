@@ -49,6 +49,12 @@
 						<td valign='top'>
 							<g:Label ui:field="lblTimusUsername" />
 						</td>
+						<td valign='top'>
+							<g:Label styleName="bold">LiveArchive Username</g:Label>
+						</td>
+						<td valign='top'>
+							<g:Label ui:field="lblLiveArchiveUsername" />
+						</td>
 					</tr>
 				</table>
 			</g:HTMLPanel>

@@ -305,6 +305,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			ret.setSPOJUsername(coders.get(0).getSPOJUsername());
 			ret.setUVAUsername(coders.get(0).getUVAUsername());
 			ret.setTimusUsername(coders.get(0).getTimusUsername());
+			ret.setLiveArchiveUsername(coders.get(0).getLiveArchiveUsername());
 			ret.setUsername(username);
 
 			select_query = "select from " + UserSubmission.class.getName();

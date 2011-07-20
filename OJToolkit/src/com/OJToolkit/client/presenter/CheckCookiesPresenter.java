@@ -58,9 +58,9 @@ public class CheckCookiesPresenter implements Presenter {
 
 				        } else {
 					        // create logged in cookie
-					        Cookies.setCookie("isLoggedInCookie", "YES");
+					        Cookies.setCookie("isLoggedInCookie", "YES",AppController.COOKIES_EXPIRYDATE);
 					        Cookies.setCookie("logoutURL",
-					                result.getLogoutUrl());
+					                result.getLogoutUrl(),AppController.COOKIES_EXPIRYDATE);
 					        eventBus.fireEvent(new TopPanelEvent(result
 					                .getLogoutUrl()));
 
@@ -96,7 +96,7 @@ public class CheckCookiesPresenter implements Presenter {
 		String addedAccountsCookie = Cookies.getCookie("addedAccountsCookie");
 		String isRegisteredCookie = Cookies.getCookie("isRegisteredCookie");
 		if (isRegisteredCookie != null) {
-			Cookies.setCookie("isEnabledCookie", "YES");
+			Cookies.setCookie("isEnabledCookie", "YES",AppController.COOKIES_EXPIRYDATE);
 			System.out.println("AE-CheckCookiesPresenter-Enableeeeeed");
 
 			eventBus.fireEvent(new LeftPanelEvent());
@@ -126,7 +126,7 @@ public class CheckCookiesPresenter implements Presenter {
 				if (result == true) {
 					System.out
 					        .println("AE-CheckCookiesPresenter-I am registered");
-					Cookies.setCookie("isRegisteredCookie", "YES");
+					Cookies.setCookie("isRegisteredCookie", "YES",AppController.COOKIES_EXPIRYDATE);
 				} else {
 					System.out.println("AE-CheckCookiesPresenter-I am NOT registered");
 				}

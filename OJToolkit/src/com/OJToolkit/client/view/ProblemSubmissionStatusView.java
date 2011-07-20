@@ -102,7 +102,7 @@ public class ProblemSubmissionStatusView extends Composite implements
 			txtTime.setVisible(false);
 			txtJudgeResult.setVisible(false);
 			lblJudgeResult.setVisible(false);
-		} else if (result.getJudgeResult().equals("compilation error")
+		} else if (result.getJudgeResult().toLowerCase().equals("compilation error")
 		        || result.getJudgeResult().equals("Wrong answer")) {
 			txtJudgeResult.setVisible(true);
 			lblJudgeResult.setVisible(true);

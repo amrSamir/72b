@@ -72,7 +72,7 @@ public class AddAccountView extends Composite implements
 	    	Anchor regLink = new Anchor("**If you currently don't have an account at " + ojs[i] + ", click here to register!", false, registrationLinks[i]);
 	    	regLink.setTarget("_blank");
 	    	verticalPanel.add(regLink);
-	    	tabPanel.add(verticalPanel,"Add Account "+ojs[i]);
+	    	tabPanel.add(verticalPanel,ojs[i]);
 	    }
 	}
 

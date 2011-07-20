@@ -60,6 +60,10 @@ public class CoderProfilePresenter implements Presenter {
 
 	@UiField(provided = true)
 	Label lblTimusUsername;
+	
+
+	@UiField(provided = true)
+	Label lblLiveArchiveUsername;
 
 	/**
 	 * The main CellTable.
@@ -109,6 +113,7 @@ public class CoderProfilePresenter implements Presenter {
 		lblSPOJUsername = new Label();
 		lblTimusUsername = new Label();
 		lblUVAUsername = new Label();
+		lblLiveArchiveUsername = new Label();
 
 		callGetCodersDetailsProfile(username);
 		bind();
@@ -152,6 +157,7 @@ public class CoderProfilePresenter implements Presenter {
 		        .getUVAUsername());
 		lblTimusUsername.setText(result.getTimusUsername() == null ? "-"
 		        : result.getTimusUsername());
+		lblLiveArchiveUsername.setText(result.getLiveArchiveUsername()==null?"-":result.getLiveArchiveUsername());
 
 	}
 

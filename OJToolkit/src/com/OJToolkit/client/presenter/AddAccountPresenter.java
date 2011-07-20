@@ -3,6 +3,7 @@
  */
 package com.OJToolkit.client.presenter;
 
+import com.OJToolkit.client.AppController;
 import com.OJToolkit.client.Services.CoderServiceAsync;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -84,7 +85,7 @@ public class AddAccountPresenter implements Presenter {
 			@Override
 			public void onSuccess(String result) {
 				addedAccounts = result;
-				Cookies.setCookie("addedAccountsCookie", addedAccounts);
+				Cookies.setCookie("addedAccountsCookie", addedAccounts,AppController.COOKIES_EXPIRYDATE);
 			}
 		});
 
@@ -197,7 +198,7 @@ public class AddAccountPresenter implements Presenter {
 							        isValidAccount(ojType);
 						        }
 
-					        }.schedule(3000);
+					        }.schedule(1500);
 				        } else {
 					        addAccount(ojType, result == 1 ? true : false);
 				        }
@@ -228,7 +229,7 @@ public class AddAccountPresenter implements Presenter {
 					        // AlreadyRegisteredEvent());
 					        addedAccounts += "-" + accountType;
 					        Cookies.setCookie("addedAccountsCookie",
-					                addedAccounts);
+					                addedAccounts,AppController.COOKIES_EXPIRYDATE);
 					        System.out.println("addedAccountsCookie"
 					                + addedAccounts);
 					        display.notifyUser("Account is added/updated successfully");

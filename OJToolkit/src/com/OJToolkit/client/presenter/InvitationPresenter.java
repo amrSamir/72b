@@ -3,6 +3,7 @@
  */
 package com.OJToolkit.client.presenter;
 
+import com.OJToolkit.client.AppController;
 import com.OJToolkit.client.event.CheckCookiesEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -60,7 +61,7 @@ public class InvitationPresenter implements Presenter {
 				if (display.getInvitationString().getValue()
 				        .equals(invitationString)) {
 					System.out.println("correct");
-					Cookies.setCookie("isInvitedCookie", "YESAAA");
+					Cookies.setCookie("isInvitedCookie", "YESAAA",AppController.COOKIES_EXPIRYDATE);
 					eventBus.fireEvent(new CheckCookiesEvent());
 				}
 				else {

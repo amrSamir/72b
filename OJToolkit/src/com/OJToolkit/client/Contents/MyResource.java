@@ -12,69 +12,91 @@ import com.google.gwt.resources.client.TextResource;
  */
 public interface MyResource extends ClientBundle {
 	MyResource INSTANCE = GWT.create(MyResource.class);
-/*
-	
-	@Source("TimusProblems.txt")
+
+	@Source("dumb.txt")
+	//@Source("TimusProblems.txt")
 	public ExternalTextResource TimusProblems();
-	@Source("SPOJProblems.txt")
-	public ExternalTextResource SPOJProblems();
-	@Source("UVAProblems.txt")
-	public ExternalTextResource UVAProblems();
-	@Source("LiveArchiveProblems.txt")
-	public ExternalTextResource LiveArchiveProblems();
 	
-	@Source("TimusProblemsText.txt")
+	@Source("dumb.txt")
+	//@Source("SPOJProblems.txt")
+	public ExternalTextResource SPOJProblems();
+	
+	@Source("dumb.txt")
+	//@Source("UVAProblems.txt")
+	public ExternalTextResource UVAProblems();
+	
+	@Source("dumb.txt")
+	//@Source("LiveArchiveProblems.txt")
+	public ExternalTextResource LiveArchiveProblems();
+
+	//@Source("TimusProblemsText.txt")
+	@Source("dumb.txt")
 	public ExternalTextResource TimusProblemText();
 	
-	@Source("SPOJ1.txt")
+	//@Source("SPOJ1.txt")
+	@Source("dumb.txt")
 	public ExternalTextResource SPOJProblemText1();
 	
-	@Source("SPOJ2.txt")
+	//@Source("SPOJ2.txt")
+	@Source("dumb.txt")
 	public ExternalTextResource SPOJProblemText2();
 
-	@Source("uva1.txt")
+	@Source("dumb.txt")
+	//@Source("uva1.txt")
 	public ExternalTextResource UVAProblemText1();
 
-	
-	@Source("uva2.txt")
+	@Source("dumb.txt")
+	//@Source("uva2.txt")
 	public ExternalTextResource UVAProblemText2();
 	
-	
-	@Source("uva3.txt")
+	@Source("dumb.txt")
+	//@Source("uva3.txt")
 	public ExternalTextResource UVAProblemText3();
 	
-	
-	@Source("uva4.txt")
+	@Source("dumb.txt")
+	//@Source("uva4.txt")
 	public ExternalTextResource UVAProblemText4();
 	
-	
-	@Source("uva5.txt")
+	@Source("dumb.txt")
+	//@Source("uva5.txt")
 	public ExternalTextResource UVAProblemText5();
 	
-	
-	@Source("uva6.txt")
+	@Source("dumb.txt")
+	//@Source("uva6.txt")
 	public ExternalTextResource UVAProblemText6();
 	
-	
-	@Source("uva7.txt")
+	@Source("dumb.txt")
+	//@Source("uva7.txt")
 	public ExternalTextResource UVAProblemText7();
 	
-	
-	@Source("uva8.txt")
+	@Source("dumb.txt")
+	//@Source("uva8.txt")
 	public ExternalTextResource UVAProblemText8();
 	
-*/	
-	@Source("LiveArchive1.txt")
+
+	//@Source("LiveArchive1.txt")
+	@Source("dumb.txt")
 	public ExternalTextResource LAProblemText1();
-	@Source("LiveArchive2.txt")
+	
+	
+	//@Source("LiveArchive2.txt")
+	@Source("dumb.txt")
 	public ExternalTextResource LAProblemText2();
-	@Source("LiveArchive3.txt")
+	
+	@Source("dumb.txt")
+	//@Source("LiveArchive3.txt")
 	public ExternalTextResource LAProblemText3();
-	@Source("LiveArchive4.txt")
+	
+	@Source("dumb.txt")
+	//@Source("LiveArchive4.txt")
 	public ExternalTextResource LAProblemText4();
-	@Source("LiveArchive5.txt")
+	
+	@Source("dumb.txt")
+	//@Source("LiveArchive5.txt")
 	public ExternalTextResource LAProblemText5();
-	@Source("LiveArchive6.txt")
+	
+	@Source("dumb.txt")
+	//@Source("LiveArchive6.txt")
 	public ExternalTextResource LAProblemText6();
 
 	@Source("Banner.jpg")

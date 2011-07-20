@@ -61,17 +61,14 @@ public class OJToolkit implements EntryPoint {
 		HandlerManager eventBus = new HandlerManager(null);
 		ContestServicesAsync contestService = GWT.create(ContestServices.class);
 
-		// TODO(magdi): remove
-		// FackeSubmissions f = new FackeSubmissions() ;
-		// /*
-
-	/*	try {
+		///*
+		try {
 	        new SpojProblemsToDBAdder();
         } catch (ResourceException e) {
 	        // TODO Auto-generated catch block
 	        e.printStackTrace();
-        }*/
-		 //*
+        }
+		 /*/
 		AppController appViewer = new AppController(eventBus,
 				submissionService, languageService, loginService, coderService,
 				sourceCodeService, hintService, contestService);

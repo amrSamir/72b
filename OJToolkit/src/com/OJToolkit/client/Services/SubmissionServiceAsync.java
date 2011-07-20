@@ -49,6 +49,6 @@ public interface SubmissionServiceAsync {
 
 	void getSubmissionsCount(AsyncCallback<Integer> callback);
 
-	void deleteAll(AsyncCallback<Void> callback);
+	void deleteAllDatastore(AsyncCallback<Void> callback);
 
 }

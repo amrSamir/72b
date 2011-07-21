@@ -51,6 +51,9 @@ public class LanguageServiceImpl extends RemoteServiceServlet implements
 	public void addLanguages() {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
+			Query qq = pm.newQuery(Language.class);
+			List<Language> ae = (List<Language>) qq.execute();
+			pm.deletePersistentAll(ae);
 			String[] languages = new String[] { "C++ (g++ 4.0.0-8)",
 			        "Pascal (gpc 20070904)", "Perl (perl 5.12.1)",
 			        "Python (python 2.5)", "Fortran 95 (gfortran 4.3.2)",

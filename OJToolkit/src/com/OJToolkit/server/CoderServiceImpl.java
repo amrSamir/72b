@@ -53,7 +53,7 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			for (Coder coder : codersDB) {
 				coders.add(new CoderData(coder.getUserID(),
 				        coder.getUsername(), coder.getEmail(), coder
-				                .getSPOJUsername(), coder.getSPOJPassword()));
+				                .getSPOJUsername(), coder.getTimusUsername(), coder.getUVAUsername(), coder.getLiveArchiveUsername()));
 			}
 
 		} finally {
@@ -73,9 +73,9 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 			@SuppressWarnings("unchecked")
 			List<Coder> codersDB = (List<Coder>) query.execute(coderID);
 			for (Coder coder : codersDB) {
-				cd = new CoderData(coder.getUserID(), coder.getUsername(),
-				        coder.getEmail(), coder.getSPOJUsername(),
-				        coder.getSPOJPassword());
+				cd = new CoderData(coder.getUserID(),
+				        coder.getUsername(), coder.getEmail(), coder
+		                .getSPOJUsername(), coder.getTimusUsername(), coder.getUVAUsername(), coder.getLiveArchiveUsername());
 			}
 		} finally {
 			pm.close();
@@ -365,8 +365,15 @@ public class CoderServiceImpl extends RemoteServiceServlet implements
 				List<Problem> problems = (List<Problem>) query.execute(
 				        userSubmission.getProblemCode(),
 				        userSubmission.getJudgeType());
-				submissionData
-				        .setProblemTitle(problems.get(0).getProblemName());
+			
+				if(problems.size()==0){
+					submissionData
+			        .setProblemTitle("Can't retrieve problem");
+				} else{
+					submissionData
+			        .setProblemTitle(problems.get(0).getProblemName());
+		
+				}
 				ret.add(submissionData);
 			}
 

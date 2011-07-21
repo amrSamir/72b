@@ -1,4 +1,4 @@
-	package com.OJToolkit.server;
+package com.OJToolkit.server;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
-
 
 import com.OJToolkit.client.Services.SubmissionService;
 import com.OJToolkit.client.ValueObjects.ProblemData;
@@ -79,17 +78,16 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				judgeUsername = DataStoreHandler.getAllCoders().get(0)
 						.getUVAUsername();
 				judgePassword = DataStoreHandler.getAllCoders().get(0)
-				        .getUVAPassword();
+						.getUVAPassword();
 				judge = new UVA();
 
 			} else if (ojType.equals("LiveArchive")) {
 				System.out.println("submit in live archive");
-				 judgeUsername = DataStoreHandler.getAllCoders().get(0)
-				 .getLiveArchiveUsername();
-				 judgePassword = DataStoreHandler.getAllCoders().get(0)
-				 .getLiveArchivePassword();
-				 judge = new LiveArchive();
-				
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+						.getLiveArchiveUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+						.getLiveArchivePassword();
+				judge = new LiveArchive();
 
 			}
 		}
@@ -101,9 +99,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			System.out.println("Password" + judgePassword);
 			System.out.println("Problem Code: " + problemCode);
 			System.out.println("Code: " + code);
-			 submissionID = judge.submitProblem(judgeUsername, judgePassword, problemCode,
-			        language, code);
-			
+			submissionID = judge.submitProblem(judgeUsername, judgePassword,
+					problemCode, language, code);
+
 			System.out.println("Submitted");
 			System.out.println(submissionID);
 
@@ -149,6 +147,10 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				judgeUsername = "uvatest72";
 				judgePassword = "123456";
 				judge = new UVA();
+			} else if (ojType.equals("LiveArchive")) {
+				judgeUsername = "ojtest72";
+				judgePassword = "123456";
+				judge = new LiveArchive();
 			}
 		} else {
 
@@ -157,49 +159,57 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				judgeUsername = DataStoreHandler.getAllCoders().get(0)
 						.getSPOJUsername();
 				judgePassword = DataStoreHandler.getAllCoders().get(0)
-				        .getSPOJPassword();
+						.getSPOJPassword();
 				judge = new SPOJ();
 			} else if (ojType.equals("Timus")) {
 				System.out.println("submission result for timus");
 				judgeUsername = DataStoreHandler.getAllCoders().get(0)
-				        .getTimusUsername();
+						.getTimusUsername();
 				judgePassword = DataStoreHandler.getAllCoders().get(0)
-				        .getTimusPassword();
+						.getTimusPassword();
 				judge = new Timus();
 			} else if (ojType.equals("UVA")) {
 				System.out.println("submission result for UVA");
 				judgeUsername = DataStoreHandler.getAllCoders().get(0)
-				        .getUVAUsername();
+						.getUVAUsername();
 				judgePassword = DataStoreHandler.getAllCoders().get(0)
-				        .getUVAPassword();
-				 judge = new UVA();
+						.getUVAPassword();
+				judge = new UVA();
+			} else if (ojType.equals("LiveArchive")) {
+				System.out.println("submission result for live archive");
+				judgeUsername = DataStoreHandler.getAllCoders().get(0)
+						.getLiveArchiveUsername();
+				judgePassword = DataStoreHandler.getAllCoders().get(0)
+						.getLiveArchivePassword();
+				judge = new LiveArchive();
+
 			}
+
 		}
 		System.out.println(judgeUsername);
 		System.out.println(judgePassword);
-		Submission s = judge.getLastSubmission(judgeUsername, judgePassword, submissionID==null?"":submissionID.toString());
-		
+		Submission s = judge.getLastSubmission(judgeUsername, judgePassword,
+				submissionID == null ? "" : submissionID.toString());
+
 		System.out.println(s.getProblemId());
 		System.out.println(s.getStatus());
 		ProblemStatusData dpStatus = null;
-		if(s.getProblemId()==null){
+		if (s.getProblemId() == null) {
 			dpStatus = new ProblemStatusData();
-			
-		}
-		else{
+
+		} else {
 			dpStatus = new ProblemStatusData(new Date(
-			        TimeUtility.getTimeinLinux(s.getDate())), s.getProblemId(),
-			        s.getStatus(), s.getRuntime(), s.getMemoryUsed());
+					TimeUtility.getTimeinLinux(s.getDate())), s.getProblemId(),
+					s.getStatus(), s.getRuntime(), s.getMemoryUsed());
 			addSubmissionResult(DataStoreHandler.getAllCoders().get(0)
-			        .getUsername(), judgeUsername, problemCode, ojType,
-			        s.getStatus(), s.getRuntime(), s.getMemoryUsed(), new Date(
-			                TimeUtility.getTimeinLinux(s.getDate())), sourceCode,
-			        isVisible);
+					.getUsername(), judgeUsername, problemCode, ojType,
+					s.getStatus(), s.getRuntime(), s.getMemoryUsed(), new Date(
+							TimeUtility.getTimeinLinux(s.getDate())),
+					sourceCode, isVisible);
 		}
-		
+
 		System.out.println("notime");
-	
-		
+
 		return dpStatus;
 
 	}
@@ -301,6 +311,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#getProblem(java.lang.
 	 * String)
@@ -356,9 +367,9 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 	}
 
 	public void addSubmissionResult(String username, String judgeUsername,
-	        String problemCode, String judgeType, String judgeResult,
-	        String time, String memory, Date date, String sourceCode,
-	        boolean isVisible) {
+			String problemCode, String judgeType, String judgeResult,
+			String time, String memory, Date date, String sourceCode,
+			boolean isVisible) {
 
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
@@ -392,12 +403,12 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 				pm.makePersistent(submission);
 
 				String select_query2 = "select from "
-				        + UserSubmission.class.getName();
+						+ UserSubmission.class.getName();
 				Query query2 = pm.newQuery(select_query2);
 				query2.setFilter("judgeUsername  == jUsername && date == jDate");
 				query2.declareParameters("java.lang.String jUsername,java.lang.Long jDate");
 				List<UserSubmission> submissions2 = (List<UserSubmission>) query2
-				        .execute(judgeUsername, date.getTime());
+						.execute(judgeUsername, date.getTime());
 				SourceCode sc = new SourceCode();
 				sc.setSourceCode(sourceCode);
 				sc.setVisible(isVisible);
@@ -412,6 +423,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.Services.SubmissionService#getSubmissions()
 	 */
 	@Override
@@ -437,7 +449,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			for (UserSubmission userSubmission : submissions) {
 				submissionData = new SubmissionData();
 				submissionData
-				        .setSubmissionID(userSubmission.getSubmissionID());
+						.setSubmissionID(userSubmission.getSubmissionID());
 				submissionData.setUsername(userSubmission.getUsername());
 				submissionData.setProblemCode(userSubmission.getProblemCode());
 				submissionData.setJudgeType(userSubmission.getJudgeType());
@@ -466,6 +478,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#addProblemTextToDB(com
 	 * .OJToolkit.client.ValueObjects.ProblemTextData)
@@ -499,6 +512,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#getProblemText(java.lang
 	 * .String, java.lang.String)
@@ -551,6 +565,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * com.OJToolkit.client.Services.SubmissionService#getSubmissionsCount()
 	 */
@@ -562,11 +577,11 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 		int size = 0;
 		try {
 			String select_query = "select from "
-			        + UserSubmission.class.getName();
+					+ UserSubmission.class.getName();
 			Query query = pm.newQuery(select_query);
 
 			List<UserSubmission> submissions = (List<UserSubmission>) query
-			        .execute();
+					.execute();
 
 			size = submissions.size();
 
@@ -579,6 +594,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.OJToolkit.client.Services.SubmissionService#deleteAllDatastore()
 	 */
 	@Override

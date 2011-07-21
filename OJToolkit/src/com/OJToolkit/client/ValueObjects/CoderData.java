@@ -16,33 +16,29 @@ public class CoderData implements Serializable {
 	private String TimusPassword;
 	private String UVAUsername;
 	private String UVAPassword;
+	private String LiveArchiveUsername;
+	private String LiveArchivePassword;
 	
 	public CoderData() {
 
 	}
 
-	/**
-	 * Creates a new instance of a coder with the following parameters
-	 * 
-	 * @param userID
-	 *            User ID
-	 * @param username
-	 *            Username
-	 * @param email
-	 *            Email
-	 * @param sPOJUsername
-	 *            The username of the user's SPOJ account
-	 * @param sPOJPassword
-	 *            The password of the user's SPOJ account
-	 */
+
+
 	public CoderData(Long userID, String username, String email,
-			String sPOJUsername, String sPOJPassword) {
+			String sPOJUsername, String timusUsername, String uVAUsername,
+			String liveArchiveUsername) {
+		super();
 		this.userID = userID;
 		this.username = username;
 		this.email = email;
 		SPOJUsername = sPOJUsername;
-		SPOJPassword = sPOJPassword;
+		TimusUsername = timusUsername;
+		UVAUsername = uVAUsername;
+		setLiveArchiveUsername(liveArchiveUsername);
 	}
+
+
 
 	/**
 	 * @return UserID UserID
@@ -176,5 +172,23 @@ public class CoderData implements Serializable {
 	 */
 	public void setUVAPassword(String uVAPassword) {
 		UVAPassword = uVAPassword;
+	}
+
+
+
+	/**
+	 * @param liveArchiveUsername the liveArchiveUsername to set
+	 */
+	public void setLiveArchiveUsername(String liveArchiveUsername) {
+		LiveArchiveUsername = liveArchiveUsername;
+	}
+
+
+
+	/**
+	 * @return the liveArchiveUsername
+	 */
+	public String getLiveArchiveUsername() {
+		return LiveArchiveUsername;
 	}
 }

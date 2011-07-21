@@ -43,7 +43,7 @@ public class CheckCookiesPresenter implements Presenter {
 
 	public void login(LoginServiceAsync loginService) {
 		loginService.login(GWT.getHostPageBaseURL()
-		        + "OJToolkit.html?gwt.codesvr=127.0.0.1:9997",
+		        ,//+ "OJToolkit.html?gwt.codesvr=127.0.0.1:9997",
 		        new AsyncCallback<LoginInfo>() {
 			        @Override
 			        public void onFailure(Throwable error) {

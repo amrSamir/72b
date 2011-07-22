@@ -351,15 +351,17 @@ public class ContestManagerPresenter implements Presenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				ContestData currentContest = display.getChossenContest();
+				boolean t = true;
 				if (currentContest == null)
-					addContest();
+					t = addContest();
+					if(!t)Window.alert("Contest End date mast be after start date.");
 				else {
 					editContest(currentContest);
 				}
 			}
 
 			private void editContest(ContestData currentContest) {
-				if(currentContest.equals(display.getContestName())){
+				if(display.getContestName() != null && currentContest.getContestName().equals(display.getContestName())){
 					Window.alert("You can't Change Contest Name") ;
 					return ;
 				}
@@ -385,7 +387,7 @@ public class ContestManagerPresenter implements Presenter {
 						});
 			}
 
-			private void addContest() {
+			private boolean addContest() {
 				String contestName = display.getContestName().getValue();
 				String contestAccessCode ;
 				if(display.getContestAccessCode() == null)
@@ -395,6 +397,9 @@ public class ContestManagerPresenter implements Presenter {
 						.getValue();
 				Date contestStartDate = display.getStartDate().getValue();
 				Date contestEndDate = display.getEndDate().getValue();
+				if(contestEndDate.getTime() <= contestStartDate.getTime()) {
+					return false ; 
+				}
 				contestServises.addContest(contestName, contestAccessCode,
 						contestStartDate, contestEndDate,
 						new AsyncCallback<Boolean>() {
@@ -418,6 +423,7 @@ public class ContestManagerPresenter implements Presenter {
 								Window.alert("Sorry , Can't save contest, try again later.") ;
 							}
 						});
+				return true ;
 			}
 		});
 
@@ -448,7 +454,6 @@ public class ContestManagerPresenter implements Presenter {
 								chossenproblems.clear();
 								chossenproblems.addAll(result);
 								display.setProblemsForContest(chossenproblems) ;
-								// TODO load problems in table
 							}
 
 							@Override

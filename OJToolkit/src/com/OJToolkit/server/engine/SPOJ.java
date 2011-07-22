@@ -56,7 +56,7 @@ public class SPOJ implements Judge {
                                                                 for (int j = in2 + 1; line.charAt(j) != '\"'; j++) {
                                                                         tem += line.charAt(j);
                                                                 }
-                                                                p.setUrl("https://spoj.pl" + tem);
+                                                                p.setUrl("http://spoj.pl" + tem);
                                                                 int in3 = line.indexOf("<b>");
                                                                 tem = "";
                                                                 for (int j = in3 + 3; j < line.length()
@@ -156,7 +156,7 @@ public class SPOJ implements Judge {
                 String arr[] = { "Users accepted", "Submissions", "Accepted",
                                 "Wrong Answer", "Compile Error", "Runtime Error",
                                 "Time Limit Exceeded" };
-                URL siteUrl = new URL("https://www.spoj.pl/ranks/" + problemId + "/");
+                URL siteUrl = new URL("http://www.spoj.pl/ranks/" + problemId + "/");
                 HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setDoOutput(true);
@@ -244,7 +244,7 @@ public class SPOJ implements Judge {
                         }
                         if (prob.equals(""))
                                 continue;
-                        ret.add("https://spoj.pl" + temp);
+                        ret.add("http://spoj.pl" + temp);
                 }
                 return ret;
         }

@@ -3,6 +3,7 @@ package com.OJToolkit.server;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -24,7 +25,7 @@ public class ContestServicesImpl extends RemoteServiceServlet implements
 	private static final Logger LOG = Logger.getLogger(ContestServices.class
 			.getName());
 	public static final PersistenceManagerFactory PMF = DataStoreHandler.PMF;
-
+	SubmissionServiceImpl service = new SubmissionServiceImpl() ;
 	@Override
 	public boolean addContest(String contestName, String contestAccessCode,
 			Date startDate, Date endDate) {
@@ -71,18 +72,18 @@ public class ContestServicesImpl extends RemoteServiceServlet implements
 	@Override
 	public boolean addProblemToContest(String contestName, String problemCode,
 			String problemOJ) {
+		LOG.log(Level.WARNING,contestName + " " + problemCode + " " + problemOJ);
 		Contest con = getContest(contestName);
 		if (con == null)
 			return false;
 		SubmissionServiceImpl services = new SubmissionServiceImpl();
 		ProblemData pd = services.getProblem(problemCode, problemOJ);
-		Long problemID = pd.getProblemID();
-		if (isProblemAlreadyExsist(con.getContestID(), problemID))
+		if (isProblemAlreadyExsist(con.getContestID(),  pd.getProblemCode(),pd.getOjType()))
 			return false;
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
 			ContestProblems contestProblem = new ContestProblems(
-					con.getContestID(), problemID);
+					con.getContestID(), pd.getProblemCode(),pd.getOjType());
 			pm.makePersistent(contestProblem);
 		} finally {
 			pm.close();
@@ -264,8 +265,7 @@ public class ContestServicesImpl extends RemoteServiceServlet implements
 			List<ContestProblems> pod = (List<ContestProblems>) query
 					.execute(contestid);
 			for (ContestProblems problem : pod) {
-				problems.add(SubmissionServiceImpl.getProblem(problem
-						.getProblemID()));
+				problems.add(service.getProblem(problem.getProblemName(),problem.getProblemOJ()));
 			}
 		} finally {
 			pm.close();
@@ -320,16 +320,16 @@ public class ContestServicesImpl extends RemoteServiceServlet implements
 		}
 	}
 
-	private boolean isProblemAlreadyExsist(Long contestid, Long problemId) {
+	private boolean isProblemAlreadyExsist(Long contestid,String problemname ,String problemOj) {
 		PersistenceManager pm = DataStoreHandler.getPersistenceManager();
 		try {
 			String select_query = "select from "
 					+ ContestProblems.class.getName();
 			Query query = pm.newQuery(select_query);
-			query.setFilter("contestID  == contestid && problemID == problemId");
-			query.declareParameters("java.lang.Long contestid,java.lang.Long problemId");
+			query.setFilter("contestID  == contestid && problemName == problemname && problemOJ == problemOj ");
+			query.declareParameters("java.lang.Long contestid,java.lang.String problemname,java.lang.String problemOj");
 			List<ContestProblems> pod = (List<ContestProblems>) query.execute(
-					contestid, problemId);
+					contestid, problemname ,problemOj );
 			if (pod.size() > 0)
 				return true;
 		} finally {

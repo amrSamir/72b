@@ -10,7 +10,7 @@ import javax.jdo.annotations.PrimaryKey;
 public class Problem {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long probID;
+	private Long ProblemID;
 
 	@Persistent
 	private String url;
@@ -38,11 +38,11 @@ public class Problem {
 	}
 
 	public Long getProbID() {
-		return probID;
+		return ProblemID;
 	}
 
 	public void setProbID(Long probID) {
-		this.probID = probID;
+		this.ProblemID = probID;
 	}
 
 	public void setProblemCode(String problemCode) {

@@ -17,11 +17,31 @@ public class ContestProblems {
 	private Long contestID ; 
 	
 	@Persistent
-	private Long problemID ;
+	private String problemName ;
 	
-	public ContestProblems(Long contestID,Long problemID) {
+	public String getProblemName() {
+		return problemName;
+	}
+
+	public void setProblemName(String problemName) {
+		this.problemName = problemName;
+	}
+
+	public String getProblemOJ() {
+		return problemOJ;
+	}
+
+	public void setProblemOJ(String problemOJ) {
+		this.problemOJ = problemOJ;
+	}
+
+	@Persistent
+	private String problemOJ ;
+	
+	public ContestProblems(Long contestID, String problemName ,String problemOJ ) {
 		this.contestID = contestID ;
-		this.problemID = problemID ;
+		this.problemName = problemName ;
+		this.problemOJ = problemOJ ;
 	}
 	
 	public Long getContestID() {
@@ -30,9 +50,7 @@ public class ContestProblems {
 	public Long getContestproblemID() {
 		return contestproblemID;
 	}
-	public Long getProblemID() {
-		return problemID;
-	}
+	
 	
 	public void setContestID(Long contestID) {
 		this.contestID = contestID;
@@ -43,8 +61,6 @@ public class ContestProblems {
 	}
 	
 	
-	public void setProblemID(Long problemID) {
-		this.problemID = problemID;
-	}
+	
 
 }

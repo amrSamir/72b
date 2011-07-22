@@ -3,6 +3,7 @@ package com.OJToolkit.server;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -326,8 +327,7 @@ public class SubmissionServiceImpl extends RemoteServiceServlet implements
 			Query query = pm.newQuery(select_query);
 			query.setFilter("problemCode == probCode && ojType == OJType");
 			query.declareParameters("java.lang.String probCode, java.lang.String OJType");
-			List<Problem> problems = (List<Problem>) query.execute(problemCode,
-					ojType);
+			List<Problem> problems = (List<Problem>) query.execute(problemCode,ojType);
 			problemData.setProblemID(problems.get(0).getProbID());
 			problemData.setProblemCode(problems.get(0).getProblemCode());
 			problemData.setProblemName(problems.get(0).getProblemName());
